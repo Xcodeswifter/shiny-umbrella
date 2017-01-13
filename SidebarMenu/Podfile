@@ -1,0 +1,19 @@
+# Uncomment this line to define a global platform for your project
+ platform :ios, ’10.0’
+
+
+  # Comment this line if you're not using Swift and don't want to use dynamic 
+  # Pods for SidebarMenu
+use_frameworks!
+
+target 'SidebarMenu' do
+pod 'SwiftyJSON', git: 'https://github.com/BaiduHiDeviOS/SwiftyJSON.git', branch: 'swift3'
+
+  pod 'Alamofire', '~> 4.0'
+  pod 'RNGridMenu', '~> 0.1.2'
+
+pod 'DropDown'
+end
+workspace 'GCTRACKV2BETA'
+
+

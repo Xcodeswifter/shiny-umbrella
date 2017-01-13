@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-UI-Text-Medium.otf">
+            <string>SFUIText-Medium</string>
+        </array>
+        <array key="SF-UI-Text-Regular.otf">
+            <string>SFUIText-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="mI4-kc-Roy">
+            <objects>
+                <viewController storyboardIdentifier="login" id="fLu-uU-zwL" customClass="LoginViewController" customModule="GCTrack2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8Ed-5F-PBd"/>
+                        <viewControllerLayoutGuide type="bottom" id="U57-h4-IbE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="P4B-E6-MQf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" background="white line-1" translatesAutoresizingMaskIntoConstraints="NO" id="YEg-QF-heV">
+                                <rect key="frame" x="56" y="355" width="289" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="4qR-Bg-MIk"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="QNC-ef-zcC">
+                                <rect key="frame" x="673" y="712" width="236" height="218"/>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7bb-GH-Us3">
+                                <rect key="frame" x="673" y="656" width="236" height="20"/>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kni-nl-C7z">
+                                <rect key="frame" x="81" y="596" width="214" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="HWq-3V-RY9"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Read our Terms of Service">
+                                            <attributes>
+                                                <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <font key="NSFont" metaFont="system" size="18"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                <integer key="NSUnderline" value="1"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="readTermsAndCondtions:" destination="fLu-uU-zwL" eventType="touchUpInside" id="Kp2-7b-G6l"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="miprofile1" translatesAutoresizingMaskIntoConstraints="NO" id="Hnt-XO-eoQ">
+                                <rect key="frame" x="16" y="286" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="pFC-jP-vEF"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="password 64x64" translatesAutoresizingMaskIntoConstraints="NO" id="MVS-QJ-OYm">
+                                <rect key="frame" x="16" y="355" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="3tG-2E-C4B"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dash_logo" translatesAutoresizingMaskIntoConstraints="NO" id="zda-7Q-CHT">
+                                <rect key="frame" x="28" y="20" width="319" height="258"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6tk-Cb-DVN">
+                                <rect key="frame" x="0.0" y="0.0" width="384" height="20"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1kz-pC-zVk">
+                                <rect key="frame" x="123.5" y="417" width="133" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="133" id="DVx-AC-LzT"/>
+                                    <constraint firstAttribute="height" constant="39" id="z0w-RA-1rs"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="signin">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="login:" destination="fLu-uU-zwL" eventType="touchUpInside" id="tuf-ef-9PQ"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="17" background="white line-1" translatesAutoresizingMaskIntoConstraints="NO" id="yuw-VM-eGL">
+                                <rect key="frame" x="56" y="286" width="289" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="1dv-gl-PbO"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6tk-Cb-DVN" firstAttribute="top" secondItem="P4B-E6-MQf" secondAttribute="top" id="0Yw-Tb-6pI"/>
+                            <constraint firstItem="U57-h4-IbE" firstAttribute="top" secondItem="MVS-QJ-OYm" secondAttribute="bottom" constant="280" id="0nF-BJ-4HD"/>
+                            <constraint firstItem="7bb-GH-Us3" firstAttribute="top" secondItem="P4B-E6-MQf" secondAttribute="top" constant="656" id="3lT-ys-NYG"/>
+                            <constraint firstItem="7bb-GH-Us3" firstAttribute="leading" secondItem="P4B-E6-MQf" secondAttribute="leading" constant="673" id="6op-2F-9Ik"/>
+                            <constraint firstItem="1kz-pC-zVk" firstAttribute="centerX" secondItem="6tk-Cb-DVN" secondAttribute="centerX" constant="-2" id="BsD-3Y-qim"/>
+                            <constraint firstAttribute="trailing" secondItem="7bb-GH-Us3" secondAttribute="trailing" constant="-534" id="D0i-43-J3h"/>
+                            <constraint firstItem="6tk-Cb-DVN" firstAttribute="leading" secondItem="P4B-E6-MQf" secondAttribute="leading" id="G9C-hz-6pq"/>
+                            <constraint firstItem="yuw-VM-eGL" firstAttribute="trailing" secondItem="YEg-QF-heV" secondAttribute="trailing" id="GDs-7H-CIN"/>
+                            <constraint firstItem="Hnt-XO-eoQ" firstAttribute="top" secondItem="zda-7Q-CHT" secondAttribute="bottom" constant="8" symbolic="YES" id="GQx-8G-1U7"/>
+                            <constraint firstItem="MVS-QJ-OYm" firstAttribute="top" secondItem="YEg-QF-heV" secondAttribute="top" id="KKD-ha-RMW"/>
+                            <constraint firstItem="6tk-Cb-DVN" firstAttribute="bottom" secondItem="8Ed-5F-PBd" secondAttribute="bottom" id="L6s-22-VT4"/>
+                            <constraint firstItem="zda-7Q-CHT" firstAttribute="leading" secondItem="P4B-E6-MQf" secondAttribute="leadingMargin" constant="12" id="LRS-VS-3Gm"/>
+                            <constraint firstItem="QNC-ef-zcC" firstAttribute="top" secondItem="P4B-E6-MQf" secondAttribute="top" constant="712" id="Lqs-UE-UyM"/>
+                            <constraint firstItem="zda-7Q-CHT" firstAttribute="centerX" secondItem="P4B-E6-MQf" secondAttribute="centerX" id="NXi-wO-Wwb"/>
+                            <constraint firstItem="YEg-QF-heV" firstAttribute="leading" secondItem="MVS-QJ-OYm" secondAttribute="trailing" constant="8" symbolic="YES" id="Nmb-YA-RZt"/>
+                            <constraint firstItem="yuw-VM-eGL" firstAttribute="leading" secondItem="Hnt-XO-eoQ" secondAttribute="trailing" constant="8" symbolic="YES" id="OAz-3Y-XUp"/>
+                            <constraint firstItem="yuw-VM-eGL" firstAttribute="leading" secondItem="YEg-QF-heV" secondAttribute="leading" id="Olj-sl-Y2D"/>
+                            <constraint firstItem="Hnt-XO-eoQ" firstAttribute="top" secondItem="yuw-VM-eGL" secondAttribute="top" id="ZD7-lJ-8hO"/>
+                            <constraint firstItem="YEg-QF-heV" firstAttribute="top" secondItem="yuw-VM-eGL" secondAttribute="bottom" constant="39" id="asl-Qz-T7B"/>
+                            <constraint firstItem="7bb-GH-Us3" firstAttribute="trailing" secondItem="QNC-ef-zcC" secondAttribute="trailing" id="bgI-0h-9dM"/>
+                            <constraint firstItem="Hnt-XO-eoQ" firstAttribute="leading" secondItem="P4B-E6-MQf" secondAttribute="leadingMargin" id="bwW-dn-uyD"/>
+                            <constraint firstItem="QNC-ef-zcC" firstAttribute="top" secondItem="7bb-GH-Us3" secondAttribute="bottom" constant="36" id="cCy-Xe-EiA"/>
+                            <constraint firstItem="zda-7Q-CHT" firstAttribute="centerX" secondItem="kni-nl-C7z" secondAttribute="centerX" id="czM-i2-6dQ"/>
+                            <constraint firstItem="U57-h4-IbE" firstAttribute="top" secondItem="kni-nl-C7z" secondAttribute="bottom" constant="41" id="e8M-Ck-MHG"/>
+                            <constraint firstItem="zda-7Q-CHT" firstAttribute="top" secondItem="8Ed-5F-PBd" secondAttribute="bottom" id="j83-MT-XiZ"/>
+                            <constraint firstItem="7bb-GH-Us3" firstAttribute="leading" secondItem="QNC-ef-zcC" secondAttribute="leading" id="kE2-CK-Eyx"/>
+                            <constraint firstAttribute="bottom" secondItem="QNC-ef-zcC" secondAttribute="bottom" constant="-263" id="kOQ-4S-FoK"/>
+                            <constraint firstItem="Hnt-XO-eoQ" firstAttribute="leading" secondItem="MVS-QJ-OYm" secondAttribute="leading" id="lsO-qK-mfs"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yuw-VM-eGL" secondAttribute="trailing" constant="14" id="mnT-qk-0g9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6tk-Cb-DVN" secondAttribute="trailing" constant="-25" id="nbA-Gi-Uea"/>
+                            <constraint firstItem="MVS-QJ-OYm" firstAttribute="top" secondItem="Hnt-XO-eoQ" secondAttribute="bottom" constant="37" id="oFU-lz-nkV"/>
+                            <constraint firstItem="1kz-pC-zVk" firstAttribute="top" secondItem="YEg-QF-heV" secondAttribute="bottom" constant="32" id="y6v-pb-rEW"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="sTp-xo-YrV"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="password" destination="YEg-QF-heV" id="1Wl-Cw-bix"/>
+                        <outlet property="username" destination="yuw-VM-eGL" id="aAx-5w-I07"/>
+                        <segue destination="rpZ-Eh-mZ7" kind="showDetail" identifier="termsandconditions" action="showViewController:sender:" id="zvz-D3-Duz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kRg-oA-61Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="976.81159420289862" y="293.47826086956525"/>
+        </scene>
+        <!--trackerselect-->
+        <scene sceneID="3Fl-YB-17T">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MainStoryboard" referencedIdentifier="trackerselect" id="APq-jA-1q8" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sg8-YN-2R8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3220" y="-192"/>
+        </scene>
+        <!--Terms And Conditions View Controller-->
+        <scene sceneID="RVm-IP-fw3">
+            <objects>
+                <viewController id="rpZ-Eh-mZ7" customClass="TermsAndConditionsViewController" customModule="GCTrack2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1bK-mD-t7x"/>
+                        <viewControllerLayoutGuide type="bottom" id="x1p-xw-5kT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IC8-BU-tuI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dash_logo" translatesAutoresizingMaskIntoConstraints="NO" id="L5I-CL-xwe">
+                                <rect key="frame" x="70" y="28" width="251" height="55"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" bounces="NO" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" keyboardDismissMode="onDrag" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISC-aP-YlU">
+                                <rect key="frame" x="8" y="202" width="351" height="401"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <string key="text">GC MOBIL TECHNOLOGY
+FIRE PUMP SYSTEMS MONITORING 
+TERMS OF SERVICE
+
+
+THESE TERMS AND CONDITIONS CONTAIN IMPORTANT INFORMATION REGARDING YOUR RIGHTS AND OBLIGATIONS, AND OURS, IN CONNECTION WITH YOUR USE OF GC MOBIL TECHNOLOGY MONITORING SERVICES.
+
+
+
+THIS IS A CONTRACT. PLEASE READ THESE TERMS CAREFULLY. IF YOU DO NOT AGREE TO THESE TERMS, DO NOT USE THE SERVICE AND CONTACT US IMMEDIATELY TO CANCEL YOUR SERVICE.
+
+
+ 1. Acceptance of Agreement; Agreement Terms Generally Included. These Terms of Service ("Agreement") are entered into between you (referred to as you,your and Customer) and GC MOBIL TECHNOLOGY , Inc., an International corporation, including each and all of its parents, subsidiaries, affiliates, successors, agents and assigns (GC MOBIL TECHNOLOGY ). Acceptance by you of this Agreement occurs upon your use of the service, including, but not limited to this application that allows you to access the service.
+
+
+2. Limited License. GC MOBIL TECHNOLOGY  hereby grants to you a non-transferable, worldwide, non-exclusive, limited license to download, install and/or use the object code version of the Service. All rights not expressly granted in this Agreement are reserved by GC MOBIL TECHNOLOGY .
+
+
+
+ 3.Service. The term Service shall mean the GC MOBIL TECHNOLOGY  Monitoring service, including this application, which allows you to connect to your facility through a RedBox  device you have set up in your Facility and communicate or interface with certain devices or equipment that may be deployed in your facility, including but not remote controllable Control Panel, Pump System and other devices. The Service will allow you to remotely access and view a designated viewing area or control certain devices, and store on a server downloadable device information you wish to save via a high speed internet connection. The term "Content" shall mean data in digital or electronic form of any type provided, collected or stored by you or third parties you authorize through the Service or captured by your use of the Service.
+
+
+4. Services Requirements Internet access is required to use the Service. You are solely responsible for complying with any minimum system requirements, and for obtaining, installing, configuring, and maintaining suitable equipment and software, including any necessary system or software upgrades, patches or other fixes, which are or may become necessary to access the Service(s) and to operate your MOBIL or other devices used to access the Service.
+
+5. Term. This Agreement shall be effective upon your acceptance of this Agreement, as provided above and shall continue on a month-to-month basis. The term of the Agreement begins when you accept this Agreement and ends when you or we terminate this Agreement as permitted herein. We reserve the right to terminate the Service (or any part thereof) in the event we cease to offer the Service generally or to your location. If we cease offering the Service (or any part thereof) generally or to your location, we will give you at least thirty (30) days advance notice.
+
+
+6. No Warranties. ADVICE OR INFORMATION GIVEN BY GC MOBIL TECHNOLOGY OR ITS REPRESENTATIVES OR SUPPLIERS SHALL NOT CREATE A WARRANTY OF ANY KIND REGARDING THE SERVICE OR YOUR USE OF IT. YOUR WARRANTY RIGHTS REGARDING DEVICES AND EQUIPMENT REST SOLELY WITH THE MANUFACTURER OF EQUIPMENT AND DEVICES. EXCEPT AS OTHERWISE EXPRESSLY PROVIDED HEREIN AND AS OTHERWISE SPECIFICALLY SET FORTH IN ANY MANUFACTURER WARRANTY FOR ANY EQUIPMENT PROVIDED BY GC MOBIL TECHNOLOGY  (BUT ONLY IF SUCH WARRANTY IS INCLUDED WITH SUCH EQUIPMENT), GC MOBIL TECHNOLOGY  AND ITS THIRD PARTY LICENSORS, PROVIDERS AND SUPPLIERS DISCLAIM, WITH RESPECT TO ALL SERVICES AND EQUIPMENT, ANY AND ALL REPRESENTATIONS AND WARRANTIES, EXPRESS, IMPLIED OR ARISING BY COURSE OF PERFORMANCE, DEALING, CUSTOM OR TRADE USAGE, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE (EVEN IF WE KNEW OR SHOULD HAVE KNOWN SUCH PURPOSE) AND NONINFRINGEMENT. YOU ACKNOWLEDGE AND AGREE THAT THE SERVICE, ANY SUPPORT SERVICES AND THE EQUIPMENT ARE PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS WITH ALL FAULTS. THE PROVISIONING AND PERFORMANCE OF SERVICE AND EQUIPMENT IS SUBJECT TO OTHER FACTORS, INCLUDING WITHOUT LIMITATION, COMPUTER/SERVER CONFIGURATION AND CAPABILITIES, PROPER ELECTRICAL GROUNDING, NETWORK/INTERNET PERFORMANCE, AMONG OTHER FACTORS BEYOND OUR CONTROL, AND ARE NOT WARRANTED. NEITHER GC MOBIL TECHNOLOGY  NOR ITS SUPPLIERS WARRANT THAT THE SERVICE OR EQUIPMENT PROVIDED BY GC MOBIL TECHNOLOGY  WILL MEET YOUR NEEDS, PERFORM AT A PARTICULAR SPEED, BANDWIDTH OR DATA THROUGHPUT RATE, OR WILL BE UNINTERRUPTED, ERROR-FREE, OR SECURE, OR FREE OF VIRUSES, WORMS, DISABLING CODE OR CONDITIONS, OR THE LIKE.
+
+
+7. Your Responsibilities; Protection of Data; Use of the Service; Notices; Revisions to Terms of Service.
+a. Your responsibilities. You agree that you are solely responsible for all use of the Service and the manner in which the Service is used by you or anyone who uses the Service, with or without your permission. The Service is not intended in the operation of critical data systems, such as those used for the operation of communication systems, patient data systems, life support machines or other equipment in which the failure of the Service could lead to death, personal injury, or severe physical or environmental damage. You also agree that your use of the Service is at your own risk and is subject to all applicable laws and regulations, and that you will use the Service only within the United States, Canada and Mexico or worldwide as stated in the agreement. Personally identifiable information ("Personal Information") and any other information stored, publicly posted or privately transmitted through or on the Service or via the Internet is your sole and exclusive responsibility. You agree that you are solely responsible for maintaining the security of your MOBIL(s), data, and your facility network including without limitation, encryption of data or Content and protection of your User ID, password and personal and other data. WE STRONGLY RECOMMEND THE USE (AND APPROPRIATE UPDATING) OF COMMERCIAL ANTI-VIRUS, ANTI-SPYWARE, ENCRYPTION SERVICES AND FIREWALL SOFTWARE.
+b. Protection of Data and Access to the Service by GC MOBIL TECHNOLOGY. KEEP YOUR INFORMATION AND ACCOUNT SAFE. YOU ARE RESPONSIBLE FOR MONITORING THE CONTENT, USE OF AND ACCESS TO THE SERVICE, AND/OR ANY USE OF AND ACCESS TO THE SERVICE BY MINORS, OR OTHER FACILITY MEMBERS OR ANYONE WITH ACCESS TO YOUR SYSTEMS THAT VIEW OR CONTROL THE SERVICES, WHOSE USE AND/OR ACCESS YOU AUTHORIZE, EVEN IF SUCH USE AND/OR ACCESS BY A MINOR, OTHER FACILITY MEMBER OR ANYONE WITH ACCESS TO YOUR SERVICE IS A RESULT OF YOUR FAILURE TO SET ANY APPROPRIATE CONTROL ON THE DEVICES FROM WHICH YOU MONITOR THE CONTENT AND/OR USE AND ACCESS TO THE SERVICE. 
+c. Use of the Services and the connected Equipment. If you do not effectively manage the controls and passwords on the Service, your facility network or the equipment associated with the Service, unauthorized third parties may gain access to your Service or your facility network. You agree that you are solely responsible for all use of the Service and the manner in which the Service is used by you or anyone who uses the Service, with or without your permission. The Service utilizes, in whole or in part, the public Internet and third-party networks to transmit data and other communications. You agree that the Internet is not a secure network, is not owned, operated or managed by, or in any way affiliated with GC MOBIL TECHNOLOGY  or its affiliates, and that third parties may be able to intercept, access, use or corrupt the information you transmit over the Internet. You further agree that neither GC MOBIL TECHNOLOGY  nor its affiliates owns or controls all of the various facilities and communications lines through which the functionality of the Service may be provided. You agree that all use of the Service is your sole responsibility, and is solely at your own risk. You are solely responsible for obtaining, maintaining and updating all equipment and software necessary to use the Service and your facility network, and for management of your information, including but not limited to back-up and restoration of your data or Content.
+YOU AGREE THAT GC MOBIL TECHNOLOGY IS NOT RESPONSIBLE FOR THE LOSS OF YOUR DATA OR CONTENT OR FOR THE BACK-UP OR RESTORATION OF YOUR DATA REGARDLESS OF WHETHER THIS DATA OR CONTENT IS MAINTAINED ON OUR SERVERS OR YOUR DEVICE(S). YOU SHOULD ALWAYS BACK-UP ANY IMPORTANT INFORMATION AND CONTENT SEPARATELY FROM DATA OR CONTENT STORED ON GC MOBIL TECHNOLOGY 'S OR ANY THIRD PARTY'S SERVERS.
+
+
+8. Indemnification. You agree to indemnify and defend GC MOBIL TECHNOLOGY  and its Suppliers ("Indemnitees") and hold Indemnitees harmless from any damages, costs (including attorneys' and experts' fees) and liabilities incurred from any claim, lawsuit or cause of action of any sort arising from your use of the Service, or the use of the Service by others, or breach of this Agreement.
+
+
+9. Content; Wireless Access; Limitations on Content.
+a. Storage Capacity Limitations and Lost Data. You agree that GC MOBIL TECHNOLOGY is not responsible or liable for any insufficient storage capacity or the deletion of or failure to store Content. You further agree that GC MOBIL TECHNOLOGY  has no obligation to screen or monitor the functionality of any Content or any other materials and information, in any form, submitted by you; however, GC MOBIL TECHNOLOGY  reserves the right to review information or materials uploaded to GC MOBIL TECHNOLOGY  or used in any materials and information, in any form, and to remove any such information or materials in its sole discretion, regardless of whether such material does or does not violate this Agreement or any GC MOBIL TECHNOLOGY  policies, guidelines, or other codes of conduct which are applicable to the Services. You hereby grant a non-exclusive, fully-paid and royalty-free, sub-licensable, assignable, irrevocable worldwide license to GC MOBIL TECHNOLOGY  to provide all facilities, to enable those facilities to take all actions, and itself to take all actions, with respect to content that may be necessary or reasonable to provide or to facilitate the provision of the Services. This foregoing right and license grant includes a license or sub-license under any current and future patents, copyrights and trademarks owned or licensable by you to the extent necessary for GC MOBIL TECHNOLOGY to exercise any license right granted herein. This license includes, without limitation: (i.) storing and retrieving the Content; (ii.) making the Content available to you; (iii.) conforming to connecting networks' technical requirements; (iv.) transcoding Content into a viewable or otherwise appropriately perceptible format; and (v.) conforming to the limitations and terms of service. In the event of termination of your Service, GC MOBIL TECHNOLOGY  or its Suppliers will remove and/or permanently delete from their servers all of your stored Content, and/or all backup copies thereof, without further notice and without liability to you or any third party.  
+b. Wireless Access. Access to the Services via wireless devices is network dependent and further dependent upon the performance your device available on your device. GC MOBIL TECHNOLOGY  disclaims any functionality and display issues that may arise from your access to the Services from your wireless device. Your access to the Services from your wireless device is subject to your wireless carrier's terms and conditions.
+c. Limitations on Content. Your display of Content through the Service does not constitute any endorsement of such Content by GC MOBIL TECHNOLOGY or its Suppliers. By transmitting, uploading, posting or submitting any Content through the Service, you agree (i) that such Content is not confidential, secret or proprietary information belonging to you or to someone else; and (ii) that no other person has rights to the Content and that your use, display or transmission of content does not violate any trademark, copyright or other intellectual property laws relating to it. Any web sites linked to or from the Service are not reviewed, controlled, or examined by GC MOBIL TECHNOLOGY or its Suppliers and neither GC MOBIL TECHNOLOGY nor its Suppliers are responsible for the contents of any such sites or any links. ANY DEALINGS THAT YOU HAVE WITH THIRD PARTIES INCLUDING FOR EXAMPLE AND NOT AS A LIMITATION, GC MOBIL TECHNOLOGY IN REGARD TO INTERNET CONNECTIVITY REGARDING THE SERVICE ARE SOLELY YOUR RESPONSIBILITY AND YOU AGREE TO INDEMNIFY, DEFEND AND HOLD GC MOBIL TECHNOLOGY AND ITS OFFICERS, DIRECTORS, EMPLOYEES, AND SUPPLIERS HARMLESS FROM ANY LIABILITY OR DAMAGES ARISING DIRECTLY OR INDIRECTLY FROM ANY CLAIMS AGAINST GC MOBIL TECHNOLOGY RESULTING FROM YOUR USE OF THE SERVICE OR SUCH RELATIONSHIPS.
+
+
+
+10. Other Third Party Arrangements. You agree to comply with the terms of service that apply to any websites or other services you access on the Internet and agree that the third party provider of such services (and not GC MOBIL TECHNOLOGY ) is solely responsible for the delivery of its services(s) to you and your use of them. Violations of such third party provider's terms of service may, in GC MOBIL TECHNOLOGY 's sole discretion, result in the termination of your Service. You further agree to indemnify, defend and hold GC MOBIL TECHNOLOGY harmless from and against any claims or liabilities that may result from your use of such third party services.
+
+
+11. Termination of Services. Upon termination or expiration of this Agreement, you agree to cease use and access of all provided Services and immediately delete such access from your mobile device.
+
+
+12. Customer Equipment; and Backup and Maintenance.
+a. Customer Equipment. You are solely responsible for obtaining and maintaining any equipment, network connections and software necessary to use and access the Service.
+b. GC MOBIL TECHNOLOGY  Backup and Maintenance. GC MOBIL TECHNOLOGY  may use, copy, display, store, transmit, translate, rearrange, reformat, view and distribute your information to multiple GC MOBIL TECHNOLOGY  servers. GC MOBIL TECHNOLOGY may access, copy, block or remove any Content stored on your Service, whether pursuant to a subpoena or otherwise. We do not guarantee that these procedures will prevent the loss of, alteration of, or the improper access to, your information.
+
+
+13. Termination for Default. Either party may terminate or cancel this Agreement if the other fails to cure a material breach of the Agreement within thirty-(30) calendar days after receiving written notice of the breach.
+
+
+14. Limitation of Liability. IN NO EVENT SHALL GC MOBIL TECHNOLOGY OR ITS THIRD PARTY LICENSORS, PROVIDERS OR SUPPLIERS BE LIABLE TO YOU FOR (A) ANY PUNITIVE, SPECIAL, CONSEQUENTIAL, INCIDENTAL OR INDIRECT DAMAGES INCLUDING WITHOUT LIMITATION, LOST PROFITS OR LOSS OR DAMAGE TO DATA ARISING OUT OF THE USE OR INABILITY TO USE THE SERVICE, ANY SUPPORT SERVICES, OR THE EQUIPMENT, EVEN IF WE HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES, OR (B) ANY CLAIMS AGAINST YOU BY ANY THIRD PARTY.
+YOU AGREE THAT GC MOBIL TECHNOLOGY  OR ITS SUPPLIERS WILL HAVE NO LIABILITY FOR ANY DAMAGES OR INJURIES TO YOU, OR YOUR PROPERTY INCLUDING FOR EXAMPLE PURPOSES ONLY BUT NOT AS A LIMITATION, YOUR MOBILE DEVICE, SOFTWARE, DATA OR OTHER ELECTRONIC MEDIA, ELECTRICAL CIRCUITS OR RELATED HARDWARE, FP SYSTEMS, OR PERIPHERALS CAUSED DIRECTLY OR INDIRECTLY BY THE SERVICE OR THE EQUIPMENT. YOU ALSO AGREE THAT GC MOBIL TECHNOLOGY  OR ITS SUPPLIERS WILL NOT BE LIABLE TO YOU OR ANY THIRD PARTY FOR ANY FAILURE OF THE SERVICE OR EQUIPMENT TO PERFORM, DAMAGES TO YOU OR ANY THIRD PARTY OR YOUR PROPERTY INCLUDING FOR EXAMPLE PURPOSES ONLY AND NOT AS A LIMITATION, YOUR MOBILE DEVICE, SOFTWARE, DATA OR OTHER ELECTRONIC MEDIA, ELECTRICAL CIRCUITS OR RELATED HARDWARE, HVAC SYSTEMS, PERIPHERALS OR SOFTWARE, LOSSES OF OR INJURY TO YOUR BUSINESS OR DATA, OR FOR ANY DAMAGES, INCLUDING LOST INCOME OR BUSINESS OPPORTUNITY RELATING TO OR CAUSED, DIRECTLY OR INDIRECTLY BY, SERVICE FAILURES, EQUIPMENT OR UNDERLYING LINE FAILURES, BY ANY FAILURES OF THE EQUIPMENT OR SOFTWARE WE PROVIDED, BY YOUR USE OF THE INTERNET OR BY ANY VIRUSES OR OTHER DISABLING CODE OR INTRUSIONS TO YOUR SYSTEM.
+YOU UNDERSTAND AND AGREE THAT YOU ARE RESPONSIBLE FOR ALL CONTENT AVAILABLE THROUGH OR BY THE USE OF THE SERVICE AND FOR THE PROTECTION, STORAGE, BACK-UP AND SECURITY OF YOUR DATA, CONTENT, SOFTWARE, COMPUTER NETWORK AND OTHER FACILITIES, AS WELL AS YOUR CHOICE OF EQUIPMENT, YOUR FACILITY NETWORK AND USE OF THE SERVICE. THE STORAGE OF SUCH CONTENT, THE CONTENT ITSELF AND THE ABILITY TO VIEW SUCH CONTENT IS NOT ENCRYPTED. THE RESULT OF HAVING NO ENCRYPTION COULD RESULT IN YOUR CONTENT BEING EASILY ACCESSED BY OTHER THIRD PARTIES WHO GAIN ACCESS TO YOUR FACILITY NETWORK OR YOUR ACCOUNT EITHER BY PROPER OR IMPROPER MEANS. You agree to provide us with the access to and support regarding the Service upon request. GC MOBIL TECHNOLOGY  does not filter or monitor Content displayed or stored although we reserve the right to do so. WE RESERVE THE RIGHT TO ACCESS, DISABLE OR SUSPEND YOUR SERVICE, TAKE DOWN CONTENT OR TO TAKE ANY OTHER ACTION WE DEEM APPROPRIATE REGARDING YOUR SERVICE AND/OR CONTENT IN THE EVENT WE HAVE REASON TO BELIEVE IT CONTAINS ILLEGAL MATERIAL, IN RESPONSE TO A SUBPOENA, COURT ORDER OR OTHER LEGAL REQUEST OR TO PROTECT THE NETWORK, GC MOBIL TECHNOLOGY  OR OTHER INTERNET USERS. GC MOBIL TECHNOLOGY  and/or its Suppliers regularly back up Content stored on or via the Service, and store such information for a limited time. Neither GC MOBIL TECHNOLOGY  nor its Suppliers will have any liability for any failure to back up or restore such Content, or for interruption, delay or suspension of access to or unavailability of Content, or any loss of such information, data or transmissions.
+
+
+
+15. Force Majeure. If the performance of any obligation hereunder is interfered with by reason of any circumstance beyond our or our third party licensors, providers or suppliers' reasonable control, including but not limited to acts of God, labor strikes and other labor disturbances, power surges or failures, or the act or omission of any third party, we shall be excused from such performance to the extent necessary, provided that we shall use reasonable efforts to remove such causes of nonperformance.
+
+
+
+16. Publicity. You shall not use any trademark, trade name, trade dress or any name, picture or logo which is commonly identified with GC MOBIL TECHNOLOGY or its affiliates, third party licensors, providers or suppliers, or from which any association with GC MOBIL TECHNOLOGY , or its affiliates third party licensors, providers or suppliers may be inferred or implied, in any manner without the prior written permission of GC MOBIL TECHNOLOGY .
+17. Venue, Jurisdiction and Choice of Law. This Agreement shall be governed by and construed in accordance with the laws of City of Mexico, Mexico. The Parties consent to the sole and exclusive jurisdiction of the federal and state courts located in City of Mexico, Mexico with respect to any disputes arising from any breach or related to the enforcement of this Agreement.  
+
+
+
+
+
+18. Miscellaneous. The terms and conditions of this Agreement supersede all previous agreements, proposals or representations related to the Service. You may not assign this Agreement without our prior written consent. We may freely assign this Agreement. Any changes to this Agreement, or any additional or different terms in your purchase orders, acknowledgments or other documents, will not be effective unless expressly agreed to in writing by us. Any notices or demands or other communications which under the terms of this Agreement or under any statute must or may be given or made by either party shall be in writing to the respective parties as set forth herein. If any of the terms or conditions in this Agreement are found to be invalid or unenforceable by a court or government body, the remaining terms or conditions of this Agreement shall not be affected by the finding and shall continue to apply as necessary to reflect the original intention of the parties. GC MOBIL TECHNOLOGY 's failure at any time to enforce any provision of this Agreement or any right or remedy available hereunder or at law or equity, or to exercise any option herein provided shall in no way be construed to be a waiver of such provision, right, remedy or option or in any other way affect the validity of this Agreement. The exercise by GC MOBIL TECHNOLOGY of any rights, remedies or options provided hereunder or at law or equity shall not preclude or prejudice GC MOBIL TECHNOLOGY from exercising thereafter the same or any other rights or remedies or options.</string>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="10"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="axa-ZU-hAh">
+                                <rect key="frame" x="0.0" y="0.0" width="475" height="20"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KVJ-0F-tDF">
+                                <rect key="frame" x="219" y="617" width="60" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ETx-HE-PIN"/>
+                                    <constraint firstAttribute="width" constant="60" id="VA9-Pj-2gu"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="Untitled-1_0001_Layer-1">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="gotomain:" destination="rpZ-Eh-mZ7" eventType="touchUpInside" id="AJS-SP-O4V"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7W7-QI-qnk">
+                                <rect key="frame" x="302" y="617" width="60" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="xYg-k1-FuL"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="Untitled-1_0000_Layer-2">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="decline:" destination="rpZ-Eh-mZ7" eventType="touchUpInside" id="z1m-9V-Lgu"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms of Services" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gkh-Vy-ZD3">
+                                <rect key="frame" x="29" y="132" width="317" height="35"/>
+                                <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="29"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g8r-y1-0wA">
+                                <rect key="frame" x="8" y="33" width="43" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="41" id="ddb-66-pq0"/>
+                                    <constraint firstAttribute="width" constant="43" id="xWy-Bf-hFX"/>
+                                </constraints>
+                                <state key="normal" image="botongoback"/>
+                                <connections>
+                                    <action selector="returnToLoginScreen:" destination="rpZ-Eh-mZ7" eventType="touchUpInside" id="JU3-ef-x9b"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ISC-aP-YlU" firstAttribute="top" secondItem="Gkh-Vy-ZD3" secondAttribute="bottom" constant="35" id="14I-Q0-eBC"/>
+                            <constraint firstItem="7W7-QI-qnk" firstAttribute="leading" secondItem="KVJ-0F-tDF" secondAttribute="trailing" constant="23" id="3XI-N0-7F0"/>
+                            <constraint firstItem="Gkh-Vy-ZD3" firstAttribute="centerX" secondItem="IC8-BU-tuI" secondAttribute="centerX" id="76i-Za-IdJ"/>
+                            <constraint firstItem="L5I-CL-xwe" firstAttribute="leading" secondItem="g8r-y1-0wA" secondAttribute="trailing" constant="19" id="8Jl-pS-eKB"/>
+                            <constraint firstItem="Gkh-Vy-ZD3" firstAttribute="top" secondItem="g8r-y1-0wA" secondAttribute="bottom" constant="58" id="9oS-OC-dRw"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7W7-QI-qnk" secondAttribute="trailing" constant="-3" id="AkH-Ja-TZd"/>
+                            <constraint firstAttribute="trailing" secondItem="axa-ZU-hAh" secondAttribute="trailing" constant="-100" id="D6T-uh-KiT"/>
+                            <constraint firstItem="g8r-y1-0wA" firstAttribute="top" secondItem="1bK-mD-t7x" secondAttribute="bottom" constant="13" id="Eqf-I9-P76"/>
+                            <constraint firstItem="ISC-aP-YlU" firstAttribute="trailing" secondItem="IC8-BU-tuI" secondAttribute="trailingMargin" id="FRf-nb-Ell"/>
+                            <constraint firstItem="KVJ-0F-tDF" firstAttribute="top" secondItem="7W7-QI-qnk" secondAttribute="top" id="Max-S1-1vt"/>
+                            <constraint firstItem="L5I-CL-xwe" firstAttribute="top" secondItem="axa-ZU-hAh" secondAttribute="bottom" constant="8" symbolic="YES" id="ONo-cF-197"/>
+                            <constraint firstItem="axa-ZU-hAh" firstAttribute="leading" secondItem="IC8-BU-tuI" secondAttribute="leading" id="PtA-zs-KOe"/>
+                            <constraint firstAttribute="bottom" secondItem="KVJ-0F-tDF" secondAttribute="bottom" constant="20" symbolic="YES" id="QNA-J8-4oX"/>
+                            <constraint firstItem="L5I-CL-xwe" firstAttribute="top" secondItem="1bK-mD-t7x" secondAttribute="bottom" constant="8" symbolic="YES" id="Te7-60-7QD"/>
+                            <constraint firstItem="Gkh-Vy-ZD3" firstAttribute="top" secondItem="L5I-CL-xwe" secondAttribute="bottom" constant="49" id="Tz6-Lc-PQW"/>
+                            <constraint firstItem="KVJ-0F-tDF" firstAttribute="top" secondItem="ISC-aP-YlU" secondAttribute="bottom" constant="14" id="Xbn-KK-kPm"/>
+                            <constraint firstItem="g8r-y1-0wA" firstAttribute="leading" secondItem="ISC-aP-YlU" secondAttribute="leading" id="bN1-7X-dVC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="L5I-CL-xwe" secondAttribute="trailing" constant="38" id="lb3-Cd-rjw"/>
+                            <constraint firstItem="g8r-y1-0wA" firstAttribute="leading" secondItem="IC8-BU-tuI" secondAttribute="leadingMargin" constant="-8" id="mnU-yS-gix"/>
+                            <constraint firstItem="KVJ-0F-tDF" firstAttribute="bottom" secondItem="7W7-QI-qnk" secondAttribute="bottom" id="nN3-lx-F1S"/>
+                            <constraint firstItem="Gkh-Vy-ZD3" firstAttribute="leading" secondItem="IC8-BU-tuI" secondAttribute="leadingMargin" constant="13" id="tEp-NK-VJk"/>
+                            <constraint firstItem="axa-ZU-hAh" firstAttribute="top" secondItem="IC8-BU-tuI" secondAttribute="top" id="yAS-Ap-BUR"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="AcceptButton" destination="KVJ-0F-tDF" id="y0T-7l-mlz"/>
+                        <outlet property="declineButton" destination="7W7-QI-qnk" id="FuC-Yc-J1r"/>
+                        <outlet property="goBackButton" destination="g8r-y1-0wA" id="wUa-km-gbw"/>
+                        <outlet property="termsAndConditionsText" destination="ISC-aP-YlU" id="0VC-w8-hia"/>
+                        <segue destination="PYx-C4-lum" kind="unwind" identifier="decline" unwindAction="unwindToLoginScreenWithSegue:" id="kc5-yw-aSc"/>
+                        <segue destination="APq-jA-1q8" kind="showDetail" identifier="gotomain" action="showViewController:sender:" id="X7N-zh-IXG"/>
+                        <segue destination="PYx-C4-lum" kind="unwind" identifier="returnToLogin" unwindAction="unwindToLoginScreenWithSegue:" id="Dak-96-d6L"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sit-Tf-rUa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="PYx-C4-lum" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2560.8000000000002" y="66.11694152923539"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="2Y2-sB-A5D">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gUE-6z-ITE" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9vf-u0-C8N">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="fLu-uU-zwL" kind="relationship" relationship="rootViewController" id="DeX-L1-nr5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DKL-Nm-xeb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="18.399999999999999" y="263.11844077961024"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Untitled-1_0000_Layer-2" width="61" height="28"/>
+        <image name="Untitled-1_0001_Layer-1" width="61" height="28"/>
+        <image name="botongoback" width="351" height="334"/>
+        <image name="dash_logo" width="387" height="97"/>
+        <image name="miprofile1" width="25" height="25"/>
+        <image name="password 64x64" width="40" height="40"/>
+        <image name="signin" width="95" height="28"/>
+        <image name="white line-1" width="1026" height="66"/>
+    </resources>
+</document>

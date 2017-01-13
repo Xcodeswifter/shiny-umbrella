@@ -4,7 +4,7 @@
 // Class to represent the main screen of the app, where the user can go to any other parts of the app, it must not be confused with MainScreenController
 //  Created by Carlos Torres on 9/3/16.
 //  Copyright ©2016 GC-Track. All rights reserved.
-//
+// This is a comment for testing the github commit
 
 import UIKit
 import Alamofire

@@ -229,6 +229,14 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uAo-SZ-WbT">
+                                <rect key="frame" x="8" y="470" width="41" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="maintenance"/>
+                                <connections>
+                                    <action selector="goToMaintenance:" destination="sE8-Cy-yWP" eventType="touchUpInside" id="ECa-Vj-U2Z"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.28627450980000002" green="0.28627450980000002" blue="0.28627450980000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -236,6 +244,7 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="alertedTrackerButton" destination="HnS-ya-cvA" id="VFG-fD-Zj9"/>
+                        <outlet property="maintenanceButton" destination="uAo-SZ-WbT" id="5N5-K5-RjR"/>
                         <outlet property="roomStateIcon" destination="eKY-C7-ssh" id="g0d-tg-77q"/>
                         <outlet property="selectPumpButton" destination="PCt-Lt-eOy" id="IOL-Ox-NMW"/>
                         <outlet property="trackerAddressButton" destination="bzl-Jp-IgY" id="Tgu-ME-orB"/>
@@ -3042,6 +3051,7 @@
         <image name="iconotrackerlist" width="45" height="45"/>
         <image name="iconowarning" width="250" height="209"/>
         <image name="lineanegra" width="164" height="1"/>
+        <image name="maintenance" width="60" height="60"/>
         <image name="menu icono" width="70" height="108"/>
         <image name="miprofile1" width="25" height="25"/>
         <image name="miprofile2" width="25" height="25"/>

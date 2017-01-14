@@ -99,16 +99,20 @@ var isTrackerMenuSelected = true
             
         if(prefs.integer(forKey: "TIMEUP")==1){
             let buttonImage = UIImage(named: "maintenance")
+            maintenanceButton.setImage(buttonImage, for: .normal)
             
         }
         if(prefs.integer(forKey: "ENABLED")==0){
             let buttonImage = UIImage(named: "maintenance")
+            maintenanceButton.setImage(buttonImage, for: .normal)
+
             prefs.set(0, forKey: "TIMEUP")
 
         }
         if(prefs.integer(forKey: "ENABLED")==1){
             let buttonImage = UIImage(named: "maintenancered")
-            
+            maintenanceButton.setImage(buttonImage, for: .normal)
+
         }
         
             
@@ -323,10 +327,13 @@ var isTrackerMenuSelected = true
     
     
     
+    @IBAction func goToMaintenance(_ sender: Any) {
+        self.performSegue(withIdentifier: "goToMaintenanceMode", sender: self)
+
+    }
    
     
     @IBAction func goToMaintenanceMode(_ sender: Any) {
-    self.performSegue(withIdentifier: "goToMaintenanceMode", sender: self)
     
     }
     

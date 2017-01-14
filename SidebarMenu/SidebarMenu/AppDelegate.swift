@@ -565,13 +565,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
 //           self.window?.rootViewController?.present(alertController!,
 //                         animated: true,
 //                         completion: nil)
+//
+//            
+//            
+//        }
+        
+            var topWindow: UIWindow = UIWindow(frame: UIScreen.main.bounds)
+            topWindow.rootViewController = UIViewController()
+            topWindow.windowLevel = UIWindowLevelAlert + 1
+            var alert: UIAlertController =  UIAlertController(title:"Maintenance mode", message:"Maintenance time ended", preferredStyle:.alert)
+            let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
+                                                       handler: {[weak self]
+                                                        (paramAction:UIAlertAction!) in
+                                                        })
 
+           
             
-            
-        }
+            alert.addAction(action)
+                
+                topWindow.makeKeyAndVisible()
+            topWindow.rootViewController?.present(alert, animated: true, completion: { _ in })
         
         
-        
+    }
     }
     
     

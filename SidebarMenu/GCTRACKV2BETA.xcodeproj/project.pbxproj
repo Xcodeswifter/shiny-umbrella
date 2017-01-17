@@ -69,6 +69,8 @@
 		99F3E8321D89BAB600BF55F5 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99F3E8311D89BAB600BF55F5 /* Storyboard.storyboard */; };
 		99F3E8341D89BBDA00BF55F5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F3E8331D89BBDA00BF55F5 /* LoginViewController.swift */; };
 		99F4DDB71D87533500EEE7BA /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F4DDB61D87533500EEE7BA /* AlarmViewController.swift */; };
+		CE0B10311E2D943500E8058B /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0B10301E2D943500E8058B /* MessagesViewController.swift */; };
+		CE0B10331E2D945500E8058B /* MessagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0B10321E2D945500E8058B /* MessagesTableViewCell.swift */; };
 		CED70BE31E26FFC600197EBA /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CED70BE21E26FFC600197EBA /* MainStoryboard.storyboard */; };
 		F47029F61A7F27DB00E30A3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47029F51A7F27DB00E30A3C /* AppDelegate.swift */; };
 		F47029FD1A7F27DB00E30A3C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F47029FC1A7F27DB00E30A3C /* Images.xcassets */; };
@@ -155,6 +157,8 @@
 		99F3E8331D89BBDA00BF55F5 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = LoginViewController.swift; path = SidebarMenu/LoginViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		99F4DDB61D87533500EEE7BA /* AlarmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = AlarmViewController.swift; path = SidebarMenu/AlarmViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		CC683CA2407373337F112BF4 /* Pods-SidebarMenu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SidebarMenu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SidebarMenu/Pods-SidebarMenu.debug.xcconfig"; sourceTree = "<group>"; };
+		CE0B10301E2D943500E8058B /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
+		CE0B10321E2D945500E8058B /* MessagesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesTableViewCell.swift; sourceTree = "<group>"; };
 		CED70BDF1E26FE5700197EBA /* MainStoryboard (35).storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "MainStoryboard (35).storyboard"; sourceTree = "<group>"; };
 		CED70BE21E26FFC600197EBA /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		CED70BE41E270D3B00197EBA /* GCTrack2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GCTrack2.entitlements; sourceTree = "<group>"; };
@@ -207,6 +211,7 @@
 		723991D71DE654C700A52266 /* viewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				CE0B10301E2D943500E8058B /* MessagesViewController.swift */,
 				72384BD81DDCF46D00FE555A /* SelectedPumpIssueViewController.swift */,
 				72384BD41DDCE0E200FE555A /* SelectPumpRunsViewController.swift */,
 				72FFCC5F1DD28DF60057228C /* LastTenEngineRunTableViewController.swift */,
@@ -242,6 +247,7 @@
 		723991D81DE6555700A52266 /* Table Models */ = {
 			isa = PBXGroup;
 			children = (
+				CE0B10321E2D945500E8058B /* MessagesTableViewCell.swift */,
 				7254F8EF1DB7E60000BDC3D3 /* AlertedTrackerTableViewCell.swift */,
 				7245C1BD1DC2D1CC00ABCC00 /* SystemInfoTableViewCell.swift */,
 				723C5A621DCA58D300CA845C /* PumpDescriptionTableViewCell.swift */,
@@ -584,6 +590,7 @@
 				F4D750181BD38F0C009E1003 /* SWRevealViewController.m in Sources */,
 				991AF5CB1D811ACD007DA070 /* ContactViewController.swift in Sources */,
 				72A056D01DF23DDF00D09198 /* dateComparators.swift in Sources */,
+				CE0B10311E2D943500E8058B /* MessagesViewController.swift in Sources */,
 				720C17A51DF0F5250087F0C3 /* LogFiltersTableViewCell.swift in Sources */,
 				99391DF61D83481800198D3A /* PumpStatusViewController.swift in Sources */,
 				72384BD51DDCE0E200FE555A /* SelectPumpRunsViewController.swift in Sources */,
@@ -605,6 +612,7 @@
 				7245C1BE1DC2D1CC00ABCC00 /* SystemInfoTableViewCell.swift in Sources */,
 				9900F37F1D94670E00F641C8 /* FilterDataLogMenuTableViewCell.swift in Sources */,
 				99E758E41D7631F900107DEE /* PressurePumpViewController.swift in Sources */,
+				CE0B10331E2D945500E8058B /* MessagesTableViewCell.swift in Sources */,
 				72F6BADD1DEA79650030CC48 /* AlarmSound.swift in Sources */,
 				F491E7551A7F7E010026528E /* MainScreenController.swift in Sources */,
 				7254F8F01DB7E60000BDC3D3 /* AlertedTrackerTableViewCell.swift in Sources */,

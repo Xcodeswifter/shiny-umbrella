@@ -34,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     var secondsCount:Int = 0
     var timer:Timer = Timer()
     var timerAtInvalidate = NSDate()
+    var timerDefaults:UserDefaults = UserDefaults.standard
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         
@@ -383,15 +384,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
   print("entrando al background amigo")
+       
+        if(timerDefaults.integer(forKey: "ENABLED")==1){
+        
         timerAtInvalidate = NSDate()
         timer.invalidate()
+        }
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background
         print("entrando al foreground amigo ")
         print("start timer peror")
-       let elapsedTime = Int(Date().timeIntervalSince(timerAtInvalidate as Date))
+      
+        if(timerDefaults.integer(forKey:"ENABLED")==1){
+        let elapsedTime = Int(Date().timeIntervalSince(timerAtInvalidate as Date))
         print("ha pasado")
         
         print(Int(elapsedTime))
@@ -399,7 +406,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
         updateTimer()
         
-        
+        }
         
     }
     
@@ -527,7 +534,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     
     
     func updateTimer(){
-       
+       print("porque entra aqui cuando no debe de hacerlo pandejo")
         
     secondsCount-=1
         hours = secondsCount/3600 //OK

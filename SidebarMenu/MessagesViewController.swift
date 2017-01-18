@@ -9,18 +9,25 @@
 import UIKit
 import SwiftyJSON
 
-class MessagesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MessagesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,  UISearchBarDelegate, UISearchDisplayDelegate {
 
     @IBOutlet weak var messagesTable: UITableView!
-    var json2:JSON = ["locations":[["idLocation":"300","addressLocation":"mario","nameLocation":"error en la bomba","latitudeLocation":"arregla la bomba men ","longitudeLocation":"-115.375343","idTracker":"500500","alerted":1,"roomState":0],["idLocation":"300","addressLocation":"Prueba de la tabla","nameLocation":"error en la bomba","latitudeLocation":"falla en la jockey men ","longitudeLocation":"-115.375343","idTracker":"500500","alerted":1,"roomState":0]]]
+   
+    @IBOutlet weak var searchBar: UISearchBar!
     var messagelist = [[String: Any]]()
+    var messagesSearchResults:Array<Any>?
+    let searchTerm = ["fullname":"Luis"]
+    var searchActive = false
+    var filtered:[String] = []
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         messagesTable.delegate = self
         messagesTable.dataSource = self
-        parseJSON(json2)
-
+        searchBar.delegate = self
+        requestTrackerListService()
+        
         // Do any additional setup after loading the view.
     }
 
@@ -31,41 +38,122 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     
 
     
-    
-    
-    func parseJSON(_ json: JSON) {
-        
-        for result in json["locations"].arrayValue {
-            let address = result["addressLocation"].stringValue
-            let idlocation = result["idLocation"].stringValue
-            let roomState = result["roomState"].stringValue
-            let idTracker = result["idTracker"].stringValue
-            let nameBusiness = result["nameLocation"].stringValue
-            let alerted = result["alerted"].stringValue
-            let alertedColor = UIColor.red
-            let notAlertedColor = UIColor.white
-            if(alerted=="1"){
-                let obj = ["Name": nameBusiness, "addressLocation": address, "idtracker":idTracker, "alerted":alerted,"alertedColor":alertedColor, "roomState":roomState] as [String : Any]
-                
-                messagelist.append(obj)
-            }
-            else{
-                let obj = ["Name": nameBusiness, "addressLocation": address, "idtracker":idTracker, "alerted":alerted, "alertedColor":notAlertedColor, "roomState":roomState] as [String : Any]
-                
-                messagelist.append(obj as! [String : Any])
-                
-            }
+    func filterContentForSearchText(searchText: String) {
+        // Filter the array using the filter method
+       
+        print("filter content")
+        if self.messagelist == nil {
+            self.messagesSearchResults = nil
+            return
         }
-        update()
         
         
         
         
+        // Filter the array using the filter method
+        self.messagelist = messagelist.filter({(searchTerm) -> Bool in
+            print("contenido explicitio")
+            // to start, let's just search by typing
+            return (searchTerm["fullname"]! as AnyObject).lowercased.range(of: searchText.lowercased()) != nil
+        
+        })
+    update()
+    }
+    
+    
+    
+    
+    func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchString searchString: String!) -> Bool {
+        self.filterContentForSearchText(searchText: searchString)
+        return true
+    }
+    
+//    
+//    ///Search bar delegate methods
+//    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+//        print("si")
+//        searchActive = true;
+//    }
+//    
+//    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+//        print("no")
+//
+//        searchActive = false;
+//    }
+//    
+//    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+//        print("no")
+//
+//        searchActive = false;
+//    }
+//    
+//    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+//        print("no")
+//        searchActive = false;
+//    }
+//    
+//    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+//        
+//        print("buscando aqui ")
+//        self.messagesTable.reloadData()
+//    }
+    
+    //Esto funciona
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print("searchTextoh \(searchText)")
+        filterContentForSearchText(searchText: searchText)
+    }
+    //Esto funciona
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print("searchText \(searchBar.text)")
+    }
+
+    
+    
+    func requestTrackerListService(){
+        let prefs:UserDefaults = UserDefaults.standard
+        let iduser:Int = prefs.integer(forKey: "IDUSER") as Int
+        let params:[String:AnyObject]=[ "id_user": iduser as AnyObject ]
+        let handler = AlamoFireRequestHandler()
+        handler.processRequest(URL: "https://gct-production.mybluemix.net/tools/getusrmessages_02.php", requestMethod: .post, params: params,completion: { json2 -> () in
+            print("el json sote")
+            print(json2)
+            self.parseJSON(json2)
+        })
         
         
     }
     
+
     
+    func parseJSON(_ json: JSON) {
+        
+        
+            for result in json["messages"].arrayValue {
+                let subject = result["subject"].stringValue
+                let message = result["message"].stringValue
+                let date = result["fecha"].stringValue
+                let lastSeen = result["visto"].stringValue
+                let fullname = result["fullname"].stringValue
+                let business = result["business"].stringValue
+                
+                
+                let obj = ["subject": subject, "message": message, "date":date, "lastseen":lastSeen, "fullname":fullname, "business":business] as [String : Any]
+                    
+                    messagelist.append(obj as! [String : Any])
+                
+                
+            }
+        
+        
+            update()
+        }
+
+    
+
+    
+        
+        
     
     func update() {
         DispatchQueue.main.async {
@@ -75,6 +163,18 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tableView == self.searchDisplayController!.searchResultsTableView {
+            return self.messagesSearchResults?.count ?? 0
+        }
+        else{
+            
+        
+        
+        
+        return messagelist.count
+            
+        }
+        
         return messagelist.count
     }
     
@@ -87,10 +187,10 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         
         let object = messagelist[indexPath.row]
         
-        cell.titleLabel.text = object["Name"] as! String?
-        cell.subjectLabel.text = "Falla grave"
-        cell.theDateLabel.text =  "12/ene/2017"
-        cell.bodyLabel.text = object["addressLocation"] as! String?
+        cell.titleLabel.text = object["fullname"] as! String?
+        cell.subjectLabel.text = object["bussiness"] as! String?
+        cell.theDateLabel.text =  object["date"] as! String?
+        cell.bodyLabel.text = object["message"] as! String?
         
         return cell
         

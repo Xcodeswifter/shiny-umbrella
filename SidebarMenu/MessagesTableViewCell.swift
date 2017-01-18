@@ -14,8 +14,9 @@ class MessagesTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var subjectLabel: UILabel!
     @IBOutlet weak var bodyLabel: UITextView!
-    @IBOutlet weak var isReadLabel: UIImageView!
     @IBOutlet weak var theDateLabel: UILabel!
+    
+    @IBOutlet weak var isReadImage: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

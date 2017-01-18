@@ -72,6 +72,7 @@
 		CE0B10311E2D943500E8058B /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0B10301E2D943500E8058B /* MessagesViewController.swift */; };
 		CE0B10331E2D945500E8058B /* MessagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0B10321E2D945500E8058B /* MessagesTableViewCell.swift */; };
 		CED70BE31E26FFC600197EBA /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CED70BE21E26FFC600197EBA /* MainStoryboard.storyboard */; };
+		CEE962351E2EBC9C00E6A2DD /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE962341E2EBC9B00E6A2DD /* Message.swift */; };
 		F47029F61A7F27DB00E30A3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47029F51A7F27DB00E30A3C /* AppDelegate.swift */; };
 		F47029FD1A7F27DB00E30A3C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F47029FC1A7F27DB00E30A3C /* Images.xcassets */; };
 		F4702A001A7F27DC00E30A3C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F47029FE1A7F27DB00E30A3C /* LaunchScreen.xib */; };
@@ -162,6 +163,7 @@
 		CED70BDF1E26FE5700197EBA /* MainStoryboard (35).storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "MainStoryboard (35).storyboard"; sourceTree = "<group>"; };
 		CED70BE21E26FFC600197EBA /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		CED70BE41E270D3B00197EBA /* GCTrack2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GCTrack2.entitlements; sourceTree = "<group>"; };
+		CEE962341E2EBC9B00E6A2DD /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		D65E2F7B0CA6BA7FECE2B40B /* Pods-SidebarMenu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SidebarMenu.release.xcconfig"; path = "Pods/Target Support Files/Pods-SidebarMenu/Pods-SidebarMenu.release.xcconfig"; sourceTree = "<group>"; };
 		DA616A3CC2686FD0A2263A4C /* Pods_SidebarMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SidebarMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F47029F01A7F27DB00E30A3C /* GCTrack2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GCTrack2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -275,6 +277,7 @@
 				99BD15C41D872F5E0047F371 /* Locations.swift */,
 				72F6BADC1DEA79650030CC48 /* AlarmSound.swift */,
 				72A056CF1DF23DDF00D09198 /* dateComparators.swift */,
+				CEE962341E2EBC9B00E6A2DD /* Message.swift */,
 			);
 			name = utilities;
 			sourceTree = "<group>";
@@ -578,6 +581,7 @@
 				72384BDB1DDCF48500FE555A /* SelectedPumpIssueTableViewCell.swift in Sources */,
 				72384BD71DDCE0F600FE555A /* SelectPumpIssuesViewController.swift in Sources */,
 				99F3E8341D89BBDA00BF55F5 /* LoginViewController.swift in Sources */,
+				CEE962351E2EBC9C00E6A2DD /* Message.swift in Sources */,
 				72ECA7711DD2D901004B70E5 /* SelectFilterViewController.swift in Sources */,
 				99563A4E1D8079A600DFC801 /* DataLoggedTableViewCell.swift in Sources */,
 				99EB05FF1D7F85AC0029EE15 /* DataLogViewController.swift in Sources */,

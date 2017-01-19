@@ -71,6 +71,7 @@
 		99F4DDB71D87533500EEE7BA /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F4DDB61D87533500EEE7BA /* AlarmViewController.swift */; };
 		CE0B10311E2D943500E8058B /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0B10301E2D943500E8058B /* MessagesViewController.swift */; };
 		CE0B10331E2D945500E8058B /* MessagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0B10321E2D945500E8058B /* MessagesTableViewCell.swift */; };
+		CE0C4EE91E2FE1D200D20262 /* ReplyMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0C4EE81E2FE1D200D20262 /* ReplyMessageViewController.swift */; };
 		CED70BE31E26FFC600197EBA /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CED70BE21E26FFC600197EBA /* MainStoryboard.storyboard */; };
 		CEE962351E2EBC9C00E6A2DD /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE962341E2EBC9B00E6A2DD /* Message.swift */; };
 		F47029F61A7F27DB00E30A3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47029F51A7F27DB00E30A3C /* AppDelegate.swift */; };
@@ -160,6 +161,7 @@
 		CC683CA2407373337F112BF4 /* Pods-SidebarMenu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SidebarMenu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SidebarMenu/Pods-SidebarMenu.debug.xcconfig"; sourceTree = "<group>"; };
 		CE0B10301E2D943500E8058B /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		CE0B10321E2D945500E8058B /* MessagesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesTableViewCell.swift; sourceTree = "<group>"; };
+		CE0C4EE81E2FE1D200D20262 /* ReplyMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReplyMessageViewController.swift; path = SidebarMenu/ReplyMessageViewController.swift; sourceTree = "<group>"; };
 		CED70BDF1E26FE5700197EBA /* MainStoryboard (35).storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "MainStoryboard (35).storyboard"; sourceTree = "<group>"; };
 		CED70BE21E26FFC600197EBA /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		CED70BE41E270D3B00197EBA /* GCTrack2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GCTrack2.entitlements; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				CE0B10301E2D943500E8058B /* MessagesViewController.swift */,
+				CE0C4EE81E2FE1D200D20262 /* ReplyMessageViewController.swift */,
 				72384BD81DDCF46D00FE555A /* SelectedPumpIssueViewController.swift */,
 				72384BD41DDCE0E200FE555A /* SelectPumpRunsViewController.swift */,
 				72FFCC5F1DD28DF60057228C /* LastTenEngineRunTableViewController.swift */,
@@ -588,6 +591,7 @@
 				724888791DD3A085007059C6 /* CustomSegue.swift in Sources */,
 				99BD15C51D872F5E0047F371 /* Locations.swift in Sources */,
 				7254F8EE1DB7E55200BDC3D3 /* AlertedTrackersViewController.swift in Sources */,
+				CE0C4EE91E2FE1D200D20262 /* ReplyMessageViewController.swift in Sources */,
 				72FFCC601DD28DF60057228C /* LastTenEngineRunTableViewController.swift in Sources */,
 				9939469C1D91945A00B9A41F /* SelectTrackerTableViewCell.swift in Sources */,
 				99F4DDB71D87533500EEE7BA /* AlarmViewController.swift in Sources */,

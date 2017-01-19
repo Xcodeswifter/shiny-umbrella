@@ -19,6 +19,11 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     let searchTerm = ["fullname":"Luis"]
     var searchActive = false
     var filtered:[String] = []
+    var selectedFullName:String = ""
+    var selectedbusiness:String = ""
+    var selectedDate:String = ""
+    var selectedmessage:String = ""
+    var idSender:Int = 0
 
     override func viewDidLoad() {
         
@@ -136,9 +141,10 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
                 let lastSeen = result["visto"].stringValue
                 let fullname = result["fullname"].stringValue
                 let business = result["business"].stringValue
+                let senderID = result["sender"].intValue
                 
                 
-                let obj = ["subject": subject, "message": message, "date":date, "lastseen":lastSeen, "fullname":fullname, "business":business] as [String : Any]
+                let obj = ["subject": subject, "message": message, "date":date, "lastseen":lastSeen, "fullname":fullname, "business":business,"sender":senderID] as [String : Any]
                     
                     messagelist.append(obj as! [String : Any])
                 
@@ -199,11 +205,47 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
+       print("elegi zelda")
+        let object = messagelist[indexPath.row]
+        
+         selectedFullName = (object["fullname"] as! String?)!
+        selectedbusiness = (object["business"] as! String?)!
+        selectedDate =  (object["date"] as! String?)!
+        selectedmessage = (object["message"] as! String?)!
+        idSender = (object["sender"] as! Int?)!
+        print("los datos")
+        print(selectedmessage)
+        print(selectedbusiness)
+        print(selectedFullName)
+        
+        self.performSegue(withIdentifier: "replymessage", sender: self)
         
     }
     
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+       
+            let nextScene =  segue.destination as! ReplyMessageViewController
+            
+            
+            print("valores que se van a enviar al reply")
+        
+        print(selectedmessage)
+        print(selectedbusiness)
+        print(selectedFullName)
+        
+    nextScene.selectedFullName =  selectedFullName
+        nextScene.selectedDate =  selectedDate
+        nextScene.selectedbusiness =  selectedbusiness
+        nextScene.selectedmessage =  selectedmessage
+        nextScene.idSender = idSender
+        
+    
+        
+        
+    
+    }
 
   
 

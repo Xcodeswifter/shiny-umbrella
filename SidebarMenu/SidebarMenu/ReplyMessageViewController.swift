@@ -61,12 +61,36 @@ class ReplyMessageViewController: UIViewController {
         handler.processRequest(URL: "https://gct-production.mybluemix.net/inbox_send.php", requestMethod: .post, params: params,completion: { json2 -> () in
             print("respuesta")
             print(json2)
+            if(json2["sent"]==1){
+               
+self.showMessageSentDialog()
+                
+            }
+            else{
+                self.showMessageErrorDialog()
+                
+            }
         })
         
 
         
     }
     
+    
+    
+    func showMessageSentDialog(){
+        let alert = UIAlertController(title: "Reply message", message: "Message sent", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+    
+    func showMessageErrorDialog(){
+        let alert = UIAlertController(title: "Reply message error", message: "Message  cannot be sent", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        
+    }
     
     @IBAction func cancelSend(_ sender: Any) {
         replyText.text = ""

@@ -24,6 +24,8 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     var selectedDate:String = ""
     var selectedmessage:String = ""
     var idSender:Int = 0
+    var refreshControl = UIRefreshControl()
+
 
     override func viewDidLoad() {
         
@@ -31,7 +33,14 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         messagesTable.delegate = self
         messagesTable.dataSource = self
         searchBar.delegate = self
-        requestTrackerListService()
+        // set up the refresh control
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+       
+        self.refreshControl.addTarget(self, action: #selector(MessagesViewController.handleRefresh(refreshControl:)), for: UIControlEvents.valueChanged)
+
+        self.messagesTable?.addSubview(refreshControl)
+        
+       requestMessageListService()
         
         // Do any additional setup after loading the view.
     }
@@ -42,6 +51,22 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
 
+    
+    func handleRefresh(refreshControl: UIRefreshControl) {
+        // Do some reloading of data and update the table view's data source
+        // Fetch more objects from a web service, for example...
+        
+        
+        
+        print("refreshing....")
+        messagelist.removeAll()
+        update()
+        requestMessageListService()
+        
+        
+        refreshControl.endRefreshing()
+    }
+    
     
     func filterContentForSearchText(searchText: String) {
         // Filter the array using the filter method
@@ -115,7 +140,13 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
 
     
     
-    func requestTrackerListService(){
+    func requestMessageListService(){
+        
+        // tell refresh control it can stop showing up now
+        if self.refreshControl.isRefreshing
+        {
+            self.refreshControl.endRefreshing()
+        }
         let prefs:UserDefaults = UserDefaults.standard
         let iduser:Int = prefs.integer(forKey: "IDUSER") as Int
         let params:[String:AnyObject]=[ "id_user": iduser as AnyObject ]
@@ -188,6 +219,7 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let prefs:UserDefaults = UserDefaults.standard
+        
         
         let cell: MessagesTableViewCell = self.messagesTable.dequeueReusableCell(withIdentifier: "selda") as! MessagesTableViewCell
         

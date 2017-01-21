@@ -252,6 +252,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
 
         
         }
+            
+        else  if(PushNotificationMessage.containsIgnoringCase(find: "message")){
+            
+            print("you have a message")
+            
+//            var storyboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
+//            var viewController: MainScreenController = storyboard.instantiateViewController(withIdentifier: "mainscreen") as! MainScreenController
+//            
+//            self.window!.rootViewController = viewController
+//            self.window!.makeKeyAndVisible()
+            
+            
+        }
+   
+            
+            
         
         
         

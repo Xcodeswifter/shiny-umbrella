@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SidebarMenu/AppDelegate.swift"
-            timestampString = "506295320.338835"
+            timestampString = "506634087.194494"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "590"
-            endingLineNumber = "590"
+            startingLineNumber = "606"
+            endingLineNumber = "606"
             landmarkName = "updateTimer()"
             landmarkType = "7">
          </BreakpointContent>

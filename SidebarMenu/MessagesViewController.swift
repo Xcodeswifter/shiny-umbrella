@@ -44,12 +44,48 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         
         // Do any additional setup after loading the view.
     }
+    
+    
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        messagesTable.delegate = self
+        messagesTable.dataSource = self
+        searchBar.delegate = self
+        // set up the refresh control
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        
+        self.refreshControl.addTarget(self, action: #selector(MessagesViewController.handleRefresh(refreshControl:)), for: UIControlEvents.valueChanged)
+        
+        self.messagesTable?.addSubview(refreshControl)
+        
+        requestMessageListService()
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+    }
+
+    
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        messagesTable.delegate = self
+//        messagesTable.dataSource = self
+//        searchBar.delegate = self
+//        // set up the refresh control
+//        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+//        
+//        self.refreshControl.addTarget(self, action: #selector(MessagesViewController.handleRefresh(refreshControl:)), for: UIControlEvents.valueChanged)
+//        
+//        self.messagesTable?.addSubview(refreshControl)
+//        requestMessageListService()
+
     }
     
+    @IBAction func unwindToMessagesMenu(segue: UIStoryboardSegue) {}
+
 
     
     func handleRefresh(refreshControl: UIRefreshControl) {
@@ -98,35 +134,35 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         return true
     }
     
-//    
-//    ///Search bar delegate methods
-//    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-//        print("si")
-//        searchActive = true;
-//    }
-//    
-//    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
-//        print("no")
-//
-//        searchActive = false;
-//    }
-//    
-//    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-//        print("no")
-//
-//        searchActive = false;
-//    }
-//    
-//    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-//        print("no")
-//        searchActive = false;
-//    }
-//    
-//    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-//        
-//        print("buscando aqui ")
-//        self.messagesTable.reloadData()
-//    }
+    
+    ///Search bar delegate methods
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        print("si")
+        searchActive = true;
+    }
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        print("no")
+
+        searchActive = false;
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        print("no")
+
+        searchActive = false;
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        print("no")
+        searchActive = false;
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        print("buscando aqui ")
+        self.messagesTable.reloadData()
+    }
     
     //Esto funciona
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -142,12 +178,9 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     
     func requestMessageListService(){
         
-        // tell refresh control it can stop showing up now
-        if self.refreshControl.isRefreshing
-        {
-            self.refreshControl.endRefreshing()
-        }
-        let prefs:UserDefaults = UserDefaults.standard
+        messagelist.removeAll()
+        
+               let prefs:UserDefaults = UserDefaults.standard
         let iduser:Int = prefs.integer(forKey: "IDUSER") as Int
         let params:[String:AnyObject]=[ "id_user": iduser as AnyObject ]
         let handler = AlamoFireRequestHandler()
@@ -173,11 +206,25 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
                 let fullname = result["fullname"].stringValue
                 let business = result["business"].stringValue
                 let senderID = result["sender"].intValue
-                
-                
-                let obj = ["subject": subject, "message": message, "date":date, "lastseen":lastSeen, "fullname":fullname, "business":business,"sender":senderID] as [String : Any]
+                let msgNum = result["msgNum"].intValue
+                let isRead = UIColor.clear
+                let isNotRead = UIColor.red
+                if(lastSeen=="0"){
+                    let obj = ["msgNum":msgNum, "subject": subject, "message": message, "date":date, "lastseen":isNotRead, "fullname":fullname, "business":business,"sender":senderID] as [String : Any]
                     
                     messagelist.append(obj as! [String : Any])
+
+                    
+                }
+                else{
+                    let obj = ["msgNum":msgNum, "subject": subject, "message": message, "date":date, "lastseen":isRead, "fullname":fullname, "business":business,"sender":senderID] as [String : Any]
+                    
+                    messagelist.append(obj as! [String : Any])
+                    
+                }
+                
+                
+                
                 
                 
             }
@@ -225,6 +272,15 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         
         let object = messagelist[indexPath.row]
         
+        print("last seen")
+        print(object["lastseen"] as? UIColor)
+        
+        cell.isReadImage.backgroundColor = object["lastseen"] as? UIColor
+
+      
+            
+        
+        
         cell.titleLabel.text = object["fullname"] as! String?
         cell.subjectLabel.text = object["bussiness"] as! String?
         cell.theDateLabel.text =  object["date"] as! String?
@@ -239,18 +295,48 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        print("elegi zelda")
         let object = messagelist[indexPath.row]
+
+        let currentCell: MessagesTableViewCell = self.messagesTable.dequeueReusableCell(withIdentifier: "selda") as! MessagesTableViewCell
+
+        currentCell.isReadImage.backgroundColor = UIColor.clear
+        print("el color es")
+        print(currentCell.isReadImage.backgroundColor)
+        
+        
+       
+        
+        
         
          selectedFullName = (object["fullname"] as! String?)!
         selectedbusiness = (object["business"] as! String?)!
         selectedDate =  (object["date"] as! String?)!
         selectedmessage = (object["message"] as! String?)!
         idSender = (object["sender"] as! Int?)!
+        
+        
         print("los datos")
         print(selectedmessage)
         print(selectedbusiness)
         print(selectedFullName)
         
+
+        unMarkMessage(msgNum: object["msgNum"]as! Int)
+        
         self.performSegue(withIdentifier: "replymessage", sender: self)
+        
+    }
+    
+    
+    func unMarkMessage(msgNum:Int){
+        let handler = AlamoFireRequestHandler()
+        handler.processRequest(URL: "https://gct-production.mybluemix.net/markmessage_02.php", requestMethod: .post, params: ["msgNum": msgNum as AnyObject],completion: { json2 -> () in
+            print("marked messsage")
+            print(json2)
+            self.parseJSON(json2)
+        })
+
+        
+        
         
     }
     

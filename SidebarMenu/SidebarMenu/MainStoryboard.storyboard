@@ -1134,7 +1134,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Status" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ETA-QP-i6z">
-                                                    <rect key="frame" x="7" y="98" width="96" height="43"/>
+                                                    <rect key="frame" x="7" y="100" width="96" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="SFUIText-Bold" family="SF UI Text" pointSize="20"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1155,7 +1155,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kgk-IJ-W6u">
-                                                    <rect key="frame" x="84" y="103" width="217" height="33"/>
+                                                    <rect key="frame" x="84" y="105" width="217" height="33"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2037,6 +2037,7 @@ Version 1.0.1</string>
                                         <state key="normal" backgroundImage="botongoback"/>
                                         <connections>
                                             <action selector="goback:" destination="4qn-DF-SJb" eventType="touchUpInside" id="cTW-TX-wjV"/>
+                                            <segue destination="wVn-i3-AyV" kind="unwind" identifier="returnToMessages" unwindAction="unwindToMessagesMenuWithSegue:" id="tFc-e2-kpZ"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -2056,13 +2057,6 @@ Version 1.0.1</string>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Subject" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nTd-t5-hB1">
                                 <rect key="frame" x="16" y="169" width="198" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dQR-V7-VKe">
-                                <rect key="frame" x="206" y="134" width="114" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2117,6 +2111,13 @@ Version 1.0.1</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dQR-V7-VKe">
+                                <rect key="frame" x="178" y="134" width="137" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.2112208549" green="0.2112208549" blue="0.2112208549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -2126,7 +2127,7 @@ Version 1.0.1</string>
                         <outlet property="replyText" destination="X4z-bo-Ty8" id="TcS-Q1-X3G"/>
                         <outlet property="senderLabel" destination="kTS-dH-J8T" id="r2d-ia-cZX"/>
                         <outlet property="subjectLabel" destination="nTd-t5-hB1" id="KWD-f1-WGF"/>
-                        <segue destination="wVn-i3-AyV" kind="unwind" identifier="returnToMain" unwindAction="unwindToMainMenuWithSegue:" id="DNI-wI-p9O"/>
+                        <segue destination="wVn-i3-AyV" kind="unwind" identifier="returnToMessages" unwindAction="unwindToMessagesMenuWithSegue:" id="nxv-c0-O2j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XeD-oS-UMH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2164,14 +2165,14 @@ Version 1.0.1</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Subject" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gbc-vg-Dwt">
-                                                    <rect key="frame" x="28" y="28" width="178" height="24"/>
+                                                    <rect key="frame" x="24" y="28" width="178" height="24"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" editable="NO" text="Body" textAlignment="natural" selectable="NO" id="wy0-10-T94">
-                                                    <rect key="frame" x="28" y="52" width="240" height="61"/>
+                                                    <rect key="frame" x="28" y="51" width="240" height="62"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2179,7 +2180,7 @@ Version 1.0.1</string>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bmw-5e-XQA">
-                                                    <rect key="frame" x="206" y="7" width="106" height="17"/>
+                                                    <rect key="frame" x="189" y="7" width="123" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2221,6 +2222,7 @@ Version 1.0.1</string>
                         <color key="backgroundColor" red="0.21122085492227982" green="0.21122085492227982" blue="0.21122085492227982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Messages" image="messages" badgeValue="1" id="b1J-3j-prn"/>
+                    <navigationItem key="navigationItem" id="Zda-px-vkz"/>
                     <connections>
                         <outlet property="messagesTable" destination="paJ-Ph-vIp" id="xfE-fL-UFI"/>
                         <outlet property="searchBar" destination="8fx-Pg-JRb" id="ISE-O1-HRf"/>
@@ -2587,7 +2589,7 @@ Version 1.0.1</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" misplaced="YES" id="gIx-wd-PTU">
-                                                    <rect key="frame" x="141" y="-65" width="2" height="172"/>
+                                                    <rect key="frame" x="141" y="-66" width="2" height="173"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>

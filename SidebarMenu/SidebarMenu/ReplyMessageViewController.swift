@@ -34,13 +34,12 @@ class ReplyMessageViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
+    
     
     @IBAction func goback(_ sender: Any) {
-   self.performSegue(withIdentifier: "returnToMain", sender: self)
+        print("goback mah friend")
+   self.performSegue(withIdentifier: "returnToMessages", sender: self)
     
     }
 

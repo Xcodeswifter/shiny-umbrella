@@ -293,7 +293,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         
         //Method called when the user recieves a LocalNotification
         
-        print("local notification recieved amigo ")
+        print("local notification recieved amigo")
         
         let userDefaults = UserDefaults.standard
         

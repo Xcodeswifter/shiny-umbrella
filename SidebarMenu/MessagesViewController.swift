@@ -9,12 +9,14 @@
 import UIKit
 import SwiftyJSON
 
-class MessagesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,  UISearchBarDelegate, UISearchDisplayDelegate {
+class MessagesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,  UISearchBarDelegate, UISearchDisplayDelegate, UISearchControllerDelegate {
 
     @IBOutlet weak var messagesTable: UITableView!
    
     @IBOutlet weak var searchBar: UISearchBar!
     var messagelist = [[String: Any]]()
+    var filteredMessageList = [[String: Any]]()
+
     var messagesSearchResults:Array<Any>?
     let searchTerm = ["fullname":"Luis"]
     var searchActive = false
@@ -25,7 +27,10 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     var selectedmessage:String = ""
     var idSender:Int = 0
     var refreshControl = UIRefreshControl()
+     var searchController: UISearchController!
 
+    @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
+    @IBOutlet weak var loadingLabel: UILabel!
 
     override func viewDidLoad() {
         
@@ -33,6 +38,10 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         messagesTable.delegate = self
         messagesTable.dataSource = self
         searchBar.delegate = self
+        searchController.delegate = self
+    
+    
+        
         // set up the refresh control
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
        
@@ -54,6 +63,8 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         messagesTable.delegate = self
         messagesTable.dataSource = self
         searchBar.delegate = self
+        searchController.delegate = self
+
         // set up the refresh control
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         
@@ -61,29 +72,16 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         
         self.messagesTable?.addSubview(refreshControl)
         
-        requestMessageListService()
+        //requestMessageListService()
 
         
     }
 
     
     
+   
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-//        messagesTable.delegate = self
-//        messagesTable.dataSource = self
-//        searchBar.delegate = self
-//        // set up the refresh control
-//        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-//        
-//        self.refreshControl.addTarget(self, action: #selector(MessagesViewController.handleRefresh(refreshControl:)), for: UIControlEvents.valueChanged)
-//        
-//        self.messagesTable?.addSubview(refreshControl)
-//        requestMessageListService()
-
-    }
-    
+      
     @IBAction func unwindToMessagesMenu(segue: UIStoryboardSegue) {}
 
 
@@ -95,7 +93,10 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         
         
         print("refreshing....")
+        
+     //   searchActive = false
         messagelist.removeAll()
+        filteredMessageList.removeAll()
         update()
         requestMessageListService()
         
@@ -108,21 +109,29 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         // Filter the array using the filter method
        
         print("filter content")
-        if self.messagelist == nil {
-            self.messagesSearchResults = nil
-            return
-        }
+        let searchString = searchText
+    
         
         
         
-        
-        // Filter the array using the filter method
-        self.messagelist = messagelist.filter({(searchTerm) -> Bool in
-            print("contenido explicitio")
+        print(searchString)
+
+        filteredMessageList = messagelist.filter({(searchTerm) -> Bool in
+            let searchText:NSString! = searchTerm["fullname"] as! NSString
+print("termino de busqueda")
+            print(searchText!)
             // to start, let's just search by typing
-            return (searchTerm["fullname"]! as AnyObject).lowercased.range(of: searchText.lowercased()) != nil
-        
+            return (searchText.range(of: searchString, options: NSString.CompareOptions.caseInsensitive).location) != NSNotFound
+
+            
+            
         })
+        
+        print("lista filtrada")
+        print(filteredMessageList)
+        print("lista no filtrada")
+        print(messagelist)
+        
     update()
     }
     
@@ -134,26 +143,34 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         return true
     }
     
+    func searchDisplayController(_ controller: UISearchController, didLoadSearchResultsTableView tableView: UITableView) {
+        print("yes amigo")
+        tableView.rowHeight = 94.4
+        tableView.backgroundColor = UIColor.black
+        
+        
+    }
+    
     
     ///Search bar delegate methods
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         print("si")
         searchActive = true;
     }
     
-    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         print("no")
 
         searchActive = false;
     }
     
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         print("no")
 
         searchActive = false;
     }
     
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
         print("no")
         searchActive = false;
     }
@@ -161,6 +178,7 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         
         print("buscando aqui ")
+            filterContentForSearchText(searchText: searchText)
         self.messagesTable.reloadData()
     }
     
@@ -168,17 +186,23 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print("searchTextoh \(searchText)")
         filterContentForSearchText(searchText: searchText)
+    
     }
     //Esto funciona
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("searchText \(searchBar.text)")
+        print("searchTextIINI \(searchBar.text)")
+        searchActive = true
+        // messagelist.removeAll()
+        update()
     }
 
     
     
     func requestMessageListService(){
-        
+        startLoading()
+        filteredMessageList.removeAll()
         messagelist.removeAll()
+        update()
         
                let prefs:UserDefaults = UserDefaults.standard
         let iduser:Int = prefs.integer(forKey: "IDUSER") as Int
@@ -246,9 +270,25 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
+    func startLoading(){
+        loadingLabel.text = "Loading"
+        loadingSpinner.startAnimating()
+        
+        
+    }
+    
+    func stopLoading(){
+        loadingSpinner.stopAnimating()
+        loadingSpinner.isHidden = true
+        loadingLabel.isHidden = true
+    }
+    
+    
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == self.searchDisplayController!.searchResultsTableView {
-            return self.messagesSearchResults?.count ?? 0
+        if searchActive {
+            return filteredMessageList.count
         }
         else{
             
@@ -266,14 +306,39 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let prefs:UserDefaults = UserDefaults.standard
-        
-        
+        let cell: MessagesTableViewCell = self.messagesTable.dequeueReusableCell(withIdentifier: "selda") as! MessagesTableViewCell
+        print("busqueda activa")
+        stopLoading()
+        print(searchActive)
+        if(searchActive){
+            
+           // searchActive=false
+            
+            print(filteredMessageList.count)
+            let object = filteredMessageList[indexPath.row]
+            
+            print("filtrando")
+            print(object["fullname"])
+            
+            cell.isReadImage.backgroundColor = object["lastseen"] as? UIColor
+            
+            
+            
+            
+            
+            cell.titleLabel.text = object["fullname"] as! String?
+            cell.subjectLabel.text = object["bussiness"] as! String?
+            cell.theDateLabel.text =  object["date"] as! String?
+            cell.bodyLabel.text = object["message"] as! String?
+            return cell
+       
+        }
+        else{
         let cell: MessagesTableViewCell = self.messagesTable.dequeueReusableCell(withIdentifier: "selda") as! MessagesTableViewCell
         
         let object = messagelist[indexPath.row]
+            print(object["fullname"])
         
-        print("last seen")
-        print(object["lastseen"] as? UIColor)
         
         cell.isReadImage.backgroundColor = object["lastseen"] as? UIColor
 
@@ -285,16 +350,19 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         cell.subjectLabel.text = object["bussiness"] as! String?
         cell.theDateLabel.text =  object["date"] as! String?
         cell.bodyLabel.text = object["message"] as! String?
+            return cell
         
-        return cell
-        
-       
+        }
+       return cell
         
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        print("elegi zelda")
-        let object = messagelist[indexPath.row]
+        
+        
+        if(searchActive){
+        let object = filteredMessageList[indexPath.row]
 
         let currentCell: MessagesTableViewCell = self.messagesTable.dequeueReusableCell(withIdentifier: "selda") as! MessagesTableViewCell
 
@@ -323,6 +391,49 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         unMarkMessage(msgNum: object["msgNum"]as! Int)
         
         self.performSegue(withIdentifier: "replymessage", sender: self)
+            
+            
+        }
+        
+        else{
+        
+            print(messagelist.count)
+            let object = messagelist[indexPath.row]
+            
+            let currentCell: MessagesTableViewCell = self.messagesTable.dequeueReusableCell(withIdentifier: "selda") as! MessagesTableViewCell
+            
+            currentCell.isReadImage.backgroundColor = UIColor.clear
+            print("el color es")
+            print(currentCell.isReadImage.backgroundColor)
+            
+            
+            
+            
+            
+            
+            selectedFullName = (object["fullname"] as! String?)!
+            selectedbusiness = (object["business"] as! String?)!
+            selectedDate =  (object["date"] as! String?)!
+            selectedmessage = (object["message"] as! String?)!
+            idSender = (object["sender"] as! Int?)!
+            
+            
+            print("los datos")
+            print(selectedmessage)
+            print(selectedbusiness)
+            print(selectedFullName)
+            
+            
+            unMarkMessage(msgNum: object["msgNum"]as! Int)
+            
+            self.performSegue(withIdentifier: "replymessage", sender: self)
+        
+        
+        
+        
+        }
+        
+        
         
     }
     

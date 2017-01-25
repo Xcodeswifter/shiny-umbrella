@@ -29,6 +29,7 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     var refreshControl = UIRefreshControl()
      var searchController: UISearchController!
 
+    @IBOutlet weak var noMessagesLabel: UILabel!
     @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
     @IBOutlet weak var loadingLabel: UILabel!
 
@@ -307,6 +308,8 @@ print("termino de busqueda")
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let prefs:UserDefaults = UserDefaults.standard
         let cell: MessagesTableViewCell = self.messagesTable.dequeueReusableCell(withIdentifier: "selda") as! MessagesTableViewCell
+        
+      
         print("busqueda activa")
         stopLoading()
         print(searchActive)
@@ -329,7 +332,12 @@ print("termino de busqueda")
             cell.titleLabel.text = object["fullname"] as! String?
             cell.subjectLabel.text = object["bussiness"] as! String?
             cell.theDateLabel.text =  object["date"] as! String?
+            
             cell.bodyLabel.text = object["message"] as! String?
+            cell.bodyLabel.textColor = UIColor.white
+            
+            cell.bodyLabel.font = UIFont(name:"SF UI Text", size:17.0)
+        print(cell.bodyLabel.text)
             return cell
        
         }
@@ -350,9 +358,14 @@ print("termino de busqueda")
         cell.subjectLabel.text = object["bussiness"] as! String?
         cell.theDateLabel.text =  object["date"] as! String?
         cell.bodyLabel.text = object["message"] as! String?
+            cell.bodyLabel.textColor = UIColor.white
+            
+            cell.bodyLabel.font = UIFont(name:"SF UI Text", size:17.0)
+               noMessagesLabel.isHidden = true
             return cell
         
         }
+        
        return cell
         
     }

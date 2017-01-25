@@ -54,13 +54,13 @@ class AlarmViewController: UIViewController {
     func requestAlertedTrackers(){
         let params:[String:AnyObject]=[ "id_user": prefs.object(forKey: "IDUSER") as AnyObject ]
         
-        print("requesting alerted trackers")
-        print(prefs.object(forKey: "IDUSER"))
+        print("iduser for alerted trackers")
+        print(prefs.object(forKey: "IDUSER") as! Int)
         let handler = AlamoFireRequestHandler()
         handler.processRequest(URL: "https://gct-production.mybluemix.net/getalertedtrackers_02.php", requestMethod: .post, params: params as [String : AnyObject],completion: { json2 -> () in
             
             
-            
+            print("getting alerted trackers")
             self.isMultipleTrackerText =  self.parseJSON(json2)
             print("alert text")
             print(self.isMultipleTrackerText)

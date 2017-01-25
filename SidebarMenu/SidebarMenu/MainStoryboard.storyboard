@@ -229,7 +229,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uAo-SZ-WbT">
+                            <button hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uAo-SZ-WbT">
                                 <rect key="frame" x="8" y="470" width="41" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="maintenance"/>
@@ -1134,7 +1134,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Status" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ETA-QP-i6z">
-                                                    <rect key="frame" x="7" y="101" width="96" height="43"/>
+                                                    <rect key="frame" x="7" y="104" width="96" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="SFUIText-Bold" family="SF UI Text" pointSize="20"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1155,7 +1155,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kgk-IJ-W6u">
-                                                    <rect key="frame" x="84" y="106" width="217" height="33"/>
+                                                    <rect key="frame" x="84" y="106" width="217" height="36"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2182,21 +2182,21 @@ Version 1.0.1</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WnP-H3-wdZ">
-                                                    <rect key="frame" x="23" y="6" width="194" height="16"/>
+                                                    <rect key="frame" x="22" y="3" width="194" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Subject" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gbc-vg-Dwt">
-                                                    <rect key="frame" x="23" y="29" width="181" height="22"/>
+                                                    <rect key="frame" x="22" y="28" width="179" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" editable="NO" text="Body" textAlignment="natural" selectable="NO" id="wy0-10-T94">
-                                                    <rect key="frame" x="16" y="51" width="244" height="56"/>
+                                                    <rect key="frame" x="16" y="49" width="243" height="58"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2204,7 +2204,7 @@ Version 1.0.1</string>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bmw-5e-XQA">
-                                                    <rect key="frame" x="191" y="7" width="125" height="15"/>
+                                                    <rect key="frame" x="189" y="6" width="124" height="15"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2229,15 +2229,23 @@ Version 1.0.1</string>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="No messages" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qz8-ff-T6H">
+                                <rect key="frame" x="61" y="95" width="192" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.21122085492227982" green="0.21122085492227982" blue="0.21122085492227982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Messages" image="messages" badgeValue="1" id="b1J-3j-prn"/>
+                    <tabBarItem key="tabBarItem" title="Messages" image="messages" id="b1J-3j-prn"/>
                     <navigationItem key="navigationItem" id="Zda-px-vkz"/>
                     <connections>
                         <outlet property="loadingLabel" destination="dga-tg-sh7" id="Zai-uF-mHz"/>
                         <outlet property="loadingSpinner" destination="tm9-NV-i5R" id="SOF-7v-IMr"/>
                         <outlet property="messagesTable" destination="paJ-Ph-vIp" id="xfE-fL-UFI"/>
+                        <outlet property="noMessagesLabel" destination="Qz8-ff-T6H" id="evY-Tb-qza"/>
                         <outlet property="searchBar" destination="8fx-Pg-JRb" id="ISE-O1-HRf"/>
                         <outlet property="searchController" destination="2xI-CO-X2Q" id="fCb-m5-noL"/>
                         <outlet property="searchDisplayController" destination="2xI-CO-X2Q" id="RDl-d1-PTy"/>
@@ -3318,9 +3326,9 @@ Version 1.0.1</string>
     <inferredMetricsTieBreakers>
         <segue reference="WoE-mo-dnj"/>
         <segue reference="a9E-vU-99G"/>
-        <segue reference="q2S-Lc-0rm"/>
-        <segue reference="oVA-Mo-cuk"/>
         <segue reference="SwZ-nm-M81"/>
-        <segue reference="pYG-4V-ld8"/>
+        <segue reference="nuv-Q5-p1f"/>
+        <segue reference="WbK-W1-AxK"/>
+        <segue reference="rgj-NU-LYm"/>
     </inferredMetricsTieBreakers>
 </document>

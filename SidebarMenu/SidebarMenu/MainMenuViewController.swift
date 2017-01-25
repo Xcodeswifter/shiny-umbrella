@@ -151,6 +151,8 @@ var isTrackerMenuSelected = true
             
             
             
+            
+            
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             
             appDelegate.idUser=idUser
@@ -160,6 +162,8 @@ var isTrackerMenuSelected = true
             
             let handler = AlamoFireRequestHandler()
             handler.processRequest(URL: "https://gct-production.mybluemix.net/checkifalerted_02.php", requestMethod: .post, params: params as [String : AnyObject],completion: { json2 -> () in
+                print("viendo si estan alertados amigo")
+                print()
                 if(json2["alerted"].intValue==1) {
                     self.alertedTrackerButton.setImage(UIImage(named: "menu icono amarillo"), for: [])
                     self.alertedTrackerButton.isEnabled=true
@@ -170,7 +174,11 @@ var isTrackerMenuSelected = true
                     self.alertedTrackerButton.isEnabled=false
                     let buttonImage = UIImage(named: "iconopumpstatus_HDPI")
                     self.selectPumpButton.setImage(buttonImage, for: [])
+                   
+                    
                 }
+                
+                
                 
             })
             
@@ -259,6 +267,7 @@ var isTrackerMenuSelected = true
                 print("more that one tracker")
             }
             if(json2["alertedtrackers"].arrayValue.count==1){
+                print("alertedtrackeame esta ")
             for result in json2["alertedtrackers"].arrayValue {
                 let address = result["address"].stringValue
                 let name = result["name"].stringValue
@@ -266,6 +275,19 @@ var isTrackerMenuSelected = true
                 self.trackerChooserButton.setTitle(name, for: .normal)
                 self.trackerAddressButton.setTitle(address, for: .normal)
                 prefs.set(idTracker, forKey: "IDTRACKER")
+                print("el id tracker es amigo")
+                print(idTracker)
+                print("la address es")
+                print(address)
+                if(address==""){
+                    print("alola land")
+                    self.trackerChooserButton.setTitle("Choose a tracker", for: .normal)
+                    self.trackerAddressButton.setTitle("Tracker address" as String?, for: .normal)
+                   prefs.set("Choose a tracker", forKey: "NAMEBUSINESS")
+                   prefs.set("Tracker address", forKey: "ADDRESS")
+
+                
+                }
             }
 
             }

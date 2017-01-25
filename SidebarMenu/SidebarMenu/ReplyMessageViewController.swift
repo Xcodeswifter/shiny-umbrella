@@ -29,6 +29,8 @@ class ReplyMessageViewController: UIViewController {
         dateLabel.text = selectedDate
         subjectLabel.text = selectedbusiness
         messageText.text = selectedmessage
+        messageText.textColor = UIColor.white
+      messageText.font = UIFont(name:"SF UI Text", size:17.0)
         
 
         // Do any additional setup after loading the view.

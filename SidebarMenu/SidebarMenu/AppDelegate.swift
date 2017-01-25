@@ -128,7 +128,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         let prefs:UserDefaults = UserDefaults.standard
         let iduser:Int = prefs.integer(forKey: "IDUSER") as Int
         let params:[String:AnyObject]=[ "token": deviceTokenString as AnyObject,"id_user": iduser as AnyObject, "device":"IOS" as AnyObject ]
-        
+        print("the token is here")
         print(deviceTokenString)
         Alamofire.request("https://gct-production.mybluemix.net/registertoken_02.php",method: .post, parameters: params, headers: nil).responseJSON { (response:DataResponse<Any>) in
             

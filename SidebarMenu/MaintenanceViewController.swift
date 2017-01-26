@@ -116,49 +116,17 @@ class MaintenanceViewController: UIViewController {
     
     
     func showEnableDialog(){
-        var alertController:UIAlertController?
-        alertController = UIAlertController(title: "Maintenance Mode",
-                                            message: "You enabled the maintenance mode for a set amount of time, during this interval you wont recieve any alert sounds",
-                                            preferredStyle: .alert)
+        let dialog = DialogViewController()
         
-        let action = UIAlertAction(title: "OK",
-                                   style: UIAlertActionStyle.default,
-                                   handler: {[weak self]
-                                    (paramAction:UIAlertAction!) in
-                                    
-        })
-        
-        alertController?.addAction(action)
-        
-        
-        
-        self.present(alertController!,
-                     animated: true,
-                     completion: nil)
+        dialog.showMaintenanceMenuDialogs(type:"enabled")
     }
     
     
     
     func showDisableDialog(){
-        var alertController:UIAlertController?
-        alertController = UIAlertController(title: "Maintenance Mode",
-                                            message: "You disabled the maintenance mode",
-                                            preferredStyle: .alert)
+        let dialog = DialogViewController()
         
-        let action = UIAlertAction(title: "OK",
-                                   style: UIAlertActionStyle.default,
-                                   handler: {[weak self]
-                                    (paramAction:UIAlertAction!) in
-                                    
-        })
-        
-        alertController?.addAction(action)
-        
-        
-        
-        self.present(alertController!,
-                     animated: true,
-                     completion: nil)
+        dialog.showMaintenanceMenuDialogs(type:"disabled")
         
         
     }

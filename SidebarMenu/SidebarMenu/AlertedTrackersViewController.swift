@@ -32,9 +32,12 @@ class AlertedTrackersViewController: UIViewController,UITableViewDelegate, UITab
     
     func checkNetworkConnection(){
         if(!NetworkState.isConnectedToNetwork()){
-            let alert = UIAlertController(title: "Notice", message: "Check you internet connection", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            
+            let dialog = DialogViewController()
+            
+            dialog.showNoInternetDialog()
+            
+            
             loadingSpinner.stopAnimating()
             loadingSpinner.hidesWhenStopped=true
             loadinglabel.text="No internet connection"
@@ -44,9 +47,12 @@ class AlertedTrackersViewController: UIViewController,UITableViewDelegate, UITab
     
     func loadData(){
         if(!NetworkState.isConnectedToNetwork()){
-            let alert = UIAlertController(title: "Notice", message: "Check you internet connection", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            
+            let dialog = DialogViewController()
+            
+            dialog.showNoInternetDialog()
+            
+            
             loadingSpinner.stopAnimating()
             loadingSpinner.hidesWhenStopped=true
             loadinglabel.text="No internet connection"

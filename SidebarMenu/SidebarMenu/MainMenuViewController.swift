@@ -48,7 +48,7 @@ var isTrackerMenuSelected = true
         print("View will appear")
        stopAlarm()
        checkForAlertedTrackers()
-        loadData()
+        //loadData()
         
     }
     
@@ -84,9 +84,10 @@ var isTrackerMenuSelected = true
         
         
         if(!NetworkState.isConnectedToNetwork()){
-            let alert = UIAlertController(title: "Notice", message: "Check you internet connection  ", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            let dialog = DialogViewController()
+            
+            dialog.showNoInternetDialog()
+            
             trackerChooserButton.setTitle("No internet connection", for: .normal)
             print("desconectado")
             
@@ -361,66 +362,70 @@ var isTrackerMenuSelected = true
     
     
     @IBAction func logout(_ sender: UIButton) {
+
         
-        let logoutAlert = UIAlertController(title: "Are you sure", message: "If you logout you will not be able to receive further alerts or notifications on your systems", preferredStyle: UIAlertControllerStyle.alert)
+        var alert: UIAlertController =  UIAlertController(title:"Are you sure", message:"If you logout you will not be able to receive further alerts or notifications on your systems", preferredStyle:.alert)
         
-        if(!NetworkState.isConnectedToNetwork()){
-            
-            self.showErrorMessage()
-            
-        }
-        else{
         
-        logoutAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
+        alert.addAction(UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
+                                      handler:  { (action: UIAlertAction!) in
+                                        
+                                        print("ok yo gano")
+                                        
+                                        let params  = [ "id_user": UserDefaults.standard.object(forKey: "IDUSER") as AnyObject ]
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        let handler = AlamoFireRequestHandler()
+                                        handler.processRequest(URL: "https://gct-production.mybluemix.net/releasetoken_02.php", requestMethod: .post, params: params as [String : AnyObject],completion: { json2 -> () in
+                                            print("funciono o no el login amigo")
+                                            print(json2["released"])
+                                            if(json2["released"].intValue==1){
+                                                let defaults = UserDefaults.standard
+                                                
+                                                defaults.set(-1, forKey: "IDUSER")
+                                                defaults.set(0, forKey:"ACCEPTED")
+                                                defaults.synchronize()
+                                                
+                                                self.performSegue(withIdentifier: "logout", sender: self)
+                                                
+                                                
+                                            }
+                                                
+                                            else{
+                                                
+                                                
+                                                let errorDialog = DialogViewController()
+                                                errorDialog.showLogoutErrorDialog()
+                                                
+                                                
+                                            }
+                                            
+                                            
+                                        })
+                                        
+                                        
+                                        
+        })
             
-            let params  = [ "id_user": UserDefaults.standard.object(forKey: "IDUSER") as AnyObject ]
             
             
-           
             
+        )
+        
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
             
-            let handler = AlamoFireRequestHandler()
-            handler.processRequest(URL: "https://gct-production.mybluemix.net/releasetoken_02.php", requestMethod: .post, params: params as [String : AnyObject],completion: { json2 -> () in
-                print("funciono o no el login amigo")
-          print(json2["released"])
-                if(json2["released"].intValue==1){
-                    let defaults = UserDefaults.standard
-                    
-                    defaults.set(-1, forKey: "IDUSER")
-                    defaults.set(0, forKey:"ACCEPTED")
-                    defaults.synchronize()
-                    
-                    
-                    self.appDelegate.idUser = defaults.object(forKey: "IDUSER") as! Int
-                    self.performSegue(withIdentifier: "logout", sender: self)
-                }
-            
-                else{
-                    
-                    
-                self.showErrorMessage()
-                
-                
-                }
-         
-            
-            })
-            
-           
+            print("no hagas nada")
             
             
         }))
         
-        logoutAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
-            
-            
-            
-        }))
+            self.present(alert, animated: true, completion: nil)
         
-        
-        self.present(logoutAlert, animated: true, completion: nil)
-        
-        }
+       
     }
     
     
@@ -428,15 +433,7 @@ var isTrackerMenuSelected = true
     
     
     
-    func showErrorMessage(){
         
-        let alert = UIAlertController(title: "Notice", message: "Cannot logout, please check your internet connection", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-       
-        
-    }
-    
     //Mark Delegates
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {   //delegate method

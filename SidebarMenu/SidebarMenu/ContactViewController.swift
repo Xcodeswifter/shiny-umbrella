@@ -73,19 +73,20 @@ class ContactViewController: UIViewController, UITextFieldDelegate,UITextViewDel
         let params:[String:AnyObject]=[ "id_user": idUser as AnyObject, "subject":subject.text as AnyObject, "message":issue.text as AnyObject ]
         
         
+        let dialog = DialogViewController()
+        
         let handler = AlamoFireRequestHandler()
         handler.processRequest(URL: "https://gct-production.mybluemix.net/contactsupport_02.php", requestMethod: .post, params: params,completion: { json2 -> () in
             print(json2)
             if(json2["mailSent"].intValue==1){
-                let alert = UIAlertController(title: "Contact Support", message: "You Message has sent", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                dialog.showContactSupportDialog(type:"OK")
+            
+            
             }
                 
             else{
-                let alert = UIAlertController(title: "Contact Support", message: "Error cannot send contact email", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                dialog.showContactSupportDialog(type:"Error")
+
             }
             
         })

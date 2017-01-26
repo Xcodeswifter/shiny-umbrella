@@ -57,6 +57,7 @@ class ReplyMessageViewController: UIViewController {
         let iduser:Int = prefs.integer(forKey: "IDUSER") as Int
         print("id del sender")
         print(idSender)
+        let dialog = DialogViewController()
         let params:[String:AnyObject]=[ "id_sender": idSender as AnyObject, "to": 3 as AnyObject, "subject":"test " as AnyObject,"message":replyText.text as AnyObject]
         let handler = AlamoFireRequestHandler()
         handler.processRequest(URL: "https://gct-production.mybluemix.net/inbox_send.php", requestMethod: .post, params: params,completion: { json2 -> () in
@@ -64,13 +65,14 @@ class ReplyMessageViewController: UIViewController {
             print(json2)
             if(json2["sent"]==1){
                
-self.showMessageSentDialog()
+                dialog.showReplyMessageDialogs(type:"OK")
                 
-            }
-            else{
-                self.showMessageErrorDialog()
+            }   else{
+                    dialog.showReplyMessageDialogs(type:"Error")
                 
-            }
+           
+                
+                }
         })
         
 
@@ -78,21 +80,7 @@ self.showMessageSentDialog()
     }
     
     
-    
-    func showMessageSentDialog(){
-        let alert = UIAlertController(title: "Reply message", message: "Message sent", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
         
-    }
-    
-    func showMessageErrorDialog(){
-        let alert = UIAlertController(title: "Reply message error", message: "Message  cannot be sent", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-        
-    }
-    
     @IBAction func cancelSend(_ sender: Any) {
         replyText.text = ""
         

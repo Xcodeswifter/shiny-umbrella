@@ -113,12 +113,13 @@ class SelectedPumpIssueViewController: UIViewController, UITableViewDelegate,UIT
     
     
     func checkIfIssueListIsEmpty(json:JSON)->Bool{
-        
+        let dialog = DialogViewController()
         print(json["pumpTroubles"].arrayValue.count)
         if(json["pumpTroubles"].arrayValue.count<=0){
-            let alert = UIAlertController(title: "Notice", message: "No alerts history found for this pump.", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+           
+            
+            dialog.noLogsFoundDialog(type: "alerts")
+            
             pumpLabel.text="No alerts found"
             pumpLabel.textColor = UIColor.white
             pumpLabel.font = UIFont(name:"SF UI Text", size:24.0)

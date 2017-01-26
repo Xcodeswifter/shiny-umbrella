@@ -141,12 +141,10 @@ class LastTenEngineRunTableViewController: UIViewController,UITableViewDelegate,
     
     
     func checkIfPumpRunListIsEmpty(json:JSON)->Bool{
-        
+        let dialog = DialogViewController()
         print(json["lastRuns"].arrayValue.count)
         if(json["lastRuns"].arrayValue.count<=0){
-            let alert = UIAlertController(title: "Notice", message: "No activations history  found for this pump.", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+           dialog.noLogsFoundDialog(type: "activation")
             pumpLabelName.text="No Activations"
             pumpLabelName.textColor = UIColor.white
             pumpLabelName.font = UIFont(name:"SF UI Text", size:21.0)

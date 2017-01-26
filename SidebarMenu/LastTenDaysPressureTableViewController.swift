@@ -93,11 +93,11 @@ class LastTenDaysPressureTableViewController: UIViewController, UITableViewDeleg
     
     
     func checkIfDataLogIsEmpty(json:JSON)->Bool{
+        let dialog = DialogViewController()
        
         if(json["lastPressures"].arrayValue.count<=0){
-            let alert = UIAlertController(title: "Notice", message: "No data found for this tracker", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+           
+            dialog.noLogsFoundDialog(type: "pressure")
             stopLoading()
             dataLogPressureHistoryText.text = "No pressure data"
             setTextViewAttributes(pressureHistoryText: dataLogPressureHistoryText)

@@ -80,9 +80,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     func requestNetworkState(){
         if(!NetworkState.isConnectedToNetwork()){
-            let alert = UIAlertController(title: "Notice", message: "Check you internet connection", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            let dialog = DialogViewController()
+            dialog.showNoInternetDialog()
             
         }
         
@@ -115,10 +114,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     
     func showErrorDialog(){
-        let alert = UIAlertController(title: "Login Error", message: "Please check your user or password", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
         
+        let loginDialog = DialogViewController()
+        
+        loginDialog.showLoginLogoutDialog(type: "error")
+        
+                
         
     }
 

@@ -44,10 +44,12 @@ class SelectTrackerViewController: UIViewController, UITableViewDelegate, UITabl
     
     
     func checkNetworkState()->Bool{
+        let dialog = DialogViewController()
         if(!NetworkState.isConnectedToNetwork()){
-            let alert = UIAlertController(title: "Notice", message: "Check you internet connection", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            
+            
+            dialog.showNoInternetDialog()
+            
             stopLoading()
             selectTrackerLabel.text="No connection"
             return false
@@ -111,9 +113,11 @@ class SelectTrackerViewController: UIViewController, UITableViewDelegate, UITabl
         
         print(json["locations"].arrayValue.count)
         if(json["locations"].arrayValue.count<=0){
-            let alert = UIAlertController(title: "Notice", message: "No trackers found for this user", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            
+            let dialog = DialogViewController()
+            
+            dialog.showNoTrackersFoundDialog()
+            
             selectTrackerLabel.text="No trackers Found"
             let prefs:UserDefaults = UserDefaults.standard
             

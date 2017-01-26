@@ -141,25 +141,14 @@ class DataLogViewController: UIViewController, UITableViewDelegate, UITableViewD
     func checkIfDatalogIsEmpty(json:JSON)->Bool{
         
         if(json["trackerAlerts"].arrayValue.count<=0){
-            var alertController:UIAlertController?
-            alertController = UIAlertController(title: "Data Log",
-                                                message: "No incident history found.",
-                                                preferredStyle: .alert)
             
-            let action = UIAlertAction(title: "OK",
-                                       style: UIAlertActionStyle.default,
-                                       handler: {[weak self]
-                                        (paramAction:UIAlertAction!) in
-                                        
-            })
+            let dialog = DialogViewController()
             
-            alertController?.addAction(action)
+            dialog.noLogsFoundDialog(type: "incident")
             
             
             
-            self.present(alertController!,
-                         animated: true,
-                         completion: nil)
+            
             
             filterbutton.isEnabled=false
             sendButton.isEnabled=false

@@ -117,7 +117,7 @@ self.performSegue(withIdentifier: "pumprunningtomap", sender: self)
         return datalog.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        let dialog = DialogViewController()
         
         let cell: PumpStatusTableViewCell = self.pumpRunsTable.dequeueReusableCell(withIdentifier: "pumprunscell") as! PumpStatusTableViewCell
         
@@ -135,10 +135,7 @@ self.performSegue(withIdentifier: "pumprunningtomap", sender: self)
                 pumpRunsLabel.textColor = UIColor.white
                 pumpRunsLabel.font = UIFont(name:"SF UI Text", size:24.0)
 
-                let alert = UIAlertController(title: "Warning", message: "No pumps found for this tracker", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-                
+               dialog.noLogsFoundDialog(type: "pumps")
                 
             }
             

@@ -93,9 +93,8 @@ class pumpInfoViewController: UIViewController,UITableViewDelegate, UITableViewD
     
     
     func showMessage(){
-        let alert = UIAlertController(title: "Notice", message: "No pump info found at this moment", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+       let dialog = DialogViewController()
+        dialog.noLogsFoundDialog(type: "pumps")
    systemInfoTitleLabel.text = "No Info Found"
         self.setTitleTextAttributes(textView: systemInfoTitleLabel)
     stopLoading()

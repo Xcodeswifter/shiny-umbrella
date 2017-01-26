@@ -72,6 +72,7 @@
 		CE0B10311E2D943500E8058B /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0B10301E2D943500E8058B /* MessagesViewController.swift */; };
 		CE0B10331E2D945500E8058B /* MessagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0B10321E2D945500E8058B /* MessagesTableViewCell.swift */; };
 		CE0C4EE91E2FE1D200D20262 /* ReplyMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0C4EE81E2FE1D200D20262 /* ReplyMessageViewController.swift */; };
+		CE1733A81E391FB70097B177 /* DialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1733A71E391FB70097B177 /* DialogViewController.swift */; };
 		CED70BE31E26FFC600197EBA /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CED70BE21E26FFC600197EBA /* MainStoryboard.storyboard */; };
 		CEE962351E2EBC9C00E6A2DD /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE962341E2EBC9B00E6A2DD /* Message.swift */; };
 		F47029F61A7F27DB00E30A3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47029F51A7F27DB00E30A3C /* AppDelegate.swift */; };
@@ -162,6 +163,7 @@
 		CE0B10301E2D943500E8058B /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		CE0B10321E2D945500E8058B /* MessagesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesTableViewCell.swift; sourceTree = "<group>"; };
 		CE0C4EE81E2FE1D200D20262 /* ReplyMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReplyMessageViewController.swift; path = SidebarMenu/ReplyMessageViewController.swift; sourceTree = "<group>"; };
+		CE1733A71E391FB70097B177 /* DialogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogViewController.swift; sourceTree = "<group>"; };
 		CED70BDF1E26FE5700197EBA /* MainStoryboard (35).storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "MainStoryboard (35).storyboard"; sourceTree = "<group>"; };
 		CED70BE21E26FFC600197EBA /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		CED70BE41E270D3B00197EBA /* GCTrack2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GCTrack2.entitlements; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 				72F6BADC1DEA79650030CC48 /* AlarmSound.swift */,
 				72A056CF1DF23DDF00D09198 /* dateComparators.swift */,
 				CEE962341E2EBC9B00E6A2DD /* Message.swift */,
+				CE1733A71E391FB70097B177 /* DialogViewController.swift */,
 			);
 			name = utilities;
 			sourceTree = "<group>";
@@ -604,6 +607,7 @@
 				72384BD51DDCE0E200FE555A /* SelectPumpRunsViewController.swift in Sources */,
 				72384BD91DDCF46D00FE555A /* SelectedPumpIssueViewController.swift in Sources */,
 				99621AE51D85F611002DDF79 /* JockeyPumpViewController.swift in Sources */,
+				CE1733A81E391FB70097B177 /* DialogViewController.swift in Sources */,
 				72FFCC541DD278DF0057228C /* LastTenDaysPressureTableViewController.swift in Sources */,
 				72FFCC581DD279160057228C /* GeneralAlarmsTableViewController.swift in Sources */,
 				72FFCC5C1DD279A10057228C /* LastTenEngineRunsTableViewCell.swift in Sources */,

@@ -93,10 +93,10 @@ class PumpStatusViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func checkIfDataLogIsEmpty(json:JSON)->Bool{
                 if(json["pumps"].arrayValue.count<=0){
-            let alert = UIAlertController(title: "Notice", message: "No pumps found for this tracker", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-            stopLoading()
+            let dialog = DialogViewController()
+                    dialog.noLogsFoundDialog(type: "pumps")
+                    
+                    stopLoading()
             pumpStatusTitleLabel.text = "No pumps Found"
             self.setTextViewAttributes(pumpStatusLabel: pumpStatusLabel)
             return true
@@ -202,9 +202,9 @@ class PumpStatusViewController: UIViewController, UITableViewDelegate, UITableVi
                 pumpStatusTitleLabel.text = "No pumps Found"
 setTextViewAttributes(pumpStatusLabel: pumpStatusTitleLabel)
             
-                let alert = UIAlertController(title: "Warning", message: "No pumps found for this tracker", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+               let dialog = DialogViewController()
+                dialog.noLogsFoundDialog(type:"pumps")
+                
                 return true
                 
             }

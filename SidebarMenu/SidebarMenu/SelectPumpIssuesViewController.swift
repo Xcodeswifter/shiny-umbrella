@@ -64,7 +64,7 @@ class SelectPumpIssuesViewController: UIViewController ,UITableViewDelegate ,UIT
     
     
     func parseJSON(_ json: JSON) {
-        
+        let dialog = DialogViewController()
         
         for result in json["pumps"].arrayValue {
             let id = result["pumpID"].stringValue
@@ -84,11 +84,9 @@ class SelectPumpIssuesViewController: UIViewController ,UITableViewDelegate ,UIT
         }
         
         if(datalog.count<=0){
-            let alert = UIAlertController(title: "Notice", message: "No alerts found", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+           
+            dialog.noLogsFoundDialog(type: "alerts")
             
-            
-            self.present(alert, animated: true, completion: nil)
             pumpIssueLabel.text = "No alerts found"
            pumpIssueLabel.textColor = UIColor.white
             pumpIssueLabel.font = UIFont(name:"SF UI Text", size:24.0)
@@ -126,7 +124,7 @@ class SelectPumpIssuesViewController: UIViewController ,UITableViewDelegate ,UIT
         return datalog.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        let dialog = DialogViewController()
         
         let cell: PumpStatusTableViewCell = self.pumpIssuesTable.dequeueReusableCell(withIdentifier: "pumpissuescell") as! PumpStatusTableViewCell
         
@@ -142,9 +140,9 @@ class SelectPumpIssuesViewController: UIViewController ,UITableViewDelegate ,UIT
                 pumpIssueLabel.font = UIFont(name:"SF UI Text", size:24.0)
 
                 
-                let alert = UIAlertController(title: "Warning", message: "No pumps found for this tracker", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                dialog.noLogsFoundDialog(type: "pumps")
+                
+                
                 
                 
             }

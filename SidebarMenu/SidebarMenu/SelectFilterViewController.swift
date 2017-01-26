@@ -34,9 +34,11 @@ class SelectFilterViewController: UIViewController,UIGestureRecognizerDelegate {
     
     func loadData(){
         if(!NetworkState.isConnectedToNetwork()){
-            let alert = UIAlertController(title: "Notice", message: "Check you internet connection", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            let dialog = DialogViewController()
+            
+            dialog.showNoInternetDialog()
+            
+            
             selectTrackerButton.setTitle("No internet connection", for: .normal)
         }
             
@@ -54,12 +56,7 @@ class SelectFilterViewController: UIViewController,UIGestureRecognizerDelegate {
             
             
             
-            let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(SelectFilterViewController.longpress(sender:)))
-            longPressGesture.minimumPressDuration = 2.0 // 1 second press
-            longPressGesture.allowableMovement = 15 // 15 points
-            longPressGesture.delegate = self
-            self.pumpHistoryButton.addGestureRecognizer(longPressGesture)
-            
+                     
             
         }
         
@@ -73,21 +70,6 @@ class SelectFilterViewController: UIViewController,UIGestureRecognizerDelegate {
     }
     
     
-    func longpress(sender:UILongPressGestureRecognizer)
-    {
-        if sender.state == UIGestureRecognizerState.began
-            {
-                let alertController = UIAlertController(title: nil, message:
-                    "Long-Press Gesture Detected", preferredStyle: UIAlertControllerStyle.alert)
-                alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default,handler: nil))
-                
-                self.present(alertController, animated: true, completion: nil)
-        }
-    
-    
-    
-    }
-
     
     //Mark Actions
     @IBAction func goToalarms(_ sender: Any) {

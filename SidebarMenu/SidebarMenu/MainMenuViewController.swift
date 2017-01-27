@@ -25,12 +25,12 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
     var accepted:Int = 0
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var selectedTracker: String = ""
-var isTrackerMenuSelected = true
+    var isTrackerMenuSelected = true
     override func viewDidLoad() {
         super.viewDidLoad()
         
         print("View did load")
-    stopAlarm()
+        stopAlarm()
         UIApplication.shared.applicationIconBadgeNumber = 0
         checkForAlertedTrackers()
         loadData()
@@ -46,9 +46,9 @@ var isTrackerMenuSelected = true
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("View will appear")
-       stopAlarm()
-       checkForAlertedTrackers()
-        //loadData()
+        stopAlarm()
+        checkForAlertedTrackers()
+        loadData()
         
     }
     
@@ -63,173 +63,126 @@ var isTrackerMenuSelected = true
     
     //TO OPTIMIZE THIS FUNCTION
     func loadData(){
-   
+        
         let prefs:UserDefaults = UserDefaults.standard
         
         idUser = prefs.integer(forKey: "IDUSER") as Int
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        appDelegate.idUser=idUser
+        
         
         accepted = prefs.integer(forKey: "ACCEPTED")
         print(idUser)
         print(accepted)
         
         
-        if (idUser <= 0) {
-            self.performSegue(withIdentifier: "logout", sender: self)
-        }
+        checkInternetConnection()
+        checkifIdUserIsCorrect(idUser: idUser, accepted: accepted)
+        checkMaintenanceStatus(prefs: prefs)
+        NameBusiness = prefs.object(forKey: "NAMEBUSINESS") as! String?
+        idUser = prefs.integer(forKey: "IDUSER") as Int
         
-        if (accepted<1) {
-            self.performSegue(withIdentifier: "logout", sender: self)
-        }
+        accepted = prefs.integer(forKey: "ACCEPTED")
+        
+        trackerChooserButton.setTitle(NameBusiness, for: .normal)
+        trackerAddressButton.setTitle( prefs.object(forKey: "ADDRESS") as! String?, for: .normal)
+      
+        print("los datos amigos")
+        print(prefs.object(forKey: "IDTRACKER"))
+        print(prefs.object(forKey: "ADDRESS"))
+        print(prefs.object(forKey: "NAMEBUSINESS"))
         
         
         
-        if(!NetworkState.isConnectedToNetwork()){
-            let dialog = DialogViewController()
-            
-            dialog.showNoInternetDialog()
-            
-            trackerChooserButton.setTitle("No internet connection", for: .normal)
-            print("desconectado")
-            
-            
-            
-            
-        }
-            
-         
-            
-        if(prefs.integer(forKey: "TIMEUP")==1){
-            let buttonImage = UIImage(named: "maintenance")
-            maintenanceButton.setImage(buttonImage, for: .normal)
-            
-        }
-        if(prefs.integer(forKey: "ENABLED")==0){
-            let buttonImage = UIImage(named: "maintenance")
-            maintenanceButton.setImage(buttonImage, for: .normal)
-
-            prefs.set(0, forKey: "TIMEUP")
-
-        }
-        if(prefs.integer(forKey: "ENABLED")==1){
-            let buttonImage = UIImage(named: "maintenancered")
-            maintenanceButton.setImage(buttonImage, for: .normal)
-
-        }
         
-            
-            
-            
-            
-            
-            
-        else{
-            
-            let prefs:UserDefaults = UserDefaults.standard
-            NameBusiness = prefs.object(forKey: "NAMEBUSINESS") as! String?
-            idUser = prefs.integer(forKey: "IDUSER") as Int
-            
-            accepted = prefs.integer(forKey: "ACCEPTED")
-            print(prefs.object(forKey: "IDTRACKER"))
-            print(prefs.object(forKey: "ADDRESS"))
-            print(prefs.object(forKey: "NAMEBUSINESS"))
-            
-            trackerChooserButton.setTitle(NameBusiness, for: .normal)
-            trackerAddressButton.setTitle( prefs.object(forKey: "ADDRESS") as! String?, for: .normal)
-            
-            
-            
-            
-            
-            if (idUser <= 0) {
-                self.performSegue(withIdentifier: "logout", sender: self)
-            }
-            
-            if (accepted<1) {
-                self.performSegue(withIdentifier: "logout", sender: self)
-            } else {
-                
-            }
-            
-            
-            
-            
-            
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            
-            appDelegate.idUser=idUser
-            
-            
-            let params=["id_user":idUser]
-            
-            let handler = AlamoFireRequestHandler()
-            handler.processRequest(URL: "https://gct-production.mybluemix.net/checkifalerted_02.php", requestMethod: .post, params: params as [String : AnyObject],completion: { json2 -> () in
-                print("viendo si estan alertados amigo")
-                print()
-                if(json2["alerted"].intValue==1) {
-                    self.alertedTrackerButton.setImage(UIImage(named: "menu icono amarillo"), for: [])
-                    self.alertedTrackerButton.isEnabled=true
-                }
-                    
-                else {
-                    self.alertedTrackerButton.setImage(UIImage(named: "menu icono "), for: [])
-                    self.alertedTrackerButton.isEnabled=false
-                    let buttonImage = UIImage(named: "iconopumpstatus_HDPI")
-                    self.selectPumpButton.setImage(buttonImage, for: [])
-                   
-                    
-                }
-                
-                
-                
-            })
-            
-            
-            let isAlertedTracker = prefs.object(forKey: "ALERTEDTRACKER") as? Int
-            if (isAlertedTracker==1){
-                
-                let buttonImage = UIImage(named: "iconoselectpump_rojo")
-                self.selectPumpButton.setImage(buttonImage, for: [])
-                
-                
-            }
-            else{
-                let buttonImage = UIImage(named: "iconopumpstatus_HDPI")
-                self.selectPumpButton.setImage(buttonImage, for: [])
-                
-            }
-            
-            let roomState = prefs.object(forKey: "ROOMSTATE") as? Int
-           print("el room state")
-            print(roomState)
-            if (roomState==1){
-                print("se seteo en rojo")
-                let buttonImage = UIImage(named: "roomRojo")
-                self.roomStateIcon.setImage(buttonImage, for: [])
-                
-                
-            }
-            else{
-                let buttonImage = UIImage(named: "termometro 300x300")
-                self.roomStateIcon.setImage(buttonImage, for: [])
-                
-            }
-            
-
-            
-            
-            
-        }
+        checkIfAlerted(idUser: idUser)
         
-    
+        
+        
+        setupAlertedTrackers(prefs: prefs)
+        
+        
+        
+        
+        
     }
     
     
     
     
+    func checkIfAlerted(idUser:Int){
+        
+        let params=["id_user":idUser]
+        
+        let handler = AlamoFireRequestHandler()
+        handler.processRequest(URL: "https://gct-production.mybluemix.net/checkifalerted_02.php", requestMethod: .post, params: params as [String : AnyObject],completion: { json2 -> () in
+            print("viendo si estan alertados amigo")
+            if(json2["alerted"].intValue==1) {
+                self.alertedTrackerButton.setImage(UIImage(named: "menu icono amarillo"), for: [])
+                self.alertedTrackerButton.isEnabled=true
+            }
+                
+            else {
+                self.alertedTrackerButton.setImage(UIImage(named: "menu icono "), for: [])
+                self.alertedTrackerButton.isEnabled=false
+                let buttonImage = UIImage(named: "iconopumpstatus_HDPI")
+                self.selectPumpButton.setImage(buttonImage, for: [])
+                
+                
+            }
+            
+            
+            
+        })
+        
+
+        
+        
+    }
+    
+    
+    
+    func setupAlertedTrackers(prefs:UserDefaults){
+        let isAlertedTracker = prefs.object(forKey: "ALERTEDTRACKER") as? Int
+        if (isAlertedTracker==1){
+            
+            let buttonImage = UIImage(named: "iconoselectpump_rojo")
+            self.selectPumpButton.setImage(buttonImage, for: [])
+            
+            
+        }
+        else{
+            let buttonImage = UIImage(named: "iconopumpstatus_HDPI")
+            self.selectPumpButton.setImage(buttonImage, for: [])
+            
+        }
+        
+        let roomState = prefs.object(forKey: "ROOMSTATE") as? Int
+        print("el room state")
+        print(roomState)
+        if (roomState==1){
+            print("se seteo en rojo")
+            let buttonImage = UIImage(named: "roomRojo")
+            self.roomStateIcon.setImage(buttonImage, for: [])
+            
+            
+        }
+        else{
+            let buttonImage = UIImage(named: "termometro 300x300")
+            self.roomStateIcon.setImage(buttonImage, for: [])
+            
+        }
+        
+        
+        
+    }
+    
     
     func checkForAlertedTrackers(){
         let prefs:UserDefaults = UserDefaults.standard
-    let alerted = prefs.object(forKey: "ALERTEDTRACKER") as! Int?
+        let alerted = prefs.object(forKey: "ALERTEDTRACKER") as! Int?
         if(alerted==1){
             
             requestedAlertedTrackers()
@@ -247,6 +200,63 @@ var isTrackerMenuSelected = true
         
     }
     
+    func checkifIdUserIsCorrect(idUser:Int, accepted:Int){
+        
+        if (idUser <= 0) {
+            self.performSegue(withIdentifier: "logout", sender: self)
+        }
+        
+        if (accepted<1) {
+            self.performSegue(withIdentifier: "logout", sender: self)
+        }
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    func checkMaintenanceStatus(prefs:UserDefaults){
+        
+        if(prefs.integer(forKey: "TIMEUP")==1){
+            let buttonImage = UIImage(named: "maintenance")
+            maintenanceButton.setImage(buttonImage, for: .normal)
+            
+        }
+        if(prefs.integer(forKey: "ENABLED")==0){
+            let buttonImage = UIImage(named: "maintenance")
+            maintenanceButton.setImage(buttonImage, for: .normal)
+            
+            prefs.set(0, forKey: "TIMEUP")
+            
+        }
+        if(prefs.integer(forKey: "ENABLED")==1){
+            let buttonImage = UIImage(named: "maintenancered")
+            maintenanceButton.setImage(buttonImage, for: .normal)
+            
+        }
+        
+        
+        
+    }
+    
+    func checkInternetConnection(){
+        
+        if(!NetworkState.isConnectedToNetwork()){
+            let dialog = DialogViewController()
+            
+            dialog.showNoInternetDialog()
+            
+            trackerChooserButton.setTitle("No internet connection", for: .normal)
+            print("desconectado")
+            
+            
+            
+            
+        }
+    }
     
     func requestedAlertedTrackers(){
         
@@ -263,38 +273,41 @@ var isTrackerMenuSelected = true
             
             
             if(json2["alertedtrackers"].arrayValue.count>1){
-            //self.trackerChooserButton.setTitle("Multiple trackers alerted", for: .normal)
-           // self.trackerAddressButton.setTitle("Please see alerted trackers", for: .normal)
+                //self.trackerChooserButton.setTitle("Multiple trackers alerted", for: .normal)
+                // self.trackerAddressButton.setTitle("Please see alerted trackers", for: .normal)
                 print("more that one tracker")
             }
             if(json2["alertedtrackers"].arrayValue.count==1){
                 print("alertedtrackeame esta ")
-            for result in json2["alertedtrackers"].arrayValue {
-                let address = result["address"].stringValue
-                let name = result["name"].stringValue
-                let idTracker = result["id_tracker"].stringValue
-                self.trackerChooserButton.setTitle(name, for: .normal)
-                self.trackerAddressButton.setTitle(address, for: .normal)
-                prefs.set(idTracker, forKey: "IDTRACKER")
-                print("el id tracker es amigo")
-                print(idTracker)
-                print("la address es")
-                print(address)
-                if(address==""){
-                    print("alola land")
-                    self.trackerChooserButton.setTitle("Choose a tracker", for: .normal)
-                    self.trackerAddressButton.setTitle("Tracker address" as String?, for: .normal)
-                   prefs.set("Choose a tracker", forKey: "NAMEBUSINESS")
-                   prefs.set("Tracker address", forKey: "ADDRESS")
-
-                
+                for result in json2["alertedtrackers"].arrayValue {
+                    let address = result["address"].stringValue
+                    let name = result["name"].stringValue
+                    let idTracker = result["id_tracker"].stringValue
+                    self.trackerChooserButton.setTitle(name, for: .normal)
+                    self.trackerAddressButton.setTitle(address, for: .normal)
+                    prefs.set(idTracker, forKey: "IDTRACKER")
+                    prefs.set(name, forKey: "NAMEBUSINESS")
+                    prefs.set(address, forKey: "ADDRESS")
+                    
+                    print("el id tracker es amigo")
+                    print(idTracker)
+                    print("la address es")
+                    print(address)
+                    if(address==""){
+                        print("alola land")
+                        self.trackerChooserButton.setTitle("Choose a tracker", for: .normal)
+                        self.trackerAddressButton.setTitle("Tracker address" as String?, for: .normal)
+                        prefs.set("Choose a tracker", forKey: "NAMEBUSINESS")
+                        prefs.set("Tracker address", forKey: "ADDRESS")
+                        
+                        
+                    }
                 }
-            }
-
+                
             }
         })
         
-
+        
         
         
         
@@ -314,7 +327,7 @@ var isTrackerMenuSelected = true
     
     @IBAction func goToMap(_ sender: Any) {
         self.performSegue(withIdentifier: "mainToMap2", sender: self)
-
+        
     }
     
     
@@ -341,8 +354,8 @@ var isTrackerMenuSelected = true
     
     
     @IBAction func gotopumpstatus(_ sender: UIButton) {
-       
-         self.performSegue(withIdentifier: "pumpstatus", sender: self)
+        
+        self.performSegue(withIdentifier: "pumpstatus", sender: self)
         
     }
     
@@ -352,17 +365,17 @@ var isTrackerMenuSelected = true
     
     @IBAction func goToMaintenance(_ sender: Any) {
         self.performSegue(withIdentifier: "goToMaintenanceMode", sender: self)
-
+        
     }
-   
+    
     
     @IBAction func goToMaintenanceMode(_ sender: Any) {
-    
+        
     }
     
     
     @IBAction func logout(_ sender: UIButton) {
-
+        
         
         var alert: UIAlertController =  UIAlertController(title:"Are you sure", message:"If you logout you will not be able to receive further alerts or notifications on your systems", preferredStyle:.alert)
         
@@ -423,9 +436,9 @@ var isTrackerMenuSelected = true
             
         }))
         
-            self.present(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
         
-       
+        
     }
     
     
@@ -433,7 +446,7 @@ var isTrackerMenuSelected = true
     
     
     
-        
+    
     //Mark Delegates
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {   //delegate method
@@ -449,19 +462,19 @@ var isTrackerMenuSelected = true
     @IBAction func goToDatalogged(_ sender: Any) {
         
         self.performSegue(withIdentifier: "goToSelectFilter", sender: self)
-
+        
     }
     
     @IBAction func mainToMap(_ sender: Any) {
         
         self.performSegue(withIdentifier: "mainToMap2", sender: self)
-
+        
     }
     
     @IBAction func addressToSelectTracker(_ sender: Any) {
-   
+        
         self.performSegue(withIdentifier: "selectBusiness", sender: self)
-
+        
     }
     @IBAction func goToPumpDescription(_ sender: AnyObject) {
         self.performSegue(withIdentifier: "pumpdescription", sender: self)
@@ -474,17 +487,17 @@ var isTrackerMenuSelected = true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       
+        
         print("prepare for segue")
         if(isTrackerMenuSelected){
             
             isTrackerMenuSelected=false
             if(segue.identifier=="selectBusiness"){
                 print("entre aqui amigo")
-            let destination = segue.destination as! SelectTrackerViewController
-            destination.segueFromController = "MainMenuViewController"
+                let destination = segue.destination as! SelectTrackerViewController
+                destination.segueFromController = "MainMenuViewController"
             }
-            }
+        }
     }
     
 }

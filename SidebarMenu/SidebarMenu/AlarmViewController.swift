@@ -22,7 +22,7 @@ class AlarmViewController: UIViewController {
     var isMultipleTrackerText:String = ""
     var alertedTrackerData = [[String: String]]()
     let sound = AlarmSound()
-
+    let isSoundPlaying = UserDefaults.standard
     
     
     //optimized Function
@@ -31,6 +31,10 @@ class AlarmViewController: UIViewController {
         print("view did load")
         requestAlertedTrackers()
         sound.playSound()
+    
+        
+        isSoundPlaying.set(0, forKey: "SOUND")
+        
         
     }
     //optimized Function
@@ -38,7 +42,16 @@ class AlarmViewController: UIViewController {
         super.viewWillAppear(animated)
         print("view will appear")
         requestAlertedTrackers()
-        sound.playSound()
+        isSoundPlaying.set(0, forKey: "SOUND")
+        if(isSoundPlaying.integer(forKey: "SOUND")==0){
+            sound.playSound()
+             isSoundPlaying.set(1, forKey: "SOUND")
+        }
+
+        
+        
+       
+
     
         
     }
@@ -48,6 +61,8 @@ class AlarmViewController: UIViewController {
         print("view DID appear")
         requestAlertedTrackers()
         sound.playSound()
+        isSoundPlaying.set(1, forKey: "SOUND")
+
     }
     
    
@@ -83,6 +98,7 @@ class AlarmViewController: UIViewController {
     @IBAction func warningtoMain(_ sender: AnyObject) {
 
         sound.stopSounds()
+        isSoundPlaying.set(0, forKey: "SOUND")
         if(pumpFailureLabel.text.contains("Multiple")){
             self.performSegue(withIdentifier: "alarmToMultipleTrackers", sender: self)
             

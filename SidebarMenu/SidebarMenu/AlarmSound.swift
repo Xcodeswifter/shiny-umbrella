@@ -22,12 +22,18 @@ public class AlarmSound{
         do {
             sound = try AVAudioPlayer(contentsOf: url)
             alarmSoundEffect = sound
-            sound?.numberOfLoops = -1
+            sound?.numberOfLoops = 0
            
             if(!(sound?.isPlaying)!){
             sound?.play()
                 
             }
+            
+            
+            
+            
+            
+            
         } catch {
 print("sound could not be played")
         

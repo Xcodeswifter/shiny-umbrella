@@ -69,6 +69,10 @@
 		99F3E8321D89BAB600BF55F5 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99F3E8311D89BAB600BF55F5 /* Storyboard.storyboard */; };
 		99F3E8341D89BBDA00BF55F5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F3E8331D89BBDA00BF55F5 /* LoginViewController.swift */; };
 		99F4DDB71D87533500EEE7BA /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F4DDB61D87533500EEE7BA /* AlarmViewController.swift */; };
+		CE094F3F1E4003B900D68F41 /* GCTrack2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE094F301E3FD51B00D68F41 /* GCTrack2Tests.swift */; };
+		CE094F471E400C4000D68F41 /* GCTrackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE094F461E400C4000D68F41 /* GCTrackTests.swift */; };
+		CE094F551E400EE700D68F41 /* GCTrack2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE094F541E400EE700D68F41 /* GCTrack2UITests.swift */; };
+		CE094F5D1E40245C00D68F41 /* AlertsReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE094F5C1E40245C00D68F41 /* AlertsReportViewController.swift */; };
 		CE0B10311E2D943500E8058B /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0B10301E2D943500E8058B /* MessagesViewController.swift */; };
 		CE0B10331E2D945500E8058B /* MessagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0B10321E2D945500E8058B /* MessagesTableViewCell.swift */; };
 		CE0C4EE91E2FE1D200D20262 /* ReplyMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0C4EE81E2FE1D200D20262 /* ReplyMessageViewController.swift */; };
@@ -86,6 +90,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		CE094F331E3FD51B00D68F41 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F47029E81A7F27DB00E30A3C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F47029EF1A7F27DB00E30A3C;
+			remoteInfo = SidebarMenu;
+		};
+		CE094F491E400C4000D68F41 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F47029E81A7F27DB00E30A3C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F47029EF1A7F27DB00E30A3C;
+			remoteInfo = SidebarMenu;
+		};
+		CE094F571E400EE700D68F41 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F47029E81A7F27DB00E30A3C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F47029EF1A7F27DB00E30A3C;
+			remoteInfo = SidebarMenu;
+		};
 		F4702A061A7F27DC00E30A3C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F47029E81A7F27DB00E30A3C /* Project object */;
@@ -160,6 +185,16 @@
 		99F3E8331D89BBDA00BF55F5 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = LoginViewController.swift; path = SidebarMenu/LoginViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		99F4DDB61D87533500EEE7BA /* AlarmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = AlarmViewController.swift; path = SidebarMenu/AlarmViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		CC683CA2407373337F112BF4 /* Pods-SidebarMenu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SidebarMenu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SidebarMenu/Pods-SidebarMenu.debug.xcconfig"; sourceTree = "<group>"; };
+		CE094F2E1E3FD51B00D68F41 /* GCTrack2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GCTrack2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE094F301E3FD51B00D68F41 /* GCTrack2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCTrack2Tests.swift; sourceTree = "<group>"; };
+		CE094F321E3FD51B00D68F41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE094F441E400C4000D68F41 /* GCTrackTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GCTrackTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE094F461E400C4000D68F41 /* GCTrackTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCTrackTests.swift; sourceTree = "<group>"; };
+		CE094F481E400C4000D68F41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE094F521E400EE700D68F41 /* GCTrack2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GCTrack2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE094F541E400EE700D68F41 /* GCTrack2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCTrack2UITests.swift; sourceTree = "<group>"; };
+		CE094F561E400EE700D68F41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE094F5C1E40245C00D68F41 /* AlertsReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlertsReportViewController.swift; path = SidebarMenu/AlertsReportViewController.swift; sourceTree = "<group>"; };
 		CE0B10301E2D943500E8058B /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		CE0B10321E2D945500E8058B /* MessagesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesTableViewCell.swift; sourceTree = "<group>"; };
 		CE0C4EE81E2FE1D200D20262 /* ReplyMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReplyMessageViewController.swift; path = SidebarMenu/ReplyMessageViewController.swift; sourceTree = "<group>"; };
@@ -187,6 +222,27 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		CE094F2B1E3FD51B00D68F41 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE094F411E400C4000D68F41 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE094F4F1E400EE700D68F41 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F47029ED1A7F27DB00E30A3C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -218,6 +274,7 @@
 			isa = PBXGroup;
 			children = (
 				CE0B10301E2D943500E8058B /* MessagesViewController.swift */,
+				CE094F5C1E40245C00D68F41 /* AlertsReportViewController.swift */,
 				CE0C4EE81E2FE1D200D20262 /* ReplyMessageViewController.swift */,
 				72384BD81DDCF46D00FE555A /* SelectedPumpIssueViewController.swift */,
 				72384BD41DDCE0E200FE555A /* SelectPumpRunsViewController.swift */,
@@ -307,6 +364,33 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		CE094F2F1E3FD51B00D68F41 /* GCTrack2Tests */ = {
+			isa = PBXGroup;
+			children = (
+				CE094F301E3FD51B00D68F41 /* GCTrack2Tests.swift */,
+				CE094F321E3FD51B00D68F41 /* Info.plist */,
+			);
+			path = GCTrack2Tests;
+			sourceTree = "<group>";
+		};
+		CE094F451E400C4000D68F41 /* GCTrackTests */ = {
+			isa = PBXGroup;
+			children = (
+				CE094F461E400C4000D68F41 /* GCTrackTests.swift */,
+				CE094F481E400C4000D68F41 /* Info.plist */,
+			);
+			path = GCTrackTests;
+			sourceTree = "<group>";
+		};
+		CE094F531E400EE700D68F41 /* GCTrack2UITests */ = {
+			isa = PBXGroup;
+			children = (
+				CE094F541E400EE700D68F41 /* GCTrack2UITests.swift */,
+				CE094F561E400EE700D68F41 /* Info.plist */,
+			);
+			path = GCTrack2UITests;
+			sourceTree = "<group>";
+		};
 		F47029E71A7F27DB00E30A3C = {
 			isa = PBXGroup;
 			children = (
@@ -329,6 +413,9 @@
 				72F0A9911DA865430047B965 /* SF-UI-Text-UltrathinItalic.otf */,
 				F4702A151A7F342F00E30A3C /* MapKit.framework */,
 				F47029F21A7F27DB00E30A3C /* SidebarMenu */,
+				CE094F2F1E3FD51B00D68F41 /* GCTrack2Tests */,
+				CE094F451E400C4000D68F41 /* GCTrackTests */,
+				CE094F531E400EE700D68F41 /* GCTrack2UITests */,
 				F47029F11A7F27DB00E30A3C /* Products */,
 				877A58D7EFE8F34AAE3F40F4 /* Pods */,
 				14991379A812029CEB205C8B /* Frameworks */,
@@ -340,6 +427,9 @@
 			children = (
 				F47029F01A7F27DB00E30A3C /* GCTrack2.app */,
 				F4702A051A7F27DC00E30A3C /* SidebarMenuTests.xctest */,
+				CE094F2E1E3FD51B00D68F41 /* GCTrack2Tests.xctest */,
+				CE094F441E400C4000D68F41 /* GCTrackTests.xctest */,
+				CE094F521E400EE700D68F41 /* GCTrack2UITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -401,6 +491,60 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		CE094F2D1E3FD51B00D68F41 /* GCTrack2Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE094F351E3FD51B00D68F41 /* Build configuration list for PBXNativeTarget "GCTrack2Tests" */;
+			buildPhases = (
+				CE094F2A1E3FD51B00D68F41 /* Sources */,
+				CE094F2B1E3FD51B00D68F41 /* Frameworks */,
+				CE094F2C1E3FD51B00D68F41 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CE094F341E3FD51B00D68F41 /* PBXTargetDependency */,
+			);
+			name = GCTrack2Tests;
+			productName = GCTrack2Tests;
+			productReference = CE094F2E1E3FD51B00D68F41 /* GCTrack2Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CE094F431E400C4000D68F41 /* GCTrackTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE094F4B1E400C4000D68F41 /* Build configuration list for PBXNativeTarget "GCTrackTests" */;
+			buildPhases = (
+				CE094F401E400C4000D68F41 /* Sources */,
+				CE094F411E400C4000D68F41 /* Frameworks */,
+				CE094F421E400C4000D68F41 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CE094F4A1E400C4000D68F41 /* PBXTargetDependency */,
+			);
+			name = GCTrackTests;
+			productName = GCTrackTests;
+			productReference = CE094F441E400C4000D68F41 /* GCTrackTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CE094F511E400EE700D68F41 /* GCTrack2UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE094F591E400EE700D68F41 /* Build configuration list for PBXNativeTarget "GCTrack2UITests" */;
+			buildPhases = (
+				CE094F4E1E400EE700D68F41 /* Sources */,
+				CE094F4F1E400EE700D68F41 /* Frameworks */,
+				CE094F501E400EE700D68F41 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CE094F581E400EE700D68F41 /* PBXTargetDependency */,
+			);
+			name = GCTrack2UITests;
+			productName = GCTrack2UITests;
+			productReference = CE094F521E400EE700D68F41 /* GCTrack2UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		F47029EF1A7F27DB00E30A3C /* SidebarMenu */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F4702A0F1A7F27DC00E30A3C /* Build configuration list for PBXNativeTarget "SidebarMenu" */;
@@ -445,10 +589,26 @@
 		F47029E81A7F27DB00E30A3C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0700;
+				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = AppCoda;
 				TargetAttributes = {
+					CE094F2D1E3FD51B00D68F41 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = F47029EF1A7F27DB00E30A3C;
+					};
+					CE094F431E400C4000D68F41 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = F47029EF1A7F27DB00E30A3C;
+					};
+					CE094F511E400EE700D68F41 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = B46G96L4KY;
+						ProvisioningStyle = Automatic;
+						TestTargetID = F47029EF1A7F27DB00E30A3C;
+					};
 					F47029EF1A7F27DB00E30A3C = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = B46G96L4KY;
@@ -490,11 +650,35 @@
 			targets = (
 				F47029EF1A7F27DB00E30A3C /* SidebarMenu */,
 				F4702A041A7F27DC00E30A3C /* SidebarMenuTests */,
+				CE094F2D1E3FD51B00D68F41 /* GCTrack2Tests */,
+				CE094F431E400C4000D68F41 /* GCTrackTests */,
+				CE094F511E400EE700D68F41 /* GCTrack2UITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		CE094F2C1E3FD51B00D68F41 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE094F421E400C4000D68F41 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE094F501E400EE700D68F41 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F47029EE1A7F27DB00E30A3C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -580,6 +764,30 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		CE094F2A1E3FD51B00D68F41 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE094F3F1E4003B900D68F41 /* GCTrack2Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE094F401E400C4000D68F41 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE094F471E400C4000D68F41 /* GCTrackTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE094F4E1E400EE700D68F41 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE094F551E400EE700D68F41 /* GCTrack2UITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F47029EC1A7F27DB00E30A3C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -634,6 +842,7 @@
 				727C282E1DADA486006BD703 /* pumpInfoViewController.swift in Sources */,
 				9939469A1D91943900B9A41F /* SelectTrackerViewController.swift in Sources */,
 				72FDE57F1E1AEC7600F2615C /* MaintenanceViewController.swift in Sources */,
+				CE094F5D1E40245C00D68F41 /* AlertsReportViewController.swift in Sources */,
 				99B3F18F1D81DE05001C8D31 /* SelectPumpViewController.swift in Sources */,
 				723C5A631DCA58D300CA845C /* PumpDescriptionTableViewCell.swift in Sources */,
 				99E9130A1D7DCE410069F878 /* TemperatureViewController.swift in Sources */,
@@ -651,6 +860,21 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		CE094F341E3FD51B00D68F41 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F47029EF1A7F27DB00E30A3C /* SidebarMenu */;
+			targetProxy = CE094F331E3FD51B00D68F41 /* PBXContainerItemProxy */;
+		};
+		CE094F4A1E400C4000D68F41 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F47029EF1A7F27DB00E30A3C /* SidebarMenu */;
+			targetProxy = CE094F491E400C4000D68F41 /* PBXContainerItemProxy */;
+		};
+		CE094F581E400EE700D68F41 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F47029EF1A7F27DB00E30A3C /* SidebarMenu */;
+			targetProxy = CE094F571E400EE700D68F41 /* PBXContainerItemProxy */;
+		};
 		F4702A071A7F27DC00E30A3C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F47029EF1A7F27DB00E30A3C /* SidebarMenu */;
@@ -670,6 +894,141 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		CE094F361E3FD51B00D68F41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = GCTrack2Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com..GCTrack2Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GCTrack2.app/GCTrack2";
+			};
+			name = Debug;
+		};
+		CE094F371E3FD51B00D68F41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = GCTrack2Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com..GCTrack2Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GCTrack2.app/GCTrack2";
+			};
+			name = Release;
+		};
+		CE094F4C1E400C4000D68F41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = GCTrackTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gctracktests.GCTrackTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GCTrack2.app/GCTrack2";
+			};
+			name = Debug;
+		};
+		CE094F4D1E400C4000D68F41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = GCTrackTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gctracktests.GCTrackTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GCTrack2.app/GCTrack2";
+			};
+			name = Release;
+		};
+		CE094F5A1E400EE700D68F41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = B46G96L4KY;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = GCTrack2UITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gctracktests.GCTrack2UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = SidebarMenu;
+			};
+			name = Debug;
+		};
+		CE094F5B1E400EE700D68F41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = B46G96L4KY;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = GCTrack2UITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gctracktests.GCTrack2UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = SidebarMenu;
+			};
+			name = Release;
+		};
 		F4702A0D1A7F27DC00E30A3C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -841,6 +1200,30 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CE094F351E3FD51B00D68F41 /* Build configuration list for PBXNativeTarget "GCTrack2Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE094F361E3FD51B00D68F41 /* Debug */,
+				CE094F371E3FD51B00D68F41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		CE094F4B1E400C4000D68F41 /* Build configuration list for PBXNativeTarget "GCTrackTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE094F4C1E400C4000D68F41 /* Debug */,
+				CE094F4D1E400C4000D68F41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		CE094F591E400EE700D68F41 /* Build configuration list for PBXNativeTarget "GCTrack2UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE094F5A1E400EE700D68F41 /* Debug */,
+				CE094F5B1E400EE700D68F41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		F47029EB1A7F27DB00E30A3C /* Build configuration list for PBXProject "GCTRACKV2BETA" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

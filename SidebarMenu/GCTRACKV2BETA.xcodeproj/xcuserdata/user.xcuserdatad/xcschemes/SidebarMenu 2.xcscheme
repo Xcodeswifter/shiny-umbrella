@@ -28,6 +28,36 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CE094F2D1E3FD51B00D68F41"
+               BuildableName = "GCTrack2Tests.xctest"
+               BlueprintName = "GCTrack2Tests"
+               ReferencedContainer = "container:GCTRACKV2BETA.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CE094F431E400C4000D68F41"
+               BuildableName = "GCTrackTests.xctest"
+               BlueprintName = "GCTrackTests"
+               ReferencedContainer = "container:GCTRACKV2BETA.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CE094F511E400EE700D68F41"
+               BuildableName = "GCTrack2UITests.xctest"
+               BlueprintName = "GCTrack2UITests"
+               ReferencedContainer = "container:GCTRACKV2BETA.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

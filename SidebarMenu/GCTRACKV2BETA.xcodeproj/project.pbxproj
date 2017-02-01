@@ -78,6 +78,15 @@
 		CE0C4EE91E2FE1D200D20262 /* ReplyMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0C4EE81E2FE1D200D20262 /* ReplyMessageViewController.swift */; };
 		CE1733A81E391FB70097B177 /* DialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1733A71E391FB70097B177 /* DialogViewController.swift */; };
 		CED70BE31E26FFC600197EBA /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CED70BE21E26FFC600197EBA /* MainStoryboard.storyboard */; };
+		CEE644CE1E4117380065A9E1 /* AlertedReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE644CD1E4117380065A9E1 /* AlertedReportTableViewCell.swift */; };
+		CEE644DF1E414B920065A9E1 /* JFAArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE644DC1E414B920065A9E1 /* JFAArrowView.m */; };
+		CEE644E01E414B920065A9E1 /* JFATabBarController copy.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE644DE1E414B920065A9E1 /* JFATabBarController copy.m */; };
+		CEE644E11E414BA80065A9E1 /* JFAArrowView.h in Resources */ = {isa = PBXBuildFile; fileRef = CEE644DB1E414B920065A9E1 /* JFAArrowView.h */; };
+		CEE644E21E414BA80065A9E1 /* JFAArrowView.m in Resources */ = {isa = PBXBuildFile; fileRef = CEE644DC1E414B920065A9E1 /* JFAArrowView.m */; };
+		CEE644E31E414BA80065A9E1 /* JFATabBarController copy.h in Resources */ = {isa = PBXBuildFile; fileRef = CEE644DD1E414B920065A9E1 /* JFATabBarController copy.h */; };
+		CEE644E41E414BA80065A9E1 /* JFATabBarController copy.m in Resources */ = {isa = PBXBuildFile; fileRef = CEE644DE1E414B920065A9E1 /* JFATabBarController copy.m */; };
+		CEE644E61E4152230065A9E1 /* UsersTrackerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE644E51E4152220065A9E1 /* UsersTrackerTableViewCell.swift */; };
+		CEE644E81E4152490065A9E1 /* UserTrackersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE644E71E4152490065A9E1 /* UserTrackersViewController.swift */; };
 		CEE962351E2EBC9C00E6A2DD /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE962341E2EBC9B00E6A2DD /* Message.swift */; };
 		F47029F61A7F27DB00E30A3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47029F51A7F27DB00E30A3C /* AppDelegate.swift */; };
 		F47029FD1A7F27DB00E30A3C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F47029FC1A7F27DB00E30A3C /* Images.xcassets */; };
@@ -202,6 +211,13 @@
 		CED70BDF1E26FE5700197EBA /* MainStoryboard (35).storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "MainStoryboard (35).storyboard"; sourceTree = "<group>"; };
 		CED70BE21E26FFC600197EBA /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		CED70BE41E270D3B00197EBA /* GCTrack2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GCTrack2.entitlements; sourceTree = "<group>"; };
+		CEE644CD1E4117380065A9E1 /* AlertedReportTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertedReportTableViewCell.swift; sourceTree = "<group>"; };
+		CEE644DB1E414B920065A9E1 /* JFAArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFAArrowView.h; sourceTree = "<group>"; };
+		CEE644DC1E414B920065A9E1 /* JFAArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFAArrowView.m; sourceTree = "<group>"; };
+		CEE644DD1E414B920065A9E1 /* JFATabBarController copy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JFATabBarController copy.h"; sourceTree = "<group>"; };
+		CEE644DE1E414B920065A9E1 /* JFATabBarController copy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JFATabBarController copy.m"; sourceTree = "<group>"; };
+		CEE644E51E4152220065A9E1 /* UsersTrackerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UsersTrackerTableViewCell.swift; path = SidebarMenu/UsersTrackerTableViewCell.swift; sourceTree = "<group>"; };
+		CEE644E71E4152490065A9E1 /* UserTrackersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTrackersViewController.swift; sourceTree = "<group>"; };
 		CEE962341E2EBC9B00E6A2DD /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		D65E2F7B0CA6BA7FECE2B40B /* Pods-SidebarMenu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SidebarMenu.release.xcconfig"; path = "Pods/Target Support Files/Pods-SidebarMenu/Pods-SidebarMenu.release.xcconfig"; sourceTree = "<group>"; };
 		DA616A3CC2686FD0A2263A4C /* Pods_SidebarMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SidebarMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -273,6 +289,7 @@
 		723991D71DE654C700A52266 /* viewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				CEE644E71E4152490065A9E1 /* UserTrackersViewController.swift */,
 				CE0B10301E2D943500E8058B /* MessagesViewController.swift */,
 				CE094F5C1E40245C00D68F41 /* AlertsReportViewController.swift */,
 				CE0C4EE81E2FE1D200D20262 /* ReplyMessageViewController.swift */,
@@ -315,6 +332,7 @@
 				7254F8EF1DB7E60000BDC3D3 /* AlertedTrackerTableViewCell.swift */,
 				7245C1BD1DC2D1CC00ABCC00 /* SystemInfoTableViewCell.swift */,
 				723C5A621DCA58D300CA845C /* PumpDescriptionTableViewCell.swift */,
+				CEE644E51E4152220065A9E1 /* UsersTrackerTableViewCell.swift */,
 				9900F37E1D94670E00F641C8 /* FilterDataLogMenuTableViewCell.swift */,
 				72FFCC5B1DD279A10057228C /* LastTenEngineRunsTableViewCell.swift */,
 				9939469B1D91945A00B9A41F /* SelectTrackerTableViewCell.swift */,
@@ -325,6 +343,7 @@
 				72FFCC591DD279830057228C /* LastTenDaysPressureTableViewCell.swift */,
 				7245C1BB1DC2B6EC00ABCC00 /* SinglePumpStatusTableViewCell.swift */,
 				720C17A41DF0F5250087F0C3 /* LogFiltersTableViewCell.swift */,
+				CEE644CD1E4117380065A9E1 /* AlertedReportTableViewCell.swift */,
 			);
 			name = "Table Models";
 			path = ..;
@@ -334,6 +353,10 @@
 			isa = PBXGroup;
 			children = (
 				72353BF81DC959A200C64937 /* NetworkState.swift */,
+				CEE644DB1E414B920065A9E1 /* JFAArrowView.h */,
+				CEE644DC1E414B920065A9E1 /* JFAArrowView.m */,
+				CEE644DD1E414B920065A9E1 /* JFATabBarController copy.h */,
+				CEE644DE1E414B920065A9E1 /* JFATabBarController copy.m */,
 				724888781DD3A085007059C6 /* CustomSegue.swift */,
 				72E024CA1DC7E5B8007E73D1 /* AlamoFireRequestHandler.swift */,
 				99BD15C41D872F5E0047F371 /* Locations.swift */,
@@ -683,6 +706,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEE644E11E414BA80065A9E1 /* JFAArrowView.h in Resources */,
+				CEE644E21E414BA80065A9E1 /* JFAArrowView.m in Resources */,
+				CEE644E31E414BA80065A9E1 /* JFATabBarController copy.h in Resources */,
+				CEE644E41E414BA80065A9E1 /* JFATabBarController copy.m in Resources */,
 				72F3A6F91E204D97000CA706 /* alarm.wav in Resources */,
 				720E6EEC1DB83C53004FA134 /* alarm.caf in Resources */,
 				72F0A9921DA865440047B965 /* SF-UI-Text-Bold.otf in Resources */,
@@ -808,6 +835,7 @@
 				99F4DDB71D87533500EEE7BA /* AlarmViewController.swift in Sources */,
 				F4D750181BD38F0C009E1003 /* SWRevealViewController.m in Sources */,
 				991AF5CB1D811ACD007DA070 /* ContactViewController.swift in Sources */,
+				CEE644DF1E414B920065A9E1 /* JFAArrowView.m in Sources */,
 				72A056D01DF23DDF00D09198 /* dateComparators.swift in Sources */,
 				CE0B10311E2D943500E8058B /* MessagesViewController.swift in Sources */,
 				720C17A51DF0F5250087F0C3 /* LogFiltersTableViewCell.swift in Sources */,
@@ -822,6 +850,7 @@
 				99B154661D7BCBA600DBBA67 /* MainMenuViewController.swift in Sources */,
 				9909DEF91D88CC0F002EB836 /* TermsAndConditionsViewController.swift in Sources */,
 				72E024CB1DC7E5B8007E73D1 /* AlamoFireRequestHandler.swift in Sources */,
+				CEE644CE1E4117380065A9E1 /* AlertedReportTableViewCell.swift in Sources */,
 				99B3F18D1D81CE7D001C8D31 /* DataLogFormViewController.swift in Sources */,
 				7245C1BA1DC2B6CC00ABCC00 /* SinglePumpStatusViewController.swift in Sources */,
 				72FFCC5E1DD279B20057228C /* GeneralAlarmsTableViewCell.swift in Sources */,
@@ -832,18 +861,21 @@
 				7245C1BE1DC2D1CC00ABCC00 /* SystemInfoTableViewCell.swift in Sources */,
 				9900F37F1D94670E00F641C8 /* FilterDataLogMenuTableViewCell.swift in Sources */,
 				99E758E41D7631F900107DEE /* PressurePumpViewController.swift in Sources */,
+				CEE644E81E4152490065A9E1 /* UserTrackersViewController.swift in Sources */,
 				CE0B10331E2D945500E8058B /* MessagesTableViewCell.swift in Sources */,
 				72F6BADD1DEA79650030CC48 /* AlarmSound.swift in Sources */,
 				F491E7551A7F7E010026528E /* MainScreenController.swift in Sources */,
 				7254F8F01DB7E60000BDC3D3 /* AlertedTrackerTableViewCell.swift in Sources */,
 				72FFCC5A1DD279830057228C /* LastTenDaysPressureTableViewCell.swift in Sources */,
 				99391DF41D8347FE00198D3A /* PumpStatusTableViewCell.swift in Sources */,
+				CEE644E01E414B920065A9E1 /* JFATabBarController copy.m in Sources */,
 				7245C1BC1DC2B6EC00ABCC00 /* SinglePumpStatusTableViewCell.swift in Sources */,
 				727C282E1DADA486006BD703 /* pumpInfoViewController.swift in Sources */,
 				9939469A1D91943900B9A41F /* SelectTrackerViewController.swift in Sources */,
 				72FDE57F1E1AEC7600F2615C /* MaintenanceViewController.swift in Sources */,
 				CE094F5D1E40245C00D68F41 /* AlertsReportViewController.swift in Sources */,
 				99B3F18F1D81DE05001C8D31 /* SelectPumpViewController.swift in Sources */,
+				CEE644E61E4152230065A9E1 /* UsersTrackerTableViewCell.swift in Sources */,
 				723C5A631DCA58D300CA845C /* PumpDescriptionTableViewCell.swift in Sources */,
 				99E9130A1D7DCE410069F878 /* TemperatureViewController.swift in Sources */,
 			);
@@ -1207,6 +1239,7 @@
 				CE094F371E3FD51B00D68F41 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CE094F4B1E400C4000D68F41 /* Build configuration list for PBXNativeTarget "GCTrackTests" */ = {
 			isa = XCConfigurationList;
@@ -1215,6 +1248,7 @@
 				CE094F4D1E400C4000D68F41 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CE094F591E400EE700D68F41 /* Build configuration list for PBXNativeTarget "GCTrack2UITests" */ = {
 			isa = XCConfigurationList;
@@ -1223,6 +1257,7 @@
 				CE094F5B1E400EE700D68F41 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F47029EB1A7F27DB00E30A3C /* Build configuration list for PBXProject "GCTRACKV2BETA" */ = {
 			isa = XCConfigurationList;

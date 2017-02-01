@@ -319,7 +319,7 @@
                                         <rect key="frame" x="0.0" y="49" width="288" height="95"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pNy-Yo-7RY" id="Pu9-7B-8IE">
-                                            <rect key="frame" x="0.0" y="0.0" width="288" height="94"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="288" height="95"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FjJ-qq-I0V">
@@ -1134,7 +1134,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Status" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ETA-QP-i6z">
-                                                    <rect key="frame" x="7" y="106" width="96" height="43"/>
+                                                    <rect key="frame" x="7" y="106" width="96" height="45"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="SFUIText-Bold" family="SF UI Text" pointSize="20"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1155,7 +1155,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kgk-IJ-W6u">
-                                                    <rect key="frame" x="84" y="106" width="217" height="38"/>
+                                                    <rect key="frame" x="84" y="106" width="217" height="39"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1984,10 +1984,11 @@ Version 1.0.1</string>
             </objects>
             <point key="canvasLocation" x="-443" y="-32"/>
         </scene>
-        <!--Main Screen Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="YHp-Um-2Rd">
             <objects>
-                <tabBarController storyboardIdentifier="mainscreen" automaticallyAdjustsScrollViewInsets="NO" id="GrG-6O-p5E" customClass="MainScreenController" customModule="GCTrack2" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="mainscreen" automaticallyAdjustsScrollViewInsets="NO" id="GrG-6O-p5E" customClass="JFATabBarController" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="9q0-K2-Xnd"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="6XS-I4-rSP">
@@ -2009,12 +2010,12 @@ Version 1.0.1</string>
                         <segue destination="gFG-pu-ylk" kind="relationship" relationship="viewControllers" id="gOL-Nu-9PH"/>
                         <segue destination="Z9B-nS-G58" kind="relationship" relationship="viewControllers" id="V4F-Rz-NE1"/>
                         <segue destination="z85-hh-fht" kind="relationship" relationship="viewControllers" id="6ei-Fd-pMU"/>
-                        <segue destination="w9R-DC-c0E" kind="relationship" relationship="viewControllers" id="2SC-2T-XFZ"/>
+                        <segue destination="heH-NW-D7O" kind="relationship" relationship="viewControllers" id="MYN-Ua-Aic"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Scm-zr-Cyw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-443" y="722"/>
+            <point key="canvasLocation" x="-711" y="721"/>
         </scene>
         <!--ReplyScreen-->
         <scene sceneID="rL5-f9-Ydx">
@@ -3290,8 +3291,8 @@ Version 1.0.1</string>
                                 <rect key="frame" x="-10" y="186" width="330" height="2"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="history" id="dMl-A1-MEX">
-                                <rect key="frame" x="9" y="116" width="64" height="66"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="history" id="dMl-A1-MEX">
+                                <rect key="frame" x="9" y="84" width="64" height="66"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <tableView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" pagingEnabled="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="158" sectionHeaderHeight="28" sectionFooterHeight="28" id="qS6-9L-Q7s">
@@ -3300,22 +3301,22 @@ Version 1.0.1</string>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" red="0.28627450980000002" green="0.28627450980000002" blue="0.28627450980000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="158" id="89b-fU-4VQ" customClass="DataLoggedTableViewCell" customModule="GCTrack2" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cellda" rowHeight="158" id="89b-fU-4VQ" customClass="AlertedReportTableViewCell" customModule="GCTrack2" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="322" height="158"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="89b-fU-4VQ" id="om3-46-0On">
                                             <rect key="frame" x="0.0" y="0.0" width="322" height="157"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pressure:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0JB-9d-Gl0">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0JB-9d-Gl0">
                                                     <rect key="frame" x="7" y="7" width="120" height="53"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="SFUIText-Bold" family="SF UI Text" pointSize="20"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PKS-63-ADg">
-                                                    <rect key="frame" x="7" y="106" width="103" height="43"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PKS-63-ADg">
+                                                    <rect key="frame" x="7" y="106" width="101" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="SFUIText-Bold" family="SF UI Text" pointSize="20"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3328,13 +3329,6 @@ Version 1.0.1</string>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gpp-Sh-6hu">
-                                                    <rect key="frame" x="79" y="54" width="233" height="34"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="20"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ioy-2S-ljJ">
                                                     <rect key="frame" x="90" y="106" width="231" height="38"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -3342,44 +3336,26 @@ Version 1.0.1</string>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Date:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="s9U-0R-LJY">
-                                                    <rect key="frame" x="7" y="60" width="103" height="36"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="SFUIText-Bold" family="SF UI Text" pointSize="20"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" red="0.28627450980000002" green="0.28627450980000002" blue="0.28627450980000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.28627450980000002" green="0.28627450980000002" blue="0.28627450980000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="if8-L4-DXZ" id="99Y-DF-aQf"/>
+                                            <outlet property="pressureLabel" destination="if8-L4-DXZ" id="kcP-t7-Odn"/>
+                                            <outlet property="timeBroadcastLabel" destination="ioy-2S-ljJ" id="OrF-gE-nfB"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="Alerts Report" textAlignment="center" selectable="NO" id="IGe-8w-hT2">
-                                <rect key="frame" x="80" y="123" width="228" height="44"/>
+                            <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="Event Report" textAlignment="center" selectable="NO" id="IGe-8w-hT2">
+                                <rect key="frame" x="80" y="91" width="228" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.28627450980000002" green="0.28627450980000002" blue="0.28627450980000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="29"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tracker Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="11x-WZ-vfe">
-                                <rect key="frame" x="0.0" y="80" width="322" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="N0O-sl-bmB">
-                                <rect key="frame" x="275" y="82" width="24" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <state key="normal" backgroundImage="iconotrackerlist"/>
-                                <connections>
-                                    <action selector="goToSelectTracker:" destination="w9R-DC-c0E" eventType="touchUpInside" id="0fp-31-5DX"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" id="DNN-br-ml9">
                                 <rect key="frame" x="-2" y="15" width="324" height="61"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -3388,8 +3364,8 @@ Version 1.0.1</string>
                                         <rect key="frame" x="49" y="8" width="240" height="47"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="w3v-la-wG6">
-                                        <rect key="frame" x="8" y="10" width="38" height="42"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="69b-Ee-GiP">
+                                        <rect key="frame" x="9" y="9" width="38" height="42"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <state key="normal" backgroundImage="botongoback"/>
                                     </button>
@@ -3402,17 +3378,18 @@ Version 1.0.1</string>
                     <tabBarItem key="tabBarItem" title="Alerts" id="9q2-Lj-Gqq"/>
                     <navigationItem key="navigationItem" id="HyX-ze-DOZ"/>
                     <connections>
-                        <outlet property="dataLogTable" destination="qS6-9L-Q7s" id="Ohe-oz-qUI"/>
+                        <outlet property="alertsReportTable" destination="qS6-9L-Q7s" id="I6E-OS-NXt"/>
                         <segue destination="Ige-SX-UXW" kind="unwind" identifier="exitToMain" unwindAction="unwindToMainMenuWithSegue:" id="ill-Ul-nB9"/>
                         <segue destination="Ige-SX-UXW" kind="unwind" identifier="returnToSelectFilter" unwindAction="unwindToSelectFilterWithSegue:" id="FpP-R3-DLi"/>
                         <segue destination="Ige-SX-UXW" kind="unwind" unwindAction="unwindToSelectFilterWithSegue:" id="XYv-HW-YG2"/>
                         <segue destination="Iiu-hQ-893" kind="modal" identifier="alertsToAttended" id="iCW-B4-Z4K"/>
+                        <segue destination="GrG-6O-p5E" kind="modal" identifier="returnToUserTrackers" id="844-w5-EAk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5a1-m0-etx" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Ige-SX-UXW" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="132" y="722"/>
+            <point key="canvasLocation" x="382" y="693"/>
         </scene>
         <!--alerted reports-->
         <scene sceneID="uXE-HI-x24">
@@ -3445,7 +3422,7 @@ Version 1.0.1</string>
                                         <rect key="frame" x="0.0" y="28" width="322" height="158"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="f9Z-6P-2qw" id="qzo-cO-HuL">
-                                            <rect key="frame" x="0.0" y="0.0" width="322" height="158"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="322" height="157"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="T3N-QX-eWX">
@@ -3463,7 +3440,7 @@ Version 1.0.1</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="V23-Wx-KXv">
-                                                    <rect key="frame" x="144" y="17" width="35" height="30"/>
+                                                    <rect key="frame" x="141" y="15" width="38" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LoY-a8-Y3X">
@@ -3500,9 +3477,6 @@ Version 1.0.1</string>
                                 <rect key="frame" x="275" y="82" width="24" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="iconotrackerlist"/>
-                                <connections>
-                                    <action selector="goToSelectTracker:" destination="Iiu-hQ-893" eventType="touchUpInside" id="kK6-XR-xO8"/>
-                                </connections>
                             </button>
                             <view contentMode="scaleToFill" id="6l8-yz-uxg">
                                 <rect key="frame" x="-2" y="15" width="324" height="61"/>
@@ -3525,7 +3499,6 @@ Version 1.0.1</string>
                     </view>
                     <navigationItem key="navigationItem" id="2hi-9o-Bqu"/>
                     <connections>
-                        <outlet property="dataLogTable" destination="g1j-mg-eMO" id="6Eq-hO-IWb"/>
                         <segue destination="ETB-Ig-LKS" kind="unwind" identifier="exitToMain" unwindAction="unwindToMainMenuWithSegue:" id="d18-Z1-RnR"/>
                         <segue destination="ETB-Ig-LKS" kind="unwind" identifier="returnToSelectFilter" unwindAction="unwindToSelectFilterWithSegue:" id="NI5-D9-kyB"/>
                         <segue destination="ETB-Ig-LKS" kind="unwind" unwindAction="unwindToSelectFilterWithSegue:" id="6Gj-61-exO"/>
@@ -3534,7 +3507,120 @@ Version 1.0.1</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d9b-pa-1d6" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="ETB-Ig-LKS" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="545" y="714"/>
+            <point key="canvasLocation" x="960" y="514"/>
+        </scene>
+        <!--trackerselect-->
+        <scene sceneID="oWa-Ao-tXr">
+            <objects>
+                <viewController storyboardIdentifier="trackeruser" title="trackerselect" id="heH-NW-D7O" customClass="UserTrackersViewController" customModule="GCTrack2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="o2K-EI-rI4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="pR7-25-H0j">
+                                <rect key="frame" x="-2" y="-8" width="375" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dash_logo" id="989-Av-oWX">
+                                <rect key="frame" x="60" y="19" width="234" height="54"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" id="KWZ-Hz-bwZ">
+                                <rect key="frame" x="150" y="81" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" dataMode="prototypes" style="plain" rowHeight="95" sectionHeaderHeight="28" sectionFooterHeight="28" id="MEF-g1-T7a">
+                                <rect key="frame" x="0.0" y="130" width="320" height="438"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.28627450980000002" green="0.28627450980000002" blue="0.28627450980000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="separatorColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" red="0.28627450980000002" green="0.28627450980000002" blue="0.28627450980000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jLW-ZU-MUq">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="zeldah" rowHeight="95" id="wTz-ks-xjh" customClass="UsersTrackerTableViewCell" customModule="GCTrack2" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="49" width="320" height="95"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wTz-ks-xjh" id="lwS-Va-c1v">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="94"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wPr-EV-xzo">
+                                                    <rect key="frame" x="-119" y="18" width="549" height="27"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="29"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CFW-Qg-Ymd">
+                                                    <rect key="frame" x="29" y="53" width="251" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="14"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.28627450980000002" green="0.28627450980000002" blue="0.28627450980000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="TrackerName" destination="wPr-EV-xzo" id="D2e-AP-d4p"/>
+                                            <outlet property="trackerAddress" destination="CFW-Qg-Ymd" id="0ng-PN-xwj"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Tracker" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1hC-7p-ABZ">
+                                <rect key="frame" x="43" y="101" width="234" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="29"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.28627450980000002" green="0.28627450980000002" blue="0.28627450980000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="wV7-qb-8Cq"/>
+                    <navigationItem key="navigationItem" id="uCT-It-OY1"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="loading" destination="KWZ-Hz-bwZ" id="o6y-mU-BBE"/>
+                        <outlet property="loadingLabel" destination="jLW-ZU-MUq" id="NML-v0-rtO"/>
+                        <outlet property="loadingSpinner" destination="KWZ-Hz-bwZ" id="Ege-yZ-9Hd"/>
+                        <outlet property="selectTrackerLabel" destination="1hC-7p-ABZ" id="nNR-Oy-2Jp"/>
+                        <outlet property="userTrackersTable" destination="MEF-g1-T7a" id="fVb-Pm-QPP"/>
+                        <segue destination="aY0-cd-3lp" kind="unwind" identifier="gohome" unwindAction="unwindToMainMenuWithSegue:" id="yQS-dT-yuH"/>
+                        <segue destination="aY0-cd-3lp" kind="unwind" identifier="backToPressureFromSelectTracker" unwindAction="backToPressureViewContollerWithStoryboard:" id="pPd-Ri-9uu"/>
+                        <segue destination="aY0-cd-3lp" kind="unwind" identifier="backToDataLogFromSelectTracker" unwindAction="unwindToDataLogFilterWithSegue:" id="YQQ-AP-jzQ"/>
+                        <segue destination="aY0-cd-3lp" kind="unwind" identifier="returnToDataLogFromSelectTracker" unwindAction="unwindToDataLogWithSegue:" id="GAo-4W-Xjb"/>
+                        <segue destination="aY0-cd-3lp" kind="unwind" identifier="returnToJockeyFromSelectTracker" unwindAction="unwindToJockeyPumpWithSegue:" id="5BF-pt-sfC"/>
+                        <segue destination="aY0-cd-3lp" kind="unwind" identifier="lastTenDayPressureToSelectTracker" unwindAction="unwindToLastTenDayPressureWithSegue:" id="hlH-V1-09N"/>
+                        <segue destination="aY0-cd-3lp" kind="unwind" identifier="returnToPressureFromSelectTracker" unwindAction="unwindToPressurePumpWithSegue:" id="FpA-Xq-Hnr"/>
+                        <segue destination="aY0-cd-3lp" kind="unwind" identifier="returnToPumpInfoToSelectTracker" unwindAction="unwindToPumpInfoWithSegue:" id="7Ob-4Z-kFM"/>
+                        <segue destination="aY0-cd-3lp" kind="unwind" identifier="returnToSelectPumpIssueFromSelectTracker" unwindAction="unwindToPumpIssuesMenuWithSegue:" id="fDM-FK-mRj"/>
+                        <segue destination="aY0-cd-3lp" kind="unwind" identifier="returnToPumpRoomConditionsFromSelectTracker" unwindAction="unwindToPumpRoomConditionsWithSegue:" id="scy-Sn-2Gf"/>
+                        <segue destination="aY0-cd-3lp" kind="unwind" identifier="returnToPumpRunsFromSelectTracker" unwindAction="unwindToPumpRunsMenuWithSegue:" id="m4s-2Q-jEt"/>
+                        <segue destination="aY0-cd-3lp" kind="unwind" identifier="returnToPumpStatusFromSelectTracker" unwindAction="unwindToPumpStatusWithSegue:" id="fpr-Xi-UYX"/>
+                        <segue destination="aY0-cd-3lp" kind="unwind" identifier="returnToSelectFilterFromSelectTracker" unwindAction="unwindToSelectFilterWithSegue:" id="lXF-mU-UGh"/>
+                        <segue destination="aY0-cd-3lp" kind="unwind" identifier="returnToSelectPumpIssueFromSelectTracker" unwindAction="unwindToSelectPumpIssueWithSegue:" id="zJD-jZ-u3M"/>
+                        <segue destination="aY0-cd-3lp" kind="unwind" unwindAction="unwindToSelectPumpRunWithSegue:" id="Mpa-ha-ae3"/>
+                        <segue destination="aY0-cd-3lp" kind="unwind" identifier="returnToSelectPumpRunFromSelectTracker" unwindAction="unwindToSelectRunningPumpWithSegue:" id="e3i-61-BsU"/>
+                        <segue destination="aY0-cd-3lp" kind="unwind" identifier="returnToSelectedPumpIssueFromSelectTracker" unwindAction="unwindToSelectedPumpIssueWithSegue:" id="wgt-oT-G1A"/>
+                        <segue destination="aY0-cd-3lp" kind="unwind" identifier="singlePumpStatusToSelectTracker" unwindAction="unwindToSinglePumpStatusWithSegue:" id="Qk7-6g-oOy"/>
+                        <segue destination="aY0-cd-3lp" kind="unwind" identifier="returnToSelectPumpIssuesViewControllerFromSelectTracker" unwindAction="unwindToSelectPumpIssuesViewControllerWithSegue:" id="d5t-2S-F1x"/>
+                        <segue destination="aY0-cd-3lp" kind="unwind" identifier="returnToMainScreenFromSelectTracker" unwindAction="unwindToMainMenuWithSegue:" id="GjO-2a-STf"/>
+                        <segue destination="w9R-DC-c0E" kind="modal" identifier="goToEventReport" id="y0E-hu-QQU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jj1-iz-8ur" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="aY0-cd-3lp" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-56" y="721"/>
         </scene>
     </scenes>
     <resources>
@@ -3588,11 +3674,11 @@ Version 1.0.1</string>
         <simulatedScreenMetrics key="destination" type="retina4_0.fullscreen"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="QxK-YI-LtN"/>
+        <segue reference="844-w5-EAk"/>
         <segue reference="WbK-W1-AxK"/>
-        <segue reference="DOy-Ot-TmA"/>
-        <segue reference="fbz-2a-L2y"/>
-        <segue reference="bz8-8g-cRF"/>
         <segue reference="a9E-vU-99G"/>
+        <segue reference="bz8-8g-cRF"/>
+        <segue reference="pYG-4V-ld8"/>
+        <segue reference="DOy-Ot-TmA"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -11,6 +11,7 @@ pod 'SwiftyJSON', git: 'https://github.com/BaiduHiDeviOS/SwiftyJSON.git', branch
 
   pod 'Alamofire', '~> 4.0'
   pod 'RNGridMenu', '~> 0.1.2'
+  pod 'JFATabBarController'
 
 pod 'DropDown'
 end

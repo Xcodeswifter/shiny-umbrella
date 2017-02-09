@@ -92,7 +92,7 @@ static const CGFloat ARROW_BOTTOM = 0.6f;
     [path closePath];
     [[UIColor blackColor] setStroke];
     [path stroke];
-    [[UIColor blueColor] setFill];
+    [[UIColor whiteColor] setFill];
     [path fill];
 }
 @end

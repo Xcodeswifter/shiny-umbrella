@@ -237,6 +237,10 @@ class UserTrackersViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     
+    @IBAction func unwindToSelectMastersTrackers(segue: UIStoryboardSegue) {}
+
+    
+    
     func stopLoading(){
         loadingSpinner.stopAnimating()
         loadingSpinner.hidesWhenStopped=true

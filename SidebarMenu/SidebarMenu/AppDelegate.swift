@@ -11,6 +11,7 @@ import UserNotifications
 import Foundation
 import Alamofire
 import SwiftyJSON
+
 extension String {
     
     func contains(find: String) -> Bool{ return self.range(of: find) != nil }
@@ -245,7 +246,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
             
             print("systems ready")
             var storyboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
-            var viewController: MainScreenController = storyboard.instantiateViewController(withIdentifier: "mainscreen") as! MainScreenController
+            print("aqui se truena")
+             var viewController: MainScreenController = storyboard.instantiateViewController(withIdentifier: "mainscreen") as! MainScreenController
             
             self.window!.rootViewController = viewController
             self.window!.makeKeyAndVisible()

@@ -9,6 +9,7 @@
 import UIKit
 import SwiftyJSON
 
+
 class MessagesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,  UISearchBarDelegate, UISearchDisplayDelegate, UISearchControllerDelegate {
 
     @IBOutlet weak var messagesTable: UITableView!
@@ -28,6 +29,7 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     var idSender:Int = 0
     var refreshControl = UIRefreshControl()
      var searchController: UISearchController!
+    var messagesending = 0
 
     @IBOutlet weak var noMessagesLabel: UILabel!
     @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
@@ -41,7 +43,19 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         searchBar.delegate = self
         searchController.delegate = self
     
-    
+        
+        //setup floating button
+        let fab = KCFloatingActionButton()
+        fab.addItem("Send message ", icon: UIImage(named: "messages")!, handler: { item in
+            self.messagesending = 1
+            self.performSegue(withIdentifier: "goToMasterTrackers", sender: self)
+            fab.close()
+        })
+        
+        fab.paddingY = 60.1
+        self.view.addSubview(fab)
+        
+        
         
         // set up the refresh control
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
@@ -472,8 +486,9 @@ print("termino de busqueda")
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-       
+        print("mkdonaldz")
+        print(messagesending)
+        if(messagesending==0){
             let nextScene =  segue.destination as! ReplyMessageViewController
             
             
@@ -488,13 +503,15 @@ print("termino de busqueda")
         nextScene.selectedbusiness =  selectedbusiness
         nextScene.selectedmessage =  selectedmessage
         nextScene.idSender = idSender
+        nextScene.idDestination = idSender
         
     
         
         
     
     }
-
+        messagesending = 0
+    }
   
 
 }

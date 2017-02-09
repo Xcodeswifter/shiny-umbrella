@@ -22,6 +22,7 @@ class ReplyMessageViewController: UIViewController {
     var selectedDate:String = ""
     var selectedmessage:String = ""
     var idSender:Int = 0
+    var idDestination = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,10 +56,10 @@ class ReplyMessageViewController: UIViewController {
     @IBAction func sendReplyMessage(_ sender: Any) {
         let prefs:UserDefaults = UserDefaults.standard
         let iduser:Int = prefs.integer(forKey: "IDUSER") as Int
-        print("id del sender")
-        print(idSender)
+        print("id del destino")
+        print(idDestination)
         let dialog = DialogViewController()
-        let params:[String:AnyObject]=[ "id_sender": idSender as AnyObject, "to": 3 as AnyObject, "subject":"test " as AnyObject,"message":replyText.text as AnyObject]
+        let params:[String:AnyObject]=[ "id_sender": idDestination as AnyObject, "to": iduser as AnyObject, "subject":"test " as AnyObject,"message":replyText.text as AnyObject]
         let handler = AlamoFireRequestHandler()
         handler.processRequest(URL: "https://gct-production.mybluemix.net/inbox_send.php", requestMethod: .post, params: params,completion: { json2 -> () in
             print("respuesta")

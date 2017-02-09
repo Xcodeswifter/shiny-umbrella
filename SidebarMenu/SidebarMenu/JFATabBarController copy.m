@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Josh Adams. All rights reserved.
 //
 
-#import "JFATabBarController.h"
+#import "JFATabBarController copy.h"
 #import "JFAArrowView.h"
 
 @interface JFATabBarController () <UINavigationControllerDelegate, UIScrollViewDelegate>
@@ -28,7 +28,7 @@ typedef enum
 static const CGFloat IPHONE_TAB_BAR_HEIGHT = 49.0;
 static const CGFloat IPAD_TAB_BAR_HEIGHT = 56.0;
 static const CGFloat ARROW_WIDTH = 24.0;
-static const NSUInteger MAX_TAB_COUNT = 4; // maximum tabs on screen at once
+static const NSUInteger MAX_TAB_COUNT = 5; // maximum tabs on screen at once
 static const CGFloat TITLE_BOTTOM_INSET = 26.0;
 static const CGFloat IMAGE_TOP_INSET = 15.0;
 static const CGFloat BUTTON_VERTICAL_INSET = 10;
@@ -231,7 +231,7 @@ static const float TAB_ANIMATION_DURATION = 0.0;
             [self.tabTitles addObject:title];
             if (i == 0)
             {
-                [self setButtonImageAndColor:button image:item.selectedImage color:[UIColor blueColor]];
+                [self setButtonImageAndColor:button image:item.selectedImage color:[UIColor redColor]];
             }
             else
             {

@@ -248,7 +248,7 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
         
         let object2 = masterTrackersUserAttendedAlerts[indexPath.row]
         
-     
+     //hello i am comment
         
         
         cell.nameLabel.adjustsFontSizeToFitWidth=true

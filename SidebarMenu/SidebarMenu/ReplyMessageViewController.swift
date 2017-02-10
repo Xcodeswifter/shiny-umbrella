@@ -59,7 +59,7 @@ class ReplyMessageViewController: UIViewController {
         print("id del destino")
         print(idDestination)
         let dialog = DialogViewController()
-        let params:[String:AnyObject]=[ "id_sender": idDestination as AnyObject, "to": iduser as AnyObject, "subject":"test " as AnyObject,"message":replyText.text as AnyObject]
+        let params:[String:AnyObject]=[ "id_sender": iduser as AnyObject, "to": idDestination as AnyObject, "subject":"test " as AnyObject,"message":replyText.text as AnyObject]
         let handler = AlamoFireRequestHandler()
         handler.processRequest(URL: "https://gct-production.mybluemix.net/inbox_send.php", requestMethod: .post, params: params,completion: { json2 -> () in
             print("respuesta")

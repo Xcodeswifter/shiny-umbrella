@@ -24,7 +24,7 @@ class AlertsReportViewController: UIViewController,UITableViewDataSource,UITable
     var pumpSelected2=0
     var pumpSelected3=0
     var isMapSelected:Bool = false
-    
+    var segueFromController = ""
     var isTrackerMenuSelected = false
     var idtracker:Int = 0
     
@@ -37,6 +37,7 @@ class AlertsReportViewController: UIViewController,UITableViewDataSource,UITable
         alertsReportTable.tableFooterView = UIView(frame: CGRect.zero)
         let prefs:UserDefaults = UserDefaults.standard
         idtracker = prefs.integer(forKey: "IDTRACKER") as Int
+        print(idtracker)
         params  = [ "id_tracker": idtracker as AnyObject ]
         companyLabel.text = prefs.object(forKey: "NAMEBUSINESS") as! String?
         
@@ -79,6 +80,14 @@ class AlertsReportViewController: UIViewController,UITableViewDataSource,UITable
     
     //optimized
     func parseJSON(_ json: JSON) {
+        
+        
+        let dialog = DialogViewController()
+        
+        if(json["alert"].arrayValue.count<=0){
+            
+         dialog.showNoEventReportsFoundDialog()
+        }else{
                     for result in json["alert"].arrayValue {
                 let date = result["id_tracker"].stringValue
                 let pressure = result["date"].stringValue
@@ -90,8 +99,8 @@ class AlertsReportViewController: UIViewController,UITableViewDataSource,UITable
                 
         }
         
-            
-            
+        }
+        
             update()
         
     }
@@ -181,6 +190,25 @@ class AlertsReportViewController: UIViewController,UITableViewDataSource,UITable
     @IBAction func returnToMastersTrackers(_ sender: Any) {
         self.performSegue(withIdentifier: "returnToMastersTracker", sender: self)
         
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        
+        if(segueFromController=="EventReport"){
+        
+        
+        }
+if(segueFromController=="ALOLA"){
+            
+            let destination = segue.destination as! AttendedAlertViewController
+            destination.segueFromController = "AttendedUsersTrackers"
+            
+   
+        }
+
+    
     }
     
     

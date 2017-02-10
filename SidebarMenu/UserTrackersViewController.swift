@@ -250,6 +250,19 @@ class UserTrackersViewController: UIViewController, UITableViewDelegate, UITable
     
     
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        
+        
+            let destination = segue.destination as! AlertsReportViewController
+            destination.segueFromController = "UsersTrackers"
+            
+      
+        
+        
+    }
+    
+    
     
     }
     

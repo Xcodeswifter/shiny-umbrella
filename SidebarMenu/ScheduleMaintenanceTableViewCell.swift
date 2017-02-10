@@ -10,6 +10,12 @@ import UIKit
 
 class ScheduleMaintenanceTableViewCell: UITableViewCell {
 
+    
+    @IBOutlet weak var trackerLabel: UILabel!
+    
+    @IBOutlet weak var isAlarmEnabled: UISwitch!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

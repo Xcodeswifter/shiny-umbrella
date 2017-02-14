@@ -12,6 +12,8 @@ import Alamofire
 
 class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var AttendedOrContactIcon: UIImageView!
+    @IBOutlet weak var AttendedAlertsOrContactLabel: UITextView!
     @IBOutlet weak var companyLabel: UILabel!
     @IBOutlet weak var attendedAlertsTable: UITableView!
     var attendedAlerts = [[String: Any]]()
@@ -36,12 +38,19 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
         print(idtracker)
         if(checkNetworkState()){
             
-            if(segueFromController=="AttendedUsersTrackers"){
+            if(segueFromController=="AttendedUsersTrackers"){ //Normal Users Only
                 print("1")
+                
+                AttendedAlertsOrContactLabel.text = "Attended Alerts"
+                AttendedOrContactIcon.image = UIImage(named: "eventReport")
+
+                
                 requestTrackerListService()
                 
-            }else{
+            }else{//Master users only
                 print("2")
+                AttendedAlertsOrContactLabel.text = "Contacts"
+                AttendedOrContactIcon.image = UIImage(named: "contacts")
                 requestTrackerListService2()
                 
             }
@@ -263,7 +272,9 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
             cell.isAttendedImage.image = UIImage(named: object["answered"] as! String)
             
         }
-        else{
+        
+        
+        if(segueFromController=="MasterTrackers"){
             print("No , AQUI")
             let object2 = masterTrackersUserAttendedAlerts[indexPath.row]
             
@@ -273,6 +284,7 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
             cell.nameLabel.text = object2["name"] as! String?
             cell.attendedDate.text = ""
             
+            
         }
         return cell
         
@@ -281,7 +293,7 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        if(segueFromController == "MasterTrackers"){
         let object2 = masterTrackersUserAttendedAlerts[indexPath.row]
         selectedFullName = object2["name"] as! String
         selectedDestinationId = object2["id"] as! Int
@@ -294,6 +306,8 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
             print("este men")
             segueFromController = "Reply"
             self.performSegue(withIdentifier: "goToReplyMessage", sender: self)
+        }
+        
         }
         
     }
@@ -350,9 +364,13 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
             
             nextScene.selectedFullName =  selectedFullName
             
-            nextScene.selectedbusiness = "Tracker reply"
-            nextScene.selectedmessage =  "Please check maintenance "
+            nextScene.selectedbusiness = ""
+            nextScene.selectedmessage =  ""
             nextScene.idSender = idSender
+            nextScene.msgType = "Compose a new Message"
+            nextScene.newMsg = "New Message"
+            nextScene.subject = "Subject"
+            nextScene.selectedDate = Date().description
             nextScene.idDestination = selectedDestinationId
             
             

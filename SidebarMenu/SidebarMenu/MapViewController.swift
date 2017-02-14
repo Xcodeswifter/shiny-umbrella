@@ -204,6 +204,8 @@ class MapViewController: UIViewController,  MKMapViewDelegate, CLLocationManager
         
         let handler = AlamoFireRequestHandler()
         handler.processRequest(URL: "https://gct-production.mybluemix.net/getpumps_02.php", requestMethod: .post, params: params,completion: { json2 -> () in
+           print("getpumps amigota")
+            print(json2)
             self.parseJSON(json2)
         })
 

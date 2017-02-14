@@ -46,13 +46,15 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         
         //setup floating button
         let fab = KCFloatingActionButton()
-        fab.addItem("Send message ", icon: UIImage(named: "messages")!, handler: { item in
+        fab.buttonColor = UIColor.gray
+        fab.itemButtonColor = UIColor.black
+        fab.addItem("Send message ", icon: UIImage(named: "newmessage")!, handler: { item in
             self.messagesending = 1
             self.performSegue(withIdentifier: "goToMasterTrackers", sender: self)
             fab.close()
         })
         
-        fab.paddingY = 60.1
+        fab.paddingY = 80.1
         self.view.addSubview(fab)
         
         
@@ -500,10 +502,12 @@ print("termino de busqueda")
         
     nextScene.selectedFullName =  selectedFullName
         nextScene.selectedDate =  selectedDate
-        nextScene.selectedbusiness =  selectedbusiness
+        nextScene.subject =  selectedbusiness
         nextScene.selectedmessage =  selectedmessage
         nextScene.idSender = idSender
         nextScene.idDestination = idSender
+        nextScene.msgType = "Reply"
+        nextScene.newMsg = "Write a reply"
         
     
         

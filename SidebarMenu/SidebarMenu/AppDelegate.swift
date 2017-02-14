@@ -244,13 +244,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         
       else  if(PushNotificationMessage.containsIgnoringCase(find: "ready")){
             
-            print("systems ready")
-            var storyboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
-            print("aqui se truena")
-             var viewController: MainScreenController = storyboard.instantiateViewController(withIdentifier: "mainscreen") as! MainScreenController
-            
-            self.window!.rootViewController = viewController
-            self.window!.makeKeyAndVisible()
+//            print("systems ready")
+//            var storyboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
+//            print("aqui se truena")
+//             var viewController: SelectTrackerViewController = storyboard.instantiateViewController(withIdentifier: "trackerselect") as! SelectTrackerViewController
+//            
+//            self.window!.rootViewController = viewController
+//            self.window!.makeKeyAndVisible()
 
         
         }

@@ -1,7 +1,7 @@
 //
 //  ScheduleMaintenanceViewController.swift
 //  GCTRACKV2BETA
-//
+//Class used for schedule maintenance notificactions in 7, 15, and 30 day intervals
 //  Created by Apple on 09/02/17.
 //  Copyright © 2017 AppCoda. All rights reserved.
 //
@@ -55,11 +55,27 @@ class ScheduleMaintenanceViewController: UIViewController, UITableViewDelegate, 
                
                 let idTracker = result["idTracker"].stringValue
                 let nameBusiness = result["nameLocation"].stringValue
+                let maintenance_push = result["maintenance_push"].intValue
               
-                                  let obj = ["Name": nameBusiness,  "idtracker":idTracker] as [String : Any]
+                print("estatus")
+                print(maintenance_push)
+                if(maintenance_push==0){
+                let obj = ["Name": nameBusiness,  "idtracker":idTracker, "maintenance":false ] as [String : Any]
                     
                     trackerlist.append(obj as! [String : Any])
                 }
+                
+                
+                
+                if(maintenance_push==1){
+                    let obj = ["Name": nameBusiness,  "idtracker":idTracker, "maintenance":true] as [String : Any]
+                    
+                    trackerlist.append(obj as! [String : Any])
+                }
+                
+                
+            }
+                
                 
             }
             update()
@@ -109,7 +125,7 @@ class ScheduleMaintenanceViewController: UIViewController, UITableViewDelegate, 
         
         let object = trackerlist[indexPath.row]
 
-        cell.isAlarmEnabled.isOn = false
+        cell.isAlarmEnabled.isOn = object["maintenance"] as! Bool!
         cell.trackerLabel.text = object["Name"] as! String!
         return cell
 
@@ -123,13 +139,22 @@ class ScheduleMaintenanceViewController: UIViewController, UITableViewDelegate, 
         let cell = tableView.cellForRow(at: indexPath) as! ScheduleMaintenanceTableViewCell
         let prefs:UserDefaults = UserDefaults.standard
         let iduser:Int = prefs.integer(forKey: "IDUSER") as Int
+        var isChecked = 0
         
-        cell.isAlarmEnabled.setOn(true, animated: true)
+        
+        if(cell.isAlarmEnabled.isOn){//Switch is on
+            isChecked = 0
+        cell.isAlarmEnabled.setOn(false, animated: true)
+        }
+        else{//Switch is off
+            isChecked = 1
+            cell.isAlarmEnabled.setOn(true, animated: true)
+ 
+        }
         
         let object = trackerlist[indexPath.row]
-print("texto")
-        print(cell.isAlarmEnabled.isTouchInside)
-        setMaintenance(idTracker: object["idtracker"] as! String!, idUser:iduser , checkbox: cell.isAlarmEnabled.isOn)
+        print(object["idtracker"] as! String!)
+        setMaintenance(idTracker: object["idtracker"] as! String!, idUser:iduser , checkbox: isChecked)
    
     
     
@@ -139,33 +164,20 @@ print("texto")
     
     
     
-    func setMaintenance(idTracker:String,idUser:Int, checkbox:Bool){
+    func setMaintenance(idTracker:String,idUser:Int, checkbox:Int){
         
-        var checkboxState = 0
-        if(checkbox){
-            checkboxState=1
-        }
-        
-        
-        let params:[String:AnyObject]=[ "id_user": idUser as AnyObject, "id_tracker":idTracker as AnyObject, "active":checkboxState as AnyObject]
+        print("checkbox")
+        print(checkbox)
+        let params:[String:AnyObject]=[ "id_user": idUser as AnyObject, "id_tracker":idTracker as AnyObject, "active":checkbox as AnyObject]
         let handler = AlamoFireRequestHandler()
         handler.processRequest(URL: "https://gct-production.mybluemix.net/setmaintenancepush.php", requestMethod: .post, params: params,completion: { json2 -> () in
-print(json2)
+            print("check status")
+            print(json2)
         
         })
         
         
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-
+    
 }

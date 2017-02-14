@@ -39,7 +39,6 @@
 		7245C1BA1DC2B6CC00ABCC00 /* SinglePumpStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7245C1B91DC2B6CC00ABCC00 /* SinglePumpStatusViewController.swift */; };
 		7245C1BC1DC2B6EC00ABCC00 /* SinglePumpStatusTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7245C1BB1DC2B6EC00ABCC00 /* SinglePumpStatusTableViewCell.swift */; };
 		7245C1BE1DC2D1CC00ABCC00 /* SystemInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7245C1BD1DC2D1CC00ABCC00 /* SystemInfoTableViewCell.swift */; };
-		724888791DD3A085007059C6 /* CustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724888781DD3A085007059C6 /* CustomSegue.swift */; };
 		7254F8EE1DB7E55200BDC3D3 /* AlertedTrackersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7254F8ED1DB7E55200BDC3D3 /* AlertedTrackersViewController.swift */; };
 		7254F8F01DB7E60000BDC3D3 /* AlertedTrackerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7254F8EF1DB7E60000BDC3D3 /* AlertedTrackerTableViewCell.swift */; };
 		727C282E1DADA486006BD703 /* pumpInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727C282D1DADA486006BD703 /* pumpInfoViewController.swift */; };
@@ -174,7 +173,6 @@
 		7245C1B91DC2B6CC00ABCC00 /* SinglePumpStatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SinglePumpStatusViewController.swift; path = SidebarMenu/SinglePumpStatusViewController.swift; sourceTree = "<group>"; };
 		7245C1BB1DC2B6EC00ABCC00 /* SinglePumpStatusTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SinglePumpStatusTableViewCell.swift; path = SidebarMenu/SinglePumpStatusTableViewCell.swift; sourceTree = "<group>"; };
 		7245C1BD1DC2D1CC00ABCC00 /* SystemInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SystemInfoTableViewCell.swift; path = SidebarMenu/SystemInfoTableViewCell.swift; sourceTree = "<group>"; };
-		724888781DD3A085007059C6 /* CustomSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegue.swift; sourceTree = "<group>"; };
 		7254F8ED1DB7E55200BDC3D3 /* AlertedTrackersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = AlertedTrackersViewController.swift; path = SidebarMenu/AlertedTrackersViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		7254F8EF1DB7E60000BDC3D3 /* AlertedTrackerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertedTrackerTableViewCell.swift; sourceTree = "<group>"; };
 		727C282D1DADA486006BD703 /* pumpInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = pumpInfoViewController.swift; path = SidebarMenu/pumpInfoViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -319,6 +317,40 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		180467931E527DE200A0D27B /* KCFloatingActionButton */ = {
+			isa = PBXGroup;
+			children = (
+				189B28261E4A60320051BFCD /* KCFABManager.swift */,
+				189B28271E4A60320051BFCD /* KCFABViewController.swift */,
+				189B28281E4A60320051BFCD /* KCFABWindow.swift */,
+				189B28291E4A60320051BFCD /* KCFloatingActionButton.h */,
+				189B282A1E4A60320051BFCD /* KCFloatingActionButton.swift */,
+				189B282B1E4A60320051BFCD /* KCFloatingActionButtonDelegate.swift */,
+				189B282C1E4A60320051BFCD /* KCFloatingActionButtonItem.swift */,
+			);
+			name = KCFloatingActionButton;
+			sourceTree = "<group>";
+		};
+		180467941E527E1300A0D27B /* JFTABarControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CEE644DB1E414B920065A9E1 /* JFAArrowView.h */,
+				CEE644DC1E414B920065A9E1 /* JFAArrowView.m */,
+				CEE644DD1E414B920065A9E1 /* JFATabBarController copy.h */,
+				CEE644DE1E414B920065A9E1 /* JFATabBarController copy.m */,
+			);
+			name = JFTABarControllers;
+			sourceTree = "<group>";
+		};
+		180467951E527E4800A0D27B /* REST APIs */ = {
+			isa = PBXGroup;
+			children = (
+				72353BF81DC959A200C64937 /* NetworkState.swift */,
+				72E024CA1DC7E5B8007E73D1 /* AlamoFireRequestHandler.swift */,
+			);
+			name = "REST APIs";
+			sourceTree = "<group>";
+		};
 		723991D71DE654C700A52266 /* viewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -391,20 +423,6 @@
 		723991D91DE6558C00A52266 /* utilities */ = {
 			isa = PBXGroup;
 			children = (
-				72353BF81DC959A200C64937 /* NetworkState.swift */,
-				189B28261E4A60320051BFCD /* KCFABManager.swift */,
-				189B28271E4A60320051BFCD /* KCFABViewController.swift */,
-				189B28281E4A60320051BFCD /* KCFABWindow.swift */,
-				189B28291E4A60320051BFCD /* KCFloatingActionButton.h */,
-				189B282A1E4A60320051BFCD /* KCFloatingActionButton.swift */,
-				189B282B1E4A60320051BFCD /* KCFloatingActionButtonDelegate.swift */,
-				189B282C1E4A60320051BFCD /* KCFloatingActionButtonItem.swift */,
-				CEE644DB1E414B920065A9E1 /* JFAArrowView.h */,
-				CEE644DC1E414B920065A9E1 /* JFAArrowView.m */,
-				CEE644DD1E414B920065A9E1 /* JFATabBarController copy.h */,
-				CEE644DE1E414B920065A9E1 /* JFATabBarController copy.m */,
-				724888781DD3A085007059C6 /* CustomSegue.swift */,
-				72E024CA1DC7E5B8007E73D1 /* AlamoFireRequestHandler.swift */,
 				99BD15C41D872F5E0047F371 /* Locations.swift */,
 				72F6BADC1DEA79650030CC48 /* AlarmSound.swift */,
 				72A056CF1DF23DDF00D09198 /* dateComparators.swift */,
@@ -506,6 +524,9 @@
 		F47029F21A7F27DB00E30A3C /* SidebarMenu */ = {
 			isa = PBXGroup;
 			children = (
+				180467951E527E4800A0D27B /* REST APIs */,
+				180467941E527E1300A0D27B /* JFTABarControllers */,
+				180467931E527DE200A0D27B /* KCFloatingActionButton */,
 				CED70BE41E270D3B00197EBA /* GCTrack2.entitlements */,
 				723991DA1DE655B200A52266 /* Storyboards */,
 				723991D91DE6558C00A52266 /* utilities */,
@@ -888,7 +909,6 @@
 				99563A4E1D8079A600DFC801 /* DataLoggedTableViewCell.swift in Sources */,
 				99EB05FF1D7F85AC0029EE15 /* DataLogViewController.swift in Sources */,
 				18E464751E4D129000C09CC4 /* ScheduleMaintenanceTableViewCell.swift in Sources */,
-				724888791DD3A085007059C6 /* CustomSegue.swift in Sources */,
 				99BD15C51D872F5E0047F371 /* Locations.swift in Sources */,
 				7254F8EE1DB7E55200BDC3D3 /* AlertedTrackersViewController.swift in Sources */,
 				CE0C4EE91E2FE1D200D20262 /* ReplyMessageViewController.swift in Sources */,

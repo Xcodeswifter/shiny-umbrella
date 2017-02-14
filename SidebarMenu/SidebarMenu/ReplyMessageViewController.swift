@@ -12,17 +12,23 @@ import Alamofire
 
 class ReplyMessageViewController: UIViewController {
 
+    @IBOutlet weak var messageTypeLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var subjectLabel: UILabel!
     @IBOutlet weak var senderLabel: UILabel!
+    @IBOutlet weak var subjectLabel: UITextView!
     @IBOutlet weak var messageText: UITextView!
     @IBOutlet weak var replyText: UITextView!
+    @IBOutlet weak var newMessageLabel: UILabel!
     var selectedFullName:String = ""
     var selectedbusiness:String = ""
     var selectedDate:String = ""
     var selectedmessage:String = ""
     var idSender:Int = 0
+    var subject = ""
     var idDestination = 0
+    var newMsg = ""
+    var msgType = ""
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,6 +37,9 @@ class ReplyMessageViewController: UIViewController {
         subjectLabel.text = selectedbusiness
         messageText.text = selectedmessage
         messageText.textColor = UIColor.white
+        messageTypeLabel.text = msgType
+        newMessageLabel.text = newMsg
+        subjectLabel.text = subject
       messageText.font = UIFont(name:"SF UI Text", size:17.0)
         
 

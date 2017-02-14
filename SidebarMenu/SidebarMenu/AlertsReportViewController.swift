@@ -194,13 +194,13 @@ class AlertsReportViewController: UIViewController,UITableViewDataSource,UITable
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        print(segueFromController)
         
         if(segueFromController=="EventReport"){
         
         
         }
-if(segueFromController=="ALOLA"){
+if(segueFromController=="UsersTrackers"){
             
             let destination = segue.destination as! AttendedAlertViewController
             destination.segueFromController = "AttendedUsersTrackers"

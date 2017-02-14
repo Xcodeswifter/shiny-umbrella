@@ -42,11 +42,11 @@ static const CGFloat IPHONE_SIMULATOR_HEIGHT = 480;
 {
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
     {
-        return IPAD_TAB_BAR_HEIGHT;
+        return IPAD_TAB_BAR_HEIGHT+12;
     }
     else
     {
-        return IPHONE_TAB_BAR_HEIGHT;
+        return IPHONE_TAB_BAR_HEIGHT+12;
     }
 }
 

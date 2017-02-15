@@ -42,6 +42,7 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
                 print("1")
                 
                 AttendedAlertsOrContactLabel.text = "Attended Alerts"
+                setTextViewAttributes(label:AttendedAlertsOrContactLabel)
                 AttendedOrContactIcon.image = UIImage(named: "eventReport")
 
                 
@@ -50,7 +51,7 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
             }else{//Master users only
                 print("2")
                 AttendedAlertsOrContactLabel.text = "Contacts"
-                AttendedOrContactIcon.image = UIImage(named: "contacts")
+                setTextViewAttributes(label:AttendedAlertsOrContactLabel)
                 requestTrackerListService2()
                 
             }
@@ -79,6 +80,17 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
         companyLabel.text = prefs?.object(forKey: "NAMEBUSINESS") as! String?
     }
     
+    
+    
+    
+    func setTextViewAttributes(label:UITextView){
+       
+        label.textColor = UIColor.white
+        label.font = UIFont(name:"SF UI Text", size:21.0)
+    
+    
+    }
+
     
     
     func checkNetworkState()->Bool{
@@ -140,7 +152,7 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
             print(time_snooze)
             
             if(time_snooze=="null"){
-                TIME_SNOOZE_STATE = "unavailable"
+                TIME_SNOOZE_STATE = "Not Attended"
                 
                 
             }
@@ -261,6 +273,8 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
         let cell: AttendedAlertsTableViewCell = self.attendedAlertsTable.dequeueReusableCell(withIdentifier: "celldota") as! AttendedAlertsTableViewCell
         
         
+        cell.selectionStyle = .none
+        
         if(segueFromController=="AttendedUsersTrackers"){
             print("entra aqui")
             let object = attendedAlerts[indexPath.row]
@@ -280,8 +294,9 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
             
             
             
-            cell.nameLabel.adjustsFontSizeToFitWidth=true
             cell.nameLabel.text = object2["name"] as! String?
+            cell.nameLabel.sizeThatFits(CGSize(width: 520, height: 320))
+            cell.nameLabel.font = cell.nameLabel.font.withSize(24)
             cell.attendedDate.text = ""
             
             

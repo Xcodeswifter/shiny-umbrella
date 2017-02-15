@@ -244,6 +244,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         
       else  if(PushNotificationMessage.containsIgnoringCase(find: "ready")){
             
+            
 //            print("systems ready")
 //            var storyboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
 //            print("aqui se truena")
@@ -251,14 +252,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
 //            
 //            self.window!.rootViewController = viewController
 //            self.window!.makeKeyAndVisible()
-
+//
         
         }
             
         else  if(PushNotificationMessage.containsIgnoringCase(find: "message")){
             
             print("you have a message")
-            
+//          this code snippet causes the app to crash
 //            var storyboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
 //            var viewController: MainScreenController = storyboard.instantiateViewController(withIdentifier: "mainscreen") as! MainScreenController
 //            

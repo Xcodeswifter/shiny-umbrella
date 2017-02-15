@@ -13,6 +13,8 @@ class MainScreenController: UITabBarController, UITabBarControllerDelegate,UITex
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        print("Master view controller")
         self.navigationController?.delegate = self
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         var navigationBarAppearace = UINavigationBar.appearance()
@@ -30,7 +32,8 @@ class MainScreenController: UITabBarController, UITabBarControllerDelegate,UITex
         moreNavitem?.rightBarButtonItem?.title = "EDITARTB"
         moreNavitem?.rightBarButtonItem?.isEnabled = false
         
-        
+        let index = 1 //0 to 5
+        viewControllers?.remove(at: index)
         if (idUser <= 0) {
             
             

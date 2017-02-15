@@ -32,6 +32,9 @@ class AlertsReportViewController: UIViewController,UITableViewDataSource,UITable
     //optimized
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(segueFromController)
+        segueFromController = "ReturnBack"
         alertsReportTable.delegate = self
         alertsReportTable.dataSource = self
         alertsReportTable.tableFooterView = UIView(frame: CGRect.zero)
@@ -171,7 +174,7 @@ class AlertsReportViewController: UIViewController,UITableViewDataSource,UITable
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-    
+    segueFromController = "UsersTrackers"
         let object = datalog[(indexPath as NSIndexPath).row]
         print("cell selected")
         let prefs = UserDefaults.standard
@@ -183,29 +186,42 @@ class AlertsReportViewController: UIViewController,UITableViewDataSource,UITable
     }
     
     
-   
-    
-    
-
-    @IBAction func returnToMastersTrackers(_ sender: Any) {
+    @IBAction func retunrBack(_ sender: Any) {
+        
+        segueFromController = "ReturnBack"
         self.performSegue(withIdentifier: "returnToMastersTracker", sender: self)
+
         
     }
-    
-    
+   
+   
+       
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print(segueFromController)
+        print("POR FAAAAVORR")
         
+        
+        if(segueFromController=="ReturnBack"){
+            let destination = segue.destination as! UserTrackersViewController
+            destination.segueFromController = "UsersTrackers"
+            
+        }
         if(segueFromController=="EventReport"){
         
         
         }
-if(segueFromController=="UsersTrackers"){
+            if(segueFromController=="UsersTrackers"){
             
             let destination = segue.destination as! AttendedAlertViewController
             destination.segueFromController = "AttendedUsersTrackers"
             
    
+        }
+        
+        if(segueFromController=="ReturnBack"){
+            let destination = segue.destination as! UserTrackersViewController
+            destination.segueFromController = "UsersTrackers"
+            
         }
 
     

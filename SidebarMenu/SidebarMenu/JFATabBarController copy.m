@@ -163,6 +163,8 @@ static const float TAB_ANIMATION_DURATION = 0.0;
     return result;
 }
 
+
+//Build and generate the tab bar with all items
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -254,6 +256,7 @@ static const float TAB_ANIMATION_DURATION = 0.0;
         self.rightArrowView = [[JFAArrowView alloc] initWithDirection:ARROW_DIRECTION_RIGHT];
         [self.view addSubview:self.rightArrowView];
         [self setBarAndButtonPositions];
+        
     }
 }
 

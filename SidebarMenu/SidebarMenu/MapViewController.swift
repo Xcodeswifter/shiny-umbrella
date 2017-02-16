@@ -84,7 +84,9 @@ class MapViewController: UIViewController,  MKMapViewDelegate, CLLocationManager
         }
         
         if segueFromController=="SelectTrackerViewController"{
-            print("main menu amigo")
+            print("returning to select tracker from map")
+            
+            
             self.performSegue(withIdentifier: "backtoselectracker", sender: nil)
             
         }
@@ -349,14 +351,13 @@ class MapViewController: UIViewController,  MKMapViewDelegate, CLLocationManager
     
     
     
-        //MARK Navigation
     
-//    @IBAction func returntoselectracker(_ sender: AnyObject) {
-//        print("No funciona esto wey")
-//        self.performSegue(withIdentifier: "returntoselectracker", sender: self)
-//        
-//    }
-//    
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination as! SelectTrackerViewController
+        destination.segueFromController = "MapViewController"
+        
+        
+        
+    }
     
 }

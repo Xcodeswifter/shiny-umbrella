@@ -45,13 +45,13 @@ class PumpStatusViewController: UIViewController, UITableViewDelegate, UITableVi
     
     
     @IBAction func unwindToPumpStatus(segue: UIStoryboardSegue) {}
-
+    
     
     
     @IBAction func goToMap(_ sender: Any) {
         isMapSelected=true
-    self.performSegue(withIdentifier: "pumpstatustomap", sender: self)
-    
+        self.performSegue(withIdentifier: "pumpstatustomap", sender: self)
+        
     }
     
     func requestPumpStatusData(){
@@ -74,7 +74,6 @@ class PumpStatusViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func parseJSON(_ json: JSON) {
         
-        
         if(!checkIfDataLogIsEmpty(json: json)){
             for result in json["pumps"].arrayValue {
                 let id = result["pumpID"].stringValue
@@ -92,11 +91,14 @@ class PumpStatusViewController: UIViewController, UITableViewDelegate, UITableVi
     
     
     func checkIfDataLogIsEmpty(json:JSON)->Bool{
-                if(json["pumps"].arrayValue.count<=0){
-            let dialog = DialogViewController()
-                    dialog.noLogsFoundDialog(type: "pumps")
-                    
-                    stopLoading()
+        if(json["pumps"].arrayValue.count<=0){
+            
+            showErrorMessage()
+            
+            
+            stopLoading()
+            
+            
             pumpStatusTitleLabel.text = "No pumps Found"
             self.setTextViewAttributes(pumpStatusLabel: pumpStatusLabel)
             return true
@@ -106,6 +108,13 @@ class PumpStatusViewController: UIViewController, UITableViewDelegate, UITableVi
         
     }
     
+    func showErrorMessage(){
+        let alert = UIAlertController(title: "Pump Status", message: "No pumps found for this tracker", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        
+        
+    }
     
     
     func update() {
@@ -198,13 +207,11 @@ class PumpStatusViewController: UIViewController, UITableViewDelegate, UITableVi
     func checkIfDataLogContainsOnlyOneElement(object:[String:String],cell:PumpStatusTableViewCell)->Bool{
         if(datalog.count==1){
             if(object["pumpType"]=="0"){
-
+                print("only one element")
                 pumpStatusTitleLabel.text = "No pumps Found"
-setTextViewAttributes(pumpStatusLabel: pumpStatusTitleLabel)
-            
-               let dialog = DialogViewController()
-                dialog.noLogsFoundDialog(type:"pumps")
+                setTextViewAttributes(pumpStatusLabel: pumpStatusTitleLabel)
                 
+                showErrorMessage()
                 return true
                 
             }
@@ -233,16 +240,16 @@ setTextViewAttributes(pumpStatusLabel: pumpStatusTitleLabel)
         textLabel.textColor = UIColor.white
         textLabel.font = UIFont(name:"SF UI Text", size:18.0)
         
-
+        
         
         
     }
-
+    
     
     func checkPumpType(indexPath:IndexPath){
         let object = datalog[(indexPath as NSIndexPath).row]
         let statusMessage = object["status"]! as String
-       print()
+        print()
         
         if(object["pumpType"]=="1"){
             pumpID = object["pumpID"]!
@@ -329,10 +336,10 @@ setTextViewAttributes(pumpStatusLabel: pumpStatusTitleLabel)
     
     
     @IBAction func goToSelectTracker(_ sender: Any) {
-    isTrackerMenuSelected = true
-    self.performSegue(withIdentifier: "pumpStatusToSelectTracker", sender: self)
-    
-    
+        isTrackerMenuSelected = true
+        self.performSegue(withIdentifier: "pumpStatusToSelectTracker", sender: self)
+        
+        
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(isMapSelected){
@@ -340,13 +347,13 @@ setTextViewAttributes(pumpStatusLabel: pumpStatusTitleLabel)
             let destination = segue.destination as! MapViewController
             destination.segueFromController = "PumpStatusViewController"
         }
-
+        
         if(isTrackerMenuSelected){
             isTrackerMenuSelected=false
             let destination = segue.destination as! SelectTrackerViewController
             destination.segueFromController = "PumpStatusViewController"
         }
-
+        
         
         
         

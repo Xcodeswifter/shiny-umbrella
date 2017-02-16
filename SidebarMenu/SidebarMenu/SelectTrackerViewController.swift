@@ -28,8 +28,10 @@ class SelectTrackerViewController: UIViewController, UITableViewDelegate, UITabl
         trackerTable.delegate = self
         trackerTable.dataSource = self
         loadingSpinner.startAnimating()
+        
         pushNotificationRequest.requestUserPushNotification()//called once
         if(checkNetworkState()){
+            setupDefaultValues()
             requestTrackerListService()
         }
     }
@@ -42,6 +44,23 @@ class SelectTrackerViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     
+    //if no tracker is choosen the main screen will show this default values instead, this is in order to prevent crashes
+    func setupDefaultValues(){
+        let prefs:UserDefaults = UserDefaults.standard
+        
+        prefs.set(0,  forKey: "IDTRACKER")
+        prefs.synchronize()
+        prefs.set("Choose a Tracker",  forKey: "NAMEBUSINESS")
+        
+        
+        prefs.synchronize()
+        prefs.set("Tracker Address",  forKey: "ADDRESS")
+        
+        prefs.synchronize()
+        
+        
+        
+    }
     
     func checkNetworkState()->Bool{
         let dialog = DialogViewController()
@@ -281,6 +300,13 @@ class SelectTrackerViewController: UIViewController, UITableViewDelegate, UITabl
         if segueFromController=="DataLogViewController"{
             print("pressure amigo")
             self.performSegue(withIdentifier: "returnToDataLogFromSelectTracker", sender: nil)
+            
+        }
+        
+        
+        if segueFromController=="MapViewController"{
+            self.performSegue(withIdentifier: "returnToMainScreenFromSelectTracker", sender: self)
+            
             
         }
         

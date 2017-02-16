@@ -155,7 +155,6 @@ class UserTrackersViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let prefs:UserDefaults = UserDefaults.standard
         
         let cell:UsersTrackerTableViewCell = self.userTrackersTable.dequeueReusableCell(withIdentifier: "zeldah") as! UsersTrackerTableViewCell
         

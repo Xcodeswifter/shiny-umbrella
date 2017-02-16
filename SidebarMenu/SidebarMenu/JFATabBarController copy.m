@@ -67,7 +67,7 @@ static const CGFloat IPHONE_SIMULATOR_HEIGHT = 480;
     {
         _tabTitles = [NSMutableArray new];
     }
-    return _tabTitles;
+        return _tabTitles;
 }
 
 - (NSMutableArray *)tabButtons
@@ -76,7 +76,11 @@ static const CGFloat IPHONE_SIMULATOR_HEIGHT = 480;
     {
         _tabButtons = [NSMutableArray new];
     }
+   
+
     return _tabButtons;
+
+
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -170,9 +174,13 @@ static const float TAB_ANIMATION_DURATION = 0.0;
     [super viewWillAppear:animated];
     if ([self.viewControllers count] > MAX_TAB_COUNT && ![self.tabButtons count])
     {
+        NSLog(@"COUNT");
+        NSLog(@"%lu", self.viewControllers.count);
+        NSLog(@"%lu", MAX_TAB_COUNT);
         self.moreNavigationController.delegate = self;
         self.barView.backgroundColor = [UIColor blackColor];
-        NSUInteger tabCount = [self.viewControllers count];
+       NSUInteger tabCount = [self.viewControllers count];
+        
         for (int i = 0; i < tabCount; i++)
         {
             UIViewController *vc = self.viewControllers[i];
@@ -180,8 +188,10 @@ static const float TAB_ANIMATION_DURATION = 0.0;
             UIButton *button = [UIButton new];
             UIBarButtonSystemItem systemItem = [[item valueForKey:@"systemItem"] integerValue];
             NSString *title;
-            if (systemItem == 0 && item.title)
+            if (systemItem == 0 && item.title )
             {
+                
+                
                 title = item.title;
             }
             else
@@ -229,16 +239,29 @@ static const float TAB_ANIMATION_DURATION = 0.0;
                         break;
                 }
             }
+            //end of the else clause and switch clause
+            
+            
+            
+            
             [button setTitle:title forState:UIControlStateNormal];
             [self.tabTitles addObject:title];
-            if (i == 0)
+                 
+            
+            if (i == 0) //first item in the tab bar
             {
                 [self setButtonImageAndColor:button image:item.selectedImage color:[UIColor redColor]];
             }
-            else
+            else  //the rest of the items in the tab bar
             {
-                [self setButtonImageAndColor:button image:item.selectedImage color:[UIColor lightGrayColor]];
+                
+                                [self setButtonImageAndColor:button image:item.selectedImage color:[UIColor lightGrayColor]];
+                
+                
             }
+            
+            
+            
             [button.titleLabel setFont:[UIFont systemFontOfSize:LABEL_SIZE]];
             UILabel *titleLabel = [UILabel new];
             titleLabel.text = title;
@@ -247,17 +270,38 @@ static const float TAB_ANIMATION_DURATION = 0.0;
             [button setTitleEdgeInsets:UIEdgeInsetsMake(0.0, -item.selectedImage.size.width, -TITLE_BOTTOM_INSET, 0.0)];
             [button setImageEdgeInsets:UIEdgeInsetsMake(-IMAGE_TOP_INSET, 0.0, 0.0, -titleLabel.bounds.size.width)];
             [button addTarget:self action:@selector(setTab:) forControlEvents:UIControlEventTouchUpInside];
-            [self.barView addSubview:button];
+          
+            
+            
+            
+            
+            if([title isEqual:@"Maintenance"]){
+                
+               button.tag = 2;
+            
+            }
+            
+                
+                [self.barView addSubview:button];
+          
+            
+            
             [self.tabButtons addObject:button];
-        }
+             
+            
+            
+        } //end of the for loop
+        
+        
         [self.view addSubview:self.barView];
         self.leftArrowView = [[JFAArrowView alloc] initWithDirection:ARROW_DIRECTION_LEFT];
         [self.view addSubview:self.leftArrowView];
         self.rightArrowView = [[JFAArrowView alloc] initWithDirection:ARROW_DIRECTION_RIGHT];
         [self.view addSubview:self.rightArrowView];
         [self setBarAndButtonPositions];
+    
         
-    }
+           }
 }
 
 - (void)viewDidLayoutSubviews {
@@ -291,6 +335,15 @@ static const float TAB_ANIMATION_DURATION = 0.0;
     for (int i = 0; i < tabCount; i++)
     {
         UIView *button = [self.barView subviews][i];
+        
+        NSLog(@"BUTTON");
+        NSLog(@"%ld", (long)[button tag]);
+        if([button tag]==2){
+            NSLog(@"ESCONDETE  AMIGO ");
+
+            button.hidden = YES;
+            
+        }
         CGRect buttonFrame = CGRectMake(i * tabWidth, BUTTON_VERTICAL_INSET, tabWidth, BUTTON_HEIGHT);
         button.frame = buttonFrame;
     }

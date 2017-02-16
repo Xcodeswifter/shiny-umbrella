@@ -67,11 +67,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         print("por aqui tuvo que haber entrado")
         if let notification = launchOptions?[UIApplicationLaunchOptionsKey.remoteNotification] as? [String: AnyObject] {
             
-            var storyboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
-            var viewController: AlarmViewController = storyboard.instantiateViewController(withIdentifier: "alarm") as! AlarmViewController
-            
-            window?.rootViewController = viewController
-            window?.makeKeyAndVisible()
+//            var storyboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
+//            var viewController: AlarmViewController = storyboard.instantiateViewController(withIdentifier: "alarm") as! AlarmViewController
+//            
+//            window?.rootViewController = viewController
+//            window?.makeKeyAndVisible()
             
         } else {
             //Do nothing

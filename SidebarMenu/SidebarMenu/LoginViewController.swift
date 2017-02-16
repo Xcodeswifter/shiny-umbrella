@@ -98,6 +98,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 let prefs:UserDefaults = UserDefaults.standard
                 prefs.set(json2["id_user"].intValue,  forKey: "IDUSER")
                 prefs.synchronize()
+                prefs.set(json2["master"].intValue,  forKey: "MASTER")
+
+                prefs.synchronize()
+                print(json2)
                 self.performSegue(withIdentifier: "termsandconditions", sender: self)
                 
                 

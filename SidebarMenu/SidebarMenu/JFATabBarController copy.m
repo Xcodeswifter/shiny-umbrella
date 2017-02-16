@@ -168,10 +168,36 @@ static const float TAB_ANIMATION_DURATION = 0.0;
 }
 
 
+
+-(void) viewDidAppear:(BOOL)animated{
+    
+    [super viewDidAppear:animated];
+   
+}
+
+
+
 //Build and generate the tab bar with all items
 - (void)viewWillAppear:(BOOL)animated
 {
+    
+    
+    //initalize NSUserDefaults to check if user is master
+    
+    
+    
     [super viewWillAppear:animated];
+    
+    NSLog(@"VIEW WILL APEAR");
+
+    NSString * MASTER_KEY    =  @"MASTER";
+    NSLog(@"HOLA PAPU");
+    NSLog(@"%ld", (long)[[NSUserDefaults standardUserDefaults] integerForKey:@"MASTER"]);
+    
+    NSInteger isMaster = (long)[[NSUserDefaults standardUserDefaults] integerForKey:@"MASTER"];
+    NSLog(@"%ld", isMaster);
+    
+
     if ([self.viewControllers count] > MAX_TAB_COUNT && ![self.tabButtons count])
     {
         NSLog(@"COUNT");
@@ -273,14 +299,30 @@ static const float TAB_ANIMATION_DURATION = 0.0;
           
             
             
+            //check if user is master, the rest of the loop will continue normally, otherwise it will check the buttons to hide the
+            //options exclusively to master users
             
             
+            //the user is not a master
+            if(isMaster==0){
+                NSLog(@"NO SOY MASTER ");
             if([title isEqual:@"Maintenance"]){
                 
                button.tag = 2;
             
             }
+                
+                if([title isEqual:@"Events"]){
+                    
+                    button.tag = 3;
+                    
+                }
+                
             
+        }
+        
+        
+        
                 
                 [self.barView addSubview:button];
           
@@ -340,10 +382,17 @@ static const float TAB_ANIMATION_DURATION = 0.0;
         NSLog(@"%ld", (long)[button tag]);
         if([button tag]==2){
             NSLog(@"ESCONDETE  AMIGO ");
-
-            button.hidden = YES;
-            
+            //button.hidden = YES;
+     button.removeFromSuperview;
+            tabCount = tabCount -1;
         }
+        if([button tag]==3){
+            NSLog(@"ESCONDETE  AMIGOte ");
+            //button.hidden = YES;
+            button.removeFromSuperview;
+            tabCount = tabCount -1;
+        }
+        
         CGRect buttonFrame = CGRectMake(i * tabWidth, BUTTON_VERTICAL_INSET, tabWidth, BUTTON_HEIGHT);
         button.frame = buttonFrame;
     }

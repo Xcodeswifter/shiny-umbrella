@@ -203,6 +203,8 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
     func checkifIdUserIsCorrect(idUser:Int, accepted:Int){
         
         if (idUser <= 0) {
+            print("muerete cabron")
+            
             self.performSegue(withIdentifier: "logout", sender: self)
         }
         
@@ -400,7 +402,11 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
                                                 
                                                 defaults.set(-1, forKey: "IDUSER")
                                                 defaults.set(0, forKey:"ACCEPTED")
+                                                
+                                                defaults.set(0, forKey:"MASTER")
+
                                                 defaults.synchronize()
+                                                
                                                 
                                                 self.performSegue(withIdentifier: "logout", sender: self)
                                                 

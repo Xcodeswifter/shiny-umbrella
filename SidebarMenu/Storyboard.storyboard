@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -170,10 +170,10 @@
             </objects>
             <point key="canvasLocation" x="976.81159420289862" y="293.47826086956525"/>
         </scene>
-        <!--trackerselect-->
+        <!--mainmenu-->
         <scene sceneID="3Fl-YB-17T">
             <objects>
-                <viewControllerPlaceholder storyboardName="MainStoryboard" referencedIdentifier="trackerselect" id="APq-jA-1q8" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="MainStoryboard" referencedIdentifier="mainmenu" id="APq-jA-1q8" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sg8-YN-2R8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3220" y="-192"/>
@@ -373,7 +373,7 @@ YOU UNDERSTAND AND AGREE THAT YOU ARE RESPONSIBLE FOR ALL CONTENT AVAILABLE THRO
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gUE-6z-ITE" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedStatusBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9vf-u0-C8N">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="9vf-u0-C8N">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

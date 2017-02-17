@@ -32,6 +32,7 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
         print("View did load")
         stopAlarm()
         UIApplication.shared.applicationIconBadgeNumber = 0
+        requestUserNotifications()
         checkForAlertedTrackers()
         loadData()
         
@@ -50,6 +51,14 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
         checkForAlertedTrackers()
         loadData()
         
+    }
+    
+    
+    func requestUserNotifications(){
+        let pushNotificationRequest:AppDelegate = AppDelegate()
+        pushNotificationRequest.requestUserPushNotification()//called once
+
+
     }
     
     
@@ -90,6 +99,26 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
         trackerAddressButton.setTitle( prefs.object(forKey: "ADDRESS") as! String?, for: .normal)
       
         print("los datos amigos")
+        
+        if(prefs.object(forKey: "ADDRESS")==nil){
+           
+            prefs.set("Address", forKey: "ADDRESS")
+            prefs.synchronize()
+
+        }
+        if(prefs.object(forKey: "NAMEBUSINESS")==nil){
+            prefs.set("Choose a tracker", forKey: "NAMEBUSINESS")
+            prefs.synchronize()
+           
+        
+        }
+        
+        if(prefs.object(forKey: "IDTRACKER")==nil){
+            prefs.set(0, forKey: "IDTRACKER")
+            prefs.synchronize()
+            
+        }
+        
         print(prefs.object(forKey: "IDTRACKER"))
         print(prefs.object(forKey: "ADDRESS"))
         print(prefs.object(forKey: "NAMEBUSINESS"))
@@ -402,7 +431,11 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
                                                 
                                                 defaults.set(-1, forKey: "IDUSER")
                                                 defaults.set(0, forKey:"ACCEPTED")
-                                                
+                                                defaults.set(0, forKey:"IDTRACKER")
+                                                defaults.set("Choose a Tracker", forKey:"NAMEBUSINESS")
+                                                defaults.set("Tracker Address", forKey:"ADDRESS")
+
+                                                defaults.set(0, forKey:"ACCEPTED")
                                                 defaults.set(0, forKey:"MASTER")
 
                                                 defaults.synchronize()

@@ -45,8 +45,8 @@ print("sound could not be played")
     }
     
     public func stopSounds(){
-        sound?.stop()
-        
+       // sound?.stop()
+        sound?.pause()
         
         UIApplication.shared.cancelAllLocalNotifications()
         

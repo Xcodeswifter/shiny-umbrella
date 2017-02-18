@@ -353,8 +353,11 @@ class MapViewController: UIViewController,  MKMapViewDelegate, CLLocationManager
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destination = segue.destination as! SelectTrackerViewController
-        destination.segueFromController = "MapViewController"
+       // let destination = segue.destination as! SelectTrackerViewController
+        //destination.segueFromController = "MapViewController"
+        
+        
+        
         
         
         

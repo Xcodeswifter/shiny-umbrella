@@ -16,8 +16,11 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
     @IBOutlet weak var roomStateIcon: UIButton!
     @IBOutlet weak var trackerAddressButton: UIButton!
     @IBOutlet weak var selectPumpButton: UIButton!
+    @IBOutlet weak var selectFiterButton: UIButton!
     @IBOutlet weak var alertedTrackerButton: UIButton!
     @IBOutlet weak var trackerChooserButton: UIButton!
+    @IBOutlet weak var systemInfoButton: UIButton!
+    @IBOutlet weak var pressureButton: UIButton!
     var pumplist=[String]()
     var idUser:Int = 0
     var NameBusiness:String?=""
@@ -32,7 +35,6 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
         print("View did load")
         stopAlarm()
         UIApplication.shared.applicationIconBadgeNumber = 0
-        requestUserNotifications()
         checkForAlertedTrackers()
         loadData()
         
@@ -54,12 +56,7 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
     }
     
     
-    func requestUserNotifications(){
-        let pushNotificationRequest:AppDelegate = AppDelegate()
-        pushNotificationRequest.requestUserPushNotification()//called once
-
-
-    }
+    
     
     
     func stopAlarm(){
@@ -97,34 +94,51 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
         
         trackerChooserButton.setTitle(NameBusiness, for: .normal)
         trackerAddressButton.setTitle( prefs.object(forKey: "ADDRESS") as! String?, for: .normal)
-      
-        print("los datos amigos")
         
-        if(prefs.object(forKey: "ADDRESS")==nil){
-           
+        var address = prefs.object(forKey: "ADDRESS") as! String?
+        var idTracker = prefs.object(forKey: "IDTRACKER")as? Int
+        print("los datos amigos")
+        print(idTracker)
+        print(address)
+        print(NameBusiness)
+        
+        if(address==nil&&NameBusiness==nil && idTracker==nil){
+            print("hey amigo")
             prefs.set("Address", forKey: "ADDRESS")
             prefs.synchronize()
-
-        }
-        if(prefs.object(forKey: "NAMEBUSINESS")==nil){
             prefs.set("Choose a tracker", forKey: "NAMEBUSINESS")
             prefs.synchronize()
-           
-        
-        }
-        
-        if(prefs.object(forKey: "IDTRACKER")==nil){
             prefs.set(0, forKey: "IDTRACKER")
             prefs.synchronize()
+            selectPumpButton.isEnabled = false
+            pressureButton.isEnabled = false
+            roomStateIcon.isEnabled = false
+            alertedTrackerButton.isEnabled = false
+            pressureButton.isEnabled = false
+            selectFiterButton.isEnabled = false
+            systemInfoButton.isEnabled = false
+            
+            
+            
+            
+            
+            
             
         }
         
-        print(prefs.object(forKey: "IDTRACKER"))
-        print(prefs.object(forKey: "ADDRESS"))
-        print(prefs.object(forKey: "NAMEBUSINESS"))
         
         
-        
+        else{
+            
+            selectPumpButton.isEnabled = true
+            pressureButton.isEnabled = true
+            roomStateIcon.isEnabled = true
+            alertedTrackerButton.isEnabled = true
+            pressureButton.isEnabled = true
+            selectFiterButton.isEnabled = true
+            systemInfoButton.isEnabled = true
+            
+
         
         checkIfAlerted(idUser: idUser)
         
@@ -133,7 +147,7 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
         setupAlertedTrackers(prefs: prefs)
         
         
-        
+        }
         
         
     }
@@ -166,7 +180,7 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
             
         })
         
-
+        
         
         
     }
@@ -434,10 +448,10 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
                                                 defaults.set(0, forKey:"IDTRACKER")
                                                 defaults.set("Choose a Tracker", forKey:"NAMEBUSINESS")
                                                 defaults.set("Tracker Address", forKey:"ADDRESS")
-
+                                                
                                                 defaults.set(0, forKey:"ACCEPTED")
                                                 defaults.set(0, forKey:"MASTER")
-
+                                                
                                                 defaults.synchronize()
                                                 
                                                 

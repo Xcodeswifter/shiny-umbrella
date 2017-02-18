@@ -50,6 +50,7 @@ class TermsAndConditionsViewController: UIViewController {
     //optimized'
     @IBAction func gotomain(_ sender: AnyObject) {
         updateUserStatus()
+        requestUserNotifications()
         self.performSegue(withIdentifier: "gotomain", sender: self)
        }
     
@@ -74,6 +75,14 @@ class TermsAndConditionsViewController: UIViewController {
         let prefs:UserDefaults = UserDefaults.standard
         prefs.set(1,  forKey: "ACCEPTED")
         prefs.synchronize()
+    }
+    
+    
+    func requestUserNotifications(){
+        let pushNotificationRequest:AppDelegate = AppDelegate()
+        pushNotificationRequest.requestUserPushNotification()//called once
+        
+        
     }
     
 }

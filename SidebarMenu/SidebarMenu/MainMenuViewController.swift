@@ -36,6 +36,7 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
         stopAlarm()
         UIApplication.shared.applicationIconBadgeNumber = 0
         checkForAlertedTrackers()
+        
         loadData()
         
         

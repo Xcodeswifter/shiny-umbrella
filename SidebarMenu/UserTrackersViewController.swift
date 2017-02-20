@@ -27,7 +27,7 @@ class UserTrackersViewController: UIViewController, UITableViewDelegate, UITable
         userTrackersTable.delegate = self
         userTrackersTable.dataSource = self
         loadingSpinner.startAnimating()
-        pushNotificationRequest.requestUserPushNotification()//called once
+       // pushNotificationRequest.requestUserPushNotification()//called once
         if(checkNetworkState()){
             requestTrackerListService()
         }
@@ -253,9 +253,9 @@ class UserTrackersViewController: UIViewController, UITableViewDelegate, UITable
         
         
         
-            let destination = segue.destination as! AlertsReportViewController
-            destination.segueFromController = "UsersTrackers"
-            
+//            let destination = segue.destination as! AlertsReportViewController
+//            destination.segueFromController = "UsersTrackers"
+//            
       
         
         

@@ -51,7 +51,7 @@ class ReplyMessageViewController: UIViewController {
     
     @IBAction func goback(_ sender: Any) {
         print("goback mah friend")
-   self.performSegue(withIdentifier: "returnToMessages", sender: self)
+   self.performSegue(withIdentifier: "replyToMessage", sender: self)
     
     }
 

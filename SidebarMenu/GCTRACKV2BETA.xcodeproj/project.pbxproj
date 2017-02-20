@@ -61,7 +61,6 @@
 		72F0A99F1DA865440047B965 /* SF-UI-Text-UltrathinItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 72F0A9911DA865430047B965 /* SF-UI-Text-UltrathinItalic.otf */; };
 		72F3A6F91E204D97000CA706 /* alarm.wav in Resources */ = {isa = PBXBuildFile; fileRef = 72F3A6F81E204D97000CA706 /* alarm.wav */; };
 		72F6BADD1DEA79650030CC48 /* AlarmSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F6BADC1DEA79650030CC48 /* AlarmSound.swift */; };
-		72FDE57F1E1AEC7600F2615C /* MaintenanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FDE57E1E1AEC7600F2615C /* MaintenanceViewController.swift */; };
 		72FFCC541DD278DF0057228C /* LastTenDaysPressureTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FFCC531DD278DF0057228C /* LastTenDaysPressureTableViewController.swift */; };
 		72FFCC581DD279160057228C /* GeneralAlarmsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FFCC571DD279160057228C /* GeneralAlarmsTableViewController.swift */; };
 		72FFCC5A1DD279830057228C /* LastTenDaysPressureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FFCC591DD279830057228C /* LastTenDaysPressureTableViewCell.swift */; };
@@ -197,7 +196,6 @@
 		72F3A6F71E204D84000CA706 /* alarm.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = alarm.caf; sourceTree = "<group>"; };
 		72F3A6F81E204D97000CA706 /* alarm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = alarm.wav; sourceTree = "<group>"; };
 		72F6BADC1DEA79650030CC48 /* AlarmSound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmSound.swift; sourceTree = "<group>"; };
-		72FDE57E1E1AEC7600F2615C /* MaintenanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaintenanceViewController.swift; sourceTree = "<group>"; };
 		72FFCC531DD278DF0057228C /* LastTenDaysPressureTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastTenDaysPressureTableViewController.swift; sourceTree = "<group>"; };
 		72FFCC571DD279160057228C /* GeneralAlarmsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralAlarmsTableViewController.swift; sourceTree = "<group>"; };
 		72FFCC591DD279830057228C /* LastTenDaysPressureTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LastTenDaysPressureTableViewCell.swift; path = SidebarMenu/LastTenDaysPressureTableViewCell.swift; sourceTree = "<group>"; };
@@ -375,7 +373,6 @@
 				F491E7541A7F7E010026528E /* MainScreenController.swift */,
 				99E758E31D7631F900107DEE /* PressurePumpViewController.swift */,
 				99B154651D7BCBA600DBBA67 /* MainMenuViewController.swift */,
-				72FDE57E1E1AEC7600F2615C /* MaintenanceViewController.swift */,
 				727C282D1DADA486006BD703 /* pumpInfoViewController.swift */,
 				9909DEF81D88CC0F002EB836 /* TermsAndConditionsViewController.swift */,
 				99F3E8331D89BBDA00BF55F5 /* LoginViewController.swift */,
@@ -958,7 +955,6 @@
 				727C282E1DADA486006BD703 /* pumpInfoViewController.swift in Sources */,
 				1813B41F1E43EEA5008D4D2C /* AttendedAlertViewController.swift in Sources */,
 				9939469A1D91943900B9A41F /* SelectTrackerViewController.swift in Sources */,
-				72FDE57F1E1AEC7600F2615C /* MaintenanceViewController.swift in Sources */,
 				CE094F5D1E40245C00D68F41 /* AlertsReportViewController.swift in Sources */,
 				99B3F18F1D81DE05001C8D31 /* SelectPumpViewController.swift in Sources */,
 				CEE644E61E4152230065A9E1 /* UsersTrackerTableViewCell.swift in Sources */,

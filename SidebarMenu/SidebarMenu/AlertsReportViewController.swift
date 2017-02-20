@@ -189,7 +189,8 @@ class AlertsReportViewController: UIViewController,UITableViewDataSource,UITable
     @IBAction func retunrBack(_ sender: Any) {
         
         segueFromController = "ReturnBack"
-        self.performSegue(withIdentifier: "returnToMastersTracker", sender: self)
+        
+       self.performSegue(withIdentifier: "returnToSelectUserTracker", sender: self)
 
         
     }
@@ -202,6 +203,8 @@ class AlertsReportViewController: UIViewController,UITableViewDataSource,UITable
         
         
         if(segueFromController=="ReturnBack"){
+            print("hi users trackers")
+
             let destination = segue.destination as! UserTrackersViewController
             destination.segueFromController = "UsersTrackers"
             
@@ -218,13 +221,7 @@ class AlertsReportViewController: UIViewController,UITableViewDataSource,UITable
    
         }
         
-        if(segueFromController=="ReturnBack"){
-            let destination = segue.destination as! UserTrackersViewController
-            destination.segueFromController = "UsersTrackers"
-            
-        }
-
-    
+        
     }
     
     

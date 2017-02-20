@@ -42,20 +42,10 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         messagesTable.dataSource = self
         searchBar.delegate = self
         searchController.delegate = self
-    
+        let defaults = UserDefaults.standard
+
+        setupKCFloatingActionButton(isMasterUser: defaults.integer(forKey: "MASTER"))
         
-        //setup floating button
-        let fab = KCFloatingActionButton()
-        fab.buttonColor = UIColor.gray
-        fab.itemButtonColor = UIColor.black
-        fab.addItem("Send message ", icon: UIImage(named: "newmessage")!, handler: { item in
-            self.messagesending = 1
-            self.performSegue(withIdentifier: "goToMasterTrackers", sender: self)
-            fab.close()
-        })
-        
-        fab.paddingY = 80.1
-        self.view.addSubview(fab)
         
         
         
@@ -73,6 +63,27 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     
+    
+    func setupKCFloatingActionButton(isMasterUser: Int){
+        print(isMasterUser)
+        if(isMasterUser==1){
+        let fab = KCFloatingActionButton()
+        fab.buttonColor = UIColor.gray
+        fab.itemButtonColor = UIColor.black
+        fab.addItem("Send message ", icon: UIImage(named: "newmessage")!, handler: { item in
+            self.messagesending = 1
+            self.performSegue(withIdentifier: "goToMasterTrackers", sender: self)
+            fab.close()
+        })
+        
+        fab.paddingY = 80.1
+        self.view.addSubview(fab)
+        }
+        
+        
+        
+        
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

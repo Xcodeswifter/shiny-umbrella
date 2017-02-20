@@ -52,6 +52,8 @@ class TermsAndConditionsViewController: UIViewController {
         updateUserStatus()
         requestUserNotifications()
         self.performSegue(withIdentifier: "gotomain", sender: self)
+        self.view.removeFromSuperview()
+
        }
     
     

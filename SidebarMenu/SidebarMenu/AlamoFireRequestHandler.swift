@@ -30,8 +30,14 @@ class AlamoFireRequestHandler: NSObject{
             
             if let status = response.response?.statusCode {
                 switch(status){
+                
+                case 200:
+                    print("example success 1")
+                    break
+                    
+                
                 case 201:
-                    print("example success")
+                    print("example success 2")
                     break
                 case  NSURLErrorTimedOut:
                     break

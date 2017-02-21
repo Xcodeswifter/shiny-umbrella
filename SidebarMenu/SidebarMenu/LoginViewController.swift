@@ -81,12 +81,29 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     func requestNetworkState(){
         if(!NetworkState.isConnectedToNetwork()){
             let dialog = DialogViewController()
-            dialog.showNoInternetDialog()
+            showNoInternetDialog()
             
         }
         
     }
     
+    
+    
+    func showNoInternetDialog(){
+        var alert: UIAlertController =  UIAlertController(title:"No internet", message:"Check you internet connection", preferredStyle:.alert)
+        let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
+                                   handler: {[weak self]
+                                    (paramAction:UIAlertAction!) in
+        })
+        
+        
+        
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+        
+        
+    }
+
     
     func requestLoginService(){
         let params:[String:AnyObject]=[ "email": username.text! as AnyObject, "pass":password.text! as AnyObject ]

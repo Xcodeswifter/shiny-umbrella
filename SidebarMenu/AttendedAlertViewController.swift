@@ -98,7 +98,7 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
         if(!NetworkState.isConnectedToNetwork()){
             
             
-            dialog.showNoInternetDialog()
+            showNoInternetDialog()
             
             
             return false
@@ -108,6 +108,23 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
         
     }
     
+    
+    
+    func showNoInternetDialog(){
+        var alert: UIAlertController =  UIAlertController(title:"No internet", message:"Check you internet connection", preferredStyle:.alert)
+        let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
+                                   handler: {[weak self]
+                                    (paramAction:UIAlertAction!) in
+        })
+        
+        
+        
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+        
+        
+    }
+
     
     func requestTrackerListService(){
         let prefs:UserDefaults = UserDefaults.standard

@@ -54,7 +54,7 @@ class MasterTrackersViewController: UIViewController ,UITableViewDelegate, UITab
         if(!NetworkState.isConnectedToNetwork()){
             
             
-            dialog.showNoInternetDialog()
+            showNoInternetDialog()
             
             stopLoading()
             mastersTrackerLabel.text="No connection"
@@ -65,6 +65,24 @@ class MasterTrackersViewController: UIViewController ,UITableViewDelegate, UITab
         
     }
     
+    
+    
+    
+    func showNoInternetDialog(){
+        var alert: UIAlertController =  UIAlertController(title:"No internet", message:"Check you internet connection", preferredStyle:.alert)
+        let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
+                                   handler: {[weak self]
+                                    (paramAction:UIAlertAction!) in
+        })
+        
+        
+        
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+        
+        
+    }
+
     
     func requestTrackerListService(){
         let prefs:UserDefaults = UserDefaults.standard

@@ -47,7 +47,7 @@ class UserTrackersViewController: UIViewController, UITableViewDelegate, UITable
         if(!NetworkState.isConnectedToNetwork()){
             
             
-            dialog.showNoInternetDialog()
+            showNoInternetDialog()
             
             stopLoading()
             selectTrackerLabel.text="No connection"
@@ -70,6 +70,23 @@ class UserTrackersViewController: UIViewController, UITableViewDelegate, UITable
         
         
     }
+    
+    
+    func showNoInternetDialog(){
+        var alert: UIAlertController =  UIAlertController(title:"No internet", message:"Check you internet connection", preferredStyle:.alert)
+        let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
+                                   handler: {[weak self]
+                                    (paramAction:UIAlertAction!) in
+        })
+        
+        
+        
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+        
+        
+    }
+
     
     
     

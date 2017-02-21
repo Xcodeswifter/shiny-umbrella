@@ -284,23 +284,11 @@ class DataLogViewController: UIViewController, UITableViewDelegate, UITableViewD
         print(params)
         let handler = AlamoFireRequestHandler()
         handler.processRequest(URL: "https://gct-production.mybluemix.net/sendreport_02.php", requestMethod: .post, params: params as [String : AnyObject],completion: { json2 -> () in
+           
+            
             if(json2["mailSent"]==1){
-                var alertController:UIAlertController?
-                alertController = UIAlertController(title: "Email",
-                                                    message: "Mail Sent",
-                                                    preferredStyle: .alert)
+            self.showSentMailDialog()
                 
-                let action = UIAlertAction(title: "OK",
-                                           style: UIAlertActionStyle.default,
-                                           handler: {[weak self]
-                                            (paramAction:UIAlertAction!) in
-                                            
-                })
-                
-                alertController?.addAction(action)
-                self.present(alertController!,
-                             animated: true,
-                             completion: nil)
             }
         })
         
@@ -309,6 +297,28 @@ class DataLogViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     
+    
+    
+    func showSentMailDialog(){
+        var alertController:UIAlertController?
+        alertController = UIAlertController(title: "Email",
+                                            message: "Mail Sent",
+                                            preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "OK",
+                                   style: UIAlertActionStyle.default,
+                                   handler: {[weak self]
+                                    (paramAction:UIAlertAction!) in
+                                    
+        })
+        
+        alertController?.addAction(action)
+        self.present(alertController!,
+                     animated: true,
+                     completion: nil)
+   
+        
+    }
     
     @IBAction func unwindToDataLog(segue: UIStoryboardSegue) {}
     

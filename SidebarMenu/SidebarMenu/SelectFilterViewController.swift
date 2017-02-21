@@ -36,7 +36,7 @@ class SelectFilterViewController: UIViewController,UIGestureRecognizerDelegate {
         if(!NetworkState.isConnectedToNetwork()){
             let dialog = DialogViewController()
             
-            dialog.showNoInternetDialog()
+            showNoInternetDialog()
             
             
             selectTrackerButton.setTitle("No internet connection", for: .normal)
@@ -51,18 +51,29 @@ class SelectFilterViewController: UIViewController,UIGestureRecognizerDelegate {
             selectTrackerButton.setTitle(prefs.object(forKey: "NAMEBUSINESS") as? String, for: .normal)
        
 
-                        
-            
-            
-            
-            
-                     
             
         }
         
     }
     
     
+    
+    
+    func showNoInternetDialog(){
+        var alert: UIAlertController =  UIAlertController(title:"No internet", message:"Check you internet connection", preferredStyle:.alert)
+        let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
+                                   handler: {[weak self]
+                                    (paramAction:UIAlertAction!) in
+        })
+        
+        
+        
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+        
+        
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

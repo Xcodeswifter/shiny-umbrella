@@ -35,7 +35,7 @@ class AlertedTrackersViewController: UIViewController,UITableViewDelegate, UITab
             
             let dialog = DialogViewController()
             
-            dialog.showNoInternetDialog()
+            showNoInternetDialog()
             
             
             loadingSpinner.stopAnimating()
@@ -45,12 +45,31 @@ class AlertedTrackersViewController: UIViewController,UITableViewDelegate, UITab
         
     }
     
+    func showNoInternetDialog(){
+        var alert: UIAlertController =  UIAlertController(title:"No internet", message:"Check you internet connection", preferredStyle:.alert)
+        let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
+                                   handler: {[weak self]
+                                    (paramAction:UIAlertAction!) in
+        })
+        
+        
+        
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+        
+        
+    }
+    
+    
+    
+    
+    
     func loadData(){
         if(!NetworkState.isConnectedToNetwork()){
             
             let dialog = DialogViewController()
             
-            dialog.showNoInternetDialog()
+            showNoInternetDialog()
             
             
             loadingSpinner.stopAnimating()
@@ -92,7 +111,6 @@ class AlertedTrackersViewController: UIViewController,UITableViewDelegate, UITab
     
     
     
-    
     func parseJSON(_ json: JSON) {
         
         
@@ -119,7 +137,7 @@ class AlertedTrackersViewController: UIViewController,UITableViewDelegate, UITab
     
     
     func update() {
-       
+        
         DispatchQueue.main.async {
             self.trackerTable.reloadData()
         }

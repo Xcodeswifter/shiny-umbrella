@@ -171,12 +171,12 @@ print("termino de busqueda")
     
     
     
-    func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchString searchString: String!) -> Bool {
-        self.filterContentForSearchText(searchText: searchString)
+    func searchDisplayController(_ controller: UISearchDisplayController, shouldReloadTableForSearch searchString: String?) -> Bool {
+        self.filterContentForSearchText(searchText: searchString!)
         return true
     }
     
-    func searchDisplayController(_ controller: UISearchController, didLoadSearchResultsTableView tableView: UITableView) {
+    private func searchDisplayController(_ controller: UISearchController, didLoadSearchResultsTableView tableView: UITableView) {
         print("yes amigo")
         tableView.rowHeight = 94.4
         tableView.backgroundColor = UIColor.black
@@ -274,14 +274,14 @@ print("termino de busqueda")
                 if(lastSeen=="0"){
                     let obj = ["msgNum":msgNum, "subject": subject, "message": message, "date":date, "lastseen":isNotRead, "fullname":fullname, "business":business,"sender":senderID] as [String : Any]
                     
-                    messagelist.append(obj as! [String : Any])
+                    messagelist.append(obj )
 
                     
                 }
                 else{
                     let obj = ["msgNum":msgNum, "subject": subject, "message": message, "date":date, "lastseen":isRead, "fullname":fullname, "business":business,"sender":senderID] as [String : Any]
                     
-                    messagelist.append(obj as! [String : Any])
+                    messagelist.append(obj )
                     
                 }
                 
@@ -329,7 +329,7 @@ print("termino de busqueda")
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let prefs:UserDefaults = UserDefaults.standard
+        _ = UserDefaults.standard
         let cell: MessagesTableViewCell = self.messagesTable.dequeueReusableCell(withIdentifier: "selda") as! MessagesTableViewCell
         
       
@@ -343,7 +343,7 @@ print("termino de busqueda")
             let object = filteredMessageList[indexPath.row]
             
             print("filtrando")
-            print(object["fullname"])
+            print(object["fullname"] ?? "default value")
             
             cell.isReadImage.backgroundColor = object["lastseen"] as? UIColor
             
@@ -367,7 +367,7 @@ print("termino de busqueda")
         let cell: MessagesTableViewCell = self.messagesTable.dequeueReusableCell(withIdentifier: "selda") as! MessagesTableViewCell
         
         let object = messagelist[indexPath.row]
-            print(object["fullname"])
+            print(object["fullname"] ?? "FULLNAME")
         
         
         cell.isReadImage.backgroundColor = object["lastseen"] as? UIColor
@@ -403,7 +403,7 @@ print("termino de busqueda")
 
         currentCell.isReadImage.backgroundColor = UIColor.clear
         print("el color es")
-        print(currentCell.isReadImage.backgroundColor)
+        print(currentCell.isReadImage.backgroundColor ?? "color")
         
         
        
@@ -439,7 +439,7 @@ print("termino de busqueda")
             
             currentCell.isReadImage.backgroundColor = UIColor.clear
             print("el color es")
-            print(currentCell.isReadImage.backgroundColor)
+            print(currentCell.isReadImage.backgroundColor ?? "color")
             
             
             

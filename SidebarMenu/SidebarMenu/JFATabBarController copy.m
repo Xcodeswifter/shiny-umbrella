@@ -190,7 +190,6 @@ static const float TAB_ANIMATION_DURATION = 0.0;
     
     NSLog(@"VIEW WILL APEAR");
 
-    NSString * MASTER_KEY    =  @"MASTER";
     NSLog(@"HOLA PAPU");
     NSLog(@"%ld", (long)[[NSUserDefaults standardUserDefaults] integerForKey:@"MASTER"]);
     

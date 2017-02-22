@@ -62,7 +62,7 @@ class SelectTrackerViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func checkNetworkState()->Bool{
-        let dialog = DialogViewController()
+        _ = DialogViewController()
         if(!NetworkState.isConnectedToNetwork()){
             
             
@@ -78,7 +78,7 @@ class SelectTrackerViewController: UIViewController, UITableViewDelegate, UITabl
     
     
     func showNoInternetDialog(){
-        var alert: UIAlertController =  UIAlertController(title:"No internet", message:"Check you internet connection", preferredStyle:.alert)
+        let alert: UIAlertController =  UIAlertController(title:"No internet", message:"Check you internet connection", preferredStyle:.alert)
         let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
                                    handler: {[weak self]
                                     (paramAction:UIAlertAction!) in
@@ -127,7 +127,7 @@ class SelectTrackerViewController: UIViewController, UITableViewDelegate, UITabl
         if(!checkIfTrackerListIsEmpty(json: json)){
             for result in json["locations"].arrayValue {
                 let address = result["addressLocation"].stringValue
-                let idlocation = result["idLocation"].stringValue
+                _ = result["idLocation"].stringValue
                 let roomState = result["roomState"].stringValue
                 let idTracker = result["idTracker"].stringValue
                 let nameBusiness = result["nameLocation"].stringValue
@@ -142,7 +142,7 @@ class SelectTrackerViewController: UIViewController, UITableViewDelegate, UITabl
                 else{
                     let obj = ["Name": nameBusiness, "addressLocation": address, "idtracker":idTracker, "alerted":alerted, "alertedColor":notAlertedColor, "roomState":roomState] as [String : Any]
                     
-                    trackerlist.append(obj as! [String : Any])
+                    trackerlist.append(obj )
                 }
                 
             }
@@ -214,7 +214,7 @@ class SelectTrackerViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let prefs:UserDefaults = UserDefaults.standard
+        _ = UserDefaults.standard
         
         let cell: SelectTrackerTableViewCell = self.trackerTable.dequeueReusableCell(withIdentifier: "zelda") as! SelectTrackerTableViewCell
         

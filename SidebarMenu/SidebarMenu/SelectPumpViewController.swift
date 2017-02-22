@@ -258,7 +258,7 @@ class SelectPumpViewController: UIViewController ,UITableViewDelegate, UITableVi
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let nextScene =  segue.destination as! LastTenEngineRunTableViewController
+        _ =  segue.destination as! LastTenEngineRunTableViewController
         
     }
     

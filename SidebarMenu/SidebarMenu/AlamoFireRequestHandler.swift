@@ -51,12 +51,12 @@ class AlamoFireRequestHandler: NSObject{
                     }
                     
                 
-                print(response.result.value)
+                print(response.result.value ?? "Default value")
                 }
             }
             // get JSON return value
-            if let result = response.result.value {
-                self.json = JSON(response.result.value)
+            if response.result.value != nil {
+                self.json = JSON(response.result.value ?? "default value")
                 print("generated json")
                 print(self.json)
                 completion(self.json)

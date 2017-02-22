@@ -17,7 +17,7 @@ class MainScreenController: UITabBarController, UITabBarControllerDelegate,UITex
         print("Master view controller")
         self.navigationController?.delegate = self
         self.navigationController?.setNavigationBarHidden(true, animated: false)
-        var navigationBarAppearace = UINavigationBar.appearance()
+        let navigationBarAppearace = UINavigationBar.appearance()
         navigationBarAppearace.tintColor = UIColor.white
         navigationBarAppearace.barTintColor = UIColor.black
         

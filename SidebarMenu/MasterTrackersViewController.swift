@@ -49,7 +49,7 @@ class MasterTrackersViewController: UIViewController ,UITableViewDelegate, UITab
     
     
     func checkNetworkState()->Bool{
-        let dialog = DialogViewController()
+        _ = DialogViewController()
         if(!NetworkState.isConnectedToNetwork()){
             
             
@@ -106,7 +106,7 @@ class MasterTrackersViewController: UIViewController ,UITableViewDelegate, UITab
         if(!checkIfTrackerListIsEmpty(json: json)){
             for result in json["locations"].arrayValue {
                 let address = result["addressLocation"].stringValue
-                let idlocation = result["idLocation"].stringValue
+                _ = result["idLocation"].stringValue
                 let roomState = result["roomState"].stringValue
                 let idTracker = result["idTracker"].stringValue
                 let nameBusiness = result["nameLocation"].stringValue
@@ -121,7 +121,7 @@ class MasterTrackersViewController: UIViewController ,UITableViewDelegate, UITab
                 else{
                     let obj = ["Name": nameBusiness, "addressLocation": address, "idtracker":idTracker, "alerted":alerted, "alertedColor":notAlertedColor, "roomState":roomState] as [String : Any]
                     
-                    trackerlist.append(obj as! [String : Any])
+                    trackerlist.append(obj )
                 }
                 
             }
@@ -180,7 +180,7 @@ class MasterTrackersViewController: UIViewController ,UITableViewDelegate, UITab
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let prefs:UserDefaults = UserDefaults.standard
+        _ = UserDefaults.standard
         
         let cell:MasterTrackerTableViewCell = self.mastersTrackerTable.dequeueReusableCell(withIdentifier: "masterTrackerCell") as! MasterTrackerTableViewCell
         
@@ -262,7 +262,7 @@ class MasterTrackersViewController: UIViewController ,UITableViewDelegate, UITab
         if(segueFromController=="MasterTrackers"){
             
             
-            let destination = segue.destination as! MessagesViewController
+            _ = segue.destination as! MessagesViewController
         
     }
     

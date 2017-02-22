@@ -46,7 +46,7 @@ class AlertedTrackersViewController: UIViewController,UITableViewDelegate, UITab
     }
     
     func showNoInternetDialog(){
-        var alert: UIAlertController =  UIAlertController(title:"No internet", message:"Check you internet connection", preferredStyle:.alert)
+        let alert: UIAlertController =  UIAlertController(title:"No internet", message:"Check you internet connection", preferredStyle:.alert)
         let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
                                    handler: {[weak self]
                                     (paramAction:UIAlertAction!) in
@@ -72,7 +72,7 @@ class AlertedTrackersViewController: UIViewController,UITableViewDelegate, UITab
         
         if(!NetworkState.isConnectedToNetwork()){
             
-            let dialog = DialogViewController()
+            _ = DialogViewController()
             
             activitiyViewController.dismiss(animated: true, completion: {self.showNoInternetDialog()
 })

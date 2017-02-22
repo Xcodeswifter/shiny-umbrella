@@ -41,7 +41,7 @@ class UserTrackersViewController: UIViewController, UITableViewDelegate, UITable
     
     
     func checkNetworkState()->Bool{
-        let dialog = DialogViewController()
+        _ = DialogViewController()
         if(!NetworkState.isConnectedToNetwork()){
             
             
@@ -76,7 +76,7 @@ class UserTrackersViewController: UIViewController, UITableViewDelegate, UITable
     
     
     func showNoInternetDialog(){
-        var alert: UIAlertController =  UIAlertController(title:"No internet", message:"Check you internet connection", preferredStyle:.alert)
+        let alert: UIAlertController =  UIAlertController(title:"No internet", message:"Check you internet connection", preferredStyle:.alert)
         let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
                                    handler: {[weak self]
                                     (paramAction:UIAlertAction!) in
@@ -99,7 +99,7 @@ class UserTrackersViewController: UIViewController, UITableViewDelegate, UITable
         if(!checkIfTrackerListIsEmpty(json: json)){
             for result in json["locations"].arrayValue {
                 let address = result["addressLocation"].stringValue
-                let idlocation = result["idLocation"].stringValue
+                _ = result["idLocation"].stringValue
                 let roomState = result["roomState"].stringValue
                 let idTracker = result["idTracker"].stringValue
                 let nameBusiness = result["nameLocation"].stringValue
@@ -114,7 +114,7 @@ class UserTrackersViewController: UIViewController, UITableViewDelegate, UITable
                 else{
                     let obj = ["Name": nameBusiness, "addressLocation": address, "idtracker":idTracker, "alerted":alerted, "alertedColor":notAlertedColor, "roomState":roomState] as [String : Any]
                     
-                    trackerlist.append(obj as! [String : Any])
+                    trackerlist.append(obj )
                 }
                 
             }

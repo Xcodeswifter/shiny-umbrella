@@ -53,8 +53,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
             print("entrando a la pantalla de alarma")
             self.pushNotificationArrived=0
              application.applicationIconBadgeNumber = 0;            
-            var storyboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
-            var viewController: AlarmViewController = storyboard.instantiateViewController(withIdentifier: "alarm") as! AlarmViewController
+            let storyboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
+            let viewController: AlarmViewController = storyboard.instantiateViewController(withIdentifier: "alarm") as! AlarmViewController
             
             self.window!.rootViewController = viewController
             self.window!.makeKeyAndVisible()
@@ -65,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         
         // Check if launched from notification
         print("por aqui tuvo que haber entrado")
-        if let notification = launchOptions?[UIApplicationLaunchOptionsKey.remoteNotification] as? [String: AnyObject] {
+        if (launchOptions?[UIApplicationLaunchOptionsKey.remoteNotification] as? [String: AnyObject]) != nil {
             
 //            var storyboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
 //            var viewController: AlarmViewController = storyboard.instantiateViewController(withIdentifier: "alarm") as! AlarmViewController
@@ -142,7 +142,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
             }
             else{
                 
-                let json = JSON(response.result.value!)
+                _ = JSON(response.result.value!)
                 
                 
             }
@@ -169,7 +169,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         
         if let aps = userInfo["aps"] as? NSDictionary {
             if let alert = aps["alert"] as? NSDictionary {
-                if let alertMessage = alert["body"] as? String {
+                if (alert["body"] as? String) != nil {
                     
                 }
             }
@@ -179,8 +179,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         if(PushNotificationMessage.containsIgnoringCase(find: "jockey")){
             print("Jockey")
             
-            var storyboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
-            var viewController: JockeyPumpViewController = storyboard.instantiateViewController(withIdentifier: "jockey") as! JockeyPumpViewController
+            let storyboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
+            let viewController: JockeyPumpViewController = storyboard.instantiateViewController(withIdentifier: "jockey") as! JockeyPumpViewController
             
             self.window!.rootViewController = viewController
             self.window!.makeKeyAndVisible()
@@ -191,8 +191,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         
         
         
-        var storyboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
-        var viewController: AlarmViewController = storyboard.instantiateViewController(withIdentifier: "alarm") as! AlarmViewController
+        let storyboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
+        let viewController: AlarmViewController = storyboard.instantiateViewController(withIdentifier: "alarm") as! AlarmViewController
         
         window!.rootViewController = viewController
         window!.makeKeyAndVisible()
@@ -205,13 +205,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         print("did receive remote notification  completionHandler pinche gatito\(userInfo)")
         
         
-        var isMultipleTrackerText:String=""
+           _=""
         
         var isJockeyPumpAlert=false
         
         if let aps = userInfo["aps"] as? NSDictionary {
             if let alert = aps["alert"] as? NSDictionary {
-                if let message = alert["message"] as? NSString {
+                if (alert["message"] as? NSString) != nil {
                     
                 }
             } else if let alert = aps["alert"] as? NSString {
@@ -229,8 +229,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
             
             print("is jockey pump alert true")
             
-            var storyboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
-            var viewController: JockeyPumpViewController = storyboard.instantiateViewController(withIdentifier: "jockey") as! JockeyPumpViewController
+            let storyboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
+            let viewController: JockeyPumpViewController = storyboard.instantiateViewController(withIdentifier: "jockey") as! JockeyPumpViewController
             
             self.window!.rootViewController = viewController
             self.window!.makeKeyAndVisible()
@@ -279,8 +279,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
             print("is an alert")
             self.pushNotificationArrived=0
             generateLocalNotification()
-            var storyboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
-            var viewController: AlarmViewController = storyboard.instantiateViewController(withIdentifier: "alarm") as! AlarmViewController
+            let storyboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
+            let viewController: AlarmViewController = storyboard.instantiateViewController(withIdentifier: "alarm") as! AlarmViewController
             
             self.window!.rootViewController = viewController
             self.window!.makeKeyAndVisible()
@@ -298,7 +298,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         
         print("local notification recieved amigo")
         
-        let userDefaults = UserDefaults.standard
+        _ = UserDefaults.standard
         
        
            print("generando notificacion local perro")
@@ -307,8 +307,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         
         
         self.pushNotificationArrived=0
-        var storyboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
-        var viewController: AlarmViewController = storyboard.instantiateViewController(withIdentifier: "alarm") as! AlarmViewController
+        let storyboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
+        let viewController: AlarmViewController = storyboard.instantiateViewController(withIdentifier: "alarm") as! AlarmViewController
         
         self.window!.rootViewController = viewController
         self.window!.makeKeyAndVisible()
@@ -369,8 +369,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         
         
         if(PushNotificationMessage.containsIgnoringCase(find: "jockey")){
-            var storyboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
-            var viewController: JockeyPumpViewController = storyboard.instantiateViewController(withIdentifier: "jockey") as! JockeyPumpViewController
+            let storyboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
+            let viewController: JockeyPumpViewController = storyboard.instantiateViewController(withIdentifier: "jockey") as! JockeyPumpViewController
             
             self.window!.rootViewController = viewController
             self.window!.makeKeyAndVisible()
@@ -380,8 +380,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         
         
         self.pushNotificationArrived=0
-        var storyboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
-        var viewController: AlarmViewController = (storyboard.instantiateViewController(withIdentifier: "alarm") as? AlarmViewController)!
+        let storyboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
+        let viewController: AlarmViewController = (storyboard.instantiateViewController(withIdentifier: "alarm") as? AlarmViewController)!
         
         self.window?.rootViewController = viewController
         self.window?.makeKeyAndVisible()
@@ -435,8 +435,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         print("the aplicacion is activa otra vez")
         if(pushNotificationArrived==1){
             if(PushNotificationMessage.containsIgnoringCase(find: "jockey")){
-                var storyboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
-                var viewController: JockeyPumpViewController = storyboard.instantiateViewController(withIdentifier: "jockey") as! JockeyPumpViewController
+                let storyboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
+                let viewController: JockeyPumpViewController = storyboard.instantiateViewController(withIdentifier: "jockey") as! JockeyPumpViewController
                 
                 self.window!.rootViewController = viewController
                 self.window!.makeKeyAndVisible()
@@ -447,8 +447,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
             
             
             self.pushNotificationArrived=0
-            var storyboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
-            var viewController: AlarmViewController = storyboard.instantiateViewController(withIdentifier: "alarm") as! AlarmViewController
+            let storyboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
+            let viewController: AlarmViewController = storyboard.instantiateViewController(withIdentifier: "alarm") as! AlarmViewController
             
             self.window!.rootViewController = viewController
             self.window!.makeKeyAndVisible()
@@ -596,10 +596,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
 //            
 //        }
         
-            var topWindow: UIWindow = UIWindow(frame: UIScreen.main.bounds)
+            let topWindow: UIWindow = UIWindow(frame: UIScreen.main.bounds)
             topWindow.rootViewController = UIViewController()
             topWindow.windowLevel = UIWindowLevelAlert + 1
-            var alert: UIAlertController =  UIAlertController(title:"Maintenance mode", message:"Maintenance time ended", preferredStyle:.alert)
+            let alert: UIAlertController =  UIAlertController(title:"Maintenance mode", message:"Maintenance time ended", preferredStyle:.alert)
             let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
                                                        handler: {[weak self]
                                                         (paramAction:UIAlertAction!) in

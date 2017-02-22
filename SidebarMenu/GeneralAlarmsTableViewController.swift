@@ -82,7 +82,7 @@ class GeneralAlarmsTableViewController: UIViewController, UITableViewDelegate, U
         // cell selected code here
         
         let object = datalog[(indexPath as NSIndexPath).row]
-        let statusMessage = object["status"]! as String
+        _ = object["status"]! as String
         
         if(object["pumpType"]=="3"){
             

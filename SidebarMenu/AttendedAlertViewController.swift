@@ -94,7 +94,7 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
     
     
     func checkNetworkState()->Bool{
-        let dialog = DialogViewController()
+        _ = DialogViewController()
         if(!NetworkState.isConnectedToNetwork()){
             
             
@@ -111,7 +111,7 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
     
     
     func showNoInternetDialog(){
-        var alert: UIAlertController =  UIAlertController(title:"No internet", message:"Check you internet connection", preferredStyle:.alert)
+        let alert: UIAlertController =  UIAlertController(title:"No internet", message:"Check you internet connection", preferredStyle:.alert)
         let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
                                    handler: {[weak self]
                                     (paramAction:UIAlertAction!) in
@@ -132,7 +132,7 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
         
 
         let prefs:UserDefaults = UserDefaults.standard
-        let iduser:Int = prefs.integer(forKey: "IDUSER") as Int
+        _ = prefs.integer(forKey: "IDUSER") as Int
         print("me lleva el krjo")
         print(prefs.object(forKey: "ATTENDED"))
         let params:[String:AnyObject]=[ "id_tracker": idtracker as AnyObject, "time_broadcast":prefs.object(forKey: "ATTENDED")! as AnyObject ]
@@ -155,7 +155,7 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
         let prefs:UserDefaults = UserDefaults.standard
         let iduser:Int = prefs.integer(forKey: "IDUSER") as Int
         print("me lleva el krjo")
-        print(prefs.object(forKey: "ATTENDED"))
+        print(prefs.object(forKey: "ATTENDED") ?? "attended")
         let params:[String:AnyObject]=[ "id_tracker": idtracker as AnyObject, "id_user":iduser as AnyObject]
         let handler = AlamoFireRequestHandler()
         handler.processRequest(URL: "https://gct-production.mybluemix.net/getUsersPerTracker.php", requestMethod: .post, params: params,completion: { json2 -> () in
@@ -193,14 +193,14 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
             if(isAnswered==1){
                 
                 let obj = ["name": name, "answered": "answered", "time_snooze":TIME_SNOOZE_STATE] as [String : Any]
-                attendedAlerts.append(obj as! [String : Any])
+                attendedAlerts.append(obj )
                 
                 
             }
             else{
                 
                 let obj = ["name": name, "answered": "notAnswered", "time_snooze":TIME_SNOOZE_STATE] as [String : Any]
-                attendedAlerts.append(obj as! [String : Any])
+                attendedAlerts.append(obj )
                 
             }
             
@@ -296,7 +296,7 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print("entra aqui kbron")
-        let prefs:UserDefaults = UserDefaults.standard
+        _ = UserDefaults.standard
         
         let cell: AttendedAlertsTableViewCell = self.attendedAlertsTable.dequeueReusableCell(withIdentifier: "celldota") as! AttendedAlertsTableViewCell
         
@@ -310,7 +310,7 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
             cell.attendedDate.text = object["time_snooze"] as! String?
             cell.nameLabel.text = object["name"] as! String?
             print("aaaaaa")
-            print(object["answered"])
+            print(object["answered"] ?? "ANSWERED")
             cell.isAttendedImage.image = UIImage(named: object["answered"] as! String)
             
         }
@@ -367,7 +367,7 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         print("segue from controller")
-        print(segue.identifier?.description)
+        print(segue.identifier?.description ?? "SEGUE NAME")
         print(segueFromController)
         
         

@@ -96,12 +96,12 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
         trackerChooserButton.setTitle(NameBusiness, for: .normal)
         trackerAddressButton.setTitle( prefs.object(forKey: "ADDRESS") as! String?, for: .normal)
         
-        var address = prefs.object(forKey: "ADDRESS") as! String?
-        var idTracker = prefs.object(forKey: "IDTRACKER")as? Int
+        let address = prefs.object(forKey: "ADDRESS") as! String?
+        let idTracker = prefs.object(forKey: "IDTRACKER")as? Int
         print("los datos amigos")
-        print(idTracker)
-        print(address ?? "DEFAULT VALUE")
-        print(NameBusiness)
+        print(idTracker ?? "idtracker")
+        print(address ?? "address")
+        print(NameBusiness ?? NameBusiness)
         
         if(address==nil&&NameBusiness==nil && idTracker==nil){
             print("hey amigo")
@@ -205,7 +205,7 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
         
         let roomState = prefs.object(forKey: "ROOMSTATE") as? Int
         print("el room state")
-        print(roomState)
+        print(roomState ?? "room state")
         if (roomState==1){
             print("se seteo en rojo")
             let buttonImage = UIImage(named: "roomRojo")
@@ -291,7 +291,7 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
     func checkInternetConnection(){
         
         if(!NetworkState.isConnectedToNetwork()){
-            let dialog = DialogViewController()
+            _ = DialogViewController()
             
             showNoInternetDialog()
             
@@ -311,7 +311,7 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
         let params:[String:AnyObject]=[ "id_user": prefs.object(forKey: "IDUSER") as AnyObject ]
         
         print("requesting ID USER FOR ALERTED TRACKERS")
-        print(prefs.object(forKey: "IDUSER"))
+        print(prefs.object(forKey: "IDUSER") ?? "IDUSER")
         let handler = AlamoFireRequestHandler()
         handler.processRequest(URL: "https://gct-production.mybluemix.net/getalertedtrackers_02.php", requestMethod: .post, params: params as [String : AnyObject],completion: { json2 -> () in
             
@@ -363,7 +363,7 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
     
     
     func showNoInternetDialog(){
-        var alert: UIAlertController =  UIAlertController(title:"No internet", message:"Check you internet connection", preferredStyle:.alert)
+        let alert: UIAlertController =  UIAlertController(title:"No internet", message:"Check you internet connection", preferredStyle:.alert)
         let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
                                    handler: {[weak self]
                                     (paramAction:UIAlertAction!) in
@@ -446,7 +446,7 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
     @IBAction func logout(_ sender: UIButton) {
         
         
-        var alert: UIAlertController =  UIAlertController(title:"Clossing Session", message:"Logging out will prevent GC-Track from sending further notifications on this device.", preferredStyle:.alert)
+        let alert: UIAlertController =  UIAlertController(title:"Clossing Session", message:"Logging out will prevent GC-Track from sending further notifications on this device.", preferredStyle:.alert)
         
         
         alert.addAction(UIAlertAction(title: "OK",style: UIAlertActionStyle.default,

@@ -33,7 +33,6 @@ class MasterTrackersViewController: UIViewController ,UITableViewDelegate, UITab
         super.viewDidLoad()
         mastersTrackerTable.delegate = self
         mastersTrackerTable.dataSource = self
-        loadingSpinner.startAnimating()
         pushNotificationRequest.requestUserPushNotification()//called once
         if(checkNetworkState()){
             requestTrackerListService()
@@ -56,7 +55,6 @@ class MasterTrackersViewController: UIViewController ,UITableViewDelegate, UITab
             
             showNoInternetDialog()
             
-            stopLoading()
             mastersTrackerLabel.text="No connection"
             return false
             
@@ -69,7 +67,7 @@ class MasterTrackersViewController: UIViewController ,UITableViewDelegate, UITab
     
     
     func showNoInternetDialog(){
-        var alert: UIAlertController =  UIAlertController(title:"No internet", message:"Check you internet connection", preferredStyle:.alert)
+        let alert: UIAlertController =  UIAlertController(title:"No internet", message:"Check you internet connection", preferredStyle:.alert)
         let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
                                    handler: {[weak self]
                                     (paramAction:UIAlertAction!) in
@@ -85,12 +83,16 @@ class MasterTrackersViewController: UIViewController ,UITableViewDelegate, UITab
 
     
     func requestTrackerListService(){
+        
+        let activitiyViewController = ActivityViewController(message: "Loading..")
+        present(activitiyViewController, animated: true, completion: nil)
         let prefs:UserDefaults = UserDefaults.standard
         let iduser:Int = prefs.integer(forKey: "IDUSER") as Int
         let params:[String:AnyObject]=[ "id_user": iduser as AnyObject ]
         let handler = AlamoFireRequestHandler()
         handler.processRequest(URL: "https://gct-production.mybluemix.net/getpumps_02.php", requestMethod: .post, params: params,completion: { json2 -> () in
-            self.parseJSON(json2)
+            
+            activitiyViewController.dismiss(animated: true, completion: {self.parseJSON(json2)})
         })
         
         
@@ -146,7 +148,6 @@ class MasterTrackersViewController: UIViewController ,UITableViewDelegate, UITab
             prefs.synchronize()
             prefs.set("tracker address",  forKey: "ADDRESS")
             
-            stopLoading()
             
             print("es true")
             return true
@@ -159,7 +160,6 @@ class MasterTrackersViewController: UIViewController ,UITableViewDelegate, UITab
     
     func update() {
         DispatchQueue.main.async {
-            self.loadingSpinner.startAnimating()
             
             self.mastersTrackerTable.reloadData()
         }
@@ -190,7 +190,6 @@ class MasterTrackersViewController: UIViewController ,UITableViewDelegate, UITab
         cell.Business.textColor = object["alertedColor"] as! UIColor
         cell.address.text =  object["addressLocation"] as! String?
         cell.address.textColor = object["alertedColor"] as! UIColor
-        stopLoading()
         
         return cell
         
@@ -251,14 +250,7 @@ class MasterTrackersViewController: UIViewController ,UITableViewDelegate, UITab
     
     
     
-    func stopLoading(){
-        loadingSpinner.stopAnimating()
-        loadingSpinner.hidesWhenStopped=true
-        loadingLabel.isHidden=true
-        
-    }
-    
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if(segueFromController=="Attended Alerts"){

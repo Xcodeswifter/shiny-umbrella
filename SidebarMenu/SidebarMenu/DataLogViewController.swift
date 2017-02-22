@@ -49,7 +49,6 @@ class DataLogViewController: UIViewController, UITableViewDelegate, UITableViewD
        
         
         trackerLabel.text = prefs.object(forKey: "NAMEBUSINESS") as! String?
-        startLoading()
         requestDataLog(params: params)
 
         
@@ -71,9 +70,15 @@ class DataLogViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     func requestDataLog(params:[String:AnyObject]){
+        
+        
+        let activitiyViewController = ActivityViewController(message: "Loading...")
+        present(activitiyViewController, animated: true, completion: nil)
                let handler = AlamoFireRequestHandler()
         handler.processRequest(URL: "https://gct-production.mybluemix.net/getlog_02-i.php", requestMethod: .post, params: params as [String : AnyObject],completion: { json2 -> () in
-            self.parseJSON(json2)
+            
+            activitiyViewController.dismiss(animated: true, completion: {self.parseJSON(json2)})
+            
 
         })
         
@@ -150,7 +155,6 @@ class DataLogViewController: UIViewController, UITableViewDelegate, UITableViewD
             dialog.noLogsFoundDialog(type: "incident")
             
             
-            stopLoading()
             
             
             filterbutton.isEnabled=false
@@ -161,28 +165,7 @@ class DataLogViewController: UIViewController, UITableViewDelegate, UITableViewD
          return false
         
     }
-    
-    
-    
-    
-    
-    
-    func startLoading(){
-        loadingLabel.text = "Loading"
         
-        loadingSpinner.startAnimating()
-        
-        
-    }
-    
-    func stopLoading(){
-        
-        loadingSpinner.stopAnimating()
-        loadingSpinner.hidesWhenStopped = true
-        loadingLabel.isHidden = true
-    }
-    
-    
     //MARK- TableView Delegates
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -192,7 +175,6 @@ class DataLogViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         let cell: DataLoggedTableViewCell = self.dataLogTable.dequeueReusableCell(withIdentifier: "cell") as! DataLoggedTableViewCell
         
-        stopLoading()
         
         let object = datalog[(indexPath as NSIndexPath).row]
         

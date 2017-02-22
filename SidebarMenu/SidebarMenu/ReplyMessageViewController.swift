@@ -87,12 +87,12 @@ class ReplyMessageViewController: UIViewController {
             print(json2)
             if(json2["sent"]==1){
                 
-                activitiyViewController.dismiss(animated: true, completion:{ dialog.showReplyMessageDialogs(type:"OK", email:params["to"] as! String)
+                activitiyViewController.dismiss(animated: true, completion:{ dialog.showReplyMessageDialogs(type:"OK", email:self.selectedFullName )
                 })
                 
             }   else{
                 
-                activitiyViewController.dismiss(animated: true, completion: {dialog.showReplyMessageDialogs(type:"Error", email:params["to"] as! String)
+                activitiyViewController.dismiss(animated: true, completion: {dialog.showReplyMessageDialogs(type:"Error", email: self.selectedFullName )
                 })
                 
                 

@@ -233,7 +233,6 @@ print("termino de busqueda")
     
     
     func requestMessageListService(){
-        startLoading()
         let activitiyViewController = ActivityViewController(message: "Loading..")
         present(activitiyViewController, animated: true, completion: nil)
         
@@ -309,21 +308,7 @@ print("termino de busqueda")
         }
     }
     
-    func startLoading(){
-        loadingLabel.text = "Loading"
-        loadingSpinner.startAnimating()
-        
-        
-    }
-    
-    func stopLoading(){
-        loadingSpinner.stopAnimating()
-        loadingSpinner.isHidden = true
-        loadingLabel.isHidden = true
-    }
-    
-    
-    
+       
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchActive {
@@ -349,7 +334,6 @@ print("termino de busqueda")
         
       
         print("busqueda activa")
-        stopLoading()
         print(searchActive)
         if(searchActive){
             

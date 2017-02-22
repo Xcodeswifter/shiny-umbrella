@@ -100,7 +100,7 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
         var idTracker = prefs.object(forKey: "IDTRACKER")as? Int
         print("los datos amigos")
         print(idTracker)
-        print(address)
+        print(address ?? "DEFAULT VALUE")
         print(NameBusiness)
         
         if(address==nil&&NameBusiness==nil && idTracker==nil){

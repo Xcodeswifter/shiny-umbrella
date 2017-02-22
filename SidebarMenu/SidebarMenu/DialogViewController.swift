@@ -19,7 +19,7 @@ class DialogViewController {
         var topWindow: UIWindow = UIWindow(frame: UIScreen.main.bounds)
         topWindow.rootViewController = UIViewController()
         topWindow.windowLevel = UIWindowLevelAlert + 1
-        var alert: UIAlertController =  UIAlertController(title:"No internet", message:"Check you internet connection", preferredStyle:.alert)
+        let alert: UIAlertController =  UIAlertController(title:"No internet", message:"Check you internet connection", preferredStyle:.alert)
         let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
                                    handler: {[weak self]
                                     (paramAction:UIAlertAction!) in
@@ -454,7 +454,7 @@ class DialogViewController {
             var topWindow: UIWindow = UIWindow(frame: UIScreen.main.bounds)
             topWindow.rootViewController = UIViewController()
             topWindow.windowLevel = UIWindowLevelAlert + 1
-            var alert: UIAlertController =  UIAlertController(title:"Sending Message", message:"You  message to "+email+"was sent correctly", preferredStyle:.alert)
+            var alert: UIAlertController =  UIAlertController(title:"Sending Message", message:"You  message to "+email+" was sent correctly", preferredStyle:.alert)
             let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
                                        handler: {[weak self]
                                         (paramAction:UIAlertAction!) in
@@ -476,7 +476,7 @@ class DialogViewController {
             var topWindow: UIWindow = UIWindow(frame: UIScreen.main.bounds)
             topWindow.rootViewController = UIViewController()
             topWindow.windowLevel = UIWindowLevelAlert + 1
-            var alert: UIAlertController =  UIAlertController(title:"Sending Message", message:"You message to"+email+"would not  be sent", preferredStyle:.alert)
+            var alert: UIAlertController =  UIAlertController(title:"Sending Message", message:"You message to"+email+" would not  be sent", preferredStyle:.alert)
             let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
                                        handler: {[weak self]
                                         (paramAction:UIAlertAction!) in

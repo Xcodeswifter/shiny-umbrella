@@ -46,14 +46,18 @@ class SelectPumpRunsViewController: UIViewController,UITableViewDelegate, UITabl
     func requestPumpRunsServices(){
         let prefs:UserDefaults = UserDefaults.standard
         idtracker = prefs.integer(forKey: "IDTRACKER") as Int
-        loadingSpinner.startAnimating()
+        
+        let activitiyViewController = ActivityViewController(message: "Loading...")
+        present(activitiyViewController, animated: true, completion: nil)
         
         
         let params:[String:AnyObject]=[ "id_tracker": idtracker as AnyObject ]
         let handler = AlamoFireRequestHandler()
         handler.processRequest(URL: "https://gct-production.mybluemix.net/getpumpstatus_02.php", requestMethod: .post, params: params as [String : AnyObject],completion: { json2 -> () in
+            activitiyViewController.dismiss(animated: true, completion: {
+          
             self.parseJSON(json2)
-            
+            })
         })
         
         
@@ -92,7 +96,6 @@ self.performSegue(withIdentifier: "pumprunningtomap", sender: self)
             pumpRunsLabel.textColor = UIColor.white
             pumpRunsLabel.font = UIFont(name:"SF UI Text", size:24.0)
             
-            stopLoading()
         }
         
         
@@ -124,7 +127,6 @@ self.performSegue(withIdentifier: "pumprunningtomap", sender: self)
         
         var object = datalog[(indexPath as NSIndexPath).row]
         
-        stopLoading()
 
 
         
@@ -193,7 +195,7 @@ self.performSegue(withIdentifier: "pumprunningtomap", sender: self)
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let object = datalog[(indexPath as NSIndexPath).row]
-        let statusMessage = object["status"]! as String
+        _ = object["status"]! as String
         
         if(object["pumpType"]=="1"){
             pumpID = object["pumpID"]!
@@ -244,15 +246,7 @@ self.performSegue(withIdentifier: "pumprunningtomap", sender: self)
     
     
     
-    func stopLoading(){
-        loadingText.isHidden=true
-        loadingSpinner.stopAnimating()
-        loadingSpinner.hidesWhenStopped = true
-        
-        
-    }
-    
-    
+       
     
     
     

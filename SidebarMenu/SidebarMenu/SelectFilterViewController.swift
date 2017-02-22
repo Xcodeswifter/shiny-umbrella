@@ -34,7 +34,7 @@ class SelectFilterViewController: UIViewController,UIGestureRecognizerDelegate {
     
     func loadData(){
         if(!NetworkState.isConnectedToNetwork()){
-            let dialog = DialogViewController()
+            _ = DialogViewController()
             
             showNoInternetDialog()
             
@@ -60,7 +60,7 @@ class SelectFilterViewController: UIViewController,UIGestureRecognizerDelegate {
     
     
     func showNoInternetDialog(){
-        var alert: UIAlertController =  UIAlertController(title:"No internet", message:"Check you internet connection", preferredStyle:.alert)
+        let alert: UIAlertController =  UIAlertController(title:"No internet", message:"Check you internet connection", preferredStyle:.alert)
         let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
                                    handler: {[weak self]
                                     (paramAction:UIAlertAction!) in

@@ -71,7 +71,7 @@ class ScheduleMaintenanceViewController: UIViewController, UITableViewDelegate, 
                 if(maintenance_push==0){
                 let obj = ["Name": nameBusiness,  "idtracker":idTracker, "maintenance":false ] as [String : Any]
                     
-                    trackerlist.append(obj as! [String : Any])
+                    trackerlist.append(obj )
                 }
                 
                 
@@ -79,7 +79,7 @@ class ScheduleMaintenanceViewController: UIViewController, UITableViewDelegate, 
                 if(maintenance_push==1){
                     let obj = ["Name": nameBusiness,  "idtracker":idTracker, "maintenance":true] as [String : Any]
                     
-                    trackerlist.append(obj as! [String : Any])
+                    trackerlist.append(obj )
                 }
                 
                 

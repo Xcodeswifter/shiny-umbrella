@@ -33,7 +33,7 @@ class AlertedTrackersViewController: UIViewController,UITableViewDelegate, UITab
     func checkNetworkConnection(){
         if(!NetworkState.isConnectedToNetwork()){
             
-            let dialog = DialogViewController()
+            _ = DialogViewController()
             
             showNoInternetDialog()
             
@@ -65,20 +65,21 @@ class AlertedTrackersViewController: UIViewController,UITableViewDelegate, UITab
     
     
     func loadData(){
+        
+        let activitiyViewController = ActivityViewController(message: "Loading...")
+        present(activitiyViewController, animated: true, completion: nil)
+
+        
         if(!NetworkState.isConnectedToNetwork()){
             
             let dialog = DialogViewController()
             
-            showNoInternetDialog()
-            
-            
-            loadingSpinner.stopAnimating()
-            loadingSpinner.hidesWhenStopped=true
-            loadinglabel.text="No internet connection"
+            activitiyViewController.dismiss(animated: true, completion: {self.showNoInternetDialog()
+})
+           
         }
         else{
-            loadingSpinner.startAnimating()
-            trackerTable.delegate = self
+                        trackerTable.delegate = self
             trackerTable.dataSource = self
             
             let prefs:UserDefaults = UserDefaults.standard
@@ -91,7 +92,16 @@ class AlertedTrackersViewController: UIViewController,UITableViewDelegate, UITab
             
             let handler = AlamoFireRequestHandler()
             handler.processRequest(URL: "https://gct-production.mybluemix.net/getalertedtrackers_02.php" , requestMethod: .post, params: params,completion: { json2 -> () in
-                self.parseJSON(json2)
+               
+                
+                
+                activitiyViewController.dismiss(animated: true, completion: {
+                    
+                    
+               self.parseJSON(json2) })
+
+         
+            
             })
             
             
@@ -179,10 +189,7 @@ class AlertedTrackersViewController: UIViewController,UITableViewDelegate, UITab
             cell.dateAndPressure.text = "Pressure: "+object["pressure"]!+"  "+object["date"]!
         }
         
-        loadingSpinner.stopAnimating()
-        loadingSpinner.hidesWhenStopped=true
-        loadinglabel.isHidden=true
-        
+                
         
         return cell
         

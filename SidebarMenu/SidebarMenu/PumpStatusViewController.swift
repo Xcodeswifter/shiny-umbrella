@@ -33,7 +33,6 @@ class PumpStatusViewController: UIViewController, UITableViewDelegate, UITableVi
         
         pumpstatustable.delegate = self
         pumpstatustable.dataSource = self
-        loadingSpinner.startAnimating()
         let prefs:UserDefaults = UserDefaults.standard
         
         trackerLabel.text = prefs.object(forKey: "NAMEBUSINESS") as! String?
@@ -56,6 +55,11 @@ class PumpStatusViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func requestPumpStatusData(){
         
+        
+        let activitiyViewController = ActivityViewController(message: "Loading...")
+        present(activitiyViewController, animated: true, completion: nil)
+
+        
         let prefs:UserDefaults = UserDefaults.standard
         idtracker = prefs.integer(forKey: "IDTRACKER") as Int
         
@@ -64,7 +68,10 @@ class PumpStatusViewController: UIViewController, UITableViewDelegate, UITableVi
         let params:[String:AnyObject]=[ "id_tracker": idtracker as AnyObject ]
         let handler = AlamoFireRequestHandler()
         handler.processRequest(URL: "https://gct-production.mybluemix.net/getpumpstatus_02.php", requestMethod: .post, params: params as [String : AnyObject],completion: { json2 -> () in
-            self.parseJSON(json2)
+            
+            activitiyViewController.dismiss(animated: true, completion: {
+            
+            self.parseJSON(json2)})
             
         })
         
@@ -96,7 +103,6 @@ class PumpStatusViewController: UIViewController, UITableViewDelegate, UITableVi
             showErrorMessage()
             
             
-            stopLoading()
             
             
             pumpStatusTitleLabel.text = "No pumps Found"
@@ -141,7 +147,6 @@ class PumpStatusViewController: UIViewController, UITableViewDelegate, UITableVi
         
         
         let object = datalog[(indexPath as NSIndexPath).row]
-        stopLoading()
         
         
         if(!checkIfDataLogContainsOnlyOneElement(object: object, cell:cell)){
@@ -284,7 +289,7 @@ class PumpStatusViewController: UIViewController, UITableViewDelegate, UITableVi
             
             prefs.set(object["pumpID"],  forKey: "PUMPID")
             print("el pump id")
-            print(object["pumpID"])
+            print(object["pumpID"] ?? "pumpid")
             prefs.synchronize()
             prefs.set(object["pumpType"], forKey: "PUMPTYPE")
             prefs.synchronize()
@@ -318,14 +323,7 @@ class PumpStatusViewController: UIViewController, UITableViewDelegate, UITableVi
         
     }
     
-    func stopLoading(){
-        loadingText.isHidden=true
-        loadingSpinner.stopAnimating()
-        loadingSpinner.hidesWhenStopped = true
-        
-        
-    }
-    
+       
     func setTextViewAttributes(pumpStatusLabel:UITextView){
         
         pumpStatusLabel.textColor = UIColor.white

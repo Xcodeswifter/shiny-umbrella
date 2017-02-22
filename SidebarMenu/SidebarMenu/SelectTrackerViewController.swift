@@ -80,7 +80,7 @@ class SelectTrackerViewController: UIViewController, UITableViewDelegate, UITabl
     func showNoInternetDialog(){
         let alert: UIAlertController =  UIAlertController(title:"No internet", message:"Check you internet connection", preferredStyle:.alert)
         let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
-                                   handler: {[weak self]
+                                   handler: {
                                     (paramAction:UIAlertAction!) in
         })
         

@@ -323,7 +323,6 @@ print("termino de busqueda")
             
         }
         
-        return messagelist.count
     }
     
     
@@ -388,7 +387,7 @@ print("termino de busqueda")
         
         }
         
-       return cell
+        
         
     }
     

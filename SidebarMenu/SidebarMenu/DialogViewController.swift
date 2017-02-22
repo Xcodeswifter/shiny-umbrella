@@ -21,7 +21,7 @@ class DialogViewController {
         topWindow.windowLevel = UIWindowLevelAlert + 1
         let alert: UIAlertController =  UIAlertController(title:"No internet", message:"Check you internet connection", preferredStyle:.alert)
         let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
-                                   handler: {[weak self]
+                                   handler: {
                                     (paramAction:UIAlertAction!) in
         })
         
@@ -46,7 +46,7 @@ class DialogViewController {
         topWindow.windowLevel = UIWindowLevelAlert + 1
         let alert: UIAlertController =  UIAlertController(title:"Notice", message:"No trackers found for this user", preferredStyle:.alert)
         let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
-                                   handler: {[weak self]
+                                   handler: {
                                     (paramAction:UIAlertAction!) in
         })
         
@@ -70,7 +70,7 @@ class DialogViewController {
         topWindow.windowLevel = UIWindowLevelAlert + 1
         let alert: UIAlertController =  UIAlertController(title:"Notice", message:"No events reports found", preferredStyle:.alert)
         let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
-                                   handler: {[weak self]
+                                   handler: {
                                     (paramAction:UIAlertAction!) in
         })
         
@@ -96,7 +96,7 @@ class DialogViewController {
         topWindow.windowLevel = UIWindowLevelAlert + 1
         let alert: UIAlertController =  UIAlertController(title:"No internet", message:"Check you internet connection", preferredStyle:.alert)
         let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
-                                   handler: {[weak self]
+                                   handler: {
                                     (paramAction:UIAlertAction!) in
         })
         
@@ -123,7 +123,7 @@ class DialogViewController {
     topWindow.windowLevel = UIWindowLevelAlert + 1
     let alert: UIAlertController =  UIAlertController(title:"Data Log", message:"No incident history found", preferredStyle:.alert)
     let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
-    handler: {[weak self]
+    handler: {
     (paramAction:UIAlertAction!) in
     })
     
@@ -150,7 +150,7 @@ class DialogViewController {
             topWindow.windowLevel = UIWindowLevelAlert + 1
             let alert: UIAlertController =  UIAlertController(title:"Notice", message:"No alerts history found for this pump", preferredStyle:.alert)
             let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
-                                       handler: {[weak self]
+                                       handler: {
                                         (paramAction:UIAlertAction!) in
             })
             
@@ -178,7 +178,7 @@ class DialogViewController {
             topWindow.windowLevel = UIWindowLevelAlert + 1
             let alert: UIAlertController =  UIAlertController(title:"Notice", message:"No data found for this tracker", preferredStyle:.alert)
             let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
-                                       handler: {[weak self]
+                                       handler: {
                                         (paramAction:UIAlertAction!) in
             })
             
@@ -206,7 +206,7 @@ class DialogViewController {
             topWindow.windowLevel = UIWindowLevelAlert + 1
             let alert: UIAlertController =  UIAlertController(title:"Notice", message:"No activations history found for this pump", preferredStyle:.alert)
             let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
-                                       handler: {[weak self]
+                                       handler: {
                                         (paramAction:UIAlertAction!) in
             })
             
@@ -231,7 +231,7 @@ class DialogViewController {
             topWindow.windowLevel = UIWindowLevelAlert + 1
             let alert: UIAlertController =  UIAlertController(title:"Notice", message:"No pumps found for this tracker", preferredStyle:.alert)
             let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
-                                       handler: {[weak self]
+                                       handler: {
                                         (paramAction:UIAlertAction!) in
             })
             
@@ -341,7 +341,7 @@ class DialogViewController {
             topWindow.windowLevel = UIWindowLevelAlert + 1
             let alert: UIAlertController =  UIAlertController(title:"GC-Track could not log in ", message:"Please check your username and password", preferredStyle:.alert)
             let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
-                                       handler: {[weak self]
+                                       handler: {
                                         (paramAction:UIAlertAction!) in
             })
             
@@ -376,7 +376,7 @@ class DialogViewController {
         topWindow.windowLevel = UIWindowLevelAlert + 1
         let alert: UIAlertController =  UIAlertController(title:"Notice", message:"Cannot logout ,please check you internet connection", preferredStyle:.alert)
         let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
-                                   handler: {[weak self]
+                                   handler: {
                                     (paramAction:UIAlertAction!) in
         })
         
@@ -405,8 +405,7 @@ class DialogViewController {
         topWindow.windowLevel = UIWindowLevelAlert + 1
         let alert: UIAlertController =  UIAlertController(title:"Contact Support", message:"Thank you for writing us, our support team will get in touch with you as soon as posible", preferredStyle:.alert)
         let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
-                                   handler: {[weak self]
-                                    (paramAction:UIAlertAction!) in
+                                   handler: {                                    (paramAction:UIAlertAction!) in
         })
         
         
@@ -427,7 +426,7 @@ class DialogViewController {
             topWindow.windowLevel = UIWindowLevelAlert + 1
             let alert: UIAlertController =  UIAlertController(title:"Contacting Support", message:"Your message would not be sent at this moment, please email us at support@gc-track.com or give us a call", preferredStyle:.alert)
             let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
-                                       handler: {[weak self]
+                                       handler: {
                                         (paramAction:UIAlertAction!) in
             })
             
@@ -456,8 +455,7 @@ class DialogViewController {
             topWindow.windowLevel = UIWindowLevelAlert + 1
             let alert: UIAlertController =  UIAlertController(title:"Sending Message", message:"You  message to "+email+" was sent correctly", preferredStyle:.alert)
             let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
-                                       handler: {[weak self]
-                                        (paramAction:UIAlertAction!) in
+                                       handler: {                                        (paramAction:UIAlertAction!) in
             })
             
             
@@ -478,8 +476,7 @@ class DialogViewController {
             topWindow.windowLevel = UIWindowLevelAlert + 1
             let alert: UIAlertController =  UIAlertController(title:"Sending Message", message:"You message to"+email+" would not  be sent", preferredStyle:.alert)
             let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
-                                       handler: {[weak self]
-                                        (paramAction:UIAlertAction!) in
+                                       handler: {                                        (paramAction:UIAlertAction!) in
             })
             
             
@@ -508,7 +505,7 @@ class DialogViewController {
             topWindow.windowLevel = UIWindowLevelAlert + 1
             let alert: UIAlertController =  UIAlertController(title:"Reply Message", message:"Message sent", preferredStyle:.alert)
             let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
-                                       handler: {[weak self]
+                                       handler: {
                                         (paramAction:UIAlertAction!) in
             })
             
@@ -530,7 +527,7 @@ class DialogViewController {
             topWindow.windowLevel = UIWindowLevelAlert + 1
             let alert: UIAlertController =  UIAlertController(title:"Reply Message Error", message:"Message cannot be sent", preferredStyle:.alert)
             let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
-                                       handler: {[weak self]
+                                       handler: {
                                         (paramAction:UIAlertAction!) in
             })
             

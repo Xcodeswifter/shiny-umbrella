@@ -93,7 +93,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     func showNoInternetDialog(){
         let alert: UIAlertController =  UIAlertController(title:"No internet", message:"Check you internet connection", preferredStyle:.alert)
         let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
-                                   handler: {[weak self]
+                                   handler: {
                                     (paramAction:UIAlertAction!) in
         })
         
@@ -147,8 +147,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         let loginDialog = DialogViewController()
         
-        loginDialog.showLoginLogoutDialog(type: "error")
+        let result = loginDialog.showLoginLogoutDialog(type: "error")
         
+        print(result)
                 
         
     }

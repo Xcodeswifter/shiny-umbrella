@@ -601,7 +601,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
             topWindow.windowLevel = UIWindowLevelAlert + 1
             let alert: UIAlertController =  UIAlertController(title:"Maintenance mode", message:"Maintenance time ended", preferredStyle:.alert)
             let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
-                                                       handler: {[weak self]
+                                                       handler: {
                                                         (paramAction:UIAlertAction!) in
                                                         })
 

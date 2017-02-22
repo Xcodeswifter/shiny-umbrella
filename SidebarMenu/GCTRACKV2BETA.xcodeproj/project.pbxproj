@@ -239,7 +239,6 @@
 		CE0B10321E2D945500E8058B /* MessagesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesTableViewCell.swift; sourceTree = "<group>"; };
 		CE0C4EE81E2FE1D200D20262 /* ReplyMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReplyMessageViewController.swift; path = SidebarMenu/ReplyMessageViewController.swift; sourceTree = "<group>"; };
 		CE1733A71E391FB70097B177 /* DialogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogViewController.swift; sourceTree = "<group>"; };
-		CED70BDF1E26FE5700197EBA /* MainStoryboard (35).storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "MainStoryboard (35).storyboard"; sourceTree = "<group>"; };
 		CED70BE21E26FFC600197EBA /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		CED70BE41E270D3B00197EBA /* GCTrack2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GCTrack2.entitlements; sourceTree = "<group>"; };
 		CEE644CD1E4117380065A9E1 /* AlertedReportTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertedReportTableViewCell.swift; sourceTree = "<group>"; };
@@ -488,7 +487,6 @@
 		F47029E71A7F27DB00E30A3C = {
 			isa = PBXGroup;
 			children = (
-				CED70BDF1E26FE5700197EBA /* MainStoryboard (35).storyboard */,
 				72F3A6F71E204D84000CA706 /* alarm.caf */,
 				720E6EEB1DB83C53004FA134 /* alarm.caf */,
 				72F0A9841DA865430047B965 /* SF-UI-Text-Bold.otf */,

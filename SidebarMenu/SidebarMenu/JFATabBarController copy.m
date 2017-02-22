@@ -381,14 +381,12 @@ static const float TAB_ANIMATION_DURATION = 0.0;
         NSLog(@"%ld", (long)[button tag]);
         if([button tag]==2){
             NSLog(@"ESCONDETE  AMIGO ");
-            //button.hidden = YES;
-     button.removeFromSuperview;
+            [button removeFromSuperview];
             tabCount = tabCount -1;
         }
         if([button tag]==3){
             NSLog(@"ESCONDETE  AMIGOte ");
-            //button.hidden = YES;
-            button.removeFromSuperview;
+            [button removeFromSuperview];
             tabCount = tabCount -1;
         }
         

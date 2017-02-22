@@ -101,7 +101,7 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
         print("los datos amigos")
         print(idTracker ?? "idtracker")
         print(address ?? "address")
-        print(NameBusiness ?? NameBusiness)
+        print(NameBusiness ?? "NAMEBUSINESS")
         
         if(address==nil&&NameBusiness==nil && idTracker==nil){
             print("hey amigo")
@@ -365,8 +365,7 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
     func showNoInternetDialog(){
         let alert: UIAlertController =  UIAlertController(title:"No internet", message:"Check you internet connection", preferredStyle:.alert)
         let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
-                                   handler: {[weak self]
-                                    (paramAction:UIAlertAction!) in
+                                   handler: {                                    (paramAction:UIAlertAction!) in
         })
         
         

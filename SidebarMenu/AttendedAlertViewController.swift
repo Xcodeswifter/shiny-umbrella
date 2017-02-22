@@ -113,7 +113,7 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
     func showNoInternetDialog(){
         let alert: UIAlertController =  UIAlertController(title:"No internet", message:"Check you internet connection", preferredStyle:.alert)
         let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
-                                   handler: {[weak self]
+                                   handler: {
                                     (paramAction:UIAlertAction!) in
         })
         
@@ -134,7 +134,7 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
         let prefs:UserDefaults = UserDefaults.standard
         _ = prefs.integer(forKey: "IDUSER") as Int
         print("me lleva el krjo")
-        print(prefs.object(forKey: "ATTENDED"))
+        print(prefs.object(forKey: "ATTENDED") ?? "ATTENDED")
         let params:[String:AnyObject]=[ "id_tracker": idtracker as AnyObject, "time_broadcast":prefs.object(forKey: "ATTENDED")! as AnyObject ]
         let handler = AlamoFireRequestHandler()
         handler.processRequest(URL: "https://gct-production.mybluemix.net/usrsPerAlert_02-i.php", requestMethod: .post, params: params,completion: { json2 -> () in

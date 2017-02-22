@@ -118,6 +118,41 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		18A630A81E5E319000707701 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 18A630A01E5E319000707701 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C7F0D4E94456157078099BE035D70CD9;
+			remoteInfo = Alamofire;
+		};
+		18A630AA1E5E319000707701 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 18A630A01E5E319000707701 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = FA9D917B4243878EBEDE073BFD468DF5;
+			remoteInfo = DropDown;
+		};
+		18A630AC1E5E319000707701 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 18A630A01E5E319000707701 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3C4486B777EFE3D061168B40E6CA7B15;
+			remoteInfo = "Pods-SidebarMenu";
+		};
+		18A630AE1E5E319000707701 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 18A630A01E5E319000707701 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 732D6F93D13764D6DF026E70E688EB72;
+			remoteInfo = RNGridMenu;
+		};
+		18A630B01E5E319000707701 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 18A630A01E5E319000707701 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3439944FDEBE7E8808AB2D01118775E2;
+			remoteInfo = SwiftyJSON;
+		};
 		CE094F331E3FD51B00D68F41 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F47029E81A7F27DB00E30A3C /* Project object */;
@@ -161,6 +196,7 @@
 		189B282C1E4A60320051BFCD /* KCFloatingActionButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KCFloatingActionButtonItem.swift; sourceTree = "<group>"; };
 		189B283B1E4A927E0051BFCD /* MasterTrackersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterTrackersViewController.swift; sourceTree = "<group>"; };
 		189B283D1E4A93150051BFCD /* MasterTrackerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterTrackerTableViewCell.swift; sourceTree = "<group>"; };
+		18A630A01E5E319000707701 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
 		18E464741E4D129000C09CC4 /* ScheduleMaintenanceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleMaintenanceTableViewCell.swift; sourceTree = "<group>"; };
 		18E464761E4D12B200C09CC4 /* ScheduleMaintenanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleMaintenanceViewController.swift; sourceTree = "<group>"; };
 		720C17A41DF0F5250087F0C3 /* LogFiltersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogFiltersTableViewCell.swift; sourceTree = "<group>"; };
@@ -358,6 +394,18 @@
 			name = "Custom VCs";
 			sourceTree = "<group>";
 		};
+		18A630A11E5E319000707701 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				18A630A91E5E319000707701 /* Alamofire.framework */,
+				18A630AB1E5E319000707701 /* DropDown.framework */,
+				18A630AD1E5E319000707701 /* Pods_SidebarMenu.framework */,
+				18A630AF1E5E319000707701 /* RNGridMenu.framework */,
+				18A630B11E5E319000707701 /* SwiftyJSON.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		723991D71DE654C700A52266 /* viewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -487,6 +535,7 @@
 		F47029E71A7F27DB00E30A3C = {
 			isa = PBXGroup;
 			children = (
+				18A630A01E5E319000707701 /* Pods.xcodeproj */,
 				72F3A6F71E204D84000CA706 /* alarm.caf */,
 				720E6EEB1DB83C53004FA134 /* alarm.caf */,
 				72F0A9841DA865430047B965 /* SF-UI-Text-Bold.otf */,
@@ -742,6 +791,12 @@
 			mainGroup = F47029E71A7F27DB00E30A3C;
 			productRefGroup = F47029F11A7F27DB00E30A3C /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 18A630A11E5E319000707701 /* Products */;
+					ProjectRef = 18A630A01E5E319000707701 /* Pods.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				F47029EF1A7F27DB00E30A3C /* SidebarMenu */,
@@ -752,6 +807,44 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		18A630A91E5E319000707701 /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = 18A630A81E5E319000707701 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		18A630AB1E5E319000707701 /* DropDown.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = DropDown.framework;
+			remoteRef = 18A630AA1E5E319000707701 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		18A630AD1E5E319000707701 /* Pods_SidebarMenu.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Pods_SidebarMenu.framework;
+			remoteRef = 18A630AC1E5E319000707701 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		18A630AF1E5E319000707701 /* RNGridMenu.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = RNGridMenu.framework;
+			remoteRef = 18A630AE1E5E319000707701 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		18A630B11E5E319000707701 /* SwiftyJSON.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftyJSON.framework;
+			remoteRef = 18A630B01E5E319000707701 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		CE094F2C1E3FD51B00D68F41 /* Resources */ = {

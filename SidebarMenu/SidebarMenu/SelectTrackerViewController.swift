@@ -28,9 +28,10 @@ class SelectTrackerViewController: UIViewController, UITableViewDelegate, UITabl
         trackerTable.delegate = self
         trackerTable.dataSource = self
         
-        pushNotificationRequest.requestUserPushNotification()//called once
+        
         if(checkNetworkState()){
-            setupDefaultValues()
+           
+            //setupDefaultValues()
             requestTrackerListService()
         }
     }
@@ -95,20 +96,20 @@ class SelectTrackerViewController: UIViewController, UITableViewDelegate, UITabl
     
     
     func requestTrackerListService(){
-        
-        let activitiyViewController = ActivityViewController(message: "Loading...")
+        let activitiyViewController = ActivityViewController(message: "Logging in...")
         present(activitiyViewController, animated: true, completion: nil)
-
-        
         let prefs:UserDefaults = UserDefaults.standard
         let iduser:Int = prefs.integer(forKey: "IDUSER") as Int
         let params:[String:AnyObject]=[ "id_user": iduser as AnyObject ]
         let handler = AlamoFireRequestHandler()
         handler.processRequest(URL: "https://gct-production.mybluemix.net/getpumps_02.php", requestMethod: .post, params: params,completion: { json2 -> () in
-            activitiyViewController.dismiss(animated: true, completion: {
-                self.parseJSON(json2)
-            })
-            
+            activitiyViewController.dismiss(animated: true, completion: nil)
+
+            self.parseJSON(json2)
+        
+        
+        
+        
         })
         
         

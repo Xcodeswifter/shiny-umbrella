@@ -48,7 +48,7 @@ class DataLogViewController: UIViewController, UITableViewDelegate, UITableViewD
         
        
         
-        trackerLabel.text = prefs.object(forKey: "NAMEBUSINESS") as! String?
+        //trackerLabel.text = prefs.object(forKey: "NAMEBUSINESS") as! String?
         requestDataLog(params: params)
 
         

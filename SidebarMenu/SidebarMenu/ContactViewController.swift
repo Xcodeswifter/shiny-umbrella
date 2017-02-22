@@ -20,7 +20,8 @@ class ContactViewController: UIViewController, UITextFieldDelegate,UITextViewDel
         super.viewDidLoad()
         subject.delegate=self
         issue.delegate=self
-        
+        issue.text = "Write here your issue, doubt or suggestion"
+        issue.textColor = UIColor.lightGray
         
         
     }
@@ -72,6 +73,9 @@ class ContactViewController: UIViewController, UITextFieldDelegate,UITextViewDel
         
         let params:[String:AnyObject]=[ "id_user": idUser as AnyObject, "subject":subject.text as AnyObject, "message":issue.text as AnyObject ]
         
+        let activitiyViewController = ActivityViewController(message: "Sending...")
+        present(activitiyViewController, animated: true, completion: nil)
+
         
         let dialog = DialogViewController()
         
@@ -79,13 +83,17 @@ class ContactViewController: UIViewController, UITextFieldDelegate,UITextViewDel
         handler.processRequest(URL: "https://gct-production.mybluemix.net/contactsupport_02.php", requestMethod: .post, params: params,completion: { json2 -> () in
             print(json2)
             if(json2["mailSent"].intValue==1){
-                dialog.showContactSupportDialog(type:"OK")
+                
+                activitiyViewController.dismiss(animated: true, completion: {                dialog.showContactSupportDialog(type:"OK")
+})
             
             
             }
                 
             else{
-                dialog.showContactSupportDialog(type:"Error")
+                
+                activitiyViewController.dismiss(animated: true, completion: {                dialog.showContactSupportDialog(type:"Error")
+})
 
             }
             
@@ -108,6 +116,21 @@ class ContactViewController: UIViewController, UITextFieldDelegate,UITextViewDel
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {   //delegate method
         textField.resignFirstResponder()
         return true
+    }
+    
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Write here your issue, doubt or suggestion"
+            textView.textColor = UIColor.lightGray
+        }
     }
     
 }

@@ -127,6 +127,10 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
 
     
     func requestTrackerListService(){
+        let activitiyViewController = ActivityViewController(message: "Loading...")
+        present(activitiyViewController, animated: true, completion: nil)
+        
+
         let prefs:UserDefaults = UserDefaults.standard
         let iduser:Int = prefs.integer(forKey: "IDUSER") as Int
         print("me lleva el krjo")
@@ -134,6 +138,9 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
         let params:[String:AnyObject]=[ "id_tracker": idtracker as AnyObject, "time_broadcast":prefs.object(forKey: "ATTENDED")! as AnyObject ]
         let handler = AlamoFireRequestHandler()
         handler.processRequest(URL: "https://gct-production.mybluemix.net/usrsPerAlert_02-i.php", requestMethod: .post, params: params,completion: { json2 -> () in
+           
+            
+        activitiyViewController.dismiss(animated: true, completion:nil )
             self.parseJSON(json2)
         })
         
@@ -141,6 +148,10 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func requestTrackerListService2(){
+        let activitiyViewController = ActivityViewController(message: "Loading...")
+        present(activitiyViewController, animated: true, completion: nil)
+
+        
         let prefs:UserDefaults = UserDefaults.standard
         let iduser:Int = prefs.integer(forKey: "IDUSER") as Int
         print("me lleva el krjo")
@@ -148,8 +159,8 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
         let params:[String:AnyObject]=[ "id_tracker": idtracker as AnyObject, "id_user":iduser as AnyObject]
         let handler = AlamoFireRequestHandler()
         handler.processRequest(URL: "https://gct-production.mybluemix.net/getUsersPerTracker.php", requestMethod: .post, params: params,completion: { json2 -> () in
-            print("putoh")
             print(json2)
+            activitiyViewController.dismiss(animated: true, completion:nil)
             self.parseUserJSON(json2)
         })
         
@@ -336,7 +347,7 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
         }
         else{
             print("este men")
-            segueFromController = "Reply"
+            segueFromController = "Write a reply message"
             self.performSegue(withIdentifier: "goToReplyMessage", sender: self)
         }
         
@@ -399,7 +410,7 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
             nextScene.selectedbusiness = ""
             nextScene.selectedmessage =  ""
             nextScene.idSender = idSender
-            nextScene.msgType = "Compose a new Message"
+            nextScene.msgType = "Compose a new message"
             nextScene.newMsg = "New Message"
             nextScene.subject = "Subject"
             nextScene.selectedDate = Date().description

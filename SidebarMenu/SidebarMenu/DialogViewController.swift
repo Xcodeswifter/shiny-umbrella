@@ -339,7 +339,7 @@ class DialogViewController {
             var topWindow: UIWindow = UIWindow(frame: UIScreen.main.bounds)
             topWindow.rootViewController = UIViewController()
             topWindow.windowLevel = UIWindowLevelAlert + 1
-            var alert: UIAlertController =  UIAlertController(title:"Login error", message:"Please check your user or password", preferredStyle:.alert)
+            var alert: UIAlertController =  UIAlertController(title:"GC-Track could not log in ", message:"Please check your username and password", preferredStyle:.alert)
             let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
                                        handler: {[weak self]
                                         (paramAction:UIAlertAction!) in
@@ -403,7 +403,7 @@ class DialogViewController {
         var topWindow: UIWindow = UIWindow(frame: UIScreen.main.bounds)
         topWindow.rootViewController = UIViewController()
         topWindow.windowLevel = UIWindowLevelAlert + 1
-        var alert: UIAlertController =  UIAlertController(title:"Contact Support", message:"You Message has sent", preferredStyle:.alert)
+        var alert: UIAlertController =  UIAlertController(title:"Contact Support", message:"Thank you for writing us, our support team will get in touch with you as soon as posible", preferredStyle:.alert)
         let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
                                    handler: {[weak self]
                                     (paramAction:UIAlertAction!) in
@@ -425,7 +425,7 @@ class DialogViewController {
             var topWindow: UIWindow = UIWindow(frame: UIScreen.main.bounds)
             topWindow.rootViewController = UIViewController()
             topWindow.windowLevel = UIWindowLevelAlert + 1
-            var alert: UIAlertController =  UIAlertController(title:"Support", message:"Error cannot send contact email", preferredStyle:.alert)
+            var alert: UIAlertController =  UIAlertController(title:"Contacting Support", message:"Your message would not be sent at this moment, please email us at support@gc-track.com or give us a call", preferredStyle:.alert)
             let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
                                        handler: {[weak self]
                                         (paramAction:UIAlertAction!) in
@@ -448,13 +448,13 @@ class DialogViewController {
     
     
     
-    public func showReplyMessageDialogs(type:String){
+    public func showReplyMessageDialogs(type:String, email:String){
         
         if(type=="OK"){
             var topWindow: UIWindow = UIWindow(frame: UIScreen.main.bounds)
             topWindow.rootViewController = UIViewController()
             topWindow.windowLevel = UIWindowLevelAlert + 1
-            var alert: UIAlertController =  UIAlertController(title:"Reply Message", message:"Message sent", preferredStyle:.alert)
+            var alert: UIAlertController =  UIAlertController(title:"Sending Message", message:"You  message to "+email+"was sent correctly", preferredStyle:.alert)
             let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
                                        handler: {[weak self]
                                         (paramAction:UIAlertAction!) in
@@ -476,7 +476,7 @@ class DialogViewController {
             var topWindow: UIWindow = UIWindow(frame: UIScreen.main.bounds)
             topWindow.rootViewController = UIViewController()
             topWindow.windowLevel = UIWindowLevelAlert + 1
-            var alert: UIAlertController =  UIAlertController(title:"Reply Message Error", message:"Message cannot be sent", preferredStyle:.alert)
+            var alert: UIAlertController =  UIAlertController(title:"Sending Message", message:"You message to"+email+"would not  be sent", preferredStyle:.alert)
             let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
                                        handler: {[weak self]
                                         (paramAction:UIAlertAction!) in

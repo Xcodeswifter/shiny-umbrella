@@ -36,12 +36,21 @@ class ScheduleMaintenanceViewController: UIViewController, UITableViewDelegate, 
     
     
     func requestMasterUserTrackers(){
+        
+        
+        let activitiyViewController = ActivityViewController(message: "Loading...")
+        present(activitiyViewController, animated: true, completion: nil)
+
         let prefs:UserDefaults = UserDefaults.standard
         let iduser:Int = prefs.integer(forKey: "IDUSER") as Int
         let params:[String:AnyObject]=[ "id_user": iduser as AnyObject ]
         let handler = AlamoFireRequestHandler()
         handler.processRequest(URL: "https://gct-production.mybluemix.net/getpumps_02.php", requestMethod: .post, params: params,completion: { json2 -> () in
-            self.parseJSON(json2)
+            activitiyViewController.dismiss(animated: true, completion: { self.parseJSON(json2)
+})
+            
+        
+        
         })
         
         
@@ -144,6 +153,8 @@ class ScheduleMaintenanceViewController: UIViewController, UITableViewDelegate, 
         
         if(cell.isAlarmEnabled.isOn){//Switch is on
             isChecked = 0
+            
+            
         cell.isAlarmEnabled.setOn(false, animated: true)
         }
         else{//Switch is off
@@ -165,15 +176,18 @@ class ScheduleMaintenanceViewController: UIViewController, UITableViewDelegate, 
     
     
     func setMaintenance(idTracker:String,idUser:Int, checkbox:Int){
-        
+        let activitiyViewController = ActivityViewController(message: "Please wait...")
+        present(activitiyViewController, animated: true, completion: nil)
+
         print("checkbox")
         print(checkbox)
         let params:[String:AnyObject]=[ "id_user": idUser as AnyObject, "id_tracker":idTracker as AnyObject, "active":checkbox as AnyObject]
         let handler = AlamoFireRequestHandler()
         handler.processRequest(URL: "https://gct-production.mybluemix.net/setmaintenancepush.php", requestMethod: .post, params: params,completion: { json2 -> () in
             print("check status")
+            
             print(json2)
-        
+        activitiyViewController.dismiss(animated: true, completion: nil)
         })
         
         

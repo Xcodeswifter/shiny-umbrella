@@ -446,7 +446,7 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
     @IBAction func logout(_ sender: UIButton) {
         
         
-        var alert: UIAlertController =  UIAlertController(title:"Are you sure", message:"If you logout you will not be able to receive further alerts or notifications on your systems", preferredStyle:.alert)
+        var alert: UIAlertController =  UIAlertController(title:"Clossing Session", message:"Logging out will prevent GC-Track from sending further notifications on this device.", preferredStyle:.alert)
         
         
         alert.addAction(UIAlertAction(title: "OK",style: UIAlertActionStyle.default,

@@ -239,7 +239,7 @@ class MasterTrackersViewController: UIViewController ,UITableViewDelegate, UITab
     
     @IBAction func returnToMessages(_ sender: Any) {
         segueFromController = "MasterTrackers"
-    self.performSegue(withIdentifier: "returnToMessages", sender: self)
+    self.performSegue(withIdentifier: "backToMessages", sender: self)
     
     }
     

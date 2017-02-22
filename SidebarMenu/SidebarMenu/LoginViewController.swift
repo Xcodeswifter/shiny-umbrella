@@ -56,6 +56,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     //optimized
     @IBAction func login(_ sender: UIButton) {
+       
         requestLoginService()
     }
     
@@ -106,6 +107,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     
     func requestLoginService(){
+        
+        
+        let activitiyViewController = ActivityViewController(message: "Logging in...")
+        present(activitiyViewController, animated: true, completion: nil)
         let params:[String:AnyObject]=[ "email": username.text! as AnyObject, "pass":password.text! as AnyObject ]
         
         let handler = AlamoFireRequestHandler()
@@ -116,15 +121,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 prefs.set(json2["id_user"].intValue,  forKey: "IDUSER")
                 prefs.synchronize()
                 prefs.set(json2["master"].intValue,  forKey: "MASTER")
-
                 prefs.synchronize()
                 print(json2)
-                self.performSegue(withIdentifier: "termsandconditions", sender: self)
+                activitiyViewController.dismiss(animated: true, completion:{  self.performSegue(withIdentifier: "termsandconditions", sender: self)})
+                
+              
                 
                 
             }
                 
             else{
+                activitiyViewController.dismiss(animated: true, completion: nil)
+                
+                
                 self.showErrorDialog()
                 
             }

@@ -58,7 +58,6 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         
        requestMessageListService()
         
-        // Do any additional setup after loading the view.
     }
     
     
@@ -194,6 +193,7 @@ print("termino de busqueda")
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         print("no")
+        update()
 
         searchActive = false;
     }
@@ -234,6 +234,11 @@ print("termino de busqueda")
     
     func requestMessageListService(){
         startLoading()
+        let activitiyViewController = ActivityViewController(message: "Loading..")
+        present(activitiyViewController, animated: true, completion: nil)
+        
+        
+        
         filteredMessageList.removeAll()
         messagelist.removeAll()
         update()
@@ -245,7 +250,7 @@ print("termino de busqueda")
         handler.processRequest(URL: "https://gct-production.mybluemix.net/tools/getusrmessages_02.php", requestMethod: .post, params: params,completion: { json2 -> () in
             print("el json sote")
             print(json2)
-            self.parseJSON(json2)
+            activitiyViewController.dismiss(animated: true, completion: {self.parseJSON(json2)})
         })
         
         

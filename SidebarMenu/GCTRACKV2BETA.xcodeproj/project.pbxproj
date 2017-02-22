@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1813B41F1E43EEA5008D4D2C /* AttendedAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813B41E1E43EEA5008D4D2C /* AttendedAlertViewController.swift */; };
 		1813B4211E43EEC6008D4D2C /* AttendedAlertsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813B4201E43EEC6008D4D2C /* AttendedAlertsTableViewCell.swift */; };
+		1884ABB41E5D05D100DCF3D1 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1884ABB31E5D05D100DCF3D1 /* ActivityViewController.swift */; };
 		189B282D1E4A60320051BFCD /* KCFABManager.swift in Resources */ = {isa = PBXBuildFile; fileRef = 189B28261E4A60320051BFCD /* KCFABManager.swift */; };
 		189B282E1E4A60320051BFCD /* KCFABViewController.swift in Resources */ = {isa = PBXBuildFile; fileRef = 189B28271E4A60320051BFCD /* KCFABViewController.swift */; };
 		189B282F1E4A60320051BFCD /* KCFABWindow.swift in Resources */ = {isa = PBXBuildFile; fileRef = 189B28281E4A60320051BFCD /* KCFABWindow.swift */; };
@@ -150,6 +151,7 @@
 /* Begin PBXFileReference section */
 		1813B41E1E43EEA5008D4D2C /* AttendedAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendedAlertViewController.swift; sourceTree = "<group>"; };
 		1813B4201E43EEC6008D4D2C /* AttendedAlertsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendedAlertsTableViewCell.swift; sourceTree = "<group>"; };
+		1884ABB31E5D05D100DCF3D1 /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		189B28261E4A60320051BFCD /* KCFABManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KCFABManager.swift; sourceTree = "<group>"; };
 		189B28271E4A60320051BFCD /* KCFABViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KCFABViewController.swift; sourceTree = "<group>"; };
 		189B28281E4A60320051BFCD /* KCFABWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KCFABWindow.swift; sourceTree = "<group>"; };
@@ -349,6 +351,14 @@
 			name = "REST APIs";
 			sourceTree = "<group>";
 		};
+		1884ABB21E5D05A400DCF3D1 /* Custom VCs */ = {
+			isa = PBXGroup;
+			children = (
+				1884ABB31E5D05D100DCF3D1 /* ActivityViewController.swift */,
+			);
+			name = "Custom VCs";
+			sourceTree = "<group>";
+		};
 		723991D71DE654C700A52266 /* viewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -521,6 +531,7 @@
 		F47029F21A7F27DB00E30A3C /* SidebarMenu */ = {
 			isa = PBXGroup;
 			children = (
+				1884ABB21E5D05A400DCF3D1 /* Custom VCs */,
 				180467951E527E4800A0D27B /* REST APIs */,
 				180467941E527E1300A0D27B /* JFTABarControllers */,
 				180467931E527DE200A0D27B /* KCFloatingActionButton */,
@@ -915,6 +926,7 @@
 				F4D750181BD38F0C009E1003 /* SWRevealViewController.m in Sources */,
 				991AF5CB1D811ACD007DA070 /* ContactViewController.swift in Sources */,
 				18E464771E4D12B200C09CC4 /* ScheduleMaintenanceViewController.swift in Sources */,
+				1884ABB41E5D05D100DCF3D1 /* ActivityViewController.swift in Sources */,
 				CEE644DF1E414B920065A9E1 /* JFAArrowView.m in Sources */,
 				72A056D01DF23DDF00D09198 /* dateComparators.swift in Sources */,
 				CE0B10311E2D943500E8058B /* MessagesViewController.swift in Sources */,

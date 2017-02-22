@@ -19,6 +19,8 @@ class DataLogViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak  var dataLogTable: UITableView!
     @IBOutlet weak var trackerLabel: UILabel!
     
+    @IBOutlet weak var loadingLabel: UILabel!
+    @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
     var datalog = [[String: String]]()
     var params:[String:AnyObject] = [:]
     var paramsForFiltering:[String:AnyObject] = [:]
@@ -47,6 +49,7 @@ class DataLogViewController: UIViewController, UITableViewDelegate, UITableViewD
        
         
         trackerLabel.text = prefs.object(forKey: "NAMEBUSINESS") as! String?
+        startLoading()
         requestDataLog(params: params)
 
         
@@ -147,7 +150,7 @@ class DataLogViewController: UIViewController, UITableViewDelegate, UITableViewD
             dialog.noLogsFoundDialog(type: "incident")
             
             
-            
+            stopLoading()
             
             
             filterbutton.isEnabled=false
@@ -164,6 +167,22 @@ class DataLogViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     
+    func startLoading(){
+        loadingLabel.text = "Loading"
+        
+        loadingSpinner.startAnimating()
+        
+        
+    }
+    
+    func stopLoading(){
+        
+        loadingSpinner.stopAnimating()
+        loadingSpinner.hidesWhenStopped = true
+        loadingLabel.isHidden = true
+    }
+    
+    
     //MARK- TableView Delegates
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -172,6 +191,8 @@ class DataLogViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell: DataLoggedTableViewCell = self.dataLogTable.dequeueReusableCell(withIdentifier: "cell") as! DataLoggedTableViewCell
+        
+        stopLoading()
         
         let object = datalog[(indexPath as NSIndexPath).row]
         
@@ -235,8 +256,8 @@ class DataLogViewController: UIViewController, UITableViewDelegate, UITableViewD
         //Create the alert controller screen
         
         
-          alertController = UIAlertController(title: "Enter Email",
-                                            message: "Please enter the email ",
+          alertController = UIAlertController(title: "Sending Log",
+                                            message: "A report showing the current results will be sent to the recipient",
                                             preferredStyle: .alert)
         
         alertController.addTextField(
@@ -248,19 +269,6 @@ class DataLogViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         
         
-        //Send action handler
-        alertController.addAction(UIAlertAction(title: "Send", style: UIAlertActionStyle.default,handler: {
-            (alert: UIAlertAction!) in
-            
-            email=(alertController.textFields?.first?.text)!
-            let  params  = [ "id_tracker": self.idtracker as AnyObject, "email_address":email, "id_user":idUser,"end_date":self.endDate,"start_date":self.strDate, "pump01":self.pumpSelected1,"pump02":self.pumpSelected2,"pump03":self.pumpSelected3] as [String : Any]
-
-            self.requestEmailService(params:params)
-            
-            
-            
-            
-        }))
         
         
         //cancel Action Handler
@@ -269,9 +277,30 @@ class DataLogViewController: UIViewController, UITableViewDelegate, UITableViewD
            print("you have canceled the email action")
         }))
         
+       
+        
+        //Send action handler
+        alertController.addAction(UIAlertAction(title: "Send", style: UIAlertActionStyle.default,handler: {
+            (alert: UIAlertAction!) in
+            
+            email=(alertController.textFields?.first?.text)!
+            let  params  = [ "id_tracker": self.idtracker as AnyObject, "email_address":email, "id_user":idUser,"end_date":self.endDate,"start_date":self.strDate, "pump01":self.pumpSelected1,"pump02":self.pumpSelected2,"pump03":self.pumpSelected3] as [String : Any]
+            
+            self.requestEmailService(params:params)
+           
+        
+        }))
+
+        
+        
         self.present(alertController,
                      animated: true,
                      completion: nil)
+    
+   
+    
+    
+    
     
     }
     
@@ -280,6 +309,9 @@ class DataLogViewController: UIViewController, UITableViewDelegate, UITableViewD
     func requestEmailService(params:[String:Any]){
         
         
+        let activitiyViewController = ActivityViewController(message: "Sending mail please wait...")
+        present(activitiyViewController, animated: true, completion: nil)
+        
         print("params")
         print(params)
         let handler = AlamoFireRequestHandler()
@@ -287,8 +319,14 @@ class DataLogViewController: UIViewController, UITableViewDelegate, UITableViewD
            
             
             if(json2["mailSent"]==1){
-            self.showSentMailDialog()
                 
+                
+                activitiyViewController.dismiss(animated: true, completion:{                self.showSentMailDialog(email_Address: params["email_address"] as! String)
+})
+                
+            }
+            else{
+             activitiyViewController.dismiss(animated: true, completion: nil)
             }
         })
         
@@ -299,10 +337,10 @@ class DataLogViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     
-    func showSentMailDialog(){
+    func showSentMailDialog(email_Address:String){
         var alertController:UIAlertController?
-        alertController = UIAlertController(title: "Email",
-                                            message: "Mail Sent",
+        alertController = UIAlertController(title: "Sending log",
+                                            message: "This report was sent correctly to "+email_Address,
                                             preferredStyle: .alert)
         
         let action = UIAlertAction(title: "OK",

@@ -327,7 +327,7 @@ class DataLogViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         let action = UIAlertAction(title: "OK",
                                    style: UIAlertActionStyle.default,
-                                   handler: {[weak self]
+                                   handler: {
                                     (paramAction:UIAlertAction!) in
                                     
         })

@@ -87,7 +87,6 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
         
         checkInternetConnection()
         checkifIdUserIsCorrect(idUser: idUser, accepted: accepted)
-        checkMaintenanceStatus(prefs: prefs)
         NameBusiness = prefs.object(forKey: "NAMEBUSINESS") as! String?
         idUser = prefs.integer(forKey: "IDUSER") as Int
         
@@ -273,7 +272,6 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
         }
         if(prefs.integer(forKey: "ENABLED")==0){
             let buttonImage = UIImage(named: "maintenance")
-            maintenanceButton.setImage(buttonImage, for: .normal)
             
             prefs.set(0, forKey: "TIMEUP")
             

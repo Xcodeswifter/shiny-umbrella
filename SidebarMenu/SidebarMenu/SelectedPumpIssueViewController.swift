@@ -30,6 +30,7 @@ class SelectedPumpIssueViewController: UIViewController, UITableViewDelegate,UIT
         selectedPumpIssueTable.delegate = self
         selectedPumpIssueTable.dataSource = self
         selectedPumpIssueTable.tableFooterView = UIView(frame: CGRect.zero)
+        loadingSpinner.startAnimating()
         let prefs:UserDefaults = UserDefaults.standard
         
         trackerLabel.text = prefs.object(forKey: "NAMEBUSINESS") as! String?
@@ -49,9 +50,6 @@ class SelectedPumpIssueViewController: UIViewController, UITableViewDelegate,UIT
     
     func loadPumpIssueData(){
         
-        let activitiyViewController = ActivityViewController(message: "Loading...")
-        present(activitiyViewController, animated: true, completion: nil)
-
         let prefs:UserDefaults = UserDefaults.standard
         let idtracker = prefs.integer(forKey: "IDTRACKER") as Int
         print("load pump issue data")
@@ -84,8 +82,7 @@ class SelectedPumpIssueViewController: UIViewController, UITableViewDelegate,UIT
         let handler = AlamoFireRequestHandler()
         handler.processRequest(URL: "https://gct-production.mybluemix.net/getpumptroubles_02.php", requestMethod: .post, params: params as [String : AnyObject],completion: { json2 -> () in
             print(json2)
-           
-            activitiyViewController.dismiss(animated: true, completion: {self.parseJSON(json2)})
+            self.parseJSON(json2)
             
         })
     }
@@ -106,6 +103,7 @@ class SelectedPumpIssueViewController: UIViewController, UITableViewDelegate,UIT
             
         }
         
+        stopLoading()
         update()
        
         }
@@ -126,6 +124,7 @@ class SelectedPumpIssueViewController: UIViewController, UITableViewDelegate,UIT
             pumpLabel.textColor = UIColor.white
             pumpLabel.font = UIFont(name:"SF UI Text", size:24.0)
 
+            stopLoading()
             print("es true")
             return true
         }
@@ -202,7 +201,15 @@ class SelectedPumpIssueViewController: UIViewController, UITableViewDelegate,UIT
 
     
     }
-       
+    func stopLoading(){
+        loadingText.isHidden=true
+        loadingSpinner.stopAnimating()
+        loadingSpinner.hidesWhenStopped = true
+        
+        
+    }
+    
+    
     
     
     @IBAction func returnToSelectPump(_ sender: Any) {

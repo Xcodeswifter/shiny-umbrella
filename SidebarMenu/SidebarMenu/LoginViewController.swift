@@ -81,7 +81,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     func requestNetworkState(){
         if(!NetworkState.isConnectedToNetwork()){
-            _ = DialogViewController()
+            let dialog = DialogViewController()
             showNoInternetDialog()
             
         }
@@ -91,7 +91,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     
     func showNoInternetDialog(){
-        let alert: UIAlertController =  UIAlertController(title:"No internet", message:"Check you internet connection", preferredStyle:.alert)
+        var alert: UIAlertController =  UIAlertController(title:"No internet", message:"Check you internet connection", preferredStyle:.alert)
         let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
                                    handler: {
                                     (paramAction:UIAlertAction!) in

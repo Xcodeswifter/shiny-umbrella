@@ -28,6 +28,7 @@ class pumpInfoViewController: UIViewController,UITableViewDelegate, UITableViewD
         super.viewDidLoad()
         systemInfoTable.delegate=self
         systemInfoTable.dataSource=self
+        loadingSpinner.startAnimating()
         systemInfoTable.tableFooterView = UIView(frame: CGRect.zero)
         let prefs:UserDefaults = UserDefaults.standard
         
@@ -39,21 +40,17 @@ class pumpInfoViewController: UIViewController,UITableViewDelegate, UITableViewD
     
     
     func loadSystemInfoData(){
-        let activitiyViewController = ActivityViewController(message: "Loading...")
-        present(activitiyViewController, animated: true, completion: nil)
         let prefs:UserDefaults = UserDefaults.standard
         let  idtracker = prefs.integer(forKey: "IDTRACKER") as Int
         let  params  = [ "id_tracker": idtracker as AnyObject ]
         
         let handler = AlamoFireRequestHandler()
         handler.processRequest(URL: "https://gct-production.mybluemix.net/getinfo_02.php", requestMethod: .post, params: params as [String : AnyObject],completion: { json2 -> () in
-            
-            activitiyViewController.dismiss(animated: true, completion: { self.parseJson(json: json2)
-                print("mira aqui la info de la bomba amigo ")
-                print(json2["systemInfo"].stringValue)
-                self.systemInfoData.text = "System info:  "+"\n"+json2["systemInfo"].stringValue
-                self.setSystemInfoTextAttributes(textView: self.systemInfoData)})
-           
+            self.parseJson(json: json2)
+            print("mira aqui la info de la bomba amigo ")
+            print(json2["systemInfo"].stringValue)
+     self.systemInfoData.text = "System info:  "+"\n"+json2["systemInfo"].stringValue
+            self.setSystemInfoTextAttributes(textView: self.systemInfoData)
                         
             
         })
@@ -84,6 +81,7 @@ class pumpInfoViewController: UIViewController,UITableViewDelegate, UITableViewD
             checkPump03Type(json: json)
             checkPump04Type(json: json)
             checkPump05Type(json: json)
+            stopLoading()
             update()
             
         }else{
@@ -99,6 +97,7 @@ class pumpInfoViewController: UIViewController,UITableViewDelegate, UITableViewD
         dialog.noLogsFoundDialog(type: "pumps")
    systemInfoTitleLabel.text = "No Info Found"
         self.setTitleTextAttributes(textView: systemInfoTitleLabel)
+    stopLoading()
     
     }
     
@@ -126,7 +125,15 @@ class pumpInfoViewController: UIViewController,UITableViewDelegate, UITableViewD
     
     
     
-       
+    func stopLoading(){
+        loadingText.isHidden=true
+        loadingSpinner.stopAnimating()
+        loadingSpinner.hidesWhenStopped = true
+        
+        
+    }
+    
+    
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

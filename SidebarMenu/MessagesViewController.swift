@@ -26,6 +26,7 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     var selectedbusiness:String = ""
     var selectedDate:String = ""
     var selectedmessage:String = ""
+    var selectedSubject:String = ""
     var idSender:Int = 0
     var refreshControl = UIRefreshControl()
      var searchController: UISearchController!
@@ -308,7 +309,19 @@ print("termino de busqueda")
         }
     }
     
-       
+    func startLoading(){
+        loadingSpinner.startAnimating()
+        
+        
+    }
+    
+    func stopLoading(){
+        loadingSpinner.isHidden = true
+        loadingLabel.isHidden = true
+    }
+    
+    
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchActive {
@@ -414,6 +427,7 @@ print("termino de busqueda")
         selectedDate =  (object["date"] as! String?)!
         selectedmessage = (object["message"] as! String?)!
         idSender = (object["sender"] as! Int?)!
+        selectedSubject = (object["subject"] as! String?)!
         
         
         print("los datos")

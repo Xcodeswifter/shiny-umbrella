@@ -35,19 +35,12 @@ class SelectPumpIssuesViewController: UIViewController ,UITableViewDelegate ,UIT
         idtracker = prefs.integer(forKey: "IDTRACKER") as Int
         
         trackerLabel.text = prefs.object(forKey: "NAMEBUSINESS") as! String?
-
-        
-        let activitiyViewController = ActivityViewController(message: "Loading...")
-        present(activitiyViewController, animated: true, completion: nil)
-
-    
-        
+        loadingSpinner.startAnimating()
         
         let params:[String:AnyObject]=[ "id_tracker": idtracker as AnyObject ]
         let handler = AlamoFireRequestHandler()
         handler.processRequest(URL: "https://gct-production.mybluemix.net/getpumpstatus_02.php", requestMethod: .post, params: params as [String : AnyObject],completion: { json2 -> () in
-           
-            activitiyViewController.dismiss(animated: true, completion: {self.parseJSON(json2)})
+            self.parseJSON(json2)
             
         })
         
@@ -100,7 +93,7 @@ class SelectPumpIssuesViewController: UIViewController ,UITableViewDelegate ,UIT
             
             
 
-
+            stopLoading()
             
             
             
@@ -139,6 +132,7 @@ class SelectPumpIssuesViewController: UIViewController ,UITableViewDelegate ,UIT
         let object = datalog[(indexPath as NSIndexPath).row]
         
         
+        stopLoading()
         if(datalog.count==1){
             if(object["pumpType"]=="0"){
                 pumpIssueLabel.text="No alerts found"
@@ -201,7 +195,7 @@ class SelectPumpIssuesViewController: UIViewController ,UITableViewDelegate ,UIT
         // cell selected code here
         
         let object = datalog[(indexPath as NSIndexPath).row]
-        _ = object["status"]! as String
+        let statusMessage = object["status"]! as String
         
         
         if(object["pumpType"]=="1"){
@@ -230,7 +224,15 @@ class SelectPumpIssuesViewController: UIViewController ,UITableViewDelegate ,UIT
         
     }
     
-       
+    func stopLoading(){
+        loadingLabel.isHidden=true
+        loadingSpinner.stopAnimating()
+        loadingSpinner.hidesWhenStopped = true
+        
+        
+    }
+    
+    
     
     // MARK- Actions
     

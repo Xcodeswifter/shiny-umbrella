@@ -27,6 +27,7 @@ class LastTenDaysPressureTableViewController: UIViewController, UITableViewDeleg
         super.viewDidLoad()
         pressurePumpHistoryTable.delegate=self
         pressurePumpHistoryTable.dataSource=self
+        loadingSpinner.startAnimating()
         let prefs:UserDefaults = UserDefaults.standard
         
         trackerLabel.text = prefs.object(forKey: "NAMEBUSINESS") as! String?
@@ -48,9 +49,6 @@ class LastTenDaysPressureTableViewController: UIViewController, UITableViewDeleg
     
     func loadData(){
         
-        let activitiyViewController = ActivityViewController(message: "Loading...")
-        present(activitiyViewController, animated: true, completion: nil)
-        
         let prefs:UserDefaults = UserDefaults.standard
         let idtracker = prefs.integer(forKey: "IDTRACKER") as Int
         
@@ -62,9 +60,7 @@ class LastTenDaysPressureTableViewController: UIViewController, UITableViewDeleg
         handler.processRequest(URL: "https://gct-production.mybluemix.net/getlastpressures_02.php", requestMethod: .post, params: params as [String : AnyObject],completion: { json2 -> () in
          print("json count")
             print(json2.count)
-           
-            activitiyViewController.dismiss(animated: true, completion: {            self.parseJSON(json2)
-})
+            self.parseJSON(json2)
             
         })
         
@@ -102,6 +98,7 @@ class LastTenDaysPressureTableViewController: UIViewController, UITableViewDeleg
         if(json["lastPressures"].arrayValue.count<=0){
            
             dialog.noLogsFoundDialog(type: "pressure")
+            stopLoading()
             dataLogPressureHistoryText.text = "No pressure data"
             setTextViewAttributes(pressureHistoryText: dataLogPressureHistoryText)
             return true
@@ -132,6 +129,7 @@ class LastTenDaysPressureTableViewController: UIViewController, UITableViewDeleg
         // your cell coding
         
         let cell: LastTenDaysPressureTableViewCell = self.pressurePumpHistoryTable.dequeueReusableCell(withIdentifier: "pressurehistorycell") as! LastTenDaysPressureTableViewCell
+        stopLoading()
         
         let object = datalog[(indexPath as NSIndexPath).row]
         let dateTimeSplitText = object["dateTime"]!.characters.split{$0 == " "}.map(String.init)
@@ -150,6 +148,15 @@ class LastTenDaysPressureTableViewController: UIViewController, UITableViewDeleg
         
     }
     
+    
+    
+    func stopLoading(){
+        loadingText.isHidden=true
+        loadingSpinner.stopAnimating()
+        loadingSpinner.hidesWhenStopped = true
+        
+        
+    }
     
     
     

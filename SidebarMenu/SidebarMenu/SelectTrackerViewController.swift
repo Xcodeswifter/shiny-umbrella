@@ -27,6 +27,7 @@ class SelectTrackerViewController: UIViewController, UITableViewDelegate, UITabl
         super.viewDidLoad()
         trackerTable.delegate = self
         trackerTable.dataSource = self
+        loadingSpinner.startAnimating()
         
         
         if(checkNetworkState()){
@@ -69,6 +70,7 @@ class SelectTrackerViewController: UIViewController, UITableViewDelegate, UITabl
             
             showNoInternetDialog()
             
+            stopLoading()
             selectTrackerLabel.text="No connection"
             return false
             
@@ -96,13 +98,16 @@ class SelectTrackerViewController: UIViewController, UITableViewDelegate, UITabl
     
     
     func requestTrackerListService(){
+
         let activitiyViewController = ActivityViewController(message: "Logging in...")
         present(activitiyViewController, animated: true, completion: nil)
+
         let prefs:UserDefaults = UserDefaults.standard
         let iduser:Int = prefs.integer(forKey: "IDUSER") as Int
         let params:[String:AnyObject]=[ "id_user": iduser as AnyObject ]
         let handler = AlamoFireRequestHandler()
         handler.processRequest(URL: "https://gct-production.mybluemix.net/getpumps_02.php", requestMethod: .post, params: params,completion: { json2 -> () in
+
             activitiyViewController.dismiss(animated: true, completion: nil)
 
             self.parseJSON(json2)
@@ -110,6 +115,7 @@ class SelectTrackerViewController: UIViewController, UITableViewDelegate, UITabl
         
         
         
+
         })
         
         
@@ -170,6 +176,7 @@ class SelectTrackerViewController: UIViewController, UITableViewDelegate, UITabl
             prefs.synchronize()
             prefs.set("tracker address",  forKey: "ADDRESS")
             
+            stopLoading()
             
             print("es true")
             return true
@@ -182,6 +189,7 @@ class SelectTrackerViewController: UIViewController, UITableViewDelegate, UITabl
     
     func update() {
         DispatchQueue.main.async {
+            self.loadingSpinner.startAnimating()
             
             self.trackerTable.reloadData()
         }
@@ -225,6 +233,7 @@ class SelectTrackerViewController: UIViewController, UITableViewDelegate, UITabl
         cell.business.textColor = object["alertedColor"] as! UIColor
         cell.locationbusiness?.text =  object["addressLocation"] as! String?
         cell.locationbusiness.textColor = object["alertedColor"] as! UIColor
+        stopLoading()
         
         return cell
         
@@ -295,7 +304,14 @@ class SelectTrackerViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     
-       
+    func stopLoading(){
+        loadingSpinner.stopAnimating()
+        loadingSpinner.hidesWhenStopped=true
+        loadingLabel.isHidden=true
+        
+    }
+    
+    
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

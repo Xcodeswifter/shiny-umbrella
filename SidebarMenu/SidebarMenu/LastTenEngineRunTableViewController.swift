@@ -38,6 +38,7 @@ class LastTenEngineRunTableViewController: UIViewController,UITableViewDelegate,
         engineRunTable.layoutMargins = UIEdgeInsets.zero
         engineRunTable.separatorInset = UIEdgeInsets.zero
         engineRunTable.tableFooterView = UIView(frame: CGRect.zero)
+        loadingSpinner.startAnimating()
         let prefs:UserDefaults = UserDefaults.standard
         
         trackerLabel.text = prefs.object(forKey: "NAMEBUSINESS") as! String?
@@ -73,13 +74,10 @@ class LastTenEngineRunTableViewController: UIViewController,UITableViewDelegate,
     
     func loadData(){
         
-        
-        let activitiyViewController = ActivityViewController(message: "Loading...")
-        present(activitiyViewController, animated: true, completion: nil)
         let prefs:UserDefaults = UserDefaults.standard
         let idtracker = prefs.integer(forKey: "IDTRACKER")
         let pumpID = prefs.object(forKey: "PUMPID") as! String
-        pumpType = (prefs.object(forKey: "PUMPTYPE") as! String)
+        pumpType = prefs.object(forKey: "PUMPTYPE") as! String
         
         print(idtracker)
         print(pumpID)
@@ -87,8 +85,8 @@ class LastTenEngineRunTableViewController: UIViewController,UITableViewDelegate,
         let handler = AlamoFireRequestHandler()
         handler.processRequest(URL: "https://gct-production.mybluemix.net/getlastruns_02.php", requestMethod: .post, params: params as [String : AnyObject],completion: { json2 -> () in
             
-
-            activitiyViewController.dismiss(animated: true, completion: {self.parseJSON(json: json2)})
+            print(json2)
+            self.parseJSON(json: json2)
             
         })
         
@@ -152,6 +150,7 @@ class LastTenEngineRunTableViewController: UIViewController,UITableViewDelegate,
             pumpLabelName.font = UIFont(name:"SF UI Text", size:21.0)
             
             
+            stopLoading()
             return true
         }
         
@@ -180,6 +179,8 @@ class LastTenEngineRunTableViewController: UIViewController,UITableViewDelegate,
         
         let cell: LastTenEngineRunsTableViewCell = self.engineRunTable.dequeueReusableCell(withIdentifier: "engineruncell") as! LastTenEngineRunsTableViewCell
         cell.layoutMargins = UIEdgeInsets.zero
+        
+        stopLoading()
         
         let obj = datalog[(indexPath as NSIndexPath).row]
         
@@ -272,7 +273,15 @@ class LastTenEngineRunTableViewController: UIViewController,UITableViewDelegate,
     }
     
     
-       
+    func stopLoading(){
+        loadingText.isHidden=true
+        loadingSpinner.stopAnimating()
+        loadingSpinner.hidesWhenStopped = true
+        
+        
+    }
+    
+    
     @IBAction func unwindToPumpRuns(segue: UIStoryboardSegue) {}
     
     

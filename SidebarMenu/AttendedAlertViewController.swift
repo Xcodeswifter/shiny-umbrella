@@ -347,7 +347,7 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
         }
         else{
             print("este men")
-            segueFromController = "Write"
+            segueFromController = "Write a reply message"
             self.performSegue(withIdentifier: "goToReplyMessage", sender: self)
         }
         
@@ -382,34 +382,6 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
             
             
             
-        }
-        
-        
-        
-        if(segueFromController=="Write"){
-        
-            
-            let nextScene =  segue.destination as! ReplyMessageViewController
-            
-            
-            print("valores que se van a enviar al reply")
-            
-            
-            
-            nextScene.selectedFullName =  selectedFullName
-            
-            nextScene.selectedbusiness = ""
-            nextScene.selectedmessage =  ""
-            nextScene.idSender = idSender
-            nextScene.msgType = "Compose a new message"
-            nextScene.newMsg = "New Message"
-            nextScene.subject = "Subject"
-            nextScene.selectedFullName = selectedFullName
-            nextScene.selectedDate = Date().description
-            nextScene.idDestination = selectedDestinationId
-        
-        
-        
         }
         
         if (segueFromController=="EventReport"){

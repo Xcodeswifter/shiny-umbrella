@@ -98,9 +98,10 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
         let address = prefs.object(forKey: "ADDRESS") as! String?
         let idTracker = prefs.object(forKey: "IDTRACKER")as? Int
         print("los datos amigos")
-        print(idTracker ?? "idtracker")
-        print(address ?? "address")
-        print(NameBusiness ?? "NAMEBUSINESS")
+        print(idTracker)
+        print(address)
+        print(NameBusiness)
+
         
         if(address==nil&&NameBusiness==nil && idTracker==nil){
             print("hey amigo")

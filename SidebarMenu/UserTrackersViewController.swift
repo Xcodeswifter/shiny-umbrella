@@ -26,6 +26,8 @@ class UserTrackersViewController: UIViewController, UITableViewDelegate, UITable
         super.viewDidLoad()
         userTrackersTable.delegate = self
         userTrackersTable.dataSource = self
+        loadingSpinner.startAnimating()
+       // pushNotificationRequest.requestUserPushNotification()//called once
         if(checkNetworkState()){
             requestTrackerListService()
         }
@@ -47,6 +49,7 @@ class UserTrackersViewController: UIViewController, UITableViewDelegate, UITable
             
             showNoInternetDialog()
             
+            stopLoading()
             selectTrackerLabel.text="No connection"
             return false
             
@@ -57,18 +60,12 @@ class UserTrackersViewController: UIViewController, UITableViewDelegate, UITable
     
     
     func requestTrackerListService(){
-        
-        let activitiyViewController = ActivityViewController(message: "Loading..")
-        present(activitiyViewController, animated: true, completion: nil)
-
-        
         let prefs:UserDefaults = UserDefaults.standard
         let iduser:Int = prefs.integer(forKey: "IDUSER") as Int
         let params:[String:AnyObject]=[ "id_user": iduser as AnyObject ]
         let handler = AlamoFireRequestHandler()
         handler.processRequest(URL: "https://gct-production.mybluemix.net/getpumps_02.php", requestMethod: .post, params: params,completion: { json2 -> () in
-           
-            activitiyViewController.dismiss(animated: true, completion: {self.parseJSON(json2)})
+            self.parseJSON(json2)
         })
         
         
@@ -141,6 +138,7 @@ class UserTrackersViewController: UIViewController, UITableViewDelegate, UITable
             prefs.synchronize()
             prefs.set("tracker address",  forKey: "ADDRESS")
             
+            stopLoading()
             
             print("es true")
             return true
@@ -153,6 +151,7 @@ class UserTrackersViewController: UIViewController, UITableViewDelegate, UITable
     
     func update() {
         DispatchQueue.main.async {
+            self.loadingSpinner.startAnimating()
             
             self.userTrackersTable.reloadData()
         }
@@ -182,6 +181,7 @@ class UserTrackersViewController: UIViewController, UITableViewDelegate, UITable
         cell.TrackerName.textColor = object["alertedColor"] as! UIColor
         cell.trackerAddress?.text =  object["addressLocation"] as! String?
         cell.trackerAddress?.textColor = object["alertedColor"] as! UIColor
+        stopLoading()
         
         return cell
         
@@ -257,7 +257,14 @@ class UserTrackersViewController: UIViewController, UITableViewDelegate, UITable
 
     
     
-       
+    func stopLoading(){
+        loadingSpinner.stopAnimating()
+        loadingSpinner.hidesWhenStopped=true
+        loadingLabel.isHidden=true
+        
+    }
+    
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         

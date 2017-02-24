@@ -403,7 +403,7 @@ class DialogViewController {
         let topWindow: UIWindow = UIWindow(frame: UIScreen.main.bounds)
         topWindow.rootViewController = UIViewController()
         topWindow.windowLevel = UIWindowLevelAlert + 1
-        let alert: UIAlertController =  UIAlertController(title:"Contact Support", message:"Thank you for writing us, our support team will get in touch with you as soon as posible", preferredStyle:.alert)
+        let alert: UIAlertController =  UIAlertController(title:"Contact Support", message:"Thank you for writing us, our support team will get in touch with you as soon as possible", preferredStyle:.alert)
         let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
                                    handler: {                                    (paramAction:UIAlertAction!) in
         })
@@ -447,6 +447,33 @@ class DialogViewController {
     
     
     
+    
+    public func showUncompleteFieldsDialog(){
+        let topWindow: UIWindow = UIWindow(frame: UIScreen.main.bounds)
+        topWindow.rootViewController = UIViewController()
+        topWindow.windowLevel = UIWindowLevelAlert + 1
+        let alert: UIAlertController =  UIAlertController(title:"Contact Support", message:"Please fill both 'Subject' and 'description' fields.", preferredStyle:.alert)
+        let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
+                                   handler: {
+                                    (paramAction:UIAlertAction!) in
+        })
+        
+        
+        
+        
+        alert.addAction(action)
+        
+        topWindow.makeKeyAndVisible()
+        topWindow.rootViewController?.present(alert, animated: true, completion: { _ in })
+        
+        
+        
+
+    
+    
+    }
+    
+    
     public func showReplyMessageDialogs(type:String, email:String){
         
         if(type=="OK"){
@@ -454,7 +481,7 @@ class DialogViewController {
             topWindow.rootViewController = UIViewController()
             topWindow.windowLevel = UIWindowLevelAlert + 1
 
-            var alert: UIAlertController =  UIAlertController(title:"Sending Message", message:"You  message to "+email+"was sent correctly", preferredStyle:.alert)
+            var alert: UIAlertController =  UIAlertController(title:"Sending Message", message:"You  message to "+email+" was sent correctly", preferredStyle:.alert)
             let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
                                        handler: {                                        (paramAction:UIAlertAction!) in
             })
@@ -475,7 +502,7 @@ class DialogViewController {
             let topWindow: UIWindow = UIWindow(frame: UIScreen.main.bounds)
             topWindow.rootViewController = UIViewController()
             topWindow.windowLevel = UIWindowLevelAlert + 1
-            var alert: UIAlertController =  UIAlertController(title:"Sending Message", message:"You message to"+email+"would not  be sent", preferredStyle:.alert)
+            var alert: UIAlertController =  UIAlertController(title:"Sending Message", message:"You message to"+email+" would not  be sent", preferredStyle:.alert)
             let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
                                        handler: {                                        (paramAction:UIAlertAction!) in
             })

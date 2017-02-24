@@ -14,6 +14,7 @@ class AttendedAlertsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var isAttendedImage: UIImageView!
     
+    @IBOutlet weak var forwardArrow: UIImageView!
     @IBOutlet weak var attendedDate: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()

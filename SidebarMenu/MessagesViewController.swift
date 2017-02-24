@@ -39,6 +39,12 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+//        let activitiyViewController = ActivityViewController(message: "Loading..")
+//        present(activitiyViewController, animated: true, completion: nil)
+//        activitiyViewController.dismiss(animated: true, completion: nil)
+//
+
         messagesTable.delegate = self
         messagesTable.dataSource = self
         searchBar.delegate = self
@@ -56,7 +62,6 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         self.refreshControl.addTarget(self, action: #selector(MessagesViewController.handleRefresh(refreshControl:)), for: UIControlEvents.valueChanged)
 
         self.messagesTable?.addSubview(refreshControl)
-        
        requestMessageListService()
         
     }
@@ -128,7 +133,7 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         
         print("refreshing....")
         
-     //   searchActive = false
+       searchActive = false
         messagelist.removeAll()
         filteredMessageList.removeAll()
         update()
@@ -152,7 +157,7 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
 
         filteredMessageList = messagelist.filter({(searchTerm) -> Bool in
             let searchText:NSString! = searchTerm["fullname"] as! NSString
-print("termino de busqueda")
+           print("termino de busqueda")
             print(searchText!)
             // to start, let's just search by typing
             return (searchText.range(of: searchString, options: NSString.CompareOptions.caseInsensitive).location) != NSNotFound
@@ -234,9 +239,7 @@ print("termino de busqueda")
     
     
     func requestMessageListService(){
-        let activitiyViewController = ActivityViewController(message: "Loading..")
-        present(activitiyViewController, animated: true, completion: nil)
-        
+       
         
         
         filteredMessageList.removeAll()
@@ -250,7 +253,7 @@ print("termino de busqueda")
         handler.processRequest(URL: "https://gct-production.mybluemix.net/tools/getusrmessages_02.php", requestMethod: .post, params: params,completion: { json2 -> () in
             print("el json sote")
             print(json2)
-            activitiyViewController.dismiss(animated: true, completion: {self.parseJSON(json2)})
+            self.parseJSON(json2)
         })
         
         
@@ -270,19 +273,20 @@ print("termino de busqueda")
                 let business = result["business"].stringValue
                 let senderID = result["sender"].intValue
                 let msgNum = result["msgNum"].intValue
+                let preview = result["preview"].stringValue
                 let isRead = UIColor.clear
                 let isNotRead = UIColor.red
                 if(lastSeen=="0"){
-                    let obj = ["msgNum":msgNum, "subject": subject, "message": message, "date":date, "lastseen":isNotRead, "fullname":fullname, "business":business,"sender":senderID] as [String : Any]
+                    let obj = ["msgNum":msgNum, "subject": subject, "message": message, "date":date, "lastseen":isNotRead, "fullname":fullname, "business":business,"sender":senderID,"preview":preview] as [String : Any]
                     
-                    messagelist.append(obj )
+                    messagelist.append(obj)
 
                     
                 }
                 else{
-                    let obj = ["msgNum":msgNum, "subject": subject, "message": message, "date":date, "lastseen":isRead, "fullname":fullname, "business":business,"sender":senderID] as [String : Any]
+                    let obj = ["msgNum":msgNum, "subject": subject, "message": message, "date":date, "lastseen":isRead, "fullname":fullname, "business":business,"sender":senderID, "preview":preview] as [String : Any]
                     
-                    messagelist.append(obj )
+                    messagelist.append(obj)
                     
                 }
                 
@@ -364,14 +368,12 @@ print("termino de busqueda")
             
             
             cell.titleLabel.text = object["fullname"] as! String?
-            cell.subjectLabel.text = object["bussiness"] as! String?
+            cell.subjectLabel.text = object["subject"] as! String?
             cell.theDateLabel.text =  object["date"] as! String?
             
-            cell.bodyLabel.text = object["message"] as! String?
+            cell.bodyLabel.text = object["preview"] as! String?
             cell.bodyLabel.textColor = UIColor.white
             
-            cell.bodyLabel.font = UIFont(name:"SF UI Text", size:17.0)
-        print(cell.bodyLabel.text)
             return cell
        
         }
@@ -389,12 +391,11 @@ print("termino de busqueda")
         
         
         cell.titleLabel.text = object["fullname"] as! String?
-        cell.subjectLabel.text = object["bussiness"] as! String?
+        cell.subjectLabel.text = object["subject"] as! String?
         cell.theDateLabel.text =  object["date"] as! String?
-        cell.bodyLabel.text = object["message"] as! String?
+        cell.bodyLabel.text = object["preview"] as! String?
             cell.bodyLabel.textColor = UIColor.white
             
-            cell.bodyLabel.font = UIFont(name:"SF UI Text", size:17.0)
                noMessagesLabel.isHidden = true
             return cell
         

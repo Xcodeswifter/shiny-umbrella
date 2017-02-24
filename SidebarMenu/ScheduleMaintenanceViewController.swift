@@ -21,6 +21,8 @@ class ScheduleMaintenanceViewController: UIViewController, UITableViewDelegate, 
         
         alarmsTable.delegate = self
         alarmsTable.dataSource = self
+        
+       
 
         requestMasterUserTrackers()
 
@@ -127,11 +129,12 @@ class ScheduleMaintenanceViewController: UIViewController, UITableViewDelegate, 
     }
     
     
-     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell: ScheduleMaintenanceTableViewCell = self.alarmsTable.dequeueReusableCell(withIdentifier: "scheduleMaintenanceCell") as! ScheduleMaintenanceTableViewCell
 
-        
+    
+    
         let object = trackerlist[indexPath.row]
 
         cell.isAlarmEnabled.isOn = object["maintenance"] as! Bool!
@@ -143,35 +146,60 @@ class ScheduleMaintenanceViewController: UIViewController, UITableViewDelegate, 
     }
     
     
+    
+    
+   
+    
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
         let cell = tableView.cellForRow(at: indexPath) as! ScheduleMaintenanceTableViewCell
         let prefs:UserDefaults = UserDefaults.standard
         let iduser:Int = prefs.integer(forKey: "IDUSER") as Int
-        var isChecked = 0
+        var isChecked = UserDefaults.standard
+        
+        
+        cell.isAlarmEnabled.tag = indexPath.row
+        isChecked.set(indexPath.row, forKey: "ROW")
+        isChecked.synchronize()
+        cell.isAlarmEnabled.addTarget(self, action: Selector("tapSwitch"), for: .touchUpInside)
         
         
         if(cell.isAlarmEnabled.isOn){//Switch is on
-            isChecked = 0
+            isChecked.set(0, forKey: "CHECKED")
+            isChecked.synchronize()
             
             
         cell.isAlarmEnabled.setOn(false, animated: true)
         }
         else{//Switch is off
-            isChecked = 1
+            isChecked.set(1, forKey: "CHECKED")
+            isChecked.synchronize()
+
             cell.isAlarmEnabled.setOn(true, animated: true)
  
         }
         
         let object = trackerlist[indexPath.row]
         print(object["idtracker"] as! String!)
-        setMaintenance(idTracker: object["idtracker"] as! String!, idUser:iduser , checkbox: isChecked)
+        setMaintenance(idTracker: object["idtracker"] as! String!, idUser:iduser , checkbox: isChecked.integer(forKey: "CHECKED"))
    
     
     
     }
     
     
+    func tapSwitch(){
+        print("touch up inside de tap switch")
+        let currentPosition = UserDefaults.standard
+        
+        let object = trackerlist[currentPosition.integer(forKey: "ROW")]
+        let iduser:Int = currentPosition.integer(forKey: "IDUSER") as Int
+        setMaintenance(idTracker: object["idtracker"] as! String!, idUser:iduser , checkbox: currentPosition.integer(forKey: "CHECKED"))
+
+        
+        
+    }
     
     
     

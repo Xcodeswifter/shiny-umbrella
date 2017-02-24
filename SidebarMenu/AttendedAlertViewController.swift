@@ -51,7 +51,7 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
             }else{//Master users only
                 print("2")
                 AttendedAlertsOrContactLabel.text = "Contacts"
-                setTextViewAttributes(label:AttendedAlertsOrContactLabel)
+                setContactTitleTextViewAttributes(label: AttendedAlertsOrContactLabel)
                 requestTrackerListService2()
                 
             }
@@ -86,9 +86,16 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
     func setTextViewAttributes(label:UITextView){
        
         label.textColor = UIColor.white
-        label.font = UIFont(name:"SF UI Text", size:21.0)
+        UIFont(name:"SF UI Text", size: 21.0)
     
-    
+    }
+    func setContactTitleTextViewAttributes(label:UITextView){
+        
+        label.textColor = UIColor.white
+        UIFont(name:"SF UI Text", size: 48.0)
+        label.frame.origin.x = 99.0
+        label.frame.size = CGSize(width: 124.0, height: 52.0)
+        
     }
 
     
@@ -221,15 +228,33 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
     
     func parseUserJSON(_ json: JSON) {
         
+        
+        if(json["users"].arrayValue.count<=1){
+          
+            for result in json["users"].arrayValue{
+                let id =  result["id"].intValue
+                
+                if(id==0){
+                    showNoUsersAvailableDialog()
+
+                }
+                
+            }
+
+        }
+        
+        
         for result in json["users"].arrayValue {
             let id = result["id"].intValue
             let name = result["name"].stringValue
             print("aaaeefe")
             print(name)
             
-            if(id==0){
+            if(id==0  &&  (json["users"].arrayValue.count<=1)){
                 let obj = ["id": id, "name": "Unavailable"] as [String : Any]
                 masterTrackersUserAttendedAlerts.append(obj)
+                
+
                 
             }else{
                 let obj = ["id": id, "name": name] as [String : Any]
@@ -252,6 +277,27 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
     
     
     
+    
+    func showNoUsersAvailableDialog(){
+        let alert: UIAlertController =  UIAlertController(title:"Send Message", message:"This GC-Redbox has no other users to write to", preferredStyle:.alert)
+        let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
+                                   handler: {
+                                    (paramAction:UIAlertAction!) in
+                                    
+                                    print("returningtoeventreport")
+ self.performSegue(withIdentifier: "returnToSelectMasterTracker", sender: self)
+
+                                    
+        })
+        
+        
+        
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+
+
+        
+    }
     
     
     func checkIfTrackerListIsEmpty(json:JSON)->Bool{
@@ -323,9 +369,11 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
             
             
             cell.nameLabel.text = object2["name"] as! String?
-            cell.nameLabel.sizeThatFits(CGSize(width: 520, height: 320))
-            cell.nameLabel.font = cell.nameLabel.font.withSize(24)
+            cell.nameLabel.frame.origin.x = 80
+            cell.nameLabel.frame.size = CGSize(width: 540, height: 50)
+            cell.nameLabel.font = cell.nameLabel.font.withSize(38)
             cell.attendedDate.text = ""
+            cell.forwardArrow.image = UIImage(named: "whitearrow")
             
             
         }
@@ -347,7 +395,7 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
         }
         else{
             print("este men")
-            segueFromController = "Write a reply message"
+            segueFromController = "Compose"
             self.performSegue(withIdentifier: "goToReplyMessage", sender: self)
         }
         
@@ -412,13 +460,37 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
             nextScene.idSender = idSender
             nextScene.msgType = "Compose a new message"
             nextScene.newMsg = "New Message"
-            nextScene.subject = "Subject"
+            nextScene.subject = ""
             nextScene.selectedDate = Date().description
             nextScene.idDestination = selectedDestinationId
             
             
         }
         
+        
+        if(segueFromController=="Compose"){
+            let nextScene =  segue.destination as! ReplyMessageViewController
+            
+            
+            print("valores que se van a enviar al reply")
+            
+            
+            
+            nextScene.selectedFullName =  selectedFullName
+            
+            nextScene.selectedbusiness = ""
+            nextScene.selectedmessage =  ""
+            nextScene.idSender = idSender
+            nextScene.msgType = "Compose a new message"
+            nextScene.newMsg = "New Message"
+            nextScene.subject = "Subject"
+            nextScene.selectedDate = Date().description
+            nextScene.idDestination = selectedDestinationId
+            
+
+            
+            
+        }
         
         
         

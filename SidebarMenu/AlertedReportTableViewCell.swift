@@ -14,6 +14,7 @@ class AlertedReportTableViewCell: UITableViewCell {
     @IBOutlet weak var pressureLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var timeBroadcastLabel: UILabel!
+    @IBOutlet weak var forwardArrow: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

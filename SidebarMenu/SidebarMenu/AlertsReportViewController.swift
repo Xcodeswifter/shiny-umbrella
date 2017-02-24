@@ -158,6 +158,7 @@ class AlertsReportViewController: UIViewController,UITableViewDataSource,UITable
         cell.dateLabel.text = " "
         cell.pressureLabel.text =  object["date"]!
         cell.timeBroadcastLabel.text = object["time"]!
+        cell.forwardArrow.image = UIImage(named:"whitearrow")
         
         return cell
         

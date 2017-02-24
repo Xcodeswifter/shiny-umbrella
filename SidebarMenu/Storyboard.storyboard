@@ -284,7 +284,7 @@ YOU UNDERSTAND AND AGREE THAT YOU ARE RESPONSIBLE FOR ALL CONTENT AVAILABLE THRO
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KVJ-0F-tDF">
-                                <rect key="frame" x="219" y="617" width="60" height="30"/>
+                                <rect key="frame" x="286" y="611" width="60" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="ETx-HE-PIN"/>
                                     <constraint firstAttribute="width" constant="60" id="VA9-Pj-2gu"/>
@@ -294,18 +294,6 @@ YOU UNDERSTAND AND AGREE THAT YOU ARE RESPONSIBLE FOR ALL CONTENT AVAILABLE THRO
                                 </state>
                                 <connections>
                                     <action selector="gotomain:" destination="rpZ-Eh-mZ7" eventType="touchUpInside" id="AJS-SP-O4V"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7W7-QI-qnk">
-                                <rect key="frame" x="302" y="617" width="60" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="xYg-k1-FuL"/>
-                                </constraints>
-                                <state key="normal" backgroundImage="Untitled-1_0000_Layer-2">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="decline:" destination="rpZ-Eh-mZ7" eventType="touchUpInside" id="z1m-9V-Lgu"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms of Services" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gkh-Vy-ZD3">
@@ -325,25 +313,37 @@ YOU UNDERSTAND AND AGREE THAT YOU ARE RESPONSIBLE FOR ALL CONTENT AVAILABLE THRO
                                     <action selector="returnToLoginScreen:" destination="rpZ-Eh-mZ7" eventType="touchUpInside" id="JU3-ef-x9b"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7W7-QI-qnk">
+                                <rect key="frame" x="207" y="611" width="60" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="xYg-k1-FuL"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="Untitled-1_0000_Layer-2">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="decline:" destination="rpZ-Eh-mZ7" eventType="touchUpInside" id="z1m-9V-Lgu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ISC-aP-YlU" firstAttribute="top" secondItem="Gkh-Vy-ZD3" secondAttribute="bottom" constant="35" id="14I-Q0-eBC"/>
-                            <constraint firstItem="7W7-QI-qnk" firstAttribute="leading" secondItem="KVJ-0F-tDF" secondAttribute="trailing" constant="23" id="3XI-N0-7F0"/>
+                            <constraint firstItem="7W7-QI-qnk" firstAttribute="leading" secondItem="KVJ-0F-tDF" secondAttribute="trailing" constant="-139" id="3XI-N0-7F0"/>
                             <constraint firstItem="Gkh-Vy-ZD3" firstAttribute="centerX" secondItem="IC8-BU-tuI" secondAttribute="centerX" id="76i-Za-IdJ"/>
                             <constraint firstItem="L5I-CL-xwe" firstAttribute="leading" secondItem="g8r-y1-0wA" secondAttribute="trailing" constant="19" id="8Jl-pS-eKB"/>
                             <constraint firstItem="Gkh-Vy-ZD3" firstAttribute="top" secondItem="g8r-y1-0wA" secondAttribute="bottom" constant="58" id="9oS-OC-dRw"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="7W7-QI-qnk" secondAttribute="trailing" constant="-3" id="AkH-Ja-TZd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7W7-QI-qnk" secondAttribute="trailing" constant="92" id="AkH-Ja-TZd"/>
                             <constraint firstAttribute="trailing" secondItem="axa-ZU-hAh" secondAttribute="trailing" constant="-100" id="D6T-uh-KiT"/>
                             <constraint firstItem="g8r-y1-0wA" firstAttribute="top" secondItem="1bK-mD-t7x" secondAttribute="bottom" constant="13" id="Eqf-I9-P76"/>
                             <constraint firstItem="ISC-aP-YlU" firstAttribute="trailing" secondItem="IC8-BU-tuI" secondAttribute="trailingMargin" id="FRf-nb-Ell"/>
                             <constraint firstItem="KVJ-0F-tDF" firstAttribute="top" secondItem="7W7-QI-qnk" secondAttribute="top" id="Max-S1-1vt"/>
                             <constraint firstItem="L5I-CL-xwe" firstAttribute="top" secondItem="axa-ZU-hAh" secondAttribute="bottom" constant="8" symbolic="YES" id="ONo-cF-197"/>
                             <constraint firstItem="axa-ZU-hAh" firstAttribute="leading" secondItem="IC8-BU-tuI" secondAttribute="leading" id="PtA-zs-KOe"/>
-                            <constraint firstAttribute="bottom" secondItem="KVJ-0F-tDF" secondAttribute="bottom" constant="20" symbolic="YES" id="QNA-J8-4oX"/>
+                            <constraint firstAttribute="bottom" secondItem="KVJ-0F-tDF" secondAttribute="bottom" constant="26" id="QNA-J8-4oX"/>
                             <constraint firstItem="L5I-CL-xwe" firstAttribute="top" secondItem="1bK-mD-t7x" secondAttribute="bottom" constant="8" symbolic="YES" id="Te7-60-7QD"/>
                             <constraint firstItem="Gkh-Vy-ZD3" firstAttribute="top" secondItem="L5I-CL-xwe" secondAttribute="bottom" constant="49" id="Tz6-Lc-PQW"/>
-                            <constraint firstItem="KVJ-0F-tDF" firstAttribute="top" secondItem="ISC-aP-YlU" secondAttribute="bottom" constant="14" id="Xbn-KK-kPm"/>
+                            <constraint firstItem="KVJ-0F-tDF" firstAttribute="top" secondItem="ISC-aP-YlU" secondAttribute="bottom" constant="8" id="Xbn-KK-kPm"/>
                             <constraint firstItem="g8r-y1-0wA" firstAttribute="leading" secondItem="ISC-aP-YlU" secondAttribute="leading" id="bN1-7X-dVC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="L5I-CL-xwe" secondAttribute="trailing" constant="38" id="lb3-Cd-rjw"/>
                             <constraint firstItem="g8r-y1-0wA" firstAttribute="leading" secondItem="IC8-BU-tuI" secondAttribute="leadingMargin" constant="-8" id="mnU-yS-gix"/>
@@ -373,7 +373,7 @@ YOU UNDERSTAND AND AGREE THAT YOU ARE RESPONSIBLE FOR ALL CONTENT AVAILABLE THRO
                 <navigationController storyboardIdentifier="firstviewcontroller" automaticallyAdjustsScrollViewInsets="NO" id="gUE-6z-ITE" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedStatusBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="9vf-u0-C8N">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9vf-u0-C8N">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

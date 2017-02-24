@@ -256,7 +256,7 @@ class DataLogViewController: UIViewController, UITableViewDelegate, UITableViewD
         //Create the alert controller screen
         
         
-          alertController = UIAlertController(title: "Sending Log",
+          alertController = UIAlertController(title: "Sending mail...",
                                             message: "A report showing the current results will be sent to the recipient",
                                             preferredStyle: .alert)
         
@@ -325,6 +325,8 @@ class DataLogViewController: UIViewController, UITableViewDelegate, UITableViewD
 })
                 
             }
+                
+
             else{
              activitiyViewController.dismiss(animated: true, completion: nil)
             }

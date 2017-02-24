@@ -26,8 +26,12 @@ class AlamoFireRequestHandler: NSObject{
     ///   - completion: handler called when the request has been ended, also this handler is used to obtain the value of the JSON in all of the classes that call this method
     public  func processRequest(URL:URLConvertible, requestMethod:HTTPMethod, params:[String: AnyObject], completion : @escaping (JSON) -> ()){
         
-        Alamofire.request(URL ,method: requestMethod, parameters: params, headers: nil)   .responseJSON { response in
-            
+        
+    Alamofire.request(URL ,method: requestMethod, parameters: params, headers: nil)   .responseJSON { response in
+        
+        
+print("espere....")
+        
             if let status = response.response?.statusCode {
                 switch(status){
                 
@@ -39,8 +43,17 @@ class AlamoFireRequestHandler: NSObject{
                 case 201:
                     print("example success 2")
                     break
+                
+                    
+                
                 case  NSURLErrorTimedOut:
+                    
+                    print("timed out")
+                    completion(self.json)
+                    
                     break
+                    
+                    
                     
                     
                 default:
@@ -65,6 +78,22 @@ class AlamoFireRequestHandler: NSObject{
         }
         
         
+        
+        
+        
+    }
+    
+    
+    public func stopRequest(){
+     
+        let sessionManager = Alamofire.SessionManager.default
+        
+        sessionManager.session.getTasksWithCompletionHandler { dataTasks, uploadTasks, downloadTasks in dataTasks.forEach { $0.cancel() }
+            uploadTasks.forEach { $0.cancel() }
+            downloadTasks.forEach { $0.cancel() }
+        
+        
+        }
         
         
         

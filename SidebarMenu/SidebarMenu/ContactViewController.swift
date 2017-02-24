@@ -69,6 +69,15 @@ class ContactViewController: UIViewController, UITextFieldDelegate,UITextViewDel
     
     
     func requestReportSendingService(idUser:Int){
+        let dialog = DialogViewController()
+
+        if(issue.textColor == UIColor.lightGray||(subject.text?.isEmpty)!){
+        dialog.showUncompleteFieldsDialog()
+        }
+        
+        else{
+            
+            
         
         
         let params:[String:AnyObject]=[ "id_user": idUser as AnyObject, "subject":subject.text as AnyObject, "message":issue.text as AnyObject ]
@@ -77,8 +86,7 @@ class ContactViewController: UIViewController, UITextFieldDelegate,UITextViewDel
         present(activitiyViewController, animated: true, completion: nil)
 
         
-        let dialog = DialogViewController()
-        
+    
         let handler = AlamoFireRequestHandler()
         handler.processRequest(URL: "https://gct-production.mybluemix.net/contactsupport_02.php", requestMethod: .post, params: params,completion: { json2 -> () in
             print(json2)
@@ -99,7 +107,7 @@ class ContactViewController: UIViewController, UITextFieldDelegate,UITextViewDel
             
         })
         
-        
+        }
     }
     
     

@@ -96,14 +96,27 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
         trackerAddressButton.setTitle( prefs.object(forKey: "ADDRESS") as! String?, for: .normal)
         
         let address = prefs.object(forKey: "ADDRESS") as! String?
-        let idTracker = prefs.object(forKey: "IDTRACKER")as? Int
+        let idTracker = prefs.object(forKey: "IDTRACKER")as? String?
         print("los datos amigos")
-        print(idTracker)
+        print(idTracker??.description)
         print(address)
         print(NameBusiness)
 
         
+        if((idTracker??.description)==nil){
+            self.performSegue(withIdentifier: "selectBusiness", sender: self)
+ 
+            
+            
+        }
+        
+        
+        
+        
         if(address==nil&&NameBusiness==nil && idTracker==nil){
+           // self.performSegue(withIdentifier: "selectBusiness", sender: self)
+
+            
             print("hey amigo")
             prefs.set("Address", forKey: "ADDRESS")
             prefs.synchronize()
@@ -111,13 +124,6 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
             prefs.synchronize()
             prefs.set(0, forKey: "IDTRACKER")
             prefs.synchronize()
-            selectPumpButton.isEnabled = false
-            pressureButton.isEnabled = false
-            roomStateIcon.isEnabled = false
-            alertedTrackerButton.isEnabled = false
-            pressureButton.isEnabled = false
-            selectFiterButton.isEnabled = false
-            systemInfoButton.isEnabled = false
             
             
             

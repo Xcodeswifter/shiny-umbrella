@@ -32,7 +32,7 @@ class SelectTrackerViewController: UIViewController, UITableViewDelegate, UITabl
         
         if(checkNetworkState()){
            
-            //setupDefaultValues()
+            setupDefaultValues()
             requestTrackerListService()
         }
     }
@@ -276,7 +276,8 @@ class SelectTrackerViewController: UIViewController, UITableViewDelegate, UITabl
         prefs.synchronize()
         
         
-        
+        print("idTRAQUER")
+        print(selectedTracker["idtracker"])
         
         
         if(selectedTracker["alerted"] as! String!=="1"){

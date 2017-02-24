@@ -403,7 +403,7 @@ class DialogViewController {
         let topWindow: UIWindow = UIWindow(frame: UIScreen.main.bounds)
         topWindow.rootViewController = UIViewController()
         topWindow.windowLevel = UIWindowLevelAlert + 1
-        let alert: UIAlertController =  UIAlertController(title:"Contact Support", message:"Thank you for writing us, our support team will get in touch with you as soon as possible", preferredStyle:.alert)
+        let alert: UIAlertController =  UIAlertController(title:"Contact Support", message:"Thank you for writing us, our support team will get in touch with you as soon as possible.", preferredStyle:.alert)
         let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
                                    handler: {                                    (paramAction:UIAlertAction!) in
         })
@@ -424,7 +424,7 @@ class DialogViewController {
             let topWindow: UIWindow = UIWindow(frame: UIScreen.main.bounds)
             topWindow.rootViewController = UIViewController()
             topWindow.windowLevel = UIWindowLevelAlert + 1
-            let alert: UIAlertController =  UIAlertController(title:"Contacting Support", message:"Your message would not be sent at this moment, please email us at support@gc-track.com or give us a call", preferredStyle:.alert)
+            let alert: UIAlertController =  UIAlertController(title:"Contacting Support", message:"Your message would not be sent at this moment, please email us at support@gc-track.com or give us a call.", preferredStyle:.alert)
             let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
                                        handler: {
                                         (paramAction:UIAlertAction!) in

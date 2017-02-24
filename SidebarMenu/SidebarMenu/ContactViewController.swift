@@ -71,7 +71,7 @@ class ContactViewController: UIViewController, UITextFieldDelegate,UITextViewDel
     func requestReportSendingService(idUser:Int){
         let dialog = DialogViewController()
 
-        if(issue.textColor == UIColor.lightGray||(subject.text?.isEmpty)!){
+        if(issue.textColor == UIColor.lightGray||(subject.text?.isEmpty)!||(issue.text.isEmpty)){
         dialog.showUncompleteFieldsDialog()
         }
         

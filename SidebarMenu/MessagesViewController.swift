@@ -414,14 +414,12 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
 
         let currentCell: MessagesTableViewCell = self.messagesTable.dequeueReusableCell(withIdentifier: "selda") as! MessagesTableViewCell
 
-        currentCell.isReadImage.backgroundColor = UIColor.clear
-        print("el color es")
-        print(currentCell.isReadImage.backgroundColor ?? "color")
         
-        
+            currentCell.isReadImage.isHidden = true
+
        
-        
-        
+            messagesTable.beginUpdates()
+            messagesTable.endUpdates()
         
          selectedFullName = (object["fullname"] as! String?)!
         selectedbusiness = (object["business"] as! String?)!
@@ -439,7 +437,10 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
 
         unMarkMessage(msgNum: object["msgNum"]as! Int)
         
-        self.performSegue(withIdentifier: "replymessage", sender: self)
+           
+            
+            
+       self.performSegue(withIdentifier: "replymessage", sender: self)
             
             
         }
@@ -451,14 +452,11 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
             
             let currentCell: MessagesTableViewCell = self.messagesTable.dequeueReusableCell(withIdentifier: "selda") as! MessagesTableViewCell
             
-            currentCell.isReadImage.backgroundColor = UIColor.clear
-            print("el color es")
-            print(currentCell.isReadImage.backgroundColor ?? "color")
-            
-            
-            
-            
-            
+
+            currentCell.isReadImage.isHidden = true
+
+            messagesTable.beginUpdates()
+            messagesTable.endUpdates()
             
             selectedFullName = (object["fullname"] as! String?)!
             selectedbusiness = (object["business"] as! String?)!

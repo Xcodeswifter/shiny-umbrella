@@ -37,6 +37,11 @@ print("espere....")
                 
                 case 200:
                     print("example success 1")
+                    self.json = JSON(response.result.value ?? "default value")
+                    print("generated json")
+                    print(self.json)
+                    completion(self.json)
+
                     break
                     
                 

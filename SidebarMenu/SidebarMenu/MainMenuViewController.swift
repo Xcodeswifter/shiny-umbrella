@@ -114,7 +114,6 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
         
         
         if(address==nil&&NameBusiness==nil && idTracker==nil){
-           // self.performSegue(withIdentifier: "selectBusiness", sender: self)
 
             
             print("hey amigo")
@@ -462,8 +461,6 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
                                         
                                         
                                         
-                                        
-                                        
                                         let handler = AlamoFireRequestHandler()
                                         handler.processRequest(URL: "https://gct-production.mybluemix.net/releasetoken_02.php", requestMethod: .post, params: params as [String : AnyObject],completion: { json2 -> () in
                                             print("funciono o no el login amigo")
@@ -481,7 +478,8 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
                                                 defaults.set(0, forKey:"MASTER")
                                                 
                                                 defaults.synchronize()
-                                                
+
+                                               
                                                 
                                                 self.performSegue(withIdentifier: "logout", sender: self)
                                                 

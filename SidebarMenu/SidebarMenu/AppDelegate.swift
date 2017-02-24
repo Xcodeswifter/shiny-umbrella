@@ -226,7 +226,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         
         print(PushNotificationMessage)
         if(PushNotificationMessage.containsIgnoringCase(find: "jockey")){
-            
+
             print("is jockey pump alert true")
             
             let storyboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
@@ -243,7 +243,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         
         
       else  if(PushNotificationMessage.containsIgnoringCase(find: "ready")){
-            
+
             
 //            print("systems ready")
 //            var storyboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
@@ -257,7 +257,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         }
             
         else  if(PushNotificationMessage.containsIgnoringCase(find: "message")){
-            
+
             print("you have a message")
 //          this code snippet causes the app to crash
 //            var storyboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
@@ -274,8 +274,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         
         
         
-        else{
-            
+        else if(PushNotificationMessage.containsIgnoringCase(find: "pump running")){
+
             print("is an alert")
             self.pushNotificationArrived=0
             generateLocalNotification()
@@ -301,9 +301,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         _ = UserDefaults.standard
         
        
-           print("generando notificacion local perro")
-            generateTimeUpNotification()
-            
+        
         
         
         self.pushNotificationArrived=0
@@ -414,19 +412,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background
         print("entrando al foreground amigo ")
-        print("start timer peror")
       
-        if(timerDefaults.integer(forKey:"ENABLED")==1){
-        let elapsedTime = Int(Date().timeIntervalSince(timerAtInvalidate as Date))
-        print("ha pasado")
-        
-        print(Int(elapsedTime))
-        secondsCount = secondsCount - elapsedTime
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
-        updateTimer()
-        
-        }
-        
+        UIApplication.shared.applicationIconBadgeNumber = 0
+
+    
+    
+    
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -478,172 +469,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     }
     
     
-    func generateTimeUpNotification(){
-        let notification = UILocalNotification()
-        notification.fireDate = NSDate(timeIntervalSinceNow: 1) as Date
-        notification.alertBody = "Times up"
-        notification.alertAction = "open"
-        notification.hasAction = true
-         notification.soundName = "default"
-        notification.userInfo = ["UUID": "reminderID" ]
-        UIApplication.shared.scheduleLocalNotification(notification)
-        
-
-        
-        
-    }
-    
-    func generateTimerIntervalNotification(duration:TimeInterval){
-       
-        print("the duration is "+duration.description)
-        let notification = UILocalNotification()
-        notification.fireDate = NSDate(timeIntervalSinceNow: duration) as Date
-        notification.alertBody = "Times up"
-        notification.alertAction = "open"
-        notification.hasAction = true
-         notification.soundName = "default"
-        notification.userInfo = ["UUID": "reminderID" ]
-        UIApplication.shared.scheduleLocalNotification(notification)
-        
-        
-        
-        
-    }
-    
-
-    
-    
-    
-    func scheduleTimer(duration:TimeInterval){
-        
-        let Defaults = UserDefaults.standard
-        
-        Defaults.set(1, forKey: "ENABLED")
-        print("la duracion es ")
-        print(duration)//duration in seconds
-        
-        
-        
-        seconds = Int(duration)
-        
-        
-        hours = Int(duration/3600.0)
-        print("las horas")
-        print(hours)
-        
-        minutes = (Int(duration) - (3600*hours))/60
-        print("los minutos")
-        print(minutes)
-        seconds = Int(duration) - ((hours*3600)+(minutes*60))
-        print("los minutos menazo")
-        print(minutes)
-        
-        secondsCount = ((hours * 3600) + (minutes * 60));
-        print("seconds count")
-        print(secondsCount)
-        
-        
-       
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
-        
-    }
 
     
     
     
     
-    func updateTimer(){
-       print("porque entra aqui cuando no debe de hacerlo pandejo")
-        
-    secondsCount-=1
-        hours = secondsCount/3600 //OK
-        minutes = (Int(secondsCount) - (3600*hours))/60 //OK
-        seconds = secondsCount-((hours*3600)+(minutes*60))
-        print("el timer es ")
-        print(hours)
-        print(minutes)
-        print(seconds)
-        
-        print("el reloj es ")
-        print(String(format:"%02i:%02i:%02i",hours, minutes, seconds))
-        if (secondsCount <= 0) {
-            
-            print("se acabo el tiempo amigo")
-            
-            timer.invalidate()
-            
-            let userDefaults = UserDefaults.standard
-            userDefaults.set(1, forKey: "TIMEUP")
-            userDefaults.set(0, forKey: "ENABLED")
-//            var alertController:UIAlertController?
-//            alertController = UIAlertController(title: "Maintenance Mode",
-//                                                message: "Maintenance Mode time ended",
-//                                                preferredStyle: .alert)
-//            
-//            let action = UIAlertAction(title: "OK",
-//                                       style: UIAlertActionStyle.default,
-//                                       handler: {[weak self]
-//                                        (paramAction:UIAlertAction!) in
-//                                        
-//            })
-//            
-//            alertController?.addAction(action)
-//           self.window?.rootViewController?.present(alertController!,
-//                         animated: true,
-//                         completion: nil)
-//
-//            
-//            
-//        }
-        
-            let topWindow: UIWindow = UIWindow(frame: UIScreen.main.bounds)
-            topWindow.rootViewController = UIViewController()
-            topWindow.windowLevel = UIWindowLevelAlert + 1
-            let alert: UIAlertController =  UIAlertController(title:"Maintenance mode", message:"Maintenance time ended", preferredStyle:.alert)
-            let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
-                                                       handler: {
-                                                        (paramAction:UIAlertAction!) in
-                                                        })
-
-           
-            
-            alert.addAction(action)
-                
-                topWindow.makeKeyAndVisible()
-            topWindow.rootViewController?.present(alert, animated: true, completion: { _ in })
-        
-        
-    }
-    }
     
     
-    
-    func stopTimer(){
-     timer.invalidate()
-        
-    }
-    
-    func parseJSON(_ json: JSON)-> String {
-        var counter:Int=0
-        
-        for result in json["locations"].arrayValue {
-            let alerted = result["alerted"].stringValue
-            
-            if(alerted=="1"){
-                counter+=1
-            }
-            
-        }
-        
-        if(counter>1){
-            return "Multiple Trackers with problems"
-        }
-        
-        return PushNotificationMessage
-        
-        
-    }
-    
-    
-    
+   
 }

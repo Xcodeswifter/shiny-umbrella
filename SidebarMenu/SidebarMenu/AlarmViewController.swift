@@ -28,7 +28,6 @@ class AlarmViewController: UIViewController {
     //optimized Function
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("view did load")
         requestAlertedTrackers()
         sound.playSound()
     
@@ -40,7 +39,6 @@ class AlarmViewController: UIViewController {
     //optimized Function
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("view will appear")
         requestAlertedTrackers()
         isSoundPlaying.set(0, forKey: "SOUND")
         if(isSoundPlaying.integer(forKey: "SOUND")==0){
@@ -58,7 +56,6 @@ class AlarmViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("view DID appear")
         requestAlertedTrackers()
         sound.playSound()
         isSoundPlaying.set(1, forKey: "SOUND")
@@ -69,15 +66,12 @@ class AlarmViewController: UIViewController {
     func requestAlertedTrackers(){
         let params:[String:AnyObject]=[ "id_user": prefs.object(forKey: "IDUSER") as AnyObject ]
         
-        print("iduser for alerted trackers")
         print(prefs.object(forKey: "IDUSER") as! Int)
         let handler = AlamoFireRequestHandler()
         handler.processRequest(URL: "https://gct-production.mybluemix.net/getalertedtrackers_02.php", requestMethod: .post, params: params as [String : AnyObject],completion: { json2 -> () in
             
             
-            print("getting alerted trackers")
             self.isMultipleTrackerText =  self.parseJSON(json2)
-            print("alert text")
             print(self.isMultipleTrackerText)
             
             self.prefs.set(self.isMultipleTrackerText,  forKey: "ALERT")

@@ -177,7 +177,6 @@ class AlertsReportViewController: UIViewController,UITableViewDataSource,UITable
         
     segueFromController = "UsersTrackers"
         let object = datalog[(indexPath as NSIndexPath).row]
-        print("cell selected")
         let prefs = UserDefaults.standard
         
         prefs.set(object["time"], forKey: "ATTENDED")
@@ -200,11 +199,9 @@ class AlertsReportViewController: UIViewController,UITableViewDataSource,UITable
        
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print(segueFromController)
-        print("POR FAAAAVORR")
         
         
         if(segueFromController=="ReturnBack"){
-            print("hi users trackers")
 
             let destination = segue.destination as! UserTrackersViewController
             destination.segueFromController = "UsersTrackers"

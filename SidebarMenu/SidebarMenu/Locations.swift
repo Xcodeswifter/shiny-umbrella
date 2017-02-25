@@ -14,7 +14,7 @@ class Locations: MKPointAnnotation{
     var locationSubtitle: String?
     var latitude: Double = 0.0
     var longitude:Double = 0.0
-    var idTracker:Int = 0
+    var idTracker:String?
     var Image: String?="iconomapalogo"
     var alerted:Int=0
     

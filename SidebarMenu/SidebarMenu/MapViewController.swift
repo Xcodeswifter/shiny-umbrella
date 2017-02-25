@@ -226,7 +226,7 @@ class MapViewController: UIViewController,  MKMapViewDelegate, CLLocationManager
         for result in json["locations"].arrayValue {
             let lat = result["latitudeLocation"].doubleValue
             let long = result["longitudeLocation"].doubleValue
-            let idTracker = result["idTracker"].intValue
+            let idTracker = result["idTracker"].stringValue
             let alerted = result ["alerted"].intValue
             
             if(alerted==1){
@@ -335,11 +335,21 @@ class MapViewController: UIViewController,  MKMapViewDelegate, CLLocationManager
                 
                 let prefs:UserDefaults = UserDefaults.standard
                 prefs.set(view.annotation!.title!,  forKey: "NAMEBUSINESS")
+                prefs.synchronize()
+
                 prefs.set(pinannotation.idTracker,  forKey: "IDTRACKER")
+                prefs.synchronize()
+
                 prefs.set(pinannotation.alerted,  forKey: "ALERTEDTRACKER")
+                prefs.synchronize()
+
                 prefs.set(view.annotation!.subtitle!,  forKey: "ADDRESS")
                 
                 prefs.synchronize()
+                
+                print("hola cabron")
+                print(prefs.object(forKey: "IDTRACKER"))
+                
                 self.performSegue(withIdentifier: "maptomain", sender: self)
                 
                 

@@ -452,7 +452,7 @@ class DialogViewController {
         let topWindow: UIWindow = UIWindow(frame: UIScreen.main.bounds)
         topWindow.rootViewController = UIViewController()
         topWindow.windowLevel = UIWindowLevelAlert + 1
-        let alert: UIAlertController =  UIAlertController(title:"Contact Support", message:"Please fill both 'Subject' and 'description' fields.", preferredStyle:.alert)
+        let alert: UIAlertController =  UIAlertController(title:"Contact Support", message:"Please fill both 'Subject' and 'Description' fields.", preferredStyle:.alert)
         let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
                                    handler: {
                                     (paramAction:UIAlertAction!) in

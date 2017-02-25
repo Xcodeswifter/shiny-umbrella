@@ -188,21 +188,12 @@ static const float TAB_ANIMATION_DURATION = 0.0;
     
     [super viewWillAppear:animated];
     
-    NSLog(@"VIEW WILL APEAR");
-
-    NSLog(@"HOLA PAPU");
-    NSLog(@"%ld", (long)[[NSUserDefaults standardUserDefaults] integerForKey:@"MASTER"]);
-    
     NSInteger isMaster = (long)[[NSUserDefaults standardUserDefaults] integerForKey:@"MASTER"];
-    NSLog(@"%ld", isMaster);
     
 
     if ([self.viewControllers count] > MAX_TAB_COUNT && ![self.tabButtons count])
     {
-        NSLog(@"COUNT");
-        NSLog(@"%lu", self.viewControllers.count);
-        NSLog(@"%lu", MAX_TAB_COUNT);
-        self.moreNavigationController.delegate = self;
+                self.moreNavigationController.delegate = self;
         self.barView.backgroundColor = [UIColor blackColor];
        NSUInteger tabCount = [self.viewControllers count];
         
@@ -304,7 +295,6 @@ static const float TAB_ANIMATION_DURATION = 0.0;
             
             //the user is not a master
             if(isMaster==0){
-                NSLog(@"NO SOY MASTER ");
             if([title isEqual:@"Maintenance"]){
                 
                button.tag = 2;
@@ -377,15 +367,12 @@ static const float TAB_ANIMATION_DURATION = 0.0;
     {
         UIView *button = [self.barView subviews][i];
         
-        NSLog(@"BUTTON");
-        NSLog(@"%ld", (long)[button tag]);
+        
         if([button tag]==2){
-            NSLog(@"ESCONDETE  AMIGO ");
             [button removeFromSuperview];
             tabCount = tabCount -1;
         }
         if([button tag]==3){
-            NSLog(@"ESCONDETE  AMIGOte ");
             [button removeFromSuperview];
             tabCount = tabCount -1;
         }

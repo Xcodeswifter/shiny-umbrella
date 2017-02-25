@@ -18,6 +18,7 @@
         @IBOutlet weak var sendButton: UIButton!
         @IBOutlet weak  var dataLogTable: UITableView!
         @IBOutlet weak var trackerLabel: UILabel!
+        @IBOutlet weak var selectTrackerLabel: UILabel!
         
         @IBOutlet weak var loadingLabel: UILabel!
         @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
@@ -46,9 +47,9 @@
             idtracker = prefs.integer(forKey: "IDTRACKER") as Int
             params  = [ "id_tracker": idtracker as AnyObject ]
             
-            
-            
-            trackerLabel.text = prefs.object(forKey: "NAMEBUSINESS") as! String?
+            print("NAMEBUSINESS")
+            print(prefs.object(forKey: "NAMEBUSINESS")!)
+            selectTrackerLabel.text = prefs.object(forKey: "NAMEBUSINESS") as! String?
             startLoading()
             requestDataLog(params: params)
             
@@ -321,20 +322,29 @@
                 
                 print("el json")
                 print(json2)
+                
+                if(json2["mailSent"]==0){
+
+                   self.showEmailErrorDialog(email_Address: params["email_address"] as! String)
+                    
+                }
+
+                
+                
                 if(json2["mailSent"]==1){
                     
                     
                     self.showSentMailDialog(email_Address: params["email_address"] as! String)
                     
                 }
+                
+                
+                
+                
+                
+                
                     
-                    
-                else{
-                    
-                    self.showEmailErrorDialog(email_Address: params["email_address"] as! String)
-                    
-                }
-            })
+                            })
             
             
             
@@ -369,7 +379,7 @@
         func showEmailErrorDialog(email_Address:String){
             var alertController:UIAlertController?
             alertController = UIAlertController(title: "Sending log",
-                                                message: "You message to "+email_Address+" would not  be sent",
+                                                message: "This report would not be sent to "+email_Address,
                                                 preferredStyle: .alert)
             
             let action = UIAlertAction(title: "OK",
@@ -383,6 +393,8 @@
             self.present(alertController!,
                          animated: true,
                          completion: nil)
+
+            
             
             
             

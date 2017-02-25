@@ -92,7 +92,7 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
     func setContactTitleTextViewAttributes(label:UITextView){
         
         label.textColor = UIColor.white
-        UIFont(name:"SF UI Text", size: 48.0)
+        UIFont(name:"SF UI Text", size: 28.0)
         label.frame.origin.x = 99.0
         label.frame.size = CGSize(width: 124.0, height: 52.0)
         
@@ -369,9 +369,9 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
             
             
             cell.nameLabel.text = object2["name"] as! String?
-            cell.nameLabel.frame.origin.x = 80
+            cell.nameLabel.frame.origin.x = 40
             cell.nameLabel.frame.size = CGSize(width: 540, height: 50)
-            cell.nameLabel.font = cell.nameLabel.font.withSize(38)
+            cell.nameLabel.font = cell.nameLabel.font.withSize(28)
             cell.attendedDate.text = ""
             cell.forwardArrow.image = UIImage(named: "whitearrow")
             

@@ -39,12 +39,9 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-//        let activitiyViewController = ActivityViewController(message: "Loading..")
-//        present(activitiyViewController, animated: true, completion: nil)
-//        activitiyViewController.dismiss(animated: true, completion: nil)
-//
 
+        
+        print("load")
         messagesTable.delegate = self
         messagesTable.dataSource = self
         searchBar.delegate = self
@@ -70,7 +67,11 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     func setupKCFloatingActionButton(isMasterUser: Int){
+        
+        
         print(isMasterUser)
+        
+        
         if(isMasterUser==1){
         let fab = KCFloatingActionButton()
         fab.buttonColor = UIColor.gray
@@ -92,11 +93,14 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        print("did appear")
         messagesTable.delegate = self
         messagesTable.dataSource = self
         searchBar.delegate = self
         searchController.delegate = self
+        
+        
+        
 
         // set up the refresh control
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
@@ -104,6 +108,12 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         self.refreshControl.addTarget(self, action: #selector(MessagesViewController.handleRefresh(refreshControl:)), for: UIControlEvents.valueChanged)
         
         self.messagesTable?.addSubview(refreshControl)
+        
+        
+               // messagelist.removeAll()
+        //filteredMessageList.removeAll()
+        update()
+        requestMessageListService()
         
         //requestMessageListService()
 
@@ -114,6 +124,8 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        
+        print("appear")
         // Hide the navigation bar on the this view controller
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
@@ -182,7 +194,7 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         return true
     }
     
-    private func searchDisplayController(_ controller: UISearchController, didLoadSearchResultsTableView tableView: UITableView) {
+     func searchDisplayController(_ controller: UISearchController, didLoadSearchResultsTableView tableView: UITableView) {
         print("yes amigo")
         tableView.rowHeight = 94.4
         tableView.backgroundColor = UIColor.black
@@ -242,9 +254,7 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
        
         
         
-        filteredMessageList.removeAll()
-        messagelist.removeAll()
-        update()
+                update()
         
                let prefs:UserDefaults = UserDefaults.standard
         let iduser:Int = prefs.integer(forKey: "IDUSER") as Int
@@ -351,6 +361,7 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
       
         print("busqueda activa")
         print(searchActive)
+        print(messagelist.count)
         if(searchActive){
             
            // searchActive=false
@@ -418,8 +429,7 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
             currentCell.isReadImage.isHidden = true
 
        
-            messagesTable.beginUpdates()
-            messagesTable.endUpdates()
+           
         
          selectedFullName = (object["fullname"] as! String?)!
         selectedbusiness = (object["business"] as! String?)!
@@ -436,8 +446,6 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         
 
         unMarkMessage(msgNum: object["msgNum"]as! Int)
-        
-           
             
             
        self.performSegue(withIdentifier: "replymessage", sender: self)
@@ -455,8 +463,7 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
 
             currentCell.isReadImage.isHidden = true
 
-            messagesTable.beginUpdates()
-            messagesTable.endUpdates()
+            
             
             selectedFullName = (object["fullname"] as! String?)!
             selectedbusiness = (object["business"] as! String?)!
@@ -472,6 +479,7 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
             
             
             unMarkMessage(msgNum: object["msgNum"]as! Int)
+            
             
             self.performSegue(withIdentifier: "replymessage", sender: self)
         

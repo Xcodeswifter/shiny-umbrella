@@ -113,9 +113,8 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
                // messagelist.removeAll()
         //filteredMessageList.removeAll()
         update()
-        requestMessageListService()
-        
         //requestMessageListService()
+        
 
         
     }
@@ -253,9 +252,9 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     func requestMessageListService(){
        
         
-        
+        messagelist.removeAll()
                 update()
-        
+        print("request message service")
                let prefs:UserDefaults = UserDefaults.standard
         let iduser:Int = prefs.integer(forKey: "IDUSER") as Int
         let params:[String:AnyObject]=[ "id_user": iduser as AnyObject ]
@@ -273,6 +272,14 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     
     func parseJSON(_ json: JSON) {
         
+        
+        if(json["messages"].arrayValue.isEmpty){
+            
+            showNoDataDialog()
+            
+            
+        }
+        else{
         
             for result in json["messages"].arrayValue {
                 let subject = result["subject"].stringValue
@@ -305,9 +312,13 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
                 
                 
             }
+            
+            
         
         
             update()
+            
+        }
         }
 
     
@@ -349,6 +360,27 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         return messagelist.count
             
         }
+        
+        
+        
+        
+    }
+    
+
+    
+    func showNoDataDialog(){
+        let alert: UIAlertController =  UIAlertController(title:"Messages", message:"No messages found", preferredStyle:.alert)
+        let action = UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
+                                   handler: {
+                                    (paramAction:UIAlertAction!) in
+        })
+        
+        
+        
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+
+        
         
     }
     
@@ -470,7 +502,8 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
             selectedDate =  (object["date"] as! String?)!
             selectedmessage = (object["message"] as! String?)!
             idSender = (object["sender"] as! Int?)!
-            
+            selectedSubject = (object["subject"] as! String?)!
+
             
             print("los datos")
             print(selectedmessage)
@@ -519,14 +552,16 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         print(selectedmessage)
         print(selectedbusiness)
         print(selectedFullName)
+        print(selectedSubject)
+            print("elsubject")
         
     nextScene.selectedFullName =  selectedFullName
         nextScene.selectedDate =  selectedDate
-        nextScene.subject =  selectedbusiness
+        nextScene.subject =  selectedSubject
         nextScene.selectedmessage =  selectedmessage
         nextScene.idSender = idSender
         nextScene.idDestination = idSender
-        nextScene.msgType = "Reply"
+        nextScene.msgType = "Write a reply message"
         nextScene.newMsg = "Write a reply"
         
     

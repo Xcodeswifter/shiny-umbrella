@@ -34,12 +34,10 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
         attendedAlertsTable.dataSource = self
         prefs = UserDefaults.standard
         idtracker = (prefs?.integer(forKey: "IDTRACKER"))! as Int
-        print("idtracker")
-        print(idtracker)
+        
         if(checkNetworkState()){
             
             if(segueFromController=="AttendedUsersTrackers"){ //Normal Users Only
-                print("1")
                 
                 AttendedAlertsOrContactLabel.text = "Attended Alerts"
                 setTextViewAttributes(label:AttendedAlertsOrContactLabel)
@@ -49,7 +47,6 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
                 requestTrackerListService()
                 
             }else{//Master users only
-                print("2")
                 AttendedAlertsOrContactLabel.text = "Contacts"
                 setContactTitleTextViewAttributes(label: AttendedAlertsOrContactLabel)
                 requestTrackerListService2()
@@ -69,8 +66,6 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
         attendedAlertsTable.dataSource = self
         prefs = UserDefaults.standard
         idtracker = (prefs?.integer(forKey: "IDTRACKER"))! as Int
-        print("idtraker")
-        print(idtracker)
         if(checkNetworkState()){
             // requestTrackerListService()
             
@@ -140,8 +135,6 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
 
         let prefs:UserDefaults = UserDefaults.standard
         _ = prefs.integer(forKey: "IDUSER") as Int
-        print("me lleva el krjo")
-        print(prefs.object(forKey: "ATTENDED") ?? "ATTENDED")
         let params:[String:AnyObject]=[ "id_tracker": idtracker as AnyObject, "time_broadcast":prefs.object(forKey: "ATTENDED")! as AnyObject ]
         let handler = AlamoFireRequestHandler()
         handler.processRequest(URL: "https://gct-production.mybluemix.net/usrsPerAlert_02-i.php", requestMethod: .post, params: params,completion: { json2 -> () in
@@ -161,12 +154,9 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
         
         let prefs:UserDefaults = UserDefaults.standard
         let iduser:Int = prefs.integer(forKey: "IDUSER") as Int
-        print("me lleva el krjo")
-        print(prefs.object(forKey: "ATTENDED") ?? "attended")
         let params:[String:AnyObject]=[ "id_tracker": idtracker as AnyObject, "id_user":iduser as AnyObject]
         let handler = AlamoFireRequestHandler()
         handler.processRequest(URL: "https://gct-production.mybluemix.net/getUsersPerTracker.php", requestMethod: .post, params: params,completion: { json2 -> () in
-            print(json2)
             activitiyViewController.dismiss(animated: true, completion:nil)
             self.parseUserJSON(json2)
         })
@@ -183,8 +173,6 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
             let isAnswered = result["answered"].int
             let time_snooze = result["time_snooze"].stringValue
             
-            print("bubas amigo")
-            print(time_snooze)
             
             if(time_snooze=="null"){
                 TIME_SNOOZE_STATE = "Not Attended"
@@ -247,8 +235,6 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
         for result in json["users"].arrayValue {
             let id = result["id"].intValue
             let name = result["name"].stringValue
-            print("aaaeefe")
-            print(name)
             
             if(id==0  &&  (json["users"].arrayValue.count<=1)){
                 let obj = ["id": id, "name": "Unavailable"] as [String : Any]
@@ -284,7 +270,6 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
                                    handler: {
                                     (paramAction:UIAlertAction!) in
                                     
-                                    print("returningtoeventreport")
  self.performSegue(withIdentifier: "returnToSelectMasterTracker", sender: self)
 
                                     
@@ -302,7 +287,6 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
     
     func checkIfTrackerListIsEmpty(json:JSON)->Bool{
         
-        print(json["locations"].arrayValue.count)
         if(json["locations"].arrayValue.count<=0){
             
             let dialog = DialogViewController()
@@ -311,7 +295,6 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
             return true
         }
         
-        print("es false")
         return false
         
     }
@@ -341,7 +324,6 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("entra aqui kbron")
         _ = UserDefaults.standard
         
         let cell: AttendedAlertsTableViewCell = self.attendedAlertsTable.dequeueReusableCell(withIdentifier: "celldota") as! AttendedAlertsTableViewCell
@@ -350,20 +332,16 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
         cell.selectionStyle = .none
         
         if(segueFromController=="AttendedUsersTrackers"){
-            print("entra aqui")
             let object = attendedAlerts[indexPath.row]
             
             cell.attendedDate.text = object["time_snooze"] as! String?
             cell.nameLabel.text = object["name"] as! String?
-            print("aaaaaa")
-            print(object["answered"] ?? "ANSWERED")
             cell.isAttendedImage.image = UIImage(named: object["answered"] as! String)
             
         }
         
         
         if(segueFromController=="MasterTrackers"){
-            print("No , AQUI")
             let object2 = masterTrackersUserAttendedAlerts[indexPath.row]
             
             
@@ -391,10 +369,8 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
         
         if(selectedFullName=="Unavailable"){
             //DO NOTHING
-            print("alola")
         }
         else{
-            print("este men")
             segueFromController = "Compose"
             self.performSegue(withIdentifier: "goToReplyMessage", sender: self)
         }
@@ -414,9 +390,6 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        print("segue from controller")
-        print(segue.identifier?.description ?? "SEGUE NAME")
-        print(segueFromController)
         
         
         if (segueFromController=="MasterTrackers"){
@@ -449,7 +422,6 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
             let nextScene =  segue.destination as! ReplyMessageViewController
             
             
-            print("valores que se van a enviar al reply")
             
             
             
@@ -472,7 +444,6 @@ class AttendedAlertViewController: UIViewController, UITableViewDelegate, UITabl
             let nextScene =  segue.destination as! ReplyMessageViewController
             
             
-            print("valores que se van a enviar al reply")
             
             
             

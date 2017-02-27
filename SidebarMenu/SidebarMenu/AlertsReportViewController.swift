@@ -33,14 +33,12 @@ class AlertsReportViewController: UIViewController,UITableViewDataSource,UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(segueFromController)
         segueFromController = "ReturnBack"
         alertsReportTable.delegate = self
         alertsReportTable.dataSource = self
         alertsReportTable.tableFooterView = UIView(frame: CGRect.zero)
         let prefs:UserDefaults = UserDefaults.standard
         idtracker = prefs.integer(forKey: "IDTRACKER") as Int
-        print(idtracker)
         params  = [ "id_tracker": idtracker as AnyObject ]
         companyLabel.text = prefs.object(forKey: "NAMEBUSINESS") as! String?
         
@@ -198,7 +196,6 @@ class AlertsReportViewController: UIViewController,UITableViewDataSource,UITable
    
        
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print(segueFromController)
         
         
         if(segueFromController=="ReturnBack"){

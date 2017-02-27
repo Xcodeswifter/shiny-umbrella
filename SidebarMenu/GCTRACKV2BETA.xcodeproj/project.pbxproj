@@ -10,13 +10,6 @@
 		1813B41F1E43EEA5008D4D2C /* AttendedAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813B41E1E43EEA5008D4D2C /* AttendedAlertViewController.swift */; };
 		1813B4211E43EEC6008D4D2C /* AttendedAlertsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813B4201E43EEC6008D4D2C /* AttendedAlertsTableViewCell.swift */; };
 		1884ABB41E5D05D100DCF3D1 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1884ABB31E5D05D100DCF3D1 /* ActivityViewController.swift */; };
-		189B282D1E4A60320051BFCD /* KCFABManager.swift in Resources */ = {isa = PBXBuildFile; fileRef = 189B28261E4A60320051BFCD /* KCFABManager.swift */; };
-		189B282E1E4A60320051BFCD /* KCFABViewController.swift in Resources */ = {isa = PBXBuildFile; fileRef = 189B28271E4A60320051BFCD /* KCFABViewController.swift */; };
-		189B282F1E4A60320051BFCD /* KCFABWindow.swift in Resources */ = {isa = PBXBuildFile; fileRef = 189B28281E4A60320051BFCD /* KCFABWindow.swift */; };
-		189B28301E4A60320051BFCD /* KCFloatingActionButton.h in Resources */ = {isa = PBXBuildFile; fileRef = 189B28291E4A60320051BFCD /* KCFloatingActionButton.h */; };
-		189B28311E4A60320051BFCD /* KCFloatingActionButton.swift in Resources */ = {isa = PBXBuildFile; fileRef = 189B282A1E4A60320051BFCD /* KCFloatingActionButton.swift */; };
-		189B28321E4A60320051BFCD /* KCFloatingActionButtonDelegate.swift in Resources */ = {isa = PBXBuildFile; fileRef = 189B282B1E4A60320051BFCD /* KCFloatingActionButtonDelegate.swift */; };
-		189B28331E4A60320051BFCD /* KCFloatingActionButtonItem.swift in Resources */ = {isa = PBXBuildFile; fileRef = 189B282C1E4A60320051BFCD /* KCFloatingActionButtonItem.swift */; };
 		189B28341E4A61B40051BFCD /* KCFABManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189B28261E4A60320051BFCD /* KCFABManager.swift */; };
 		189B28351E4A61B40051BFCD /* KCFABViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189B28271E4A60320051BFCD /* KCFABViewController.swift */; };
 		189B28361E4A61B40051BFCD /* KCFABWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189B28281E4A60320051BFCD /* KCFABWindow.swift */; };
@@ -100,10 +93,6 @@
 		CEE644CE1E4117380065A9E1 /* AlertedReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE644CD1E4117380065A9E1 /* AlertedReportTableViewCell.swift */; };
 		CEE644DF1E414B920065A9E1 /* JFAArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE644DC1E414B920065A9E1 /* JFAArrowView.m */; };
 		CEE644E01E414B920065A9E1 /* JFATabBarController copy.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE644DE1E414B920065A9E1 /* JFATabBarController copy.m */; };
-		CEE644E11E414BA80065A9E1 /* JFAArrowView.h in Resources */ = {isa = PBXBuildFile; fileRef = CEE644DB1E414B920065A9E1 /* JFAArrowView.h */; };
-		CEE644E21E414BA80065A9E1 /* JFAArrowView.m in Resources */ = {isa = PBXBuildFile; fileRef = CEE644DC1E414B920065A9E1 /* JFAArrowView.m */; };
-		CEE644E31E414BA80065A9E1 /* JFATabBarController copy.h in Resources */ = {isa = PBXBuildFile; fileRef = CEE644DD1E414B920065A9E1 /* JFATabBarController copy.h */; };
-		CEE644E41E414BA80065A9E1 /* JFATabBarController copy.m in Resources */ = {isa = PBXBuildFile; fileRef = CEE644DE1E414B920065A9E1 /* JFATabBarController copy.m */; };
 		CEE644E61E4152230065A9E1 /* UsersTrackerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE644E51E4152220065A9E1 /* UsersTrackerTableViewCell.swift */; };
 		CEE644E81E4152490065A9E1 /* UserTrackersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE644E71E4152490065A9E1 /* UserTrackersViewController.swift */; };
 		CEE962351E2EBC9C00E6A2DD /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE962341E2EBC9B00E6A2DD /* Message.swift */; };
@@ -278,10 +267,10 @@
 		CED70BE21E26FFC600197EBA /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		CED70BE41E270D3B00197EBA /* GCTrack2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GCTrack2.entitlements; sourceTree = "<group>"; };
 		CEE644CD1E4117380065A9E1 /* AlertedReportTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertedReportTableViewCell.swift; sourceTree = "<group>"; };
-		CEE644DB1E414B920065A9E1 /* JFAArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFAArrowView.h; sourceTree = "<group>"; };
-		CEE644DC1E414B920065A9E1 /* JFAArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFAArrowView.m; sourceTree = "<group>"; };
-		CEE644DD1E414B920065A9E1 /* JFATabBarController copy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JFATabBarController copy.h"; sourceTree = "<group>"; };
-		CEE644DE1E414B920065A9E1 /* JFATabBarController copy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JFATabBarController copy.m"; sourceTree = "<group>"; };
+		CEE644DB1E414B920065A9E1 /* JFAArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JFAArrowView.h; path = "/Users/apple/Desktop/shiny-kcartcg2/SidebarMenu/SidebarMenu/JFAArrowView.h"; sourceTree = "<absolute>"; };
+		CEE644DC1E414B920065A9E1 /* JFAArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JFAArrowView.m; path = "/Users/apple/Desktop/shiny-kcartcg2/SidebarMenu/SidebarMenu/JFAArrowView.m"; sourceTree = "<absolute>"; };
+		CEE644DD1E414B920065A9E1 /* JFATabBarController copy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "JFATabBarController copy.h"; path = "/Users/apple/Desktop/shiny-kcartcg2/SidebarMenu/SidebarMenu/JFATabBarController copy.h"; sourceTree = "<absolute>"; };
+		CEE644DE1E414B920065A9E1 /* JFATabBarController copy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "JFATabBarController copy.m"; path = "/Users/apple/Desktop/shiny-kcartcg2/SidebarMenu/SidebarMenu/JFATabBarController copy.m"; sourceTree = "<absolute>"; };
 		CEE644E51E4152220065A9E1 /* UsersTrackerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UsersTrackerTableViewCell.swift; path = SidebarMenu/UsersTrackerTableViewCell.swift; sourceTree = "<group>"; };
 		CEE644E71E4152490065A9E1 /* UserTrackersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTrackersViewController.swift; sourceTree = "<group>"; };
 		CEE962341E2EBC9B00E6A2DD /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -364,7 +353,8 @@
 				189B282C1E4A60320051BFCD /* KCFloatingActionButtonItem.swift */,
 			);
 			name = KCFloatingActionButton;
-			sourceTree = "<group>";
+			path = "/Users/apple/Desktop/shiny-kcartcg2/SidebarMenu/SidebarMenu";
+			sourceTree = "<absolute>";
 		};
 		180467941E527E1300A0D27B /* JFTABarControllers */ = {
 			isa = PBXGroup;
@@ -872,17 +862,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				189B282D1E4A60320051BFCD /* KCFABManager.swift in Resources */,
-				189B282E1E4A60320051BFCD /* KCFABViewController.swift in Resources */,
-				189B282F1E4A60320051BFCD /* KCFABWindow.swift in Resources */,
-				189B28301E4A60320051BFCD /* KCFloatingActionButton.h in Resources */,
-				189B28311E4A60320051BFCD /* KCFloatingActionButton.swift in Resources */,
-				189B28321E4A60320051BFCD /* KCFloatingActionButtonDelegate.swift in Resources */,
-				189B28331E4A60320051BFCD /* KCFloatingActionButtonItem.swift in Resources */,
-				CEE644E11E414BA80065A9E1 /* JFAArrowView.h in Resources */,
-				CEE644E21E414BA80065A9E1 /* JFAArrowView.m in Resources */,
-				CEE644E31E414BA80065A9E1 /* JFATabBarController copy.h in Resources */,
-				CEE644E41E414BA80065A9E1 /* JFATabBarController copy.m in Resources */,
 				72F3A6F91E204D97000CA706 /* alarm.wav in Resources */,
 				720E6EEC1DB83C53004FA134 /* alarm.caf in Resources */,
 				72F0A9921DA865440047B965 /* SF-UI-Text-Bold.otf in Resources */,
@@ -1338,7 +1317,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CC683CA2407373337F112BF4 /* Pods-SidebarMenu.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = SidebarMenu/GCTrack2.entitlements;
@@ -1362,7 +1341,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D65E2F7B0CA6BA7FECE2B40B /* Pods-SidebarMenu.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = SidebarMenu/GCTrack2.entitlements;

@@ -79,13 +79,11 @@ class LastTenEngineRunTableViewController: UIViewController,UITableViewDelegate,
         let pumpID = prefs.object(forKey: "PUMPID") as! String
         pumpType = prefs.object(forKey: "PUMPTYPE") as! String
         
-        print(idtracker)
-        print(pumpID)
+       
         let params  = [ "id_tracker": idtracker as AnyObject,"pumpID":pumpID as AnyObject]
         let handler = AlamoFireRequestHandler()
         handler.processRequest(URL: "https://gct-production.mybluemix.net/getlastruns_02.php", requestMethod: .post, params: params as [String : AnyObject],completion: { json2 -> () in
             
-            print(json2)
             self.parseJSON(json: json2)
             
         })
@@ -142,7 +140,6 @@ class LastTenEngineRunTableViewController: UIViewController,UITableViewDelegate,
     
     func checkIfPumpRunListIsEmpty(json:JSON)->Bool{
         let dialog = DialogViewController()
-        print(json["lastRuns"].arrayValue.count)
         if(json["lastRuns"].arrayValue.count<=0){
            dialog.noLogsFoundDialog(type: "activation")
             pumpLabelName.text="No Activations"
@@ -154,7 +151,6 @@ class LastTenEngineRunTableViewController: UIViewController,UITableViewDelegate,
             return true
         }
         
-        print("es false")
         return false
         
     }
@@ -202,10 +198,7 @@ class LastTenEngineRunTableViewController: UIViewController,UITableViewDelegate,
                 
                 let truetime = String(time)
                 
-            print("hours")
-                print(time)
-                print("truetime")
-                print(truetime)
+           
                 
                 cell.opTime.text = time.description+" Hours "+minutes.description+" Minutes"
  
@@ -233,10 +226,7 @@ class LastTenEngineRunTableViewController: UIViewController,UITableViewDelegate,
                 
                 let truetime = String(time)
                 
-                print("hours")
-                print(time)
-                print("truetime")
-                print(truetime)
+                
                 
                 cell.opTime.text = time.description+" Hours "+minutes.description+" Minutes"
                 

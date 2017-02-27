@@ -89,7 +89,6 @@ class ContactViewController: UIViewController, UITextFieldDelegate,UITextViewDel
     
         let handler = AlamoFireRequestHandler()
         handler.processRequest(URL: "https://gct-production.mybluemix.net/contactsupport_02.php", requestMethod: .post, params: params,completion: { json2 -> () in
-            print(json2)
             if(json2["mailSent"].intValue==1){
                 
                 activitiyViewController.dismiss(animated: true, completion: {                dialog.showContactSupportDialog(type:"OK")

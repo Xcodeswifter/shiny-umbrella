@@ -52,15 +52,12 @@ class MapViewController: UIViewController,  MKMapViewDelegate, CLLocationManager
     
     @IBAction func unwindSegue(sender: UIButton) {
         
-        print("unwind segue amigote")
                 if segueFromController=="DataLogViewController"{
-                    print("pressure amigo")
                     self.performSegue(withIdentifier: "backtodatalog", sender: nil)
         
                 }
         
                 if segueFromController=="SelectTrackerViewController"{
-                    print("main menu amigo")
                     self.performSegue(withIdentifier: "backtoselectracker", sender: nil)
                     
                 }
@@ -76,15 +73,12 @@ class MapViewController: UIViewController,  MKMapViewDelegate, CLLocationManager
     
     @IBAction func goBack(_ sender: Any) {
     
-        print("unwind segue amigote")
         if segueFromController=="DataLogViewController"{
-            print("pressure amigo")
             self.performSegue(withIdentifier: "backtodatalog", sender: nil)
             
         }
         
         if segueFromController=="SelectTrackerViewController"{
-            print("returning to select tracker from map")
             
             
             self.performSegue(withIdentifier: "backtoselectracker", sender: nil)
@@ -92,19 +86,18 @@ class MapViewController: UIViewController,  MKMapViewDelegate, CLLocationManager
         }
         
         if segueFromController=="LastTenDaysPressureTableViewController"{
-            print("main menu amigo")
             self.performSegue(withIdentifier: "returntolastendaypressure", sender: nil)
             
         }
         
         if segueFromController=="PressureViewController"{
-            print("main menu amigo")
+            
             self.performSegue(withIdentifier: "returntosystempressure", sender: nil)
             
         }
         
         if segueFromController=="PumpStatusViewController"{
-            print("main menu amigo")
+            
             self.performSegue(withIdentifier: "returnToPumpStatus", sender: nil)
             
         }
@@ -112,62 +105,62 @@ class MapViewController: UIViewController,  MKMapViewDelegate, CLLocationManager
         
         
         if segueFromController=="PumpRoomConditionsViewController"{
-            print("main menu amigo")
+            
             self.performSegue(withIdentifier: "returntoPumpRoomConditions", sender: nil)
             
         }
         
         if segueFromController=="PumpInfoViewController"{
-            print("main menu amigo")
+            
             self.performSegue(withIdentifier: "returnToPumpInfo", sender: nil)
             
         }
         
         if segueFromController=="LastTenEngineRunViewController"{
-            print("main menu amigo")
+            
             self.performSegue(withIdentifier: "returntoLastTenEngineRuns", sender: nil)
             
         }
 
         
         if segueFromController=="SelectPumpRunsViewController"{
-            print("main menu amigo")
+            
             self.performSegue(withIdentifier: "returnToPumpRunsMenu", sender: nil)
             
         }
         
         if segueFromController=="SelectPumpIssuesViewController"{
-            print("main menu amigo")
+            
             self.performSegue(withIdentifier: "returnToPumpIssues", sender: nil)
             
         }
         
         if segueFromController=="SelectFilterViewController"{
-            print("main menu amigo")
+            
             self.performSegue(withIdentifier: "returnToSelectFilterFromMap", sender: nil)
             
         }
 
         if segueFromController=="SelectedPumpIssueViewController"{
-            print("main menu amigo")
+            
             self.performSegue(withIdentifier: "returnToSelectedPumpIssue", sender: nil)
             
         }
         
         if segueFromController=="DataLogFormViewController"{
-            print("main menu amigo")
+            
             self.performSegue(withIdentifier: "returnToDataLogForm", sender: nil)
             
         }
         
         if segueFromController=="JockeyPumpViewController"{
-            print("main menu amigo")
+            
             self.performSegue(withIdentifier: "returnToJockeyPump", sender: nil)
             
         }
 
         if segueFromController=="SinglePumpStatusViewController"{
-            print("main menu amigo")
+            
             self.performSegue(withIdentifier: "returnToSinglePumpStatus", sender: nil)
             
         }
@@ -176,24 +169,6 @@ class MapViewController: UIViewController,  MKMapViewDelegate, CLLocationManager
         
     
     }
-    
-//    @IBAction func returnToPreviousSegue(_ sender: Any) {
-//        print("unwind segue amigote")
-//        if segueFromController=="PressurePumpViewController"{
-//            print("pressure amigo")
-//            self.performSegue(withIdentifier: "returnToSystemPressure", sender: nil)
-//            
-//        }
-//        
-//        if segueFromController=="MainMenuController"{
-//            print("main menu amigo")
-//            self.performSegue(withIdentifier: "maptomain", sender: nil)
-//            
-//        }
-//        
-//    
-//    
-//    }
     
     
     func loadMapData(){
@@ -206,8 +181,6 @@ class MapViewController: UIViewController,  MKMapViewDelegate, CLLocationManager
         
         let handler = AlamoFireRequestHandler()
         handler.processRequest(URL: "https://gct-production.mybluemix.net/getpumps_02.php", requestMethod: .post, params: params,completion: { json2 -> () in
-           print("getpumps amigota")
-            print(json2)
             self.parseJSON(json2)
         })
 
@@ -347,8 +320,6 @@ class MapViewController: UIViewController,  MKMapViewDelegate, CLLocationManager
                 
                 prefs.synchronize()
                 
-                print("hola cabron")
-                print(prefs.object(forKey: "IDTRACKER"))
                 
                 self.performSegue(withIdentifier: "maptomain", sender: self)
                 

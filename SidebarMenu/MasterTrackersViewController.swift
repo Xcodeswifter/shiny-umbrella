@@ -130,7 +130,6 @@ class MasterTrackersViewController: UIViewController ,UITableViewDelegate, UITab
     
     func checkIfTrackerListIsEmpty(json:JSON)->Bool{
         
-        print(json["locations"].arrayValue.count)
         if(json["locations"].arrayValue.count<=0){
             
             let dialog = DialogViewController()
@@ -148,11 +147,9 @@ class MasterTrackersViewController: UIViewController ,UITableViewDelegate, UITab
             
             stopLoading()
             
-            print("es true")
             return true
         }
         
-        print("es false")
         return false
         
     }

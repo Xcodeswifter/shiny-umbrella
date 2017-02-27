@@ -41,7 +41,6 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
 
         
-        print("load")
         messagesTable.delegate = self
         messagesTable.dataSource = self
         searchBar.delegate = self
@@ -69,7 +68,6 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     func setupKCFloatingActionButton(isMasterUser: Int){
         
         
-        print(isMasterUser)
         
         
         if(isMasterUser==1){
@@ -93,7 +91,6 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("did appear")
         messagesTable.delegate = self
         messagesTable.dataSource = self
         searchBar.delegate = self
@@ -125,7 +122,6 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewWillAppear(animated)
         
         
-        print("appear")
         // Hide the navigation bar on the this view controller
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
@@ -143,7 +139,6 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         
         
         
-        print("refreshing....")
         
        searchActive = false
         messagelist.removeAll()
@@ -159,18 +154,14 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     func filterContentForSearchText(searchText: String) {
         // Filter the array using the filter method
        
-        print("filter content")
         let searchString = searchText
     
         
         
         
-        print(searchString)
 
         filteredMessageList = messagelist.filter({(searchTerm) -> Bool in
             let searchText:NSString! = searchTerm["fullname"] as! NSString
-           print("termino de busqueda")
-            print(searchText!)
             // to start, let's just search by typing
             return (searchText.range(of: searchString, options: NSString.CompareOptions.caseInsensitive).location) != NSNotFound
 
@@ -178,10 +169,7 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
             
         })
         
-        print("lista filtrada")
-        print(filteredMessageList)
-        print("lista no filtrada")
-        print(messagelist)
+        
         
     update()
     }
@@ -195,7 +183,6 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
      func searchDisplayController(_ controller: UISearchController, didLoadSearchResultsTableView tableView: UITableView) {
-        print("yes amigo")
         tableView.rowHeight = 94.4
         tableView.backgroundColor = UIColor.black
         
@@ -205,44 +192,37 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     
     ///Search bar delegate methods
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        print("si")
         searchActive = true;
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        print("no")
         update()
 
         searchActive = false;
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        print("no")
 
         searchActive = false;
     }
     
     func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
-        print("no")
         searchActive = false;
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         
-        print("buscando aqui ")
             filterContentForSearchText(searchText: searchText)
         self.messagesTable.reloadData()
     }
     
     //Esto funciona
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print("searchTextoh \(searchText)")
         filterContentForSearchText(searchText: searchText)
     
     }
     //Esto funciona
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("searchTextIINI \(searchBar.text)")
         searchActive = true
         // messagelist.removeAll()
         update()
@@ -261,8 +241,6 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         let params:[String:AnyObject]=[ "id_user": iduser as AnyObject ]
         let handler = AlamoFireRequestHandler()
         handler.processRequest(URL: "https://gct-production.mybluemix.net/tools/getusrmessages_02.php", requestMethod: .post, params: params,completion: { json2 -> () in
-            print("el json sote")
-            print(json2)
             self.parseJSON(json2)
         })
         
@@ -359,18 +337,12 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         let cell: MessagesTableViewCell = self.messagesTable.dequeueReusableCell(withIdentifier: "selda") as! MessagesTableViewCell
         
       
-        print("busqueda activa")
-        print(searchActive)
-        print(messagelist.count)
-        if(searchActive){
+                if(searchActive){
             
            // searchActive=false
             
-            print(filteredMessageList.count)
             let object = filteredMessageList[indexPath.row]
             
-            print("filtrando")
-            print(object["fullname"] ?? "default value")
             
             cell.isReadImage.backgroundColor = object["lastseen"] as? UIColor
             
@@ -392,7 +364,6 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         let cell: MessagesTableViewCell = self.messagesTable.dequeueReusableCell(withIdentifier: "selda") as! MessagesTableViewCell
         
         let object = messagelist[indexPath.row]
-            print(object["fullname"] ?? "FULLNAME")
         
         
         cell.isReadImage.backgroundColor = object["lastseen"] as? UIColor
@@ -417,7 +388,6 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       print("elegi zelda")
         
         
         if(searchActive){
@@ -439,10 +409,7 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         selectedSubject = (object["subject"] as! String?)!
         
         
-        print("los datos")
-        print(selectedmessage)
-        print(selectedbusiness)
-        print(selectedFullName)
+      
         
 
         unMarkMessage(msgNum: object["msgNum"]as! Int)
@@ -455,7 +422,6 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         
         else{
         
-            print(messagelist.count)
             let object = messagelist[indexPath.row]
             
             let currentCell: MessagesTableViewCell = self.messagesTable.dequeueReusableCell(withIdentifier: "selda") as! MessagesTableViewCell
@@ -472,10 +438,7 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
             idSender = (object["sender"] as! Int?)!
             
             
-            print("los datos")
-            print(selectedmessage)
-            print(selectedbusiness)
-            print(selectedFullName)
+            
             
             
             unMarkMessage(msgNum: object["msgNum"]as! Int)
@@ -496,8 +459,6 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     func unMarkMessage(msgNum:Int){
         let handler = AlamoFireRequestHandler()
         handler.processRequest(URL: "https://gct-production.mybluemix.net/markmessage_02.php", requestMethod: .post, params: ["msgNum": msgNum as AnyObject],completion: { json2 -> () in
-            print("marked messsage")
-            print(json2)
             self.parseJSON(json2)
         })
 
@@ -508,18 +469,11 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("mkdonaldz")
-        print(messagesending)
         if(messagesending==0){
             let nextScene =  segue.destination as! ReplyMessageViewController
             
             
-            print("valores que se van a enviar al reply")
-        
-        print(selectedmessage)
-        print(selectedbusiness)
-        print(selectedFullName)
-        
+               
     nextScene.selectedFullName =  selectedFullName
         nextScene.selectedDate =  selectedDate
         nextScene.subject =  selectedbusiness

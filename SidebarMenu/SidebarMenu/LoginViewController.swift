@@ -122,7 +122,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 prefs.synchronize()
                 prefs.set(json2["master"].intValue,  forKey: "MASTER")
                 prefs.synchronize()
-                print(json2)
                 activitiyViewController.dismiss(animated: true, completion:{  self.performSegue(withIdentifier: "termsandconditions", sender: self)})
                 
               
@@ -149,8 +148,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         let result = loginDialog.showLoginLogoutDialog(type: "error")
         
-        print(result)
-                
+        
         
     }
 

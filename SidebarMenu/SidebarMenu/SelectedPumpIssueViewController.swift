@@ -52,9 +52,7 @@ class SelectedPumpIssueViewController: UIViewController, UITableViewDelegate,UIT
         
         let prefs:UserDefaults = UserDefaults.standard
         let idtracker = prefs.integer(forKey: "IDTRACKER") as Int
-        print("load pump issue data")
-        print(pumpType)
-        print(PumpID)
+       
         if(pumpType=="1"){
             pumpLabel.text = "Diesel Pump"
             pumpLabel.textColor = UIColor.white
@@ -74,14 +72,9 @@ class SelectedPumpIssueViewController: UIViewController, UITableViewDelegate,UIT
             
         }
         
-        print("el id tracker es")
-        print(idtracker)
-        print("el pump id es")
-        print(PumpID)
-        let params:[String:AnyObject]=[ "id_tracker": idtracker as AnyObject, "pumpID":PumpID as AnyObject ]
+               let params:[String:AnyObject]=[ "id_tracker": idtracker as AnyObject, "pumpID":PumpID as AnyObject ]
         let handler = AlamoFireRequestHandler()
         handler.processRequest(URL: "https://gct-production.mybluemix.net/getpumptroubles_02.php", requestMethod: .post, params: params as [String : AnyObject],completion: { json2 -> () in
-            print(json2)
             self.parseJSON(json2)
             
         })
@@ -114,7 +107,6 @@ class SelectedPumpIssueViewController: UIViewController, UITableViewDelegate,UIT
     
     func checkIfIssueListIsEmpty(json:JSON)->Bool{
         let dialog = DialogViewController()
-        print(json["pumpTroubles"].arrayValue.count)
         if(json["pumpTroubles"].arrayValue.count<=0){
            
             
@@ -125,11 +117,9 @@ class SelectedPumpIssueViewController: UIViewController, UITableViewDelegate,UIT
             pumpLabel.font = UIFont(name:"SF UI Text", size:24.0)
 
             stopLoading()
-            print("es true")
             return true
         }
         
-        print("es false")
         return false
         
     }
@@ -149,7 +139,6 @@ class SelectedPumpIssueViewController: UIViewController, UITableViewDelegate,UIT
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        print("datalogcount")
         return datalog.count
     }
     
@@ -159,7 +148,6 @@ class SelectedPumpIssueViewController: UIViewController, UITableViewDelegate,UIT
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
-        print(datalog.count)
         
         let cell: SelectedPumpIssueTableViewCell = self.selectedPumpIssueTable.dequeueReusableCell(withIdentifier: "selectedissuecell") as! SelectedPumpIssueTableViewCell
         

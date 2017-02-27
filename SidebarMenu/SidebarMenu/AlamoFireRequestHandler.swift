@@ -30,34 +30,24 @@ class AlamoFireRequestHandler: NSObject{
     Alamofire.request(URL ,method: requestMethod, parameters: params, headers: nil)   .responseJSON { response in
         
         
-print("espere....")
         
             if let status = response.response?.statusCode {
-                print("generated jsoyn")
-                print(self.json)
                 switch(status){
                     
                     
                 
                 case 200:
-                    print("example success 1")
-//                    self.json = JSON(response.result.value ?? "default value")
-//                    print("generated json")
-//                    print(self.json)
-//                    completion(self.json)
-
+  
                     break
                     
                 
                 case 201:
-                    print("example success 2")
                     break
                 
                     
                 
                 case  NSURLErrorTimedOut:
                     
-                    print("timed out")
                     completion(self.json)
                     
                     break
@@ -66,21 +56,17 @@ print("espere....")
                     
                     
                 default:
-                    print("Response status: \(status)")
                     if(response.result.value == nil){
-                        print("terminando abruptamente el request")
                         completion(self.json)
                     }
                     
                 
-                print(response.result.value ?? "Default value")
                 }
             }
             // get JSON return value
             if response.result.value != nil {
                 self.json = JSON(response.result.value ?? "default value")
-                print("generated json")
-                print(self.json)
+               
                 completion(self.json)
                 
             }

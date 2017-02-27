@@ -59,7 +59,6 @@ class ReplyMessageViewController: UIViewController {
     
     
     @IBAction func goback(_ sender: Any) {
-        print("goback mah friend")
         self.performSegue(withIdentifier: "replyToMessage", sender: self)
         
     }
@@ -74,8 +73,6 @@ class ReplyMessageViewController: UIViewController {
     @IBAction func sendReplyMessage(_ sender: Any) {
         let prefs:UserDefaults = UserDefaults.standard
         let iduser:Int = prefs.integer(forKey: "IDUSER") as Int
-        print("id del destino")
-        print(idDestination)
         let activitiyViewController = ActivityViewController(message: "Sending...")
         present(activitiyViewController, animated: true, completion: nil)
         
@@ -83,8 +80,6 @@ class ReplyMessageViewController: UIViewController {
         let params:[String:AnyObject]=[ "id_sender": iduser as AnyObject, "to": idDestination as AnyObject, "subject":"test " as AnyObject,"message":replyText.text as AnyObject]
         let handler = AlamoFireRequestHandler()
         handler.processRequest(URL: "https://gct-production.mybluemix.net/inbox_send.php", requestMethod: .post, params: params,completion: { json2 -> () in
-            print("respuesta")
-            print(json2)
             if(json2["sent"]==1){
                 
                 activitiyViewController.dismiss(animated: true, completion:{ dialog.showReplyMessageDialogs(type:"OK", email:self.selectedFullName)

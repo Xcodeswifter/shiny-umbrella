@@ -122,7 +122,6 @@ class UserTrackersViewController: UIViewController, UITableViewDelegate, UITable
     
     func checkIfTrackerListIsEmpty(json:JSON)->Bool{
         
-        print(json["locations"].arrayValue.count)
         if(json["locations"].arrayValue.count<=0){
             
             let dialog = DialogViewController()
@@ -140,11 +139,9 @@ class UserTrackersViewController: UIViewController, UITableViewDelegate, UITable
             
             stopLoading()
             
-            print("es true")
             return true
         }
         
-        print("es false")
         return false
         
     }

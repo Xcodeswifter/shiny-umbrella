@@ -160,7 +160,6 @@ class SelectTrackerViewController: UIViewController, UITableViewDelegate, UITabl
     
     func checkIfTrackerListIsEmpty(json:JSON)->Bool{
         
-        print(json["locations"].arrayValue.count)
         if(json["locations"].arrayValue.count<=0){
             
             let dialog = DialogViewController()
@@ -178,11 +177,9 @@ class SelectTrackerViewController: UIViewController, UITableViewDelegate, UITabl
             
             stopLoading()
             
-            print("es true")
             return true
         }
         
-        print("es false")
         return false
         
     }
@@ -276,9 +273,6 @@ class SelectTrackerViewController: UIViewController, UITableViewDelegate, UITabl
         prefs.synchronize()
         
         
-        print("idTRAQUER")
-        print(selectedTracker["idtracker"])
-        
         
         if(selectedTracker["alerted"] as! String!=="1"){
             
@@ -326,10 +320,7 @@ class SelectTrackerViewController: UIViewController, UITableViewDelegate, UITabl
     
     @IBAction func returnHome(_ sender: UIButton) {
        
-        print("unwind segue amigotaa")
-        print(segueFromController)
         if segueFromController=="DataLogViewController"{
-            print("pressure amigo")
             self.performSegue(withIdentifier: "returnToDataLogFromSelectTracker", sender: nil)
             
         }
@@ -342,25 +333,25 @@ class SelectTrackerViewController: UIViewController, UITableViewDelegate, UITabl
         }
         
         if segueFromController=="MainMenuViewController"{
-            print("main menu amigo")
+            
             self.performSegue(withIdentifier: "returnToMainScreenFromSelectTracker", sender: self)
             
         }
         
         if segueFromController=="LastTenDaysPressureTableViewController"{
-            print("main menu amigo")
+            
             self.performSegue(withIdentifier: "lastTenDayPressureToSelectTracker", sender: nil)
             
         }
         
         if segueFromController=="PressureViewController"{
-            print("main menu amigo")
+            
             self.performSegue(withIdentifier: "returnToPressureFromSelectTracker", sender: nil)
             
         }
         
         if segueFromController=="PumpStatusViewController"{
-            print("main menu amigo")
+            
             self.performSegue(withIdentifier: "returnToPumpStatusFromSelectTracker", sender: nil)
             
         }
@@ -368,33 +359,33 @@ class SelectTrackerViewController: UIViewController, UITableViewDelegate, UITabl
         
         
         if segueFromController=="PumpRoomConditionsViewController"{
-            print("main menu amigo")
+            
             self.performSegue(withIdentifier: "returnToPumpRoomConditionsFromSelectTracker", sender: nil)
             
         }
         
         if segueFromController=="PumpInfoViewController"{
-            print("main menu amigo")
+            
             self.performSegue(withIdentifier: "returnToPumpInfoToSelectTracker", sender: nil)
             
         }
         
         if segueFromController=="LastTenEngineRunViewController"{
-            print("main menu amigo")
+            
             self.performSegue(withIdentifier: "returnToSelectPumpRunFromSelectTracker", sender: nil)
             
         }
         
         
         if segueFromController=="SelectPumpRunsViewController"{
-            print("main menu amigo")
+            
             self.performSegue(withIdentifier: "returnToPumpRunsFromSelectTracker", sender: nil)
             
         }
         
        
         if segueFromController=="SelectPumpIssuesViewController"{
-            print("main menu amigo")
+            
             self.performSegue(withIdentifier: "returnToSelectPumpIssuesViewControllerFromSelectTracker", sender: nil)
             
         }
@@ -402,31 +393,31 @@ class SelectTrackerViewController: UIViewController, UITableViewDelegate, UITabl
         
         
         if segueFromController=="SelectedPumpIssueViewController"{
-            print("main menu amigo")
+            
             self.performSegue(withIdentifier: "returnToSelectedPumpIssueFromSelectTracker", sender: nil)
             
         }
         
         if segueFromController=="DataLogFormViewController"{
-            print("main menu amigo")
+            
             self.performSegue(withIdentifier: "backToDataLogFromSelectTracker", sender: nil)
             
         }
         
         if segueFromController=="JockeyPumpViewController"{
-            print("main menu amigo")
+            
             self.performSegue(withIdentifier: "returnToJockeyFromSelectTracker", sender: nil)
             
         }
         
         if segueFromController=="SinglePumpStatusViewController"{
-            print("main menu amigo")
+            
             self.performSegue(withIdentifier: "singlePumpStatusToSelectTracker", sender: nil)
             
         }
         
         if segueFromController=="SelectFilterViewController"{
-            print("main menu amigo")
+            
             self.performSegue(withIdentifier: "returnToSelectFilterFromSelectTracker", sender: nil)
             
         }

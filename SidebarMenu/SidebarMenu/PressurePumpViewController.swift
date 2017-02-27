@@ -51,7 +51,6 @@ class PressurePumpViewController:UIViewController{
     
     
     @IBAction func refreshPressure(_ sender: UIButton) {
-      print("updating pressure")
         pressurelist.removeAll()
 getPressure()
         
@@ -96,7 +95,6 @@ getPressure()
     
     func parsePressureLimitJSON(json: JSON) {
         
-        print("parsing pressure limit json amigo")
         let activation = json["activation"].intValue
         let lim01 = json["lim01"].intValue
         let lim02 = json["lim02"].intValue
@@ -125,32 +123,26 @@ getPressure()
         let pressure = pressurelist[6]
         
         if(pressure<=0){
-            print("funciona esto 0")
             pressureGauge.image = UIImage(named: "PressureEmpty")
         }
             
         else{
             if case pressurelist[1]...pressurelist[2]-1 = pressure{
-               print("funciona esto 1")
                 pressureGauge.image = UIImage(named: "iconosystempressure5 256x256")
                 
             }
             if case pressurelist[2]...pressurelist[3]-1 = pressure{
-                print("funciona esto  2")
                 pressureGauge.image = UIImage(named: "iconosystempressure4 256x256")
             }
             if case pressurelist[3]...pressurelist[0] = pressure{
-                print("funciona esto  3")
                 pressureGauge.image = UIImage(named: "iconosystempressure3 256x256")
             }
             if case pressurelist[4]...pressurelist[5]-1 = pressure{
-                print("funciona esto  4")
                 pressureGauge.image = UIImage(named: "iconosystempressure2 256x256")
             }
             
             
             if (pressure>=pressurelist[5]){
-                print("funciona esto  5")
                 pressureGauge.image = UIImage(named: "iconosystempressure1 256x256")
             }
             

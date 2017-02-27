@@ -491,7 +491,6 @@ class DataLogFormViewController: UIViewController,UIPickerViewDelegate,UIPickerV
     
     
     func setTodayDate(){
-        print("setting today date")
         let today = NSDate()
         
         let dateFormatter = DateFormatter()
@@ -503,7 +502,6 @@ class DataLogFormViewController: UIViewController,UIPickerViewDelegate,UIPickerV
     
     
     func setDateFromOneWeekToToday(){
-        print("setting date from one week ago")
         
         let sevenDaysAgo = NSCalendar.current.date(byAdding: .day, value: -7, to: Date())
         
@@ -590,8 +588,6 @@ isTrackerMenuSelected = true
         
        
         let filteredData = self.params
-               print("valores que se van a enviar al filtro")
-       print(params)
       
         
         

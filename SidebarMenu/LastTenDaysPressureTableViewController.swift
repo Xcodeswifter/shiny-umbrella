@@ -55,11 +55,7 @@ class LastTenDaysPressureTableViewController: UIViewController, UITableViewDeleg
         
         let  params  = [ "id_tracker": idtracker as AnyObject ]
         let handler = AlamoFireRequestHandler()
-        print("el idtracker amigo")
-        print(idtracker)
         handler.processRequest(URL: "https://gct-production.mybluemix.net/getlastpressures_02.php", requestMethod: .post, params: params as [String : AnyObject],completion: { json2 -> () in
-         print("json count")
-            print(json2.count)
             self.parseJSON(json2)
             
         })

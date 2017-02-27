@@ -35,7 +35,6 @@ public class AlarmSound{
             
             
         } catch {
-print("sound could not be played")
         
         }
 

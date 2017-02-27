@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 class ContactViewController: UIViewController, UITextFieldDelegate,UITextViewDelegate{
-
+    
     @IBOutlet weak var subject: UITextField!
     
     @IBOutlet weak var issue: UITextView!
@@ -25,7 +25,7 @@ class ContactViewController: UIViewController, UITextFieldDelegate,UITextViewDel
         
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -54,7 +54,7 @@ class ContactViewController: UIViewController, UITextFieldDelegate,UITextViewDel
     
     //optimized
     @IBAction func SendReport(_ sender: AnyObject) {
-   
+        
         let prefs:UserDefaults = UserDefaults.standard
         
         let idUser:Int = prefs.integer(forKey: "IDUSER") as Int
@@ -70,43 +70,42 @@ class ContactViewController: UIViewController, UITextFieldDelegate,UITextViewDel
     
     func requestReportSendingService(idUser:Int){
         let dialog = DialogViewController()
-
-        if(issue.textColor == UIColor.lightGray||(subject.text?.isEmpty)!||(issue.text.isEmpty)){
-        dialog.showUncompleteFieldsDialog()
-        }
         
+        if(issue.textColor == UIColor.lightGray||(subject.text?.isEmpty)!||(issue.text.isEmpty)){
+            dialog.showUncompleteFieldsDialog()
+        }
+            
         else{
             
             
-        
-        
-        let params:[String:AnyObject]=[ "id_user": idUser as AnyObject, "subject":subject.text as AnyObject, "message":issue.text as AnyObject ]
-        
-        let activitiyViewController = ActivityViewController(message: "Sending...")
-        present(activitiyViewController, animated: true, completion: nil)
-
-        
-    
-        let handler = AlamoFireRequestHandler()
-        handler.processRequest(URL: "https://gct-production.mybluemix.net/contactsupport_02.php", requestMethod: .post, params: params,completion: { json2 -> () in
-            print(json2)
-            if(json2["mailSent"].intValue==1){
-                
-                activitiyViewController.dismiss(animated: true, completion: {                dialog.showContactSupportDialog(type:"OK")
-})
             
             
-            }
-                
-            else{
-                
-                activitiyViewController.dismiss(animated: true, completion: {                dialog.showContactSupportDialog(type:"Error")
-})
-
-            }
+            let params:[String:AnyObject]=[ "id_user": idUser as AnyObject, "subject":subject.text as AnyObject, "message":issue.text as AnyObject ]
             
-        })
-        
+            let activitiyViewController = ActivityViewController(message: "Sending...")
+            present(activitiyViewController, animated: true, completion: nil)
+            
+            
+            
+            let handler = AlamoFireRequestHandler()
+            handler.processRequest(URL: "https://gct-production.mybluemix.net/contactsupport_02.php", requestMethod: .post, params: params,completion: { json2 -> () in
+                if(json2["mailSent"].intValue==1){
+                    
+                    activitiyViewController.dismiss(animated: true, completion: {                dialog.showContactSupportDialog(type:"OK")
+                    })
+                    
+                    
+                }
+                    
+                else{
+                    
+                    activitiyViewController.dismiss(animated: true, completion: {                dialog.showContactSupportDialog(type:"Error")
+                    })
+                    
+                }
+                
+            })
+            
         }
     }
     
@@ -120,7 +119,7 @@ class ContactViewController: UIViewController, UITextFieldDelegate,UITextViewDel
     
     
     
-    //MARK Delegates 
+    //MARK Delegates
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {   //delegate method
         textField.resignFirstResponder()
         return true

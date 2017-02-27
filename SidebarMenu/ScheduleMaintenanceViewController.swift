@@ -68,8 +68,6 @@ class ScheduleMaintenanceViewController: UIViewController, UITableViewDelegate, 
                 let nameBusiness = result["nameLocation"].stringValue
                 let maintenance_push = result["maintenance_push"].intValue
               
-                print("estatus")
-                print(maintenance_push)
                 if(maintenance_push==0){
                 let obj = ["Name": nameBusiness,  "idtracker":idTracker, "maintenance":false ] as [String : Any]
                     
@@ -117,7 +115,6 @@ class ScheduleMaintenanceViewController: UIViewController, UITableViewDelegate, 
             return true
         }
         
-        print("es false")
         return false
         
     }
@@ -181,7 +178,6 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
         }
         
         let object = trackerlist[indexPath.row]
-        print(object["idtracker"] as! String!)
         setMaintenance(idTracker: object["idtracker"] as! String!, idUser:iduser , checkbox: isChecked.integer(forKey: "CHECKED"))
    
     
@@ -190,7 +186,6 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
     
     
     func tapSwitch(){
-        print("touch up inside de tap switch")
         let currentPosition = UserDefaults.standard
         
         let object = trackerlist[currentPosition.integer(forKey: "ROW")]
@@ -207,14 +202,10 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
         let activitiyViewController = ActivityViewController(message: "Please wait...")
         present(activitiyViewController, animated: true, completion: nil)
 
-        print("checkbox")
-        print(checkbox)
         let params:[String:AnyObject]=[ "id_user": idUser as AnyObject, "id_tracker":idTracker as AnyObject, "active":checkbox as AnyObject]
         let handler = AlamoFireRequestHandler()
         handler.processRequest(URL: "https://gct-production.mybluemix.net/setmaintenancepush.php", requestMethod: .post, params: params,completion: { json2 -> () in
-            print("check status")
             
-            print(json2)
         activitiyViewController.dismiss(animated: true, completion: nil)
         })
         

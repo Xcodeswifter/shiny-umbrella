@@ -14,7 +14,6 @@ class MainScreenController: UITabBarController, UITabBarControllerDelegate,UITex
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        print("Master view controller")
         self.navigationController?.delegate = self
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         let navigationBarAppearace = UINavigationBar.appearance()

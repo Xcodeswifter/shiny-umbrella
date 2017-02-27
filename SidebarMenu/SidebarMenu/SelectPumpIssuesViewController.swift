@@ -277,17 +277,14 @@ class SelectPumpIssuesViewController: UIViewController ,UITableViewDelegate ,UIT
             isMapSelected=false
 
             if(segue.identifier=="pumpStatusToIssues"){
-        print("prepare for segue")
-        print(pumpType)
-        print(pumpID)
+       
         let nextScene =  segue.destination as! SelectedPumpIssueViewController
         nextScene.PumpID = pumpID
         nextScene.pumpType = pumpType
             }
         }
         if(isMapSelected==true){
-            print("de que tipo soy")
-            print(segue.destination)
+           
            
             if(segue.identifier=="alertomap"){
             

@@ -43,14 +43,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         // set the type as sound or badge
         
         
-        print("este menazo")
-        print("alola mola perros")
+        
         application.applicationIconBadgeNumber = 0; // Clear badge when app launches
         
         
         
         if(pushNotificationArrived==1){
-            print("entrando a la pantalla de alarma")
             self.pushNotificationArrived=0
              application.applicationIconBadgeNumber = 0;            
             let storyboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
@@ -64,14 +62,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         }
         
         // Check if launched from notification
-        print("por aqui tuvo que haber entrado")
         if (launchOptions?[UIApplicationLaunchOptionsKey.remoteNotification] as? [String: AnyObject]) != nil {
-            
-//            var storyboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
-//            var viewController: AlarmViewController = storyboard.instantiateViewController(withIdentifier: "alarm") as! AlarmViewController
-//            
-//            window?.rootViewController = viewController
-//            window?.makeKeyAndVisible()
+
             
         } else {
             //Do nothing
@@ -129,8 +121,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         let prefs:UserDefaults = UserDefaults.standard
         let iduser:Int = prefs.integer(forKey: "IDUSER") as Int
         let params:[String:AnyObject]=[ "token": deviceTokenString as AnyObject,"id_user": iduser as AnyObject, "device":"IOS" as AnyObject ]
-        print("the token is here")
-        print(deviceTokenString)
+       
         Alamofire.request("https://gct-production.mybluemix.net/registertoken_02.php",method: .post, parameters: params, headers: nil).responseJSON { (response:DataResponse<Any>) in
             
             
@@ -165,7 +156,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         
         
         
-        print("did receive remote notification  \(userInfo)")
         
         if let aps = userInfo["aps"] as? NSDictionary {
             if let alert = aps["alert"] as? NSDictionary {
@@ -177,7 +167,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         
         
         if(PushNotificationMessage.containsIgnoringCase(find: "jockey")){
-            print("Jockey")
             
             let storyboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
             let viewController: JockeyPumpViewController = storyboard.instantiateViewController(withIdentifier: "jockey") as! JockeyPumpViewController
@@ -202,7 +191,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        print("did receive remote notification  completionHandler pinche gatito\(userInfo)")
         
         
            _=""
@@ -224,10 +212,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         
         
         
-        print(PushNotificationMessage)
         if(PushNotificationMessage.containsIgnoringCase(find: "jockey")){
 
-            print("is jockey pump alert true")
             
             let storyboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
             let viewController: JockeyPumpViewController = storyboard.instantiateViewController(withIdentifier: "jockey") as! JockeyPumpViewController
@@ -235,7 +221,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
             self.window!.rootViewController = viewController
             self.window!.makeKeyAndVisible()
             isJockeyPumpAlert=true
-            print(isJockeyPumpAlert)
 
         }
         
@@ -244,28 +229,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         
       else  if(PushNotificationMessage.containsIgnoringCase(find: "ready")){
 
-            
-//            print("systems ready")
-//            var storyboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
-//            print("aqui se truena")
-//             var viewController: SelectTrackerViewController = storyboard.instantiateViewController(withIdentifier: "trackerselect") as! SelectTrackerViewController
-//            
-//            self.window!.rootViewController = viewController
-//            self.window!.makeKeyAndVisible()
-//
         
         }
             
         else  if(PushNotificationMessage.containsIgnoringCase(find: "message")){
 
-            print("you have a message")
-//          this code snippet causes the app to crash
-//            var storyboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
-//            var viewController: MainScreenController = storyboard.instantiateViewController(withIdentifier: "mainscreen") as! MainScreenController
-//            
-//            self.window!.rootViewController = viewController
-//            self.window!.makeKeyAndVisible()
-            
             
         }
    
@@ -276,7 +244,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         
         else if(PushNotificationMessage.containsIgnoringCase(find: "pump running")){
 
-            print("is an alert")
             self.pushNotificationArrived=0
             generateLocalNotification()
             let storyboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
@@ -296,7 +263,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         
         //Method called when the user recieves a LocalNotification
         
-        print("local notification recieved amigo")
         
         _ = UserDefaults.standard
         
@@ -331,7 +297,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
          
          **/
         
-        print("APPDELEGATE: willPresentNotification \(notification.request.content.userInfo)")
         
         
         
@@ -363,7 +328,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
          
          **/
         
-        print("APPDELEGATE: didReceiveResponseWithCompletionHandler \(response.notification.request.content.userInfo)")
         
         
         if(PushNotificationMessage.containsIgnoringCase(find: "jockey")){
@@ -400,7 +364,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-  print("entrando al background amigo")
        
         if(timerDefaults.integer(forKey: "ENABLED")==1){
         
@@ -411,7 +374,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background
-        print("entrando al foreground amigo ")
       
         UIApplication.shared.applicationIconBadgeNumber = 0
 
@@ -423,7 +385,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
-        print("the aplicacion is activa otra vez")
         if(pushNotificationArrived==1){
             if(PushNotificationMessage.containsIgnoringCase(find: "jockey")){
                 let storyboard = UIStoryboard(name: "MainStoryboard", bundle: nil)

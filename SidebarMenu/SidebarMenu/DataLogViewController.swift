@@ -47,8 +47,6 @@
             idtracker = prefs.integer(forKey: "IDTRACKER") as Int
             params  = [ "id_tracker": idtracker as AnyObject ]
             
-            print("NAMEBUSINESS")
-            print(prefs.object(forKey: "NAMEBUSINESS")!)
             selectTrackerLabel.text = prefs.object(forKey: "NAMEBUSINESS") as! String?
             startLoading()
             requestDataLog(params: params)
@@ -60,8 +58,6 @@
         override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
             if(isDataFiltered){
-                print("los parametros filtrados")
-                print(paramsForFiltering)
                 datalog.removeAll()
                 update()
                 
@@ -275,7 +271,6 @@
             //cancel Action Handler
             alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default,handler: {
                 (alert: UIAlertAction!) in
-                print("you have canceled the email action")
             }))
             
             
@@ -314,14 +309,12 @@
             present(activitiyViewController, animated: true, completion: nil)
             activitiyViewController.dismiss(animated: true, completion: nil)
             
-            print("params")
-            print(params)
+           
             let handler = AlamoFireRequestHandler()
             handler.processRequest(URL: "https://gct-production.mybluemix.net/sendreport_02.php", requestMethod: .post, params: params as [String : AnyObject],completion: { json2 -> () in
                 
                 
-                print("el json")
-                print(json2)
+                
                 
                 if(json2["mailSent"]==0){
 

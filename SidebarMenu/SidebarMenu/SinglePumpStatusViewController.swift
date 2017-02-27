@@ -42,8 +42,7 @@ class SinglePumpStatusViewController: UIViewController, UITableViewDelegate, UIT
     func loadData(){
         let prefs = UserDefaults.standard
         let params:[String:AnyObject]=[ "id_tracker": prefs.object(forKey: "IDTRACKER") as AnyObject,"pumpID": prefs.object(forKey: "PUMPID") as AnyObject ]
-        print("los parametros")
-        print(params)
+       
         
         
         let handler = AlamoFireRequestHandler()

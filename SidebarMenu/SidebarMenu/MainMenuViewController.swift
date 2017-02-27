@@ -32,7 +32,6 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("View did load")
         stopAlarm()
         UIApplication.shared.applicationIconBadgeNumber = 0
         checkForAlertedTrackers()
@@ -49,7 +48,6 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("View will appear")
         stopAlarm()
         checkForAlertedTrackers()
         loadData()
@@ -81,9 +79,6 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
         
         
         accepted = prefs.integer(forKey: "ACCEPTED")
-        print(idUser)
-        print(accepted)
-        
         
         checkInternetConnection()
         checkifIdUserIsCorrect(idUser: idUser, accepted: accepted)
@@ -97,11 +92,6 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
         
         let address = prefs.object(forKey: "ADDRESS") as! String?
         let idTracker = prefs.object(forKey: "IDTRACKER")as? String?
-        print("los datos amigos")
-        print(idTracker??.description)
-        print(address)
-        print(NameBusiness)
-
         
         if((idTracker??.description)==nil){
             self.performSegue(withIdentifier: "selectBusiness", sender: self)
@@ -116,7 +106,6 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
         if(address==nil&&NameBusiness==nil && idTracker==nil){
 
             
-            print("hey amigo")
             prefs.set("Address", forKey: "ADDRESS")
             prefs.synchronize()
             prefs.set("Choose a tracker", forKey: "NAMEBUSINESS")
@@ -167,7 +156,6 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
         
         let handler = AlamoFireRequestHandler()
         handler.processRequest(URL: "https://gct-production.mybluemix.net/checkifalerted_02.php", requestMethod: .post, params: params as [String : AnyObject],completion: { json2 -> () in
-            print("viendo si estan alertados amigo")
             if(json2["alerted"].intValue==1) {
                 self.alertedTrackerButton.setImage(UIImage(named: "menu icono amarillo"), for: [])
                 self.alertedTrackerButton.isEnabled=true
@@ -209,10 +197,7 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
         }
         
         let roomState = prefs.object(forKey: "ROOMSTATE") as? Int
-        print("el room state")
-        print(roomState ?? "room state")
         if (roomState==1){
-            print("se seteo en rojo")
             let buttonImage = UIImage(named: "roomRojo")
             self.roomStateIcon.setImage(buttonImage, for: [])
             
@@ -252,7 +237,6 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
     func checkifIdUserIsCorrect(idUser:Int, accepted:Int){
         
         if (idUser <= 0) {
-            print("muerete cabron")
             
             self.performSegue(withIdentifier: "logout", sender: self)
         }
@@ -300,7 +284,6 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
             showNoInternetDialog()
             
             trackerChooserButton.setTitle("No internet connection", for: .normal)
-            print("desconectado")
             
             
             
@@ -314,21 +297,15 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
         let prefs:UserDefaults = UserDefaults.standard
         let params:[String:AnyObject]=[ "id_user": prefs.object(forKey: "IDUSER") as AnyObject ]
         
-        print("requesting ID USER FOR ALERTED TRACKERS")
-        print(prefs.object(forKey: "IDUSER") ?? "IDUSER")
         let handler = AlamoFireRequestHandler()
         handler.processRequest(URL: "https://gct-production.mybluemix.net/getalertedtrackers_02.php", requestMethod: .post, params: params as [String : AnyObject],completion: { json2 -> () in
             
-            print("alertedTrackers json")
             
             
             if(json2["alertedtrackers"].arrayValue.count>1){
-                //self.trackerChooserButton.setTitle("Multiple trackers alerted", for: .normal)
-                // self.trackerAddressButton.setTitle("Please see alerted trackers", for: .normal)
-                print("more that one tracker")
+                
             }
             if(json2["alertedtrackers"].arrayValue.count==1){
-                print("alertedtrackeame esta ")
                 for result in json2["alertedtrackers"].arrayValue {
                     let address = result["address"].stringValue
                     let name = result["name"].stringValue
@@ -339,12 +316,8 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
                     prefs.set(name, forKey: "NAMEBUSINESS")
                     prefs.set(address, forKey: "ADDRESS")
                     
-                    print("el id tracker es amigo")
-                    print(idTracker)
-                    print("la address es")
-                    print(address)
+                   
                     if(address==""){
-                        print("alola land")
                         self.trackerChooserButton.setTitle("Choose a tracker", for: .normal)
                         self.trackerAddressButton.setTitle("Tracker address" as String?, for: .normal)
                         prefs.set("Choose a tracker", forKey: "NAMEBUSINESS")
@@ -455,7 +428,6 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
         alert.addAction(UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
                                       handler:  { (action: UIAlertAction!) in
                                         
-                                        print("ok yo gano")
                                         
                                         let params  = [ "id_user": UserDefaults.standard.object(forKey: "IDUSER") as AnyObject ]
                                         
@@ -463,8 +435,6 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
                                         
                                         let handler = AlamoFireRequestHandler()
                                         handler.processRequest(URL: "https://gct-production.mybluemix.net/releasetoken_02.php", requestMethod: .post, params: params as [String : AnyObject],completion: { json2 -> () in
-                                            print("funciono o no el login amigo")
-                                            print(json2["released"])
                                             if(json2["released"].intValue==1){
                                                 let defaults = UserDefaults.standard
                                                 
@@ -510,7 +480,6 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
             
-            print("no hagas nada")
             
             
         }))
@@ -567,12 +536,10 @@ class MainMenuViewController: UIViewController, UITextFieldDelegate,UIActionShee
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        print("prepare for segue")
         if(isTrackerMenuSelected){
             
             isTrackerMenuSelected=false
             if(segue.identifier=="selectBusiness"){
-                print("entre aqui amigo")
                 let destination = segue.destination as! SelectTrackerViewController
                 destination.segueFromController = "MainMenuViewController"
             }

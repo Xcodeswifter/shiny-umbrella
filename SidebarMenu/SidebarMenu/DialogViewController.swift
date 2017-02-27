@@ -272,7 +272,6 @@ class DialogViewController {
             alert.addAction(UIAlertAction(title: "OK",style: UIAlertActionStyle.default,
                                           handler:  { (action: UIAlertAction!) in
                                             
-                                            print("ok yo gano")
                                             
                                             let params  = [ "id_user": UserDefaults.standard.object(forKey: "IDUSER") as AnyObject ]
                                             
@@ -282,8 +281,6 @@ class DialogViewController {
                                             
                                             let handler = AlamoFireRequestHandler()
                                             handler.processRequest(URL: "https://gct-production.mybluemix.net/releasetoken_02.php", requestMethod: .post, params: params as [String : AnyObject],completion: { json2 -> () in
-                                                print("funciono o no el login amigo")
-                                                print(json2["released"])
                                                 if(json2["released"].intValue==1){
                                                     let defaults = UserDefaults.standard
                                                     
@@ -321,7 +318,6 @@ class DialogViewController {
             
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
                 
-                print("no hagas nada")
                 
                 
             }))

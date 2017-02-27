@@ -48,7 +48,6 @@ class JockeyPumpViewController: UIViewController {
     
     
     func requestJockeyPumpStatus(){
-        print("requesting jockey pump status")
         let prefs:UserDefaults = UserDefaults.standard
         let idtracker:Int = prefs.integer(forKey: "IDTRACKER") as Int
         let pumpType = prefs.object(forKey: "PUMPID")
@@ -57,8 +56,6 @@ class JockeyPumpViewController: UIViewController {
         let handler = AlamoFireRequestHandler()
         handler.processRequest(URL: "https://gct-production.mybluemix.net/getjockeypumpstatus_02.php", requestMethod: .post, params: params as [String : AnyObject],completion: { json2 -> () in
             
-            print("el json amigo")
-            print(json2)
             self.monthLabel.text = json2["month"].stringValue
             self.weekLabel.text = json2["week"].stringValue
             self.dayLabel.text = json2["day"].stringValue
@@ -87,8 +84,6 @@ class JockeyPumpViewController: UIViewController {
         
         
         if(isMapSelected==true){
-            print("de que tipo soy")
-            print(segue.destination)
             isMapSelected=false
                 let destination = segue.destination as! MapViewController
                 destination.segueFromController = "JockeyPumpViewController"

@@ -47,7 +47,6 @@ class SelectFilterViewController: UIViewController,UIGestureRecognizerDelegate {
             
             let prefs:UserDefaults = UserDefaults.standard
             
-            print("tracker data")
             selectTrackerButton.setTitle(prefs.object(forKey: "NAMEBUSINESS") as? String, for: .normal)
        
 

@@ -47,8 +47,7 @@ class pumpInfoViewController: UIViewController,UITableViewDelegate, UITableViewD
         let handler = AlamoFireRequestHandler()
         handler.processRequest(URL: "https://gct-production.mybluemix.net/getinfo_02.php", requestMethod: .post, params: params as [String : AnyObject],completion: { json2 -> () in
             self.parseJson(json: json2)
-            print("mira aqui la info de la bomba amigo ")
-            print(json2["systemInfo"].stringValue)
+            
      self.systemInfoData.text = "System info:  "+"\n"+json2["systemInfo"].stringValue
             self.setSystemInfoTextAttributes(textView: self.systemInfoData)
                         
@@ -143,12 +142,8 @@ class pumpInfoViewController: UIViewController,UITableViewDelegate, UITableViewD
         
         let object = pumplist[indexPath.row]
         
-        print("PUMPLIST COUNT")
-        print(pumplist.count)
-        print("el object nenne")
-        print(object)
+        
         if(object["pumpInfo"]as! String?==""){
-        print("it works")
             cell.pumpLabel.text = object["pumpType"] as! String?
             cell.pumpLabel.textColor = object["textColor"] as! UIColor!
             
@@ -193,14 +188,12 @@ class pumpInfoViewController: UIViewController,UITableViewDelegate, UITableViewD
     func checkPump01Type(json:JSON){
         if(json["pump01Type"]==1){
             if(!json["pump01Info"].stringValue.isEmpty){
-                print("not empty")
             let obj = ["pumpType": "Diesel Pump Info", "pumpInfo": json["pump01Info"].stringValue, "textColor":UIColor.orange] as [String : Any]
             
             pumplist.append(obj)
             }
         }
         if(json["pump01Type"]==2){
-            print("not empty")
 
              if(!json["pump01Info"].stringValue.isEmpty){
             let obj = ["pumpType": "Electric Pump Info", "pumpInfo": json["pump01Info"].stringValue, "textColor":UIColor.cyan] as [String : Any]
@@ -210,7 +203,6 @@ class pumpInfoViewController: UIViewController,UITableViewDelegate, UITableViewD
             }
         }
         if(json["pump01Type"]==3){
-            print("not empty")
 
              if(!json["pump01Info"].stringValue.isEmpty){
             
@@ -228,7 +220,7 @@ class pumpInfoViewController: UIViewController,UITableViewDelegate, UITableViewD
     
     func checkPump02Type(json:JSON){
         if(json["pump02Type"]==1){
-            print("not empty")
+            
 
              if(!json["pump02Info"].stringValue.isEmpty){
             let obj = ["pumpType": "Diesel Pump Info", "pumpInfo": json["pump02Info"].stringValue, "textColor":UIColor.orange] as [String : Any]
@@ -238,7 +230,7 @@ class pumpInfoViewController: UIViewController,UITableViewDelegate, UITableViewD
             
         }
         if(json["pump02Type"]==2){
-            print("not empty")
+            
 
              if(!json["pump02Info"].stringValue.isEmpty){
             let obj = ["pumpType": "Electric Pump Info", "pumpInfo": json["pump02Info"].stringValue, "textColor":UIColor.cyan] as [String : Any]
@@ -249,7 +241,7 @@ class pumpInfoViewController: UIViewController,UITableViewDelegate, UITableViewD
         }
         
         if(json["pump02Type"]==3){
-            print("not empty")
+            
 
              if(!json["pump02Info"].stringValue.isEmpty){
             let obj = ["pumpType": "Jockey Pump Info", "pumpInfo": json["pump02Info"].stringValue, "textColor":UIColor.green] as [String : Any]
@@ -270,7 +262,7 @@ class pumpInfoViewController: UIViewController,UITableViewDelegate, UITableViewD
         if(json["pump03Type"]==1){
 
              if(!json["pump03Info"].stringValue.isEmpty){
-                print("not empty")
+                
 
             let obj = ["pumpType": "Diesel Pump Info", "pumpInfo": json["pump03Info"].stringValue, "textColor":UIColor.orange] as [String : Any]
             
@@ -288,7 +280,7 @@ class pumpInfoViewController: UIViewController,UITableViewDelegate, UITableViewD
             
         }
         if(json["pump03Type"]==3){
-            print("not empty")
+            
 
              if(!json["pump03Info"].stringValue.isEmpty){
            
@@ -309,7 +301,7 @@ class pumpInfoViewController: UIViewController,UITableViewDelegate, UITableViewD
         
         if(json["pump04Type"]==1){
            
-            print("not empty")
+            
 
             if(!json["pump04Info"].stringValue.isEmpty){
             let obj = ["pumpType": "Diesel Pump Info", "pumpInfo": json["pump04Info"].stringValue, "textColor":UIColor.orange] as [String : Any]
@@ -318,7 +310,7 @@ class pumpInfoViewController: UIViewController,UITableViewDelegate, UITableViewD
             }
         }
         if(json["pump04Type"]==2){
-            print("not empty")
+            
 
              if(!json["pump04Info"].stringValue.isEmpty){
             let obj = ["pumpType": "Electric Pump Info", "pumpInfo": json["pump04Info"].stringValue, "textColor":UIColor.cyan] as [String : Any]
@@ -327,7 +319,7 @@ class pumpInfoViewController: UIViewController,UITableViewDelegate, UITableViewD
             }
         }
         if(json["pump04Type"]==3){
-            print("not empty")
+            
 
              if(!json["pump04Info"].stringValue.isEmpty){
             let obj = ["pumpType": "Jockey Pump Info", "pumpInfo": json["pump04Info"].stringValue, "textColor":UIColor.green] as [String : Any]
@@ -343,7 +335,7 @@ class pumpInfoViewController: UIViewController,UITableViewDelegate, UITableViewD
     
     func checkPump05Type(json:JSON){
         if(json["pump05Type"]==1){
-            print("not empty")
+            
 
              if(!json["pump05Info"].stringValue.isEmpty){
             let obj = ["pumpType": "Diesel Pump Info", "pumpInfo": json["pump05Info"].stringValue, "textColor":UIColor.orange] as [String : Any]
@@ -353,7 +345,7 @@ class pumpInfoViewController: UIViewController,UITableViewDelegate, UITableViewD
             
         }
         if(json["pump05Type"]==2){
-            print("not empty")
+            
 
              if(!json["pump05Type"].stringValue.isEmpty){
             let obj = ["pumpType": "Electric Pump Info", "pumpInfo": json["pump05Info"].stringValue, "textColor":UIColor.cyan] as [String : Any]
@@ -363,7 +355,7 @@ class pumpInfoViewController: UIViewController,UITableViewDelegate, UITableViewD
             
         }
         if(json["pump05Type"]==3){
-            print("not empty")
+            
 
             if(!json["pump05Type"].stringValue.isEmpty){
             let obj = ["pumpType": "Jockey Pump Info", "pumpInfo": json["pump05Info"].stringValue, "textColor":UIColor.green] as [String : Any]

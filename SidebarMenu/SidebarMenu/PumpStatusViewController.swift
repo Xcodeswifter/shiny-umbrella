@@ -207,7 +207,6 @@ class PumpStatusViewController: UIViewController, UITableViewDelegate, UITableVi
     func checkIfDataLogContainsOnlyOneElement(object:[String:String],cell:PumpStatusTableViewCell)->Bool{
         if(datalog.count==1){
             if(object["pumpType"]=="0"){
-                print("only one element")
                 pumpStatusTitleLabel.text = "No pumps Found"
                 setTextViewAttributes(pumpStatusLabel: pumpStatusTitleLabel)
                 
@@ -249,7 +248,6 @@ class PumpStatusViewController: UIViewController, UITableViewDelegate, UITableVi
     func checkPumpType(indexPath:IndexPath){
         let object = datalog[(indexPath as NSIndexPath).row]
         let statusMessage = object["status"]! as String
-        print()
         
         if(object["pumpType"]=="1"){
             pumpID = object["pumpID"]!
@@ -283,8 +281,6 @@ class PumpStatusViewController: UIViewController, UITableViewDelegate, UITableVi
             let prefs:UserDefaults = UserDefaults.standard
             
             prefs.set(object["pumpID"],  forKey: "PUMPID")
-            print("el pump id")
-            print(object["pumpID"])
             prefs.synchronize()
             prefs.set(object["pumpType"], forKey: "PUMPTYPE")
             prefs.synchronize()
